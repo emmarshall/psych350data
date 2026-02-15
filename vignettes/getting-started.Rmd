@@ -1,0 +1,119 @@
+---
+title: "Getting Started with psyc350data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started with psyc350data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Overview
+
+The psyc350data package provides all the datasets you need for PSYC 350 labs. Each dataset is pre-cleaned and ready to use — no downloading files, no import headaches.
+
+## Loading the Package
+```{r setup}
+library(psyc350data)
+```
+
+## Browsing Available Datasets
+
+To see every dataset in the package:
+```{r}
+list_datasets()
+```
+
+For detailed documentation on any dataset, use the help system:
+```{r eval = FALSE}
+?superman
+?hot_ones
+?mock_jury
+```
+
+## Using Datasets in R
+
+Every dataset is a tibble that's immediately available after loading the package:
+```{r}
+head(superman)
+```
+```{r}
+str(superman_smes)
+```
+```{r}
+summary(football)
+```
+
+### Working with Categorical Variables
+
+Categorical variables are stored as numeric codes in R. The codes map to labels that you can see in the documentation. For example, in the `superman` dataset:
+
+- `type`: 1 = Film, 2 = TV Series, 3 = Serial
+- `tomatometer`: 1 = Rotten, 2 = Fresh
+- `popular`: 1 = Low, 2 = Mid, 3 = High
+
+You can convert these to factors for analysis or plotting:
+```{r}
+library(dplyr)
+
+superman |>
+  mutate(
+    type_label = factor(type, 
+                        levels = c(1, 2, 3), 
+                        labels = c("Film", "TV Series", "Serial"))
+  ) |>
+  select(media, year, type, type_label)
+```
+
+### Missing Values
+
+In R, missing values are represented as `NA`:
+```{r}
+# See which Superman entries have missing Letterboxd scores
+superman |>
+  select(num, media, ldb_likes, ldb_scores) |>
+  filter(is.na(ldb_scores))
+```
+
+When exported to SPSS, these `NA` values are converted to `-99` and marked as user-defined missing values.
+
+## Example Analyses
+
+### T-test with Mock Jury Data
+```{r}
+# Compare sentence length by crime type
+# crime: 1 = Burglary, 2 = Swindle
+t.test(years ~ crime, data = mock_jury)
+```
+
+### ANOVA with Football Data
+```{r}
+# Compare hippocampus volume across groups
+# group: 1 = Control, 2 = Football no concussion, 3 = Football with concussion
+model <- aov(volume ~ factor(group), data = football)
+summary(model)
+```
+
+### Correlation with Candy Data
+```{r}
+# Relationship between sugar content and win percentage
+cor.test(candy_simple$sugarpercent, candy_simple$winpercent)
+```
+
+### Chi-Square with Tip Jokes Data
+```{r}
+# Is tipping independent of card type?
+table(tip_jokes$card, tip_jokes$tip) |>
+  chisq.test()
+```
+
+## Next Steps
+
+- See `vignette("exporting-spss")` to learn how to create SPSS files
+- Use `?dataset_name` to view full documentation for any dataset
+- All datasets work with standard R functions: `t.test()`, `aov()`, `lm()`, `cor.test()`, `chisq.test()`, etc.

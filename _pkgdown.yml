@@ -1,4 +1,54 @@
-url: ~
+url: https://emmarshall.github.io/psych350data/
 template:
   bootstrap: 5
+  bslib:
+    bootswatch: materia
+    bg: "#F5F5F5"
+    fg: "#072e3c"
+    primary: "#ff6361"
+    base_font: {google: "IBM Plex Sans"}
+    heading_font: {google: "Newsreader"}
 
+navbar:
+  structure:
+    left:  [intro, reference, articles]
+    right: [search, github]
+  components:
+    intro:
+      text: Get Started
+      href: articles/getting-started.html
+    articles:
+      text: Articles
+      menu:
+        - text: Getting Started
+          href: articles/getting-started.html
+        - text: Exporting to SPSS
+          href: articles/exporting-spss.html
+        - text: Dataset Reference Guide
+          href: articles/dataset-guide.html
+    github:
+      icon: fa-github
+      href: https://github.com/yourusername/psyc350data
+      aria-label: GitHub
+
+reference:
+  - title: Datasets
+    desc: All available datasets for PSYC 350 labs
+    contents:
+      - superman
+      - superman_smes
+      - hot_ones
+      - tip_jokes
+      - mcu
+      - mock_jury
+      - candy
+      - candy_simple
+      - affairs
+      - football
+
+  - title: Export Functions
+    desc: Export datasets as SPSS .sav files
+    contents:
+      - export_sav
+      - export_all_sav
+      - list_datasets

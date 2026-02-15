@@ -1,0 +1,305 @@
+---
+title: "Dataset Reference Guide"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Dataset Reference Guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(psyc350data)
+```
+
+This guide provides a quick reference for every dataset in the psyc350data package, including variable descriptions, categorical coding schemes, and suggested analyses.
+
+## Superman Actor Data
+
+**Dataset:** `superman`
+**Rows:** 11 | **Variables:** 21
+
+Data on actors who have portrayed Clark Kent/Superman across film, TV, and serial media.
+```{r}
+str(superman)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `media` | 1 | Superman 2025 |
+| `media` | 2 | Superman: The Movie |
+| `media` | 3 | Smallville |
+| `media` | 4 | Superman Returns |
+| `media` | 5 | Superman & the Mole Men |
+| `media` | 6 | Man of Steel |
+| `media` | 7 | Superman |
+| `media` | 8 | Superman & Lois |
+| `media` | 9 | Lois & Clark |
+| `media` | 10 | The Adventures of Superboy |
+| `type` | 1 | Film |
+| `type` | 2 | TV Series |
+| `type` | 3 | Serial |
+| `clark_grp` | 1 | Under 6ft (<72 inches) |
+| `clark_grp` | 2 | Over 6ft (≥72 inches) |
+| `tomatometer` | 1 | Rotten |
+| `tomatometer` | 2 | Fresh |
+| `height_gap` | 1 | Minimal (<6 inches) |
+| `height_gap` | 2 | Average (6-8 inches) |
+| `height_gap` | 3 | Big (>8 inches) |
+| `popular` | 1 | Low (<1,000 likes) |
+| `popular` | 2 | Mid (1,000-100,000 likes) |
+| `popular` | 3 | High (>100,000 likes) |
+
+### Suggested Analyses
+- Descriptive statistics for height and rating variables
+- Correlation between critic and audience scores
+- Group comparisons by media type
+
+---
+
+## Superman SMES Data
+
+**Dataset:** `superman_smes`
+**Rows:** 47 | **Variables:** 5
+
+Simulated participant ratings on the Subjective Media Experience Scale (SMES), grouped by the height gap between Superman and Lois Lane actors.
+```{r}
+str(superman_smes)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `height_gap` | 1 | Minimal (<6 inches) |
+| `height_gap` | 2 | Average (6-8 inches) |
+| `height_gap` | 3 | Big (>8 inches) |
+
+### Scale Information
+
+| Subscale | Scoring | Range |
+|----------|---------|-------|
+| `emotional_impact` | Sum of 4 items (1-5 scale) | 4-20 |
+| `aesthetic_appeal` | Sum of 3 items (1-5 scale) | 3-15 |
+| `cognitive_engagement` | Mean of 4 items (0-7 scale) | 0-7 |
+
+### Suggested Analyses
+- One-way ANOVA comparing SMES subscales across height gap groups
+- Post-hoc pairwise comparisons
+
+---
+
+## Hot Ones Guest Data
+
+**Dataset:** `hot_ones`
+**Variables:** 23
+
+Data on guests from the YouTube show Hot Ones, including Scoville ratings for each hot sauce and YouTube engagement metrics.
+```{r}
+str(hot_ones)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `gender` | 1 | Male |
+| `gender` | 2 | Female |
+| `result` | 1 | Succeeded |
+| `result` | 2 | Failed |
+| `occupation` | 1 | Rapper |
+| `occupation` | 2 | Athlete |
+| `occupation` | 3 | Actor |
+| `occupation` | 4 | Actor-Comedian |
+| `occupation` | 5 | Comedian |
+| `occupation` | 6 | Chef |
+| `occupation` | 7 | Actor-Musician |
+| `occupation` | 8 | Musician |
+| `occupation` | 9 | DJ |
+| `occupation` | 10 | YouTuber |
+| `occupation` | 11 | Model |
+| `occupation` | 12 | Wrestler |
+| `occupation` | 13 | Magician |
+| `occupation` | 14 | Other |
+
+### Suggested Analyses
+- Chi-square test of success rate by gender or occupation
+- Correlation between YouTube views and season number
+- Repeated measures across sauce Scoville levels
+
+---
+
+## Tip-Jokes Experiment Data
+
+**Dataset:** `tip_jokes`
+
+Experimental data from Gueguen (2002) examining whether a waiter leaving a joke or advertisement on a card affects tipping.
+```{r}
+str(tip_jokes)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `card` | 1 | Advertisement card |
+| `card` | 2 | Joke card |
+| `card` | 3 | No card |
+| `tip` | 0 | No tip |
+| `tip` | 1 | Customer left a tip |
+
+### Suggested Analyses
+- Chi-square test of independence (card type × tipping)
+- Logistic regression predicting tip from card type
+
+---
+
+## MCU Films Data
+
+**Dataset:** `mcu`
+
+Marvel Cinematic Universe films through the Infinity Saga with box office and Rotten Tomatoes data.
+```{r}
+str(mcu)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `phase` | 1 | Phase 1 |
+| `phase` | 2 | Phase 2 |
+| `phase` | 3 | Phase 3 |
+| `favor` | 1 | Critics score higher |
+| `favor` | 2 | Audience score higher |
+
+### Suggested Analyses
+- One-way ANOVA comparing box office by phase
+- Paired comparison of critics vs. audience scores
+- Regression predicting worldwide gross
+
+---
+
+## Mock Jury Data
+
+**Dataset:** `mock_jury`
+
+Data from Plaster (1989) on effects of defendant attractiveness on mock jury sentencing decisions.
+```{r}
+str(mock_jury)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `attr` | 1 | Beautiful |
+| `attr` | 2 | Average |
+| `attr` | 3 | Unattractive |
+| `crime` | 1 | Burglary |
+| `crime` | 2 | Swindle |
+
+### Suggested Analyses
+- Two-way ANOVA (attractiveness × crime type) on sentence length
+- Correlation among photo rating variables
+- Multiple regression predicting sentence from photo ratings
+
+---
+
+## Candy Rankings Data
+
+**Full dataset:** `candy` (85 rows × 13 variables)
+**Simplified:** `candy_simple` (85 rows × 5 variables)
+
+Candy power rankings based on 269,000 head-to-head matchups.
+```{r}
+str(candy_simple)
+```
+
+### Binary Variable Codings (full dataset)
+
+All ingredient variables: 0 = No, 1 = Yes
+
+Applies to: `chocolate`, `fruity`, `caramel`, `peanutyalmondy`, `nougat`, `crispedricewafer`, `hard`, `bar`, `pluribus`
+
+### Suggested Analyses
+- Independent samples t-test (chocolate vs. non-chocolate win %)
+- Multiple regression predicting win percentage
+- Correlation between sugar, price, and win percentages
+
+---
+
+## Extramarital Affairs Data
+
+**Dataset:** `affairs`
+
+Cross-section survey data from Psychology Today (1969) on extramarital affairs.
+```{r}
+str(affairs)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `gender` | 1 | Female |
+| `gender` | 2 | Male |
+| `yearsmarried` | 1 | Less than 7 years |
+| `yearsmarried` | 2 | 7 to less than 14 years |
+| `yearsmarried` | 3 | 14 or more years |
+| `children` | 1 | No |
+| `children` | 2 | Yes |
+| `religiousness` | 1-5 | Anti-religious to Very religious |
+| `education` | 9-20 | Grade school to Ph.D./M.D. |
+| `occupation` | 1-7 | Hollingshead (1=highest, 7=lowest) |
+| `rating` | 1-5 | Very unhappy to Very happy |
+
+### Suggested Analyses
+- Logistic regression predicting affair occurrence
+- Chi-square tests for categorical predictors
+- Group comparisons by marriage rating
+
+---
+
+## Football Concussion Data
+
+**Dataset:** `football`
+
+Brain measurements comparing football players to controls, from Singh et al. (2014).
+```{r}
+str(football)
+```
+
+### Categorical Codings
+
+| Variable | Code | Label |
+|----------|------|-------|
+| `group` | 1 | Control (no football) |
+| `group` | 2 | Football, no concussions |
+| `group` | 3 | Football with concussion history |
+
+### Suggested Analyses
+- One-way ANOVA comparing hippocampus volume across groups
+- Post-hoc pairwise comparisons (Tukey HSD)
+- Correlation between years played and volume
+```
+
+---
+
+## Updated `DESCRIPTION`
+
+Make sure your Suggests and VignetteBuilder are set:
+```
+Suggests:
+    readxl,
+    tidyr,
+    purrr,
+    lubridate,
+    knitr,
+    rmarkdown,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
