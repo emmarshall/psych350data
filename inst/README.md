@@ -16,14 +16,14 @@ Install from GitHub using [pak](https://pak.r-lib.org/):
 
 ``` r
 # install.packages("pak")
-pak::pak("yourusername/psyc350data")
+pak::pak("emmarshall/psych350data")
 ```
 
 Or with devtools:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("yourusername/psyc350data")
+devtools::install_github("emmarshall/psych350data")
 ```
 
 ## Available Datasets
@@ -48,55 +48,58 @@ library(psyc350data)
 
 # See all available datasets
 list_datasets()
-#>  [1] "superman"      "superman_smes" "hot_ones"      "tip_jokes"    
-#>  [5] "mcu"           "mock_jury"     "candy"         "candy_simple" 
-#>  [9] "affairs"       "football"
+#> [1] "superman"      "superman_smes" "hot_ones"      "tip_jokes"    
+#> [5] "mcu"           "mock_jury"     "candy"         "candy_simple" 
+#> [9] "football"
 
 # Use a dataset directly in R
 head(superman)
-#>   num media year type clark_height lois_height rt_critics_score rt_critic_count
-#> 1   1     1 2025    1         1.93        1.60               83             484
-#> 2   2     2 1978    1         1.93        1.72               88             121
-#> 3   3     3 2001    2         1.90        1.71               78             111
-#> 4   4     4 2006    1         1.89        1.65               72             290
-#> 5   5     5 1951    3         1.86        1.63               NA              NA
-#> 6   6     6 2013    1         1.85        1.63               57             340
-#>   rt_audience_score rt_audience_count ldb_likes ldb_scores clark_height_in
-#> 1                90             25000   1105511        3.9         75.9841
-#> 2                86            250000     99115        3.7         75.9841
-#> 3                72              2500        NA         NA         74.8030
-#> 4                60            250000     26076        2.7         74.4093
-#> 5                79               250       744        2.6         73.2282
-#> 6                75            250000    204463        3.0         72.8345
-#>   lois_height_in clark_grp height_diff height_gap tomatometer rt_avg   rt_diff
-#> 1        62.9920         2     12.9921          3           2   86.5 -86.71433
-#> 2        67.7164         2      8.2677          3           2   87.0 -85.91582
-#> 3        67.3227         2      7.4803          2           2   75.0 -65.62313
-#> 4        64.9605         2      9.4488          3           2   66.0 -59.84706
-#> 5        64.1731         2      9.0551          3          NA     NA        NA
-#> 6        64.1731         2      8.6614          3           1   66.0 -74.82072
-#>   popular
-#> 1       3
-#> 2       2
-#> 3      NA
-#> 4       2
-#> 5       1
-#> 6       3
+#> # A tibble: 6 × 21
+#>     num media  year  type clark_height lois_height rt_critics_score
+#>   <int> <dbl> <dbl> <dbl>        <dbl>       <dbl>            <dbl>
+#> 1     1     1  2025     1         1.93        1.6                83
+#> 2     2     2  1978     1         1.93        1.72               88
+#> 3     3     3  2001     2         1.9         1.71               78
+#> 4     4     4  2006     1         1.89        1.65               72
+#> 5     5     5  1951     3         1.86        1.63               NA
+#> 6     6     6  2013     1         1.85        1.63               57
+#> # ℹ 14 more variables: rt_critic_count <dbl>, rt_audience_score <dbl>,
+#> #   rt_audience_count <dbl>, ldb_likes <dbl>, ldb_scores <dbl>,
+#> #   clark_height_in <dbl>, lois_height_in <dbl>, clark_grp <dbl>,
+#> #   height_diff <dbl>, height_gap <dbl>, tomatometer <dbl>, rt_avg <dbl>,
+#> #   rt_diff <dbl>, popular <dbl>
 
 # Quick summary
 str(football)
-#> Classes 'tbl_df', 'tbl' and 'data.frame':    75 obs. of  3 variables:
-#>  $ group : num  1 1 1 1 1 1 1 1 1 1 ...
-#>  $ years : num  0 0 0 0 0 0 0 0 0 0 ...
-#>  $ volume: num  6.17 6.22 6.36 6.46 6.54 ...
+#> tibble [75 × 3] (S3: tbl_df/tbl/data.frame)
+#>  $ group : num [1:75] 1 1 1 1 1 1 1 1 1 1 ...
+#>  $ years : num [1:75] 0 0 0 0 0 0 0 0 0 0 ...
+#>  $ volume: num [1:75] 6.17 6.22 6.36 6.46 6.54 ...
 ```
 
 ## Exporting to SPSS
 
-All datasets can be exported as .sav files with full SPSS metadata:
+Every dataset can be exported as a .sav file with full SPSS metadata.
+Each dataset has its own export function:
 
 ``` r
-# Export a single dataset
+# Dataset-specific export functions
+export_superman_sav("superman_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
+export_hot_ones_sav("hot_ones_data.sav")
+export_tip_jokes_sav("tip_jokes_data.sav")
+export_mcu_sav("mcu_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
+export_candy_sav("candy_data.sav")
+export_candy_simple_sav("candy_simple_data.sav")
+export_affairs_sav("affairs_data.sav")
+export_football_sav("football_data.sav")
+```
+
+Or use the generic function with any dataset name:
+
+``` r
+# Export by name
 export_sav("superman", path = "superman_data.sav")
 
 # Export all datasets to a folder
@@ -113,9 +116,13 @@ The exported .sav files include:
 ## Learning More
 
 ``` r
-# Browse the package vignettes
+# Browse the package website
+# https://emmarshall.github.io/psych350data/
+
+# Package vignettes
 vignette("getting-started", package = "psyc350data")
 vignette("exporting-spss", package = "psyc350data")
+vignette("dataset-guide", package = "psyc350data")
 
 # View documentation for any dataset
 ?superman

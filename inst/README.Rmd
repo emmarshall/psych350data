@@ -22,13 +22,13 @@ psyc350data provides cleaned, documented datasets for PSYC 350 lab exercises. Al
 Install from GitHub using [pak](https://pak.r-lib.org/):
 ```{r eval = FALSE}
 # install.packages("pak")
-pak::pak("yourusername/psyc350data")
+pak::pak("emmarshall/psych350data")
 ```
 
 Or with devtools:
 ```{r eval = FALSE}
 # install.packages("devtools")
-devtools::install_github("yourusername/psyc350data")
+devtools::install_github("emmarshall/psych350data")
 ```
 
 ## Available Datasets
@@ -62,9 +62,24 @@ str(football)
 
 ## Exporting to SPSS
 
-All datasets can be exported as .sav files with full SPSS metadata:
+Every dataset can be exported as a .sav file with full SPSS metadata. Each dataset has its own export function:
 ```{r eval = FALSE}
-# Export a single dataset
+# Dataset-specific export functions
+export_superman_sav("superman_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
+export_hot_ones_sav("hot_ones_data.sav")
+export_tip_jokes_sav("tip_jokes_data.sav")
+export_mcu_sav("mcu_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
+export_candy_sav("candy_data.sav")
+export_candy_simple_sav("candy_simple_data.sav")
+export_affairs_sav("affairs_data.sav")
+export_football_sav("football_data.sav")
+```
+
+Or use the generic function with any dataset name:
+```{r eval = FALSE}
+# Export by name
 export_sav("superman", path = "superman_data.sav")
 
 # Export all datasets to a folder
@@ -79,9 +94,13 @@ The exported .sav files include:
 
 ## Learning More
 ```{r eval = FALSE}
-# Browse the package vignettes
+# Browse the package website
+# https://emmarshall.github.io/psych350data/
+
+# Package vignettes
 vignette("getting-started", package = "psyc350data")
 vignette("exporting-spss", package = "psyc350data")
+vignette("dataset-guide", package = "psyc350data")
 
 # View documentation for any dataset
 ?superman

@@ -1,7 +1,13 @@
+#' @importFrom dplyr mutate across where case_when if_else select rename
+#'   left_join filter pull
+NULL
+
 #' Internal: Replace NA with a sentinel value
+#' @param x A vector
+#' @param sentinel The sentinel value to use (default: -99)
+#' @return Vector with NAs replaced by sentinel
 #' @noRd
 replace_na_sentinel <- function(x, sentinel = -99) {
-
   if (is.numeric(x)) {
     ifelse(is.na(x), sentinel, x)
   } else if (is.character(x)) {
@@ -12,6 +18,9 @@ replace_na_sentinel <- function(x, sentinel = -99) {
 }
 
 #' Internal: Replace sentinel value with NA
+#' @param x A vector
+#' @param sentinel The sentinel value to replace (default: -99)
+#' @return Vector with sentinel replaced by NA
 #' @noRd
 replace_sentinel_na <- function(x, sentinel = -99) {
   if (is.numeric(x)) {
@@ -21,11 +30,4 @@ replace_sentinel_na <- function(x, sentinel = -99) {
   } else {
     x
   }
-}
-
-#' Internal: Apply SPSS missing value metadata to labelled columns
-#' @noRd
-set_spss_missing <- function(df, vars, sentinel = -99) {
-  args <- stats::setNames(rep(sentinel, length(vars)), vars)
-  do.call(labelled::set_na_values, c(list(.data = df), args))
 }

@@ -14,11 +14,13 @@ knitr::opts_chunk$set(
 library(psyc350data)
 ```
 
-This guide provides a quick reference for every dataset in the psyc350data package, including variable descriptions, categorical coding schemes, and suggested analyses.
+This guide provides a quick reference for every dataset in the psyc350data package, including variable descriptions, categorical coding schemes, available export functions, and suggested analyses.
+
+---
 
 ## Superman Actor Data
 
-**Dataset:** `superman`
+**Dataset:** `superman` | **Export:** `export_superman_sav()`
 **Rows:** 11 | **Variables:** 21
 
 Data on actors who have portrayed Clark Kent/Superman across film, TV, and serial media.
@@ -54,6 +56,12 @@ str(superman)
 | `popular` | 2 | Mid (1,000-100,000 likes) |
 | `popular` | 3 | High (>100,000 likes) |
 
+### Export to SPSS
+```{r eval = FALSE}
+export_superman_sav("superman_data.sav")
+# or: export_sav("superman", path = "superman_data.sav")
+```
+
 ### Suggested Analyses
 - Descriptive statistics for height and rating variables
 - Correlation between critic and audience scores
@@ -63,7 +71,7 @@ str(superman)
 
 ## Superman SMES Data
 
-**Dataset:** `superman_smes`
+**Dataset:** `superman_smes` | **Export:** `export_superman_smes_sav()`
 **Rows:** 47 | **Variables:** 5
 
 Simulated participant ratings on the Subjective Media Experience Scale (SMES), grouped by the height gap between Superman and Lois Lane actors.
@@ -87,6 +95,11 @@ str(superman_smes)
 | `aesthetic_appeal` | Sum of 3 items (1-5 scale) | 3-15 |
 | `cognitive_engagement` | Mean of 4 items (0-7 scale) | 0-7 |
 
+### Export to SPSS
+```{r eval = FALSE}
+export_superman_smes_sav("superman_smes_data.sav")
+```
+
 ### Suggested Analyses
 - One-way ANOVA comparing SMES subscales across height gap groups
 - Post-hoc pairwise comparisons
@@ -95,7 +108,7 @@ str(superman_smes)
 
 ## Hot Ones Guest Data
 
-**Dataset:** `hot_ones`
+**Dataset:** `hot_ones` | **Export:** `export_hot_ones_sav()`
 **Variables:** 23
 
 Data on guests from the YouTube show Hot Ones, including Scoville ratings for each hot sauce and YouTube engagement metrics.
@@ -126,6 +139,11 @@ str(hot_ones)
 | `occupation` | 13 | Magician |
 | `occupation` | 14 | Other |
 
+### Export to SPSS
+```{r eval = FALSE}
+export_hot_ones_sav("hot_ones_data.sav")
+```
+
 ### Suggested Analyses
 - Chi-square test of success rate by gender or occupation
 - Correlation between YouTube views and season number
@@ -135,7 +153,7 @@ str(hot_ones)
 
 ## Tip-Jokes Experiment Data
 
-**Dataset:** `tip_jokes`
+**Dataset:** `tip_jokes` | **Export:** `export_tip_jokes_sav()`
 
 Experimental data from Gueguen (2002) examining whether a waiter leaving a joke or advertisement on a card affects tipping.
 ```{r}
@@ -151,6 +169,17 @@ str(tip_jokes)
 | `card` | 3 | No card |
 | `tip` | 0 | No tip |
 | `tip` | 1 | Customer left a tip |
+| `ad` | 0 | No ad card |
+| `ad` | 1 | Ad card left |
+| `joke` | 0 | No joke card |
+| `joke` | 1 | Joke card left |
+| `none` | 0 | Ad or joke card left |
+| `none` | 1 | No card left |
+
+### Export to SPSS
+```{r eval = FALSE}
+export_tip_jokes_sav("tip_jokes_data.sav")
+```
 
 ### Suggested Analyses
 - Chi-square test of independence (card type × tipping)
@@ -160,7 +189,7 @@ str(tip_jokes)
 
 ## MCU Films Data
 
-**Dataset:** `mcu`
+**Dataset:** `mcu` | **Export:** `export_mcu_sav()`
 
 Marvel Cinematic Universe films through the Infinity Saga with box office and Rotten Tomatoes data.
 ```{r}
@@ -177,6 +206,11 @@ str(mcu)
 | `favor` | 1 | Critics score higher |
 | `favor` | 2 | Audience score higher |
 
+### Export to SPSS
+```{r eval = FALSE}
+export_mcu_sav("mcu_data.sav")
+```
+
 ### Suggested Analyses
 - One-way ANOVA comparing box office by phase
 - Paired comparison of critics vs. audience scores
@@ -186,7 +220,7 @@ str(mcu)
 
 ## Mock Jury Data
 
-**Dataset:** `mock_jury`
+**Dataset:** `mock_jury` | **Export:** `export_mock_jury_sav()`
 
 Data from Plaster (1989) on effects of defendant attractiveness on mock jury sentencing decisions.
 ```{r}
@@ -203,6 +237,11 @@ str(mock_jury)
 | `crime` | 1 | Burglary |
 | `crime` | 2 | Swindle |
 
+### Export to SPSS
+```{r eval = FALSE}
+export_mock_jury_sav("mock_jury_data.sav")
+```
+
 ### Suggested Analyses
 - Two-way ANOVA (attractiveness × crime type) on sentence length
 - Correlation among photo rating variables
@@ -212,8 +251,8 @@ str(mock_jury)
 
 ## Candy Rankings Data
 
-**Full dataset:** `candy` (85 rows × 13 variables)
-**Simplified:** `candy_simple` (85 rows × 5 variables)
+**Full dataset:** `candy` (85 rows × 13 variables) | **Export:** `export_candy_sav()`
+**Simplified:** `candy_simple` (85 rows × 5 variables) | **Export:** `export_candy_simple_sav()`
 
 Candy power rankings based on 269,000 head-to-head matchups.
 ```{r}
@@ -226,6 +265,15 @@ All ingredient variables: 0 = No, 1 = Yes
 
 Applies to: `chocolate`, `fruity`, `caramel`, `peanutyalmondy`, `nougat`, `crispedricewafer`, `hard`, `bar`, `pluribus`
 
+### Export to SPSS
+```{r eval = FALSE}
+# Full dataset with all ingredient variables
+export_candy_sav("candy_data.sav")
+
+# Simplified dataset (5 variables only)
+export_candy_simple_sav("candy_simple_data.sav")
+```
+
 ### Suggested Analyses
 - Independent samples t-test (chocolate vs. non-chocolate win %)
 - Multiple regression predicting win percentage
@@ -233,41 +281,10 @@ Applies to: `chocolate`, `fruity`, `caramel`, `peanutyalmondy`, `nougat`, `crisp
 
 ---
 
-## Extramarital Affairs Data
-
-**Dataset:** `affairs`
-
-Cross-section survey data from Psychology Today (1969) on extramarital affairs.
-```{r}
-str(affairs)
-```
-
-### Categorical Codings
-
-| Variable | Code | Label |
-|----------|------|-------|
-| `gender` | 1 | Female |
-| `gender` | 2 | Male |
-| `yearsmarried` | 1 | Less than 7 years |
-| `yearsmarried` | 2 | 7 to less than 14 years |
-| `yearsmarried` | 3 | 14 or more years |
-| `children` | 1 | No |
-| `children` | 2 | Yes |
-| `religiousness` | 1-5 | Anti-religious to Very religious |
-| `education` | 9-20 | Grade school to Ph.D./M.D. |
-| `occupation` | 1-7 | Hollingshead (1=highest, 7=lowest) |
-| `rating` | 1-5 | Very unhappy to Very happy |
-
-### Suggested Analyses
-- Logistic regression predicting affair occurrence
-- Chi-square tests for categorical predictors
-- Group comparisons by marriage rating
-
----
 
 ## Football Concussion Data
 
-**Dataset:** `football`
+**Dataset:** `football` | **Export:** `export_football_sav()`
 
 Brain measurements comparing football players to controls, from Singh et al. (2014).
 ```{r}
@@ -282,24 +299,8 @@ str(football)
 | `group` | 2 | Football, no concussions |
 | `group` | 3 | Football with concussion history |
 
-### Suggested Analyses
-- One-way ANOVA comparing hippocampus volume across groups
-- Post-hoc pairwise comparisons (Tukey HSD)
-- Correlation between years played and volume
+### Export to SPSS
+```{r eval = FALSE}
+export_football_sav("football_data.sav")
 ```
 
----
-
-## Updated `DESCRIPTION`
-
-Make sure your Suggests and VignetteBuilder are set:
-```
-Suggests:
-    readxl,
-    tidyr,
-    purrr,
-    lubridate,
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr

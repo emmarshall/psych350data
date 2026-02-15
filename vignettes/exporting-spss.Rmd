@@ -22,9 +22,32 @@ All psyc350data datasets can be exported as SPSS `.sav` files with full metadata
 library(psyc350data)
 ```
 
-## Exporting a Single Dataset
+## Exporting with Dataset-Specific Functions
 
-Use `export_sav()` to save any dataset as a `.sav` file:
+Each dataset has its own export function. Just call it with a file path:
+```{r eval = FALSE}
+# Each dataset has a dedicated export function
+export_superman_sav("superman_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
+export_hot_ones_sav("hot_ones_data.sav")
+export_tip_jokes_sav("tip_jokes_data.sav")
+export_mcu_sav("mcu_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
+export_candy_sav("candy_data.sav")
+export_candy_simple_sav("candy_simple_data.sav")
+export_affairs_sav("affairs_data.sav")
+export_football_sav("football_data.sav")
+
+# Save to a specific location
+export_superman_sav("~/Desktop/superman_data.sav")
+export_football_sav("~/Desktop/football_data.sav")
+```
+
+If you don't provide a path, the file is saved to your current working directory with a default name.
+
+## Exporting with the Generic Function
+
+You can also use `export_sav()` with any dataset name:
 ```{r eval = FALSE}
 # Save to your desktop
 export_sav("superman", path = "~/Desktop/superman_data.sav")
@@ -69,7 +92,7 @@ Every variable gets a descriptive label visible in SPSS Variable View. For examp
 |----------|-------|
 | `clark_height` | Height of Clark Kent/Superman actor in meters |
 | `rt_critics_score` | Rotten Tomatoes critics score (0-100 scale) |
-| `tomatometer` | Whether the media was liked by more than 60% of critics |
+| `tomatometer` | whether the media was liked by more than 60% of critics on Rotten Tomatoes |
 
 ### Value Labels
 
@@ -80,16 +103,23 @@ Categorical variables include labeled values. For example:
 | `type` | 1 | Film |
 | `type` | 2 | TV Series |
 | `type` | 3 | Serial |
+| `tomatometer` | 1 | rotten |
+| `tomatometer` | 2 | fresh |
 
 ### Missing Values
 
 In the R objects, missing data is represented as `NA`. In the `.sav` files, missing values are coded as `-99` and registered as user-defined missing values so SPSS excludes them from analyses automatically.
+
+Not all datasets use missing values. For example, the `tip_jokes`, `mock_jury`, and `football` datasets are complete — their .sav files have labels but no sentinel missing values.
 
 ## Controlling Missing Value Behavior
 
 By default, `export_sav()` converts `NA` to `-99` and sets the SPSS missing value attribute. To write standard SPSS system-missing values instead:
 ```{r eval = FALSE}
 export_sav("superman", path = "superman_sysmis.sav", use_sentinel = FALSE)
+
+# Works with dataset-specific functions too
+export_superman_sav("superman_sysmis.sav", use_sentinel = FALSE)
 ```
 
 ## Available Datasets
@@ -99,27 +129,27 @@ To see all datasets you can export:
 list_datasets()
 ```
 
+## Quick Reference: All Export Functions
+
+| Function | Default filename |
+|----------|-----------------|
+| `export_superman_sav()` | `superman_data.sav` |
+| `export_superman_smes_sav()` | `superman_smes_data.sav` |
+| `export_hot_ones_sav()` | `hot_ones_data.sav` |
+| `export_tip_jokes_sav()` | `tip_jokes_data.sav` |
+| `export_mcu_sav()` | `mcu_data.sav` |
+| `export_mock_jury_sav()` | `mock_jury_data.sav` |
+| `export_candy_sav()` | `candy_data.sav` |
+| `export_candy_simple_sav()` | `candy_simple_data.sav` |
+| `export_affairs_sav()` | `affairs_data.sav` |
+| `export_football_sav()` | `football_data.sav` |
+| `export_sav("name")` | `name_data.sav` |
+| `export_all_sav(dir)` | All of the above |
+
 ## Tips for SPSS Users
 
 1. **After opening in SPSS**, check Variable View to see all labels
 2. **Missing values** are already defined — no need to set them manually
 3. **Categorical variables** will show value labels in Data View if you toggle "Value Labels" in the toolbar
-4. If you need to re-export after updating the package, just run `export_sav()` again
-```
-
----
-
-## Update `DESCRIPTION` for Vignettes
-
-Add `knitr` and `rmarkdown` to Suggests:
-```
-Suggests:
-    dplyr,
-    readxl,
-    tidyr,
-    purrr,
-    lubridate,
-    knitr,
-    rmarkdown,
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr
+4. If you need to re-export after updating the package, just run the export function again
+5. The dataset-specific functions (e.g., `export_superman_sav()`) and the generic `export_sav()` produce identical output

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-The psyc350data package provides all the datasets you need for PSYC 350 labs. Each dataset is pre-cleaned and ready to use — no downloading files, no import headaches.
+The psyc350data package provides all the datasets you need for PSYC 350 labs. Each dataset is pre-cleaned and ready to use — no downloading files, no import headaches. You can also export any dataset as a fully labeled SPSS (.sav) file with a single function call.
 
 ## Loading the Package
 ```{r setup}
@@ -82,6 +82,31 @@ superman |>
 
 When exported to SPSS, these `NA` values are converted to `-99` and marked as user-defined missing values.
 
+## Exporting to SPSS
+
+Every dataset has a dedicated export function that creates a fully labeled .sav file:
+```{r eval = FALSE}
+# Dataset-specific export functions
+export_superman_sav("superman_data.sav")
+export_football_sav("~/Desktop/football_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
+export_hot_ones_sav("hot_ones_data.sav")
+export_tip_jokes_sav("tip_jokes_data.sav")
+export_mcu_sav("mcu_data.sav")
+export_candy_sav("candy_data.sav")
+export_candy_simple_sav("candy_simple_data.sav")
+export_affairs_sav("affairs_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
+
+# Or use the generic function with any dataset name
+export_sav("superman", path = "superman_data.sav")
+
+# Or export everything at once
+export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
+```
+
+See `vignette("exporting-spss")` for full details on what the .sav files contain.
+
 ## Example Analyses
 
 ### T-test with Mock Jury Data
@@ -115,5 +140,6 @@ table(tip_jokes$card, tip_jokes$tip) |>
 ## Next Steps
 
 - See `vignette("exporting-spss")` to learn how to create SPSS files
+- See `vignette("dataset-guide")` for a complete reference of all datasets and their coding schemes
 - Use `?dataset_name` to view full documentation for any dataset
 - All datasets work with standard R functions: `t.test()`, `aov()`, `lm()`, `cor.test()`, `chisq.test()`, etc.

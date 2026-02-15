@@ -3,7 +3,7 @@
 \docType{data}
 \name{candy_simple}
 \alias{candy_simple}
-\title{Candy Rankings Data (Simplified)}
+\title{Candy Rankings Data}
 \format{
 A data frame with 85 rows and 5 variables:
 \describe{
@@ -21,7 +21,7 @@ FiveThirtyEight candy power rankings
 candy_simple
 }
 \description{
-Simplified version of the candy dataset with only candy name, chocolate
-indicator, sugar percentile, price percentile, and win percentage.
+Simplified version with only candy name, chocolate indicator,
+sugar percentile, price percentile, and win percentage.
 }
 \keyword{datasets}

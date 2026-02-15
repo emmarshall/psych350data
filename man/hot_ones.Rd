@@ -12,7 +12,16 @@ A tibble with variables including:
 \item{gender}{Guest gender: Male (1), Female (2)}
 \item{age}{Guest age at time of appearance}
 \item{occupation}{Guest primary occupation (1-14, see value labels)}
-\item{SHU_1 through SHU_10}{Scoville Heat Units for sauces 1-10}
+\item{SHU_1}{Sauce 1 Scoville Heat Units}
+\item{SHU_2}{Sauce 2 Scoville Heat Units}
+\item{SHU_3}{Sauce 3 Scoville Heat Units}
+\item{SHU_4}{Sauce 4 Scoville Heat Units}
+\item{SHU_5}{Sauce 5 Scoville Heat Units}
+\item{SHU_6}{Sauce 6 Scoville Heat Units}
+\item{SHU_7}{Sauce 7 Scoville Heat Units}
+\item{SHU_8}{Sauce 8 Scoville Heat Units}
+\item{SHU_9}{Sauce 9 Scoville Heat Units}
+\item{SHU_10}{Sauce 10 Scoville Heat Units}
 \item{result}{Succeeded (1) or Failed (2)}
 \item{appearances}{Number of appearances on the show}
 \item{season}{Season number}
@@ -31,7 +40,5 @@ hot_ones
 \description{
 Data on guests from the YouTube show Hot Ones, including demographic
 information, Scoville ratings for each sauce, and YouTube engagement metrics.
-Categorical variables (gender, result, occupation) are stored as numeric codes.
-Views are in millions.
 }
 \keyword{datasets}

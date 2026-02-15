@@ -8,7 +8,6 @@ template:
     primary: "#ff6361"
     base_font: {google: "IBM Plex Sans"}
     heading_font: {google: "Newsreader"}
-
 navbar:
   structure:
     left:  [intro, reference, articles]
@@ -28,12 +27,11 @@ navbar:
           href: articles/dataset-guide.html
     github:
       icon: fa-github
-      href: https://github.com/yourusername/psyc350data
+      href: https://github.com/emmarshall/psych350data
       aria-label: GitHub
-
 reference:
   - title: Datasets
-    desc: All available datasets for PSYC 350 labs
+    desc: All available datasets for PSYC 350 labs and final projects
     contents:
       - superman
       - superman_smes
@@ -43,12 +41,26 @@ reference:
       - mock_jury
       - candy
       - candy_simple
-      - affairs
       - football
-
-  - title: Export Functions
-    desc: Export datasets as SPSS .sav files
+      - interpersonal_data
+      - self_descriptive_data
+  - title: Generic Export Functions
+    desc: Export any dataset as an SPSS .sav file
     contents:
       - export_sav
       - export_all_sav
       - list_datasets
+  - title: Dataset-Specific Export Functions
+    desc: Convenience functions to export individual datasets
+    contents:
+      - export_superman_sav
+      - export_superman_smes_sav
+      - export_hot_ones_sav
+      - export_tip_jokes_sav
+      - export_mcu_sav
+      - export_mock_jury_sav
+      - export_candy_sav
+      - export_candy_simple_sav
+      - export_football_sav
+      - export_interpersonal_sav
+      - export_selfdescriptive_sav

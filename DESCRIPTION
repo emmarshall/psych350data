@@ -12,9 +12,9 @@ Depends:
     R (>= 4.1.0)
 Imports:
     haven,
-    labelled
+    labelled,
+    dplyr
 Suggests:
-    dplyr,
     readxl,
     tidyr,
     knitr,
