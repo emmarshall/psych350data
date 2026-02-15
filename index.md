@@ -1,0 +1,74 @@
+# psyc350data
+
+`{r, include = FALSE} knitr::opts_chunk$set( collapse = TRUE, comment = "#>", fig.path = "man/figures/README-", out.width = "100%" )`
+
+psyc350data provides cleaned, documented datasets for PSYC 350 lab
+exercises. All datasets are available as ready-to-use R tibbles and can
+be exported as fully labeled SPSS (.sav) files with variable labels,
+value labels, and defined missing values.
+
+## Installation
+
+Install from GitHub using [pak](https://pak.r-lib.org/):
+`{r eval = FALSE} # install.packages("pak") pak::pak("yourusername/psyc350data")`
+
+Or with devtools:
+`{r eval = FALSE} # install.packages("devtools") devtools::install_github("yourusername/psyc350data")`
+
+## Available Datasets
+
+| Dataset         | Description                                                     | N      | Source               |
+|-----------------|-----------------------------------------------------------------|--------|----------------------|
+| `superman`      | Superman actors across media — heights, RT scores, Letterboxd   | 11     | RT, Letterboxd, IMDB |
+| `superman_smes` | Simulated SMES ratings by height gap group                      | 47     | Simulated            |
+| `hot_ones`      | Hot Ones guests — demographics, Scoville ratings, YouTube stats | varies | Hot Ones / YouTube   |
+| `tip_jokes`     | Joke/ad card effect on tipping                                  | varies | Gueguen (2002)       |
+| `mcu`           | MCU Infinity Saga films — box office, RT scores                 | varies | IMDB                 |
+| `mock_jury`     | Attractiveness effects on mock jury sentencing                  | varies | Plaster (1989)       |
+| `candy`         | Candy rankings with ingredient flags and win % (full)           | 85     | FiveThirtyEight      |
+| `candy_simple`  | Candy rankings (simplified — 5 variables)                       | 85     | FiveThirtyEight      |
+| `affairs`       | Extramarital affairs survey (1969)                              | varies | Fair (1978)          |
+| `football`      | Football concussions and hippocampus volume                     | varies | Singh et al. (2014)  |
+
+## Quick Start
+
+\`\`\`{r example} library(psyc350data)
+
+# See all available datasets
+
+list_datasets()
+
+# Use a dataset directly in R
+
+head(superman)
+
+# Quick summary
+
+str(football)
+
+    ## Exporting to SPSS
+
+    All datasets can be exported as .sav files with full SPSS metadata:
+    ```{r eval = FALSE}
+    # Export a single dataset
+    export_sav("superman", path = "superman_data.sav")
+
+    # Export all datasets to a folder
+    export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
+
+The exported .sav files include:
+
+- **Variable labels** describing each variable
+- **Value labels** for categorical variables (e.g., 1 = “Film”, 2 = “TV
+  Series”)
+- **User-defined missing values** (-99) recognized by SPSS
+
+## Learning More
+
+\`\`\`{r eval = FALSE} \# Browse the package vignettes
+vignette(“getting-started”, package = “psyc350data”)
+vignette(“exporting-spss”, package = “psyc350data”)
+
+# View documentation for any dataset
+
+?superman ?hot_ones ?mock_jury \`\`\`
