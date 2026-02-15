@@ -10,10 +10,10 @@ value labels, and defined missing values.
 ## Installation
 
 Install from GitHub using [pak](https://pak.r-lib.org/):
-`{r eval = FALSE} # install.packages("pak") pak::pak("yourusername/psyc350data")`
+`{r eval = FALSE} # install.packages("pak") pak::pak("emmarshall/psych350data")`
 
 Or with devtools:
-`{r eval = FALSE} # install.packages("devtools") devtools::install_github("yourusername/psyc350data")`
+`{r eval = FALSE} # install.packages("devtools") devtools::install_github("emmarshall/psych350data")`
 
 ## Available Datasets
 
@@ -48,27 +48,45 @@ str(football)
 
     ## Exporting to SPSS
 
-    All datasets can be exported as .sav files with full SPSS metadata:
+    Every dataset can be exported as a .sav file with full SPSS metadata. Each dataset has its own export function:
     ```{r eval = FALSE}
-    # Export a single dataset
-    export_sav("superman", path = "superman_data.sav")
+    # Dataset-specific export functions
+    export_superman_sav("superman_data.sav")
+    export_superman_smes_sav("superman_smes_data.sav")
+    export_hot_ones_sav("hot_ones_data.sav")
+    export_tip_jokes_sav("tip_jokes_data.sav")
+    export_mcu_sav("mcu_data.sav")
+    export_mock_jury_sav("mock_jury_data.sav")
+    export_candy_sav("candy_data.sav")
+    export_candy_simple_sav("candy_simple_data.sav")
+    export_affairs_sav("affairs_data.sav")
+    export_football_sav("football_data.sav")
 
-    # Export all datasets to a folder
-    export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
+Or use the generic function with any dataset name: \`\`\`{r eval =
+FALSE} \# Export by name export_sav(“superman”, path =
+“superman_data.sav”)
 
-The exported .sav files include:
+# Export all datasets to a folder
 
-- **Variable labels** describing each variable
-- **Value labels** for categorical variables (e.g., 1 = “Film”, 2 = “TV
-  Series”)
-- **User-defined missing values** (-99) recognized by SPSS
+export_all_sav(dir = “~/Desktop/PSYC350_SPSS/”)
 
-## Learning More
+    The exported .sav files include:
 
-\`\`\`{r eval = FALSE} \# Browse the package vignettes
-vignette(“getting-started”, package = “psyc350data”)
-vignette(“exporting-spss”, package = “psyc350data”)
+    - **Variable labels** describing each variable
+    - **Value labels** for categorical variables (e.g., 1 = "Film", 2 = "TV Series")
+    - **User-defined missing values** (-99) recognized by SPSS
 
-# View documentation for any dataset
+    ## Learning More
+    ```{r eval = FALSE}
+    # Browse the package website
+    # https://emmarshall.github.io/psych350data/
 
-?superman ?hot_ones ?mock_jury \`\`\`
+    # Package vignettes
+    vignette("getting-started", package = "psyc350data")
+    vignette("exporting-spss", package = "psyc350data")
+    vignette("dataset-guide", package = "psyc350data")
+
+    # View documentation for any dataset
+    ?superman
+    ?hot_ones
+    ?mock_jury

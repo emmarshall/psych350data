@@ -13,11 +13,36 @@ assignments.
 library(psyc350data)
 ```
 
-## Exporting a Single Dataset
+## Exporting with Dataset-Specific Functions
 
-Use
+Each dataset has its own export function. Just call it with a file path:
+
+``` r
+# Each dataset has a dedicated export function
+export_superman_sav("superman_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
+export_hot_ones_sav("hot_ones_data.sav")
+export_tip_jokes_sav("tip_jokes_data.sav")
+export_mcu_sav("mcu_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
+export_candy_sav("candy_data.sav")
+export_candy_simple_sav("candy_simple_data.sav")
+export_affairs_sav("affairs_data.sav")
+export_football_sav("football_data.sav")
+
+# Save to a specific location
+export_superman_sav("~/Desktop/superman_data.sav")
+export_football_sav("~/Desktop/football_data.sav")
+```
+
+If you don’t provide a path, the file is saved to your current working
+directory with a default name.
+
+## Exporting with the Generic Function
+
+You can also use
 [`export_sav()`](https://emmarshall.github.io/psych350data/reference/export_sav.md)
-to save any dataset as a `.sav` file:
+with any dataset name:
 
 ``` r
 # Save to your desktop
@@ -63,27 +88,33 @@ tibbles:
 Every variable gets a descriptive label visible in SPSS Variable View.
 For example, in the superman dataset:
 
-| Variable           | Label                                                   |
-|--------------------|---------------------------------------------------------|
-| `clark_height`     | Height of Clark Kent/Superman actor in meters           |
-| `rt_critics_score` | Rotten Tomatoes critics score (0-100 scale)             |
-| `tomatometer`      | Whether the media was liked by more than 60% of critics |
+| Variable           | Label                                                                      |
+|--------------------|----------------------------------------------------------------------------|
+| `clark_height`     | Height of Clark Kent/Superman actor in meters                              |
+| `rt_critics_score` | Rotten Tomatoes critics score (0-100 scale)                                |
+| `tomatometer`      | whether the media was liked by more than 60% of critics on Rotten Tomatoes |
 
 ### Value Labels
 
 Categorical variables include labeled values. For example:
 
-| Variable | Code | Label     |
-|----------|------|-----------|
-| `type`   | 1    | Film      |
-| `type`   | 2    | TV Series |
-| `type`   | 3    | Serial    |
+| Variable      | Code | Label     |
+|---------------|------|-----------|
+| `type`        | 1    | Film      |
+| `type`        | 2    | TV Series |
+| `type`        | 3    | Serial    |
+| `tomatometer` | 1    | rotten    |
+| `tomatometer` | 2    | fresh     |
 
 ### Missing Values
 
 In the R objects, missing data is represented as `NA`. In the `.sav`
 files, missing values are coded as `-99` and registered as user-defined
 missing values so SPSS excludes them from analyses automatically.
+
+Not all datasets use missing values. For example, the `tip_jokes`,
+`mock_jury`, and `football` datasets are complete — their .sav files
+have labels but no sentinel missing values.
 
 ## Controlling Missing Value Behavior
 
@@ -94,6 +125,9 @@ write standard SPSS system-missing values instead:
 
 ``` r
 export_sav("superman", path = "superman_sysmis.sav", use_sentinel = FALSE)
+
+# Works with dataset-specific functions too
+export_superman_sav("superman_sysmis.sav", use_sentinel = FALSE)
 ```
 
 ## Available Datasets
@@ -102,10 +136,28 @@ To see all datasets you can export:
 
 ``` r
 list_datasets()
-#>  [1] "superman"      "superman_smes" "hot_ones"      "tip_jokes"    
-#>  [5] "mcu"           "mock_jury"     "candy"         "candy_simple" 
-#>  [9] "affairs"       "football"
+#>  [1] "superman"              "superman_smes"         "hot_ones"             
+#>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
+#>  [7] "candy"                 "candy_simple"          "football"             
+#> [10] "interpersonal_data"    "self_descriptive_data"
 ```
+
+## Quick Reference: All Export Functions
+
+| Function                                                                                                        | Default filename         |
+|-----------------------------------------------------------------------------------------------------------------|--------------------------|
+| [`export_superman_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_sav.md)           | `superman_data.sav`      |
+| [`export_superman_smes_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_smes_sav.md) | `superman_smes_data.sav` |
+| [`export_hot_ones_sav()`](https://emmarshall.github.io/psych350data/reference/export_hot_ones_sav.md)           | `hot_ones_data.sav`      |
+| [`export_tip_jokes_sav()`](https://emmarshall.github.io/psych350data/reference/export_tip_jokes_sav.md)         | `tip_jokes_data.sav`     |
+| [`export_mcu_sav()`](https://emmarshall.github.io/psych350data/reference/export_mcu_sav.md)                     | `mcu_data.sav`           |
+| [`export_mock_jury_sav()`](https://emmarshall.github.io/psych350data/reference/export_mock_jury_sav.md)         | `mock_jury_data.sav`     |
+| [`export_candy_sav()`](https://emmarshall.github.io/psych350data/reference/export_candy_sav.md)                 | `candy_data.sav`         |
+| [`export_candy_simple_sav()`](https://emmarshall.github.io/psych350data/reference/export_candy_simple_sav.md)   | `candy_simple_data.sav`  |
+| `export_affairs_sav()`                                                                                          | `affairs_data.sav`       |
+| [`export_football_sav()`](https://emmarshall.github.io/psych350data/reference/export_football_sav.md)           | `football_data.sav`      |
+| `export_sav("name")`                                                                                            | `name_data.sav`          |
+| `export_all_sav(dir)`                                                                                           | All of the above         |
 
 ## Tips for SPSS Users
 
@@ -114,17 +166,10 @@ list_datasets()
     manually
 3.  **Categorical variables** will show value labels in Data View if you
     toggle “Value Labels” in the toolbar
-4.  If you need to re-export after updating the package, just run
+4.  If you need to re-export after updating the package, just run the
+    export function again
+5.  The dataset-specific functions (e.g.,
+    [`export_superman_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_sav.md))
+    and the generic
     [`export_sav()`](https://emmarshall.github.io/psych350data/reference/export_sav.md)
-    again
-
-&nbsp;
-
-    ---
-
-    ## Update `DESCRIPTION` for Vignettes
-
-    Add `knitr` and `rmarkdown` to Suggests:
-
-Suggests: dplyr, readxl, tidyr, purrr, lubridate, knitr, rmarkdown,
-testthat (\>= 3.0.0) VignetteBuilder: knitr
+    produce identical output

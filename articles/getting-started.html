@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Getting Started with psyc350data • psyc350data</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/IBM_Plex_Sans-0.4.10/font.css" rel="stylesheet">
@@ -46,7 +51,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/yourusername/psyc350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/emmarshall/psych350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -59,8 +64,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Getting Started with psyc350data</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Getting Started with psyc350data</h1>
             
       
 
@@ -74,7 +78,8 @@
 </h2>
 <p>The psyc350data package provides all the datasets you need for PSYC
 350 labs. Each dataset is pre-cleaned and ready to use — no downloading
-files, no import headaches.</p>
+files, no import headaches. You can also export any dataset as a fully
+labeled SPSS (.sav) file with a single function call.</p>
 </div>
 <div class="section level2">
 <h2 id="loading-the-package">Loading the Package<a class="anchor" aria-label="anchor" href="#loading-the-package"></a>
@@ -88,9 +93,10 @@ files, no import headaches.</p>
 <p>To see every dataset in the package:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt;  [1] "superman"      "superman_smes" "hot_ones"      "tip_jokes"    </span></span>
-<span><span class="co">#&gt;  [5] "mcu"           "mock_jury"     "candy"         "candy_simple" </span></span>
-<span><span class="co">#&gt;  [9] "affairs"       "football"</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] "superman"              "superman_smes"         "hot_ones"             </span></span>
+<span><span class="co">#&gt;  [4] "tip_jokes"             "mcu"                   "mock_jury"            </span></span>
+<span><span class="co">#&gt;  [7] "candy"                 "candy_simple"          "football"             </span></span>
+<span><span class="co">#&gt; [10] "interpersonal_data"    "self_descriptive_data"</span></span></code></pre></div>
 <p>For detailed documentation on any dataset, use the help system:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">superman</span></span>
@@ -104,42 +110,28 @@ files, no import headaches.</p>
 the package:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
-<span><span class="co">#&gt;   num media year type clark_height lois_height rt_critics_score rt_critic_count</span></span>
-<span><span class="co">#&gt; 1   1     1 2025    1         1.93        1.60               83             484</span></span>
-<span><span class="co">#&gt; 2   2     2 1978    1         1.93        1.72               88             121</span></span>
-<span><span class="co">#&gt; 3   3     3 2001    2         1.90        1.71               78             111</span></span>
-<span><span class="co">#&gt; 4   4     4 2006    1         1.89        1.65               72             290</span></span>
-<span><span class="co">#&gt; 5   5     5 1951    3         1.86        1.63               NA              NA</span></span>
-<span><span class="co">#&gt; 6   6     6 2013    1         1.85        1.63               57             340</span></span>
-<span><span class="co">#&gt;   rt_audience_score rt_audience_count ldb_likes ldb_scores clark_height_in</span></span>
-<span><span class="co">#&gt; 1                90             25000   1105511        3.9         75.9841</span></span>
-<span><span class="co">#&gt; 2                86            250000     99115        3.7         75.9841</span></span>
-<span><span class="co">#&gt; 3                72              2500        NA         NA         74.8030</span></span>
-<span><span class="co">#&gt; 4                60            250000     26076        2.7         74.4093</span></span>
-<span><span class="co">#&gt; 5                79               250       744        2.6         73.2282</span></span>
-<span><span class="co">#&gt; 6                75            250000    204463        3.0         72.8345</span></span>
-<span><span class="co">#&gt;   lois_height_in clark_grp height_diff height_gap tomatometer rt_avg   rt_diff</span></span>
-<span><span class="co">#&gt; 1        62.9920         2     12.9921          3           2   86.5 -86.71433</span></span>
-<span><span class="co">#&gt; 2        67.7164         2      8.2677          3           2   87.0 -85.91582</span></span>
-<span><span class="co">#&gt; 3        67.3227         2      7.4803          2           2   75.0 -65.62313</span></span>
-<span><span class="co">#&gt; 4        64.9605         2      9.4488          3           2   66.0 -59.84706</span></span>
-<span><span class="co">#&gt; 5        64.1731         2      9.0551          3          NA     NA        NA</span></span>
-<span><span class="co">#&gt; 6        64.1731         2      8.6614          3           1   66.0 -74.82072</span></span>
-<span><span class="co">#&gt;   popular</span></span>
-<span><span class="co">#&gt; 1       3</span></span>
-<span><span class="co">#&gt; 2       2</span></span>
-<span><span class="co">#&gt; 3      NA</span></span>
-<span><span class="co">#&gt; 4       2</span></span>
-<span><span class="co">#&gt; 5       1</span></span>
-<span><span class="co">#&gt; 6       3</span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 21</span></span></span>
+<span><span class="co">#&gt;     num media  year  type clark_height lois_height rt_critics_score</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     1  <span style="text-decoration: underline;">2</span>025     1         1.93        1.6                83</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     2  <span style="text-decoration: underline;">1</span>978     1         1.93        1.72               88</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     3  <span style="text-decoration: underline;">2</span>001     2         1.9         1.71               78</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4     4  <span style="text-decoration: underline;">2</span>006     1         1.89        1.65               72</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5     5  <span style="text-decoration: underline;">1</span>951     3         1.86        1.63               <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     6     6  <span style="text-decoration: underline;">2</span>013     1         1.85        1.63               57</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 14 more variables: rt_critic_count &lt;dbl&gt;, rt_audience_score &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   rt_audience_count &lt;dbl&gt;, ldb_likes &lt;dbl&gt;, ldb_scores &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   clark_height_in &lt;dbl&gt;, lois_height_in &lt;dbl&gt;, clark_grp &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   height_diff &lt;dbl&gt;, height_gap &lt;dbl&gt;, tomatometer &lt;dbl&gt;, rt_avg &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   rt_diff &lt;dbl&gt;, popular &lt;dbl&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">superman_smes</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    47 obs. of  5 variables:</span></span>
-<span><span class="co">#&gt;  $ num                 : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span><span class="co">#&gt;  $ height_gap          : num  2 2 3 3 3 3 3 1 3 2 ...</span></span>
-<span><span class="co">#&gt;  $ emotional_impact    : num  16 9 15 15 11 10 14 10 19 16 ...</span></span>
-<span><span class="co">#&gt;  $ aesthetic_appeal    : num  8 8 10 10 13 9 11 9 11 10 ...</span></span>
-<span><span class="co">#&gt;  $ cognitive_engagement: num  4.8 3.9 5 3.2 3.6 4.2 3.6 4.3 3 5.4 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [47 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ num                 : int [1:47] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt;  $ height_gap          : num [1:47] 2 2 3 3 3 3 3 1 3 2 ...</span></span>
+<span><span class="co">#&gt;  $ emotional_impact    : num [1:47] 16 9 15 15 11 10 14 10 19 16 ...</span></span>
+<span><span class="co">#&gt;  $ aesthetic_appeal    : num [1:47] 8 8 10 10 13 9 11 9 11 10 ...</span></span>
+<span><span class="co">#&gt;  $ cognitive_engagement: num [1:47] 4.8 3.9 5 3.2 3.6 4.2 3.6 4.3 3 5.4 ...</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
 <span><span class="co">#&gt;      group       years            volume     </span></span>
@@ -220,12 +212,38 @@ to labels that you can see in the documentation. For example, in the
 </div>
 </div>
 <div class="section level2">
+<h2 id="exporting-to-spss">Exporting to SPSS<a class="anchor" aria-label="anchor" href="#exporting-to-spss"></a>
+</h2>
+<p>Every dataset has a dedicated export function that creates a fully
+labeled .sav file:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Dataset-specific export functions</span></span>
+<span><span class="fu"><a href="../reference/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"~/Desktop/football_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_mock_jury_sav.html">export_mock_jury_sav</a></span><span class="op">(</span><span class="st">"mock_jury_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_hot_ones_sav.html">export_hot_ones_sav</a></span><span class="op">(</span><span class="st">"hot_ones_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_tip_jokes_sav.html">export_tip_jokes_sav</a></span><span class="op">(</span><span class="st">"tip_jokes_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_mcu_sav.html">export_mcu_sav</a></span><span class="op">(</span><span class="st">"mcu_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_candy_sav.html">export_candy_sav</a></span><span class="op">(</span><span class="st">"candy_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_candy_simple_sav.html">export_candy_simple_sav</a></span><span class="op">(</span><span class="st">"candy_simple_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu">export_affairs_sav</span><span class="op">(</span><span class="st">"affairs_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/export_superman_smes_sav.html">export_superman_smes_sav</a></span><span class="op">(</span><span class="st">"superman_smes_data.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or use the generic function with any dataset name</span></span>
+<span><span class="fu"><a href="../reference/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or export everything at once</span></span>
+<span><span class="fu"><a href="../reference/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div>
+<p>See <code><a href="../articles/exporting-spss.html">vignette("exporting-spss")</a></code> for full details on what
+the .sav files contain.</p>
+</div>
+<div class="section level2">
 <h2 id="example-analyses">Example Analyses<a class="anchor" aria-label="anchor" href="#example-analyses"></a>
 </h2>
 <div class="section level3">
 <h3 id="t-test-with-mock-jury-data">T-test with Mock Jury Data<a class="anchor" aria-label="anchor" href="#t-test-with-mock-jury-data"></a>
 </h3>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare sentence length by crime type</span></span>
 <span><span class="co"># crime: 1 = Burglary, 2 = Swindle</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test</a></span><span class="op">(</span><span class="va">years</span> <span class="op">~</span> <span class="va">crime</span>, data <span class="op">=</span> <span class="va">mock_jury</span><span class="op">)</span></span>
@@ -244,7 +262,7 @@ to labels that you can see in the documentation. For example, in the
 <div class="section level3">
 <h3 id="anova-with-football-data">ANOVA with Football Data<a class="anchor" aria-label="anchor" href="#anova-with-football-data"></a>
 </h3>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Compare hippocampus volume across groups</span></span>
 <span><span class="co"># group: 1 = Control, 2 = Football no concussion, 3 = Football with concussion</span></span>
 <span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html" class="external-link">aov</a></span><span class="op">(</span><span class="va">volume</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">football</span><span class="op">)</span></span>
@@ -258,7 +276,7 @@ to labels that you can see in the documentation. For example, in the
 <div class="section level3">
 <h3 id="correlation-with-candy-data">Correlation with Candy Data<a class="anchor" aria-label="anchor" href="#correlation-with-candy-data"></a>
 </h3>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Relationship between sugar content and win percentage</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html" class="external-link">cor.test</a></span><span class="op">(</span><span class="va">candy_simple</span><span class="op">$</span><span class="va">sugarpercent</span>, <span class="va">candy_simple</span><span class="op">$</span><span class="va">winpercent</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -276,7 +294,7 @@ to labels that you can see in the documentation. For example, in the
 <div class="section level3">
 <h3 id="chi-square-with-tip-jokes-data">Chi-Square with Tip Jokes Data<a class="anchor" aria-label="anchor" href="#chi-square-with-tip-jokes-data"></a>
 </h3>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Is tipping independent of card type?</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">$</span><span class="va">card</span>, <span class="va">tip_jokes</span><span class="op">$</span><span class="va">tip</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html" class="external-link">chisq.test</a></span><span class="op">(</span><span class="op">)</span></span>
@@ -293,6 +311,8 @@ to labels that you can see in the documentation. For example, in the
 <ul>
 <li>See <code><a href="../articles/exporting-spss.html">vignette("exporting-spss")</a></code> to learn how to create
 SPSS files</li>
+<li>See <code><a href="../articles/dataset-guide.html">vignette("dataset-guide")</a></code> for a complete reference
+of all datasets and their coding schemes</li>
 <li>Use <code>?dataset_name</code> to view full documentation for any
 dataset</li>
 <li>All datasets work with standard R functions: <code><a href="https://rdrr.io/r/stats/t.test.html" class="external-link">t.test()</a></code>,

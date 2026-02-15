@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Datasets for UNL PSYC 350 Labs • psyc350data</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="icon" sizes="any" href="favicon.ico">
+<link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/IBM_Plex_Sans-0.4.10/font.css" rel="stylesheet">
@@ -15,6 +20,7 @@
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Datasets for UNL PSYC 350 Labs">
 <meta name="description" content="Provides cleaned and labeled datasets used in PSYC 350 lab exercises. Datasets are available as R tibbles and can be exported as SPSS (.sav) files with full variable labels, value labels, and defined missing values.">
 <meta property="og:description" content="Provides cleaned and labeled datasets used in PSYC 350 lab exercises. Datasets are available as R tibbles and can be exported as SPSS (.sav) files with full variable labels, value labels, and defined missing values.">
+<meta property="og:image" content="https://emmarshall.github.io/psych350data/logo.png">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -48,7 +54,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/yourusername/psyc350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/emmarshall/psych350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -58,16 +64,18 @@
 <div class="row">
   <main id="main" class="col-md-9"><p><code>{r, include = FALSE} knitr::opts_chunk$set(   collapse = TRUE,   comment = "#&gt;",   fig.path = "man/figures/README-",   out.width = "100%" )</code></p>
 <div class="section level1">
-<div class="page-header"><h1 id="psyc350data">psyc350data<a class="anchor" aria-label="anchor" href="#psyc350data"></a>
-</h1></div>
+<div class="page-header">
+<img src="logo.png" class="logo" alt=""><h1 id="psyc350data">psyc350data<a class="anchor" aria-label="anchor" href="#psyc350data"></a>
+</h1>
+</div>
 <!-- badges: start -->
 <!-- badges: end -->
 <p>psyc350data provides cleaned, documented datasets for PSYC 350 lab exercises. All datasets are available as ready-to-use R tibbles and can be exported as fully labeled SPSS (.sav) files with variable labels, value labels, and defined missing values.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Install from GitHub using <a href="https://pak.r-lib.org/" class="external-link">pak</a>: <code>{r eval = FALSE} # install.packages("pak") pak::pak("yourusername/psyc350data")</code></p>
-<p>Or with devtools: <code>{r eval = FALSE} # install.packages("devtools") devtools::install_github("yourusername/psyc350data")</code></p>
+<p>Install from GitHub using <a href="https://pak.r-lib.org/" class="external-link">pak</a>: <code>{r eval = FALSE} # install.packages("pak") pak::pak("emmarshall/psych350data")</code></p>
+<p>Or with devtools: <code>{r eval = FALSE} # install.packages("devtools") devtools::install_github("emmarshall/psych350data")</code></p>
 </div>
 <div class="section level2">
 <h2 id="available-datasets">Available Datasets<a class="anchor" aria-label="anchor" href="#available-datasets"></a>
@@ -172,32 +180,46 @@
 <pre><code>
 ## Exporting to SPSS
 
-All datasets can be exported as .sav files with full SPSS metadata:
+Every dataset can be exported as a .sav file with full SPSS metadata. Each dataset has its own export function:
 ```{r eval = FALSE}
-# Export a single dataset
-export_sav("superman", path = "superman_data.sav")
-
-# Export all datasets to a folder
-export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")</code></pre>
-<p>The exported .sav files include:</p>
-<ul>
-<li>
-<strong>Variable labels</strong> describing each variable</li>
-<li>
-<strong>Value labels</strong> for categorical variables (e.g., 1 = “Film”, 2 = “TV Series”)</li>
-<li>
-<strong>User-defined missing values</strong> (-99) recognized by SPSS</li>
-</ul>
-<div class="section level2">
-<h2 id="learning-more">Learning More<a class="anchor" aria-label="anchor" href="#learning-more"></a>
-</h2>
-<p>```{r eval = FALSE} # Browse the package vignettes vignette(“getting-started”, package = “psyc350data”) vignette(“exporting-spss”, package = “psyc350data”)</p>
-</div>
+# Dataset-specific export functions
+export_superman_sav("superman_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
+export_hot_ones_sav("hot_ones_data.sav")
+export_tip_jokes_sav("tip_jokes_data.sav")
+export_mcu_sav("mcu_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
+export_candy_sav("candy_data.sav")
+export_candy_simple_sav("candy_simple_data.sav")
+export_affairs_sav("affairs_data.sav")
+export_football_sav("football_data.sav")</code></pre>
+<p>Or use the generic function with any dataset name: ```{r eval = FALSE} # Export by name export_sav(“superman”, path = “superman_data.sav”)</p>
 </div>
 <div class="section level1">
-<h1 id="view-documentation-for-any-dataset">View documentation for any dataset<a class="anchor" aria-label="anchor" href="#view-documentation-for-any-dataset"></a>
+<h1 id="export-all-datasets-to-a-folder">Export all datasets to a folder<a class="anchor" aria-label="anchor" href="#export-all-datasets-to-a-folder"></a>
 </h1>
-<p>?superman ?hot_ones ?mock_jury ```</p>
+<p>export_all_sav(dir = “~/Desktop/PSYC350_SPSS/”)</p>
+<pre><code>
+The exported .sav files include:
+
+- **Variable labels** describing each variable
+- **Value labels** for categorical variables (e.g., 1 = "Film", 2 = "TV Series")
+- **User-defined missing values** (-99) recognized by SPSS
+
+## Learning More
+```{r eval = FALSE}
+# Browse the package website
+# https://emmarshall.github.io/psych350data/
+
+# Package vignettes
+vignette("getting-started", package = "psyc350data")
+vignette("exporting-spss", package = "psyc350data")
+vignette("dataset-guide", package = "psyc350data")
+
+# View documentation for any dataset
+?superman
+?hot_ones
+?mock_jury</code></pre>
 </div>
 
   </main><aside class="col-md-3"><div class="license">

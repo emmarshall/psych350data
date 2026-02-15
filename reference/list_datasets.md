@@ -16,7 +16,8 @@ Character vector of dataset names.
 
 ``` r
 list_datasets()
-#>  [1] "superman"      "superman_smes" "hot_ones"      "tip_jokes"    
-#>  [5] "mcu"           "mock_jury"     "candy"         "candy_simple" 
-#>  [9] "affairs"       "football"     
+#>  [1] "superman"              "superman_smes"         "hot_ones"             
+#>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
+#>  [7] "candy"                 "candy_simple"          "football"             
+#> [10] "interpersonal_data"    "self_descriptive_data"
 ```

@@ -6,6 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Dataset Reference Guide • psyc350data</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/IBM_Plex_Sans-0.4.10/font.css" rel="stylesheet">
@@ -46,7 +51,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/yourusername/psyc350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/emmarshall/psych350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -59,8 +64,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-
-      <h1>Dataset Reference Guide</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Dataset Reference Guide</h1>
             
       
 
@@ -71,38 +75,40 @@
     
 <p>This guide provides a quick reference for every dataset in the
 psyc350data package, including variable descriptions, categorical coding
-schemes, and suggested analyses.</p>
+schemes, available export functions, and suggested analyses.</p>
+<hr>
 <div class="section level2">
 <h2 id="superman-actor-data">Superman Actor Data<a class="anchor" aria-label="anchor" href="#superman-actor-data"></a>
 </h2>
-<p><strong>Dataset:</strong> <code>superman</code>
+<p><strong>Dataset:</strong> <code>superman</code> |
+<strong>Export:</strong> <code><a href="../reference/export_superman_sav.html">export_superman_sav()</a></code>
 <strong>Rows:</strong> 11 | <strong>Variables:</strong> 21</p>
 <p>Data on actors who have portrayed Clark Kent/Superman across film,
 TV, and serial media.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    11 obs. of  21 variables:</span></span>
-<span><span class="co">#&gt;  $ num              : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span><span class="co">#&gt;  $ media            : num  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span><span class="co">#&gt;  $ year             : num  2025 1978 2001 2006 1951 ...</span></span>
-<span><span class="co">#&gt;  $ type             : num  1 1 2 1 3 1 3 2 2 2 ...</span></span>
-<span><span class="co">#&gt;  $ clark_height     : num  1.93 1.93 1.9 1.89 1.86 1.85 1.85 1.82 1.81 1.83 ...</span></span>
-<span><span class="co">#&gt;  $ lois_height      : num  1.6 1.72 1.71 1.65 1.63 1.63 1.62 1.68 1.68 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_critics_score : num  83 88 78 72 NA 57 83 88 86 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_critic_count  : num  484 121 111 290 NA 340 484 55 20 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_audience_score: num  90 86 72 60 79 75 90 84 86 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_audience_count: num  25000 250000 2500 250000 250 250000 25000 1000 100 NA ...</span></span>
-<span><span class="co">#&gt;  $ ldb_likes        : num  1105511 99115 NA 26076 744 ...</span></span>
-<span><span class="co">#&gt;  $ ldb_scores       : num  3.9 3.7 NA 2.7 2.6 3 NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ clark_height_in  : num  76 76 74.8 74.4 73.2 ...</span></span>
-<span><span class="co">#&gt;  $ lois_height_in   : num  63 67.7 67.3 65 64.2 ...</span></span>
-<span><span class="co">#&gt;  $ clark_grp        : num  2 2 2 2 2 2 2 1 1 2 ...</span></span>
-<span><span class="co">#&gt;  $ height_diff      : num  12.99 8.27 7.48 9.45 9.06 ...</span></span>
-<span><span class="co">#&gt;  $ height_gap       : num  3 3 2 3 3 3 3 1 1 NA ...</span></span>
-<span><span class="co">#&gt;  $ tomatometer      : num  2 2 2 2 NA 1 2 2 2 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_avg           : num  86.5 87 75 66 NA 66 86.5 86 86 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_diff          : num  -86.7 -85.9 -65.6 -59.8 NA ...</span></span>
-<span><span class="co">#&gt;  $ popular          : num  3 2 NA 2 1 3 NA NA NA NA ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [11 × 21] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ num              : int [1:11] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt;  $ media            : num [1:11] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt;  $ year             : num [1:11] 2025 1978 2001 2006 1951 ...</span></span>
+<span><span class="co">#&gt;  $ type             : num [1:11] 1 1 2 1 3 1 3 2 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ clark_height     : num [1:11] 1.93 1.93 1.9 1.89 1.86 1.85 1.85 1.82 1.81 1.83 ...</span></span>
+<span><span class="co">#&gt;  $ lois_height      : num [1:11] 1.6 1.72 1.71 1.65 1.63 1.63 1.62 1.68 1.68 NA ...</span></span>
+<span><span class="co">#&gt;  $ rt_critics_score : num [1:11] 83 88 78 72 NA 57 83 88 86 NA ...</span></span>
+<span><span class="co">#&gt;  $ rt_critic_count  : num [1:11] 484 121 111 290 NA 340 484 55 20 NA ...</span></span>
+<span><span class="co">#&gt;  $ rt_audience_score: num [1:11] 90 86 72 60 79 75 90 84 86 NA ...</span></span>
+<span><span class="co">#&gt;  $ rt_audience_count: num [1:11] 25000 250000 2500 250000 250 250000 25000 1000 100 NA ...</span></span>
+<span><span class="co">#&gt;  $ ldb_likes        : num [1:11] 1105511 99115 NA 26076 744 ...</span></span>
+<span><span class="co">#&gt;  $ ldb_scores       : num [1:11] 3.9 3.7 NA 2.7 2.6 3 NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ clark_height_in  : num [1:11] 76 76 74.8 74.4 73.2 ...</span></span>
+<span><span class="co">#&gt;  $ lois_height_in   : num [1:11] 63 67.7 67.3 65 64.2 ...</span></span>
+<span><span class="co">#&gt;  $ clark_grp        : num [1:11] 2 2 2 2 2 2 2 1 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ height_diff      : num [1:11] 12.99 8.27 7.48 9.45 9.06 ...</span></span>
+<span><span class="co">#&gt;  $ height_gap       : num [1:11] 3 3 2 3 3 3 3 1 1 NA ...</span></span>
+<span><span class="co">#&gt;  $ tomatometer      : num [1:11] 2 2 2 2 NA 1 2 2 2 NA ...</span></span>
+<span><span class="co">#&gt;  $ rt_avg           : num [1:11] 86.5 87 75 66 NA 66 86.5 86 86 NA ...</span></span>
+<span><span class="co">#&gt;  $ rt_diff          : num [1:11] -86.7 -85.9 -65.6 -59.8 NA ...</span></span>
+<span><span class="co">#&gt;  $ popular          : num [1:11] 3 2 NA 2 1 3 NA NA NA NA ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="categorical-codings">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings"></a>
 </h3>
@@ -232,6 +238,13 @@ TV, and serial media.</p>
 </table>
 </div>
 <div class="section level3">
+<h3 id="export-to-spss">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss"></a>
+</h3>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="co"># or: export_sav("superman", path = "superman_data.sav")</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="suggested-analyses">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses"></a>
 </h3>
 <ul>
@@ -245,19 +258,20 @@ TV, and serial media.</p>
 <div class="section level2">
 <h2 id="superman-smes-data">Superman SMES Data<a class="anchor" aria-label="anchor" href="#superman-smes-data"></a>
 </h2>
-<p><strong>Dataset:</strong> <code>superman_smes</code>
+<p><strong>Dataset:</strong> <code>superman_smes</code> |
+<strong>Export:</strong> <code><a href="../reference/export_superman_smes_sav.html">export_superman_smes_sav()</a></code>
 <strong>Rows:</strong> 47 | <strong>Variables:</strong> 5</p>
 <p>Simulated participant ratings on the Subjective Media Experience
 Scale (SMES), grouped by the height gap between Superman and Lois Lane
 actors.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">superman_smes</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    47 obs. of  5 variables:</span></span>
-<span><span class="co">#&gt;  $ num                 : int  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span><span class="co">#&gt;  $ height_gap          : num  2 2 3 3 3 3 3 1 3 2 ...</span></span>
-<span><span class="co">#&gt;  $ emotional_impact    : num  16 9 15 15 11 10 14 10 19 16 ...</span></span>
-<span><span class="co">#&gt;  $ aesthetic_appeal    : num  8 8 10 10 13 9 11 9 11 10 ...</span></span>
-<span><span class="co">#&gt;  $ cognitive_engagement: num  4.8 3.9 5 3.2 3.6 4.2 3.6 4.3 3 5.4 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [47 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ num                 : int [1:47] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt;  $ height_gap          : num [1:47] 2 2 3 3 3 3 3 1 3 2 ...</span></span>
+<span><span class="co">#&gt;  $ emotional_impact    : num [1:47] 16 9 15 15 11 10 14 10 19 16 ...</span></span>
+<span><span class="co">#&gt;  $ aesthetic_appeal    : num [1:47] 8 8 10 10 13 9 11 9 11 10 ...</span></span>
+<span><span class="co">#&gt;  $ cognitive_engagement: num [1:47] 4.8 3.9 5 3.2 3.6 4.2 3.6 4.3 3 5.4 ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="categorical-codings-1">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-1"></a>
 </h3>
@@ -315,6 +329,12 @@ actors.</p>
 </table>
 </div>
 <div class="section level3">
+<h3 id="export-to-spss-1">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-1"></a>
+</h3>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_superman_smes_sav.html">export_superman_smes_sav</a></span><span class="op">(</span><span class="st">"superman_smes_data.sav"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="suggested-analyses-1">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-1"></a>
 </h3>
 <ul>
@@ -327,35 +347,36 @@ actors.</p>
 <div class="section level2">
 <h2 id="hot-ones-guest-data">Hot Ones Guest Data<a class="anchor" aria-label="anchor" href="#hot-ones-guest-data"></a>
 </h2>
-<p><strong>Dataset:</strong> <code>hot_ones</code>
+<p><strong>Dataset:</strong> <code>hot_ones</code> |
+<strong>Export:</strong> <code><a href="../reference/export_hot_ones_sav.html">export_hot_ones_sav()</a></code>
 <strong>Variables:</strong> 23</p>
 <p>Data on guests from the YouTube show Hot Ones, including Scoville
 ratings for each hot sauce and YouTube engagement metrics.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">hot_ones</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    369 obs. of  22 variables:</span></span>
-<span><span class="co">#&gt;  $ subn       : num  1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span><span class="co">#&gt;  $ name       : chr  "Tony Yayo" "Anthony Rizzo" "Machine Gun Kelly" "Gunplay" ...</span></span>
-<span><span class="co">#&gt;  $ gender     : num  NA NA NA NA NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ age        : num  36.9 25.8 28 35.9 39.4 ...</span></span>
-<span><span class="co">#&gt;  $ occupation : num  1 2 1 1 1 1 2 9 1 8 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_1      : num  747 747 747 747 747 747 747 747 2200 2200 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_2      : num  3600 3600 3600 3600 3600 3600 3600 3600 3000 3000 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_3      : num  5790 5790 5790 5790 5790 5790 5790 5790 5790 5790 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_4      : num  15000 15000 15000 15000 15000 15000 15000 15000 13000 13000 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_5      : num  13000 13000 13000 13000 13000 13000 13000 13000 15600 15600 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_6      : num  40600 40600 40600 40600 40600 40600 40600 40600 34000 34000 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_7      : num  30000 30000 30000 30000 30000 30000 30000 30000 40600 40600 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_8      : num  57000 57000 57000 57000 57000 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_9      : num  180000 180000 180000 180000 180000 180000 180000 180000 357000 357000 ...</span></span>
-<span><span class="co">#&gt;  $ SHU_10     : num  357000 357000 357000 357000 357000 357000 357000 357000 550000 550000 ...</span></span>
-<span><span class="co">#&gt;  $ result     : num  2 1 1 1 1 1 1 2 1 1 ...</span></span>
-<span><span class="co">#&gt;  $ appearances: num  1 1 2 1 1 1 1 1 1 1 ...</span></span>
-<span><span class="co">#&gt;  $ season     : num  1 1 1 1 1 1 1 1 2 2 ...</span></span>
-<span><span class="co">#&gt;  $ order      : num  1 2 3 4 5 6 7 8 1 2 ...</span></span>
-<span><span class="co">#&gt;  $ views      : num  1.372 0.825 3.164 1.165 1.143 ...</span></span>
-<span><span class="co">#&gt;  $ likes      : num  18108 11301 49026 15473 13761 ...</span></span>
-<span><span class="co">#&gt;  $ comments   : num  1011 1041 3609 1226 1148 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [369 × 22] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ subn       : num [1:369] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt;  $ name       : chr [1:369] "Tony Yayo" "Anthony Rizzo" "Machine Gun Kelly" "Gunplay" ...</span></span>
+<span><span class="co">#&gt;  $ gender     : num [1:369] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ age        : num [1:369] 36.9 25.8 28 35.9 39.4 ...</span></span>
+<span><span class="co">#&gt;  $ occupation : num [1:369] 1 2 1 1 1 1 2 9 1 8 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_1      : num [1:369] 747 747 747 747 747 747 747 747 2200 2200 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_2      : num [1:369] 3600 3600 3600 3600 3600 3600 3600 3600 3000 3000 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_3      : num [1:369] 5790 5790 5790 5790 5790 5790 5790 5790 5790 5790 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_4      : num [1:369] 15000 15000 15000 15000 15000 15000 15000 15000 13000 13000 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_5      : num [1:369] 13000 13000 13000 13000 13000 13000 13000 13000 15600 15600 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_6      : num [1:369] 40600 40600 40600 40600 40600 40600 40600 40600 34000 34000 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_7      : num [1:369] 30000 30000 30000 30000 30000 30000 30000 30000 40600 40600 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_8      : num [1:369] 57000 57000 57000 57000 57000 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_9      : num [1:369] 180000 180000 180000 180000 180000 180000 180000 180000 357000 357000 ...</span></span>
+<span><span class="co">#&gt;  $ SHU_10     : num [1:369] 357000 357000 357000 357000 357000 357000 357000 357000 550000 550000 ...</span></span>
+<span><span class="co">#&gt;  $ result     : num [1:369] 2 1 1 1 1 1 1 2 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ appearances: num [1:369] 1 1 2 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ season     : num [1:369] 1 1 1 1 1 1 1 1 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ order      : num [1:369] 1 2 3 4 5 6 7 8 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ views      : num [1:369] 1.372 0.825 3.164 1.165 1.143 ...</span></span>
+<span><span class="co">#&gt;  $ likes      : num [1:369] 18108 11301 49026 15473 13761 ...</span></span>
+<span><span class="co">#&gt;  $ comments   : num [1:369] 1011 1041 3609 1226 1148 ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="categorical-codings-2">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-2"></a>
 </h3>
@@ -460,6 +481,12 @@ ratings for each hot sauce and YouTube engagement metrics.</p>
 </table>
 </div>
 <div class="section level3">
+<h3 id="export-to-spss-2">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-2"></a>
+</h3>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_hot_ones_sav.html">export_hot_ones_sav</a></span><span class="op">(</span><span class="st">"hot_ones_data.sav"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="suggested-analyses-2">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-2"></a>
 </h3>
 <ul>
@@ -473,17 +500,18 @@ ratings for each hot sauce and YouTube engagement metrics.</p>
 <div class="section level2">
 <h2 id="tip-jokes-experiment-data">Tip-Jokes Experiment Data<a class="anchor" aria-label="anchor" href="#tip-jokes-experiment-data"></a>
 </h2>
-<p><strong>Dataset:</strong> <code>tip_jokes</code></p>
+<p><strong>Dataset:</strong> <code>tip_jokes</code> |
+<strong>Export:</strong> <code><a href="../reference/export_tip_jokes_sav.html">export_tip_jokes_sav()</a></code></p>
 <p>Experimental data from Gueguen (2002) examining whether a waiter
 leaving a joke or advertisement on a card affects tipping.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    211 obs. of  5 variables:</span></span>
-<span><span class="co">#&gt;  $ card: num  3 2 1 3 3 3 1 1 3 3 ...</span></span>
-<span><span class="co">#&gt;  $ tip : num  1 1 0 0 1 0 0 0 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ ad  : num  0 0 1 0 0 0 1 1 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ joke: num  0 1 0 0 0 0 0 0 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ none: num  1 0 0 1 1 1 0 0 1 1 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [211 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ card: num [1:211] 3 2 1 3 3 3 1 1 3 3 ...</span></span>
+<span><span class="co">#&gt;  $ tip : num [1:211] 1 1 0 0 1 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ ad  : num [1:211] 0 0 1 0 0 0 1 1 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ joke: num [1:211] 0 1 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ none: num [1:211] 1 0 0 1 1 1 0 0 1 1 ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="categorical-codings-3">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-3"></a>
 </h3>
@@ -519,8 +547,44 @@ leaving a joke or advertisement on a card affects tipping.</p>
 <td>1</td>
 <td>Customer left a tip</td>
 </tr>
+<tr class="even">
+<td><code>ad</code></td>
+<td>0</td>
+<td>No ad card</td>
+</tr>
+<tr class="odd">
+<td><code>ad</code></td>
+<td>1</td>
+<td>Ad card left</td>
+</tr>
+<tr class="even">
+<td><code>joke</code></td>
+<td>0</td>
+<td>No joke card</td>
+</tr>
+<tr class="odd">
+<td><code>joke</code></td>
+<td>1</td>
+<td>Joke card left</td>
+</tr>
+<tr class="even">
+<td><code>none</code></td>
+<td>0</td>
+<td>Ad or joke card left</td>
+</tr>
+<tr class="odd">
+<td><code>none</code></td>
+<td>1</td>
+<td>No card left</td>
+</tr>
 </tbody>
 </table>
+</div>
+<div class="section level3">
+<h3 id="export-to-spss-3">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-3"></a>
+</h3>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_tip_jokes_sav.html">export_tip_jokes_sav</a></span><span class="op">(</span><span class="st">"tip_jokes_data.sav"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="suggested-analyses-3">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-3"></a>
@@ -535,23 +599,24 @@ leaving a joke or advertisement on a card affects tipping.</p>
 <div class="section level2">
 <h2 id="mcu-films-data">MCU Films Data<a class="anchor" aria-label="anchor" href="#mcu-films-data"></a>
 </h2>
-<p><strong>Dataset:</strong> <code>mcu</code></p>
+<p><strong>Dataset:</strong> <code>mcu</code> | <strong>Export:</strong>
+<code><a href="../reference/export_mcu_sav.html">export_mcu_sav()</a></code></p>
 <p>Marvel Cinematic Universe films through the Infinity Saga with box
 office and Rotten Tomatoes data.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    23 obs. of  11 variables:</span></span>
-<span><span class="co">#&gt;  $ movie             : chr  "Iron Man" "The Incredible Hulk" "Iron Man 2" "Thor" ...</span></span>
-<span><span class="co">#&gt;  $ length_hrs        : num  2 1 2 1 2 2 2 1 2 2 ...</span></span>
-<span><span class="co">#&gt;  $ length_min        : num  6 52 4 55 4 23 10 52 16 1 ...</span></span>
-<span><span class="co">#&gt;  $ release_date      : POSIXct, format: "2008-05-02" "2008-06-12" ...</span></span>
-<span><span class="co">#&gt;  $ opening_weekend_us: num  9.86e+07 5.54e+07 1.28e+08 6.57e+07 6.51e+07 ...</span></span>
-<span><span class="co">#&gt;  $ gross_us          : num  3.19e+08 1.35e+08 3.12e+08 1.81e+08 1.77e+08 ...</span></span>
-<span><span class="co">#&gt;  $ gross_world       : num  5.86e+08 2.65e+08 6.24e+08 4.49e+08 3.71e+08 ...</span></span>
-<span><span class="co">#&gt;  $ phase             : num  1 1 1 1 1 1 2 2 2 2 ...</span></span>
-<span><span class="co">#&gt;  $ critics           : num  94 68 72 77 80 91 79 67 90 91 ...</span></span>
-<span><span class="co">#&gt;  $ audience          : num  91 69 71 76 75 91 78 74 92 92 ...</span></span>
-<span><span class="co">#&gt;  $ favor             : num  1 2 1 1 1 NA 1 2 2 2 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [23 × 11] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ movie             : chr [1:23] "Iron Man" "The Incredible Hulk" "Iron Man 2" "Thor" ...</span></span>
+<span><span class="co">#&gt;  $ length_hrs        : num [1:23] 2 1 2 1 2 2 2 1 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ length_min        : num [1:23] 6 52 4 55 4 23 10 52 16 1 ...</span></span>
+<span><span class="co">#&gt;  $ release_date      : POSIXct[1:23], format: "2008-05-02" "2008-06-12" ...</span></span>
+<span><span class="co">#&gt;  $ opening_weekend_us: num [1:23] 9.86e+07 5.54e+07 1.28e+08 6.57e+07 6.51e+07 ...</span></span>
+<span><span class="co">#&gt;  $ gross_us          : num [1:23] 3.19e+08 1.35e+08 3.12e+08 1.81e+08 1.77e+08 ...</span></span>
+<span><span class="co">#&gt;  $ gross_world       : num [1:23] 5.86e+08 2.65e+08 6.24e+08 4.49e+08 3.71e+08 ...</span></span>
+<span><span class="co">#&gt;  $ phase             : num [1:23] 1 1 1 1 1 1 2 2 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ critics           : num [1:23] 94 68 72 77 80 91 79 67 90 91 ...</span></span>
+<span><span class="co">#&gt;  $ audience          : num [1:23] 91 69 71 76 75 91 78 74 92 92 ...</span></span>
+<span><span class="co">#&gt;  $ favor             : num [1:23] 1 2 1 1 1 NA 1 2 2 2 ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="categorical-codings-4">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-4"></a>
 </h3>
@@ -591,6 +656,12 @@ office and Rotten Tomatoes data.</p>
 </table>
 </div>
 <div class="section level3">
+<h3 id="export-to-spss-4">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-4"></a>
+</h3>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_mcu_sav.html">export_mcu_sav</a></span><span class="op">(</span><span class="st">"mcu_data.sav"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="suggested-analyses-4">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-4"></a>
 </h3>
 <ul>
@@ -604,29 +675,30 @@ office and Rotten Tomatoes data.</p>
 <div class="section level2">
 <h2 id="mock-jury-data">Mock Jury Data<a class="anchor" aria-label="anchor" href="#mock-jury-data"></a>
 </h2>
-<p><strong>Dataset:</strong> <code>mock_jury</code></p>
+<p><strong>Dataset:</strong> <code>mock_jury</code> |
+<strong>Export:</strong> <code><a href="../reference/export_mock_jury_sav.html">export_mock_jury_sav()</a></code></p>
 <p>Data from Plaster (1989) on effects of defendant attractiveness on
 mock jury sentencing decisions.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">mock_jury</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    114 obs. of  17 variables:</span></span>
-<span><span class="co">#&gt;  $ attr         : num  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span><span class="co">#&gt;  $ crime        : num  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span><span class="co">#&gt;  $ years        : num  10 3 5 1 7 7 3 7 2 3 ...</span></span>
-<span><span class="co">#&gt;  $ serious      : num  8 8 5 3 9 9 4 4 5 2 ...</span></span>
-<span><span class="co">#&gt;  $ exciting     : num  6 9 3 3 1 1 5 4 4 6 ...</span></span>
-<span><span class="co">#&gt;  $ calm         : num  9 5 4 6 1 5 6 9 8 8 ...</span></span>
-<span><span class="co">#&gt;  $ independent  : num  9 9 6 9 5 7 7 2 8 7 ...</span></span>
-<span><span class="co">#&gt;  $ sincere      : num  8 3 3 8 1 5 6 9 7 5 ...</span></span>
-<span><span class="co">#&gt;  $ warm         : num  5 5 6 8 8 8 7 6 1 7 ...</span></span>
-<span><span class="co">#&gt;  $ phyattr      : num  9 9 7 9 8 8 8 5 9 8 ...</span></span>
-<span><span class="co">#&gt;  $ sociable     : num  9 9 4 9 9 9 7 2 1 9 ...</span></span>
-<span><span class="co">#&gt;  $ kind         : num  9 4 2 9 4 5 5 9 5 7 ...</span></span>
-<span><span class="co">#&gt;  $ intelligent  : num  6 9 4 9 7 8 7 9 9 9 ...</span></span>
-<span><span class="co">#&gt;  $ strong       : num  9 5 5 9 9 9 5 2 7 5 ...</span></span>
-<span><span class="co">#&gt;  $ sophisticated: num  9 5 4 9 9 9 6 2 7 6 ...</span></span>
-<span><span class="co">#&gt;  $ happy        : num  5 5 5 9 8 9 5 2 6 8 ...</span></span>
-<span><span class="co">#&gt;  $ ownPA        : num  9 7 5 9 7 9 6 5 3 6 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [114 × 17] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ attr         : num [1:114] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ crime        : num [1:114] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ years        : num [1:114] 10 3 5 1 7 7 3 7 2 3 ...</span></span>
+<span><span class="co">#&gt;  $ serious      : num [1:114] 8 8 5 3 9 9 4 4 5 2 ...</span></span>
+<span><span class="co">#&gt;  $ exciting     : num [1:114] 6 9 3 3 1 1 5 4 4 6 ...</span></span>
+<span><span class="co">#&gt;  $ calm         : num [1:114] 9 5 4 6 1 5 6 9 8 8 ...</span></span>
+<span><span class="co">#&gt;  $ independent  : num [1:114] 9 9 6 9 5 7 7 2 8 7 ...</span></span>
+<span><span class="co">#&gt;  $ sincere      : num [1:114] 8 3 3 8 1 5 6 9 7 5 ...</span></span>
+<span><span class="co">#&gt;  $ warm         : num [1:114] 5 5 6 8 8 8 7 6 1 7 ...</span></span>
+<span><span class="co">#&gt;  $ phyattr      : num [1:114] 9 9 7 9 8 8 8 5 9 8 ...</span></span>
+<span><span class="co">#&gt;  $ sociable     : num [1:114] 9 9 4 9 9 9 7 2 1 9 ...</span></span>
+<span><span class="co">#&gt;  $ kind         : num [1:114] 9 4 2 9 4 5 5 9 5 7 ...</span></span>
+<span><span class="co">#&gt;  $ intelligent  : num [1:114] 6 9 4 9 7 8 7 9 9 9 ...</span></span>
+<span><span class="co">#&gt;  $ strong       : num [1:114] 9 5 5 9 9 9 5 2 7 5 ...</span></span>
+<span><span class="co">#&gt;  $ sophisticated: num [1:114] 9 5 4 9 9 9 6 2 7 6 ...</span></span>
+<span><span class="co">#&gt;  $ happy        : num [1:114] 5 5 5 9 8 9 5 2 6 8 ...</span></span>
+<span><span class="co">#&gt;  $ ownPA        : num [1:114] 9 7 5 9 7 9 6 5 3 6 ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="categorical-codings-5">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-5"></a>
 </h3>
@@ -666,6 +738,12 @@ mock jury sentencing decisions.</p>
 </table>
 </div>
 <div class="section level3">
+<h3 id="export-to-spss-5">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-5"></a>
+</h3>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_mock_jury_sav.html">export_mock_jury_sav</a></span><span class="op">(</span><span class="st">"mock_jury_data.sav"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
 <h3 id="suggested-analyses-5">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-5"></a>
 </h3>
 <ul>
@@ -680,17 +758,19 @@ mock jury sentencing decisions.</p>
 <h2 id="candy-rankings-data">Candy Rankings Data<a class="anchor" aria-label="anchor" href="#candy-rankings-data"></a>
 </h2>
 <p><strong>Full dataset:</strong> <code>candy</code> (85 rows × 13
-variables) <strong>Simplified:</strong> <code>candy_simple</code> (85
-rows × 5 variables)</p>
+variables) | <strong>Export:</strong> <code><a href="../reference/export_candy_sav.html">export_candy_sav()</a></code>
+<strong>Simplified:</strong> <code>candy_simple</code> (85 rows × 5
+variables) | <strong>Export:</strong>
+<code><a href="../reference/export_candy_simple_sav.html">export_candy_simple_sav()</a></code></p>
 <p>Candy power rankings based on 269,000 head-to-head matchups.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    85 obs. of  5 variables:</span></span>
-<span><span class="co">#&gt;  $ competitorname: chr  "100 Grand" "3 Musketeers" "One dime" "One quarter" ...</span></span>
-<span><span class="co">#&gt;  $ chocolate     : num  1 1 0 0 0 1 1 0 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ sugarpercent  : num  0.732 0.604 0.011 0.011 0.906 ...</span></span>
-<span><span class="co">#&gt;  $ pricepercent  : num  0.86 0.511 0.116 0.511 0.511 ...</span></span>
-<span><span class="co">#&gt;  $ winpercent    : num  67 67.6 32.3 46.1 52.3 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [85 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ competitorname: chr [1:85] "100 Grand" "3 Musketeers" "One dime" "One quarter" ...</span></span>
+<span><span class="co">#&gt;  $ chocolate     : num [1:85] 1 1 0 0 0 1 1 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ sugarpercent  : num [1:85] 0.732 0.604 0.011 0.011 0.906 ...</span></span>
+<span><span class="co">#&gt;  $ pricepercent  : num [1:85] 0.86 0.511 0.116 0.511 0.511 ...</span></span>
+<span><span class="co">#&gt;  $ winpercent    : num [1:85] 67 67.6 32.3 46.1 52.3 ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="binary-variable-codings-full-dataset">Binary Variable Codings (full dataset)<a class="anchor" aria-label="anchor" href="#binary-variable-codings-full-dataset"></a>
 </h3>
@@ -699,6 +779,16 @@ rows × 5 variables)</p>
 <code>caramel</code>, <code>peanutyalmondy</code>, <code>nougat</code>,
 <code>crispedricewafer</code>, <code>hard</code>, <code>bar</code>,
 <code>pluribus</code></p>
+</div>
+<div class="section level3">
+<h3 id="export-to-spss-6">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-6"></a>
+</h3>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Full dataset with all ingredient variables</span></span>
+<span><span class="fu"><a href="../reference/export_candy_sav.html">export_candy_sav</a></span><span class="op">(</span><span class="st">"candy_data.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Simplified dataset (5 variables only)</span></span>
+<span><span class="fu"><a href="../reference/export_candy_simple_sav.html">export_candy_simple_sav</a></span><span class="op">(</span><span class="st">"candy_simple_data.sav"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="suggested-analyses-6">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-6"></a>
@@ -712,116 +802,20 @@ rows × 5 variables)</p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="extramarital-affairs-data">Extramarital Affairs Data<a class="anchor" aria-label="anchor" href="#extramarital-affairs-data"></a>
-</h2>
-<p><strong>Dataset:</strong> <code>affairs</code></p>
-<p>Cross-section survey data from Psychology Today (1969) on
-extramarital affairs.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">affairs</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    601 obs. of  9 variables:</span></span>
-<span><span class="co">#&gt;  $ affairs      : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ gender       : num  2 1 1 2 2 1 1 2 1 2 ...</span></span>
-<span><span class="co">#&gt;  $ age          : num  37 27 32 57 22 32 22 57 32 22 ...</span></span>
-<span><span class="co">#&gt;  $ yearsmarried : num  2 1 3 3 1 1 1 3 3 1 ...</span></span>
-<span><span class="co">#&gt;  $ children     : num  1 1 2 2 1 1 1 2 2 1 ...</span></span>
-<span><span class="co">#&gt;  $ religiousness: num  3 4 1 5 2 2 2 2 4 4 ...</span></span>
-<span><span class="co">#&gt;  $ education    : num  18 14 12 18 17 17 12 14 16 14 ...</span></span>
-<span><span class="co">#&gt;  $ occupation   : num  7 6 1 6 6 5 1 4 1 4 ...</span></span>
-<span><span class="co">#&gt;  $ rating       : num  4 4 4 5 3 5 3 4 2 5 ...</span></span></code></pre></div>
-<div class="section level3">
-<h3 id="categorical-codings-6">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-6"></a>
-</h3>
-<table class="table">
-<thead><tr class="header">
-<th>Variable</th>
-<th>Code</th>
-<th>Label</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>gender</code></td>
-<td>1</td>
-<td>Female</td>
-</tr>
-<tr class="even">
-<td><code>gender</code></td>
-<td>2</td>
-<td>Male</td>
-</tr>
-<tr class="odd">
-<td><code>yearsmarried</code></td>
-<td>1</td>
-<td>Less than 7 years</td>
-</tr>
-<tr class="even">
-<td><code>yearsmarried</code></td>
-<td>2</td>
-<td>7 to less than 14 years</td>
-</tr>
-<tr class="odd">
-<td><code>yearsmarried</code></td>
-<td>3</td>
-<td>14 or more years</td>
-</tr>
-<tr class="even">
-<td><code>children</code></td>
-<td>1</td>
-<td>No</td>
-</tr>
-<tr class="odd">
-<td><code>children</code></td>
-<td>2</td>
-<td>Yes</td>
-</tr>
-<tr class="even">
-<td><code>religiousness</code></td>
-<td>1-5</td>
-<td>Anti-religious to Very religious</td>
-</tr>
-<tr class="odd">
-<td><code>education</code></td>
-<td>9-20</td>
-<td>Grade school to Ph.D./M.D.</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>1-7</td>
-<td>Hollingshead (1=highest, 7=lowest)</td>
-</tr>
-<tr class="odd">
-<td><code>rating</code></td>
-<td>1-5</td>
-<td>Very unhappy to Very happy</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section level3">
-<h3 id="suggested-analyses-7">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-7"></a>
-</h3>
-<ul>
-<li>Logistic regression predicting affair occurrence</li>
-<li>Chi-square tests for categorical predictors</li>
-<li>Group comparisons by marriage rating</li>
-</ul>
-<hr>
-</div>
-</div>
-<div class="section level2">
 <h2 id="football-concussion-data">Football Concussion Data<a class="anchor" aria-label="anchor" href="#football-concussion-data"></a>
 </h2>
-<p><strong>Dataset:</strong> <code>football</code></p>
+<p><strong>Dataset:</strong> <code>football</code> |
+<strong>Export:</strong> <code><a href="../reference/export_football_sav.html">export_football_sav()</a></code></p>
 <p>Brain measurements comparing football players to controls, from Singh
 et al. (2014).</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Classes 'tbl_df', 'tbl' and 'data.frame':    75 obs. of  3 variables:</span></span>
-<span><span class="co">#&gt;  $ group : num  1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span><span class="co">#&gt;  $ years : num  0 0 0 0 0 0 0 0 0 0 ...</span></span>
-<span><span class="co">#&gt;  $ volume: num  6.17 6.22 6.36 6.46 6.54 ...</span></span></code></pre></div>
+<span><span class="co">#&gt; tibble [75 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ group : num [1:75] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ years : num [1:75] 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ volume: num [1:75] 6.17 6.22 6.36 6.46 6.54 ...</span></span></code></pre></div>
 <div class="section level3">
-<h3 id="categorical-codings-7">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-7"></a>
+<h3 id="categorical-codings-6">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-6"></a>
 </h3>
 <table class="table">
 <thead><tr class="header">
@@ -849,21 +843,10 @@ et al. (2014).</p>
 </table>
 </div>
 <div class="section level3">
-<h3 id="suggested-analyses-8">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-8"></a>
+<h3 id="export-to-spss-7">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-7"></a>
 </h3>
-<ul>
-<li>One-way ANOVA comparing hippocampus volume across groups</li>
-<li>Post-hoc pairwise comparisons (Tukey HSD)</li>
-<li>Correlation between years played and volume</li>
-</ul>
-<pre><code>
----
-
-## Updated `DESCRIPTION`
-
-Make sure your Suggests and VignetteBuilder are set:</code></pre>
-<p>Suggests: readxl, tidyr, purrr, lubridate, knitr, rmarkdown, testthat
-(&gt;= 3.0.0) VignetteBuilder: knitr</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"football_data.sav"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

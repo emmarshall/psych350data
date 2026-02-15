@@ -4,7 +4,8 @@
 
 The psyc350data package provides all the datasets you need for PSYC 350
 labs. Each dataset is pre-cleaned and ready to use — no downloading
-files, no import headaches.
+files, no import headaches. You can also export any dataset as a fully
+labeled SPSS (.sav) file with a single function call.
 
 ## Loading the Package
 
@@ -18,9 +19,10 @@ To see every dataset in the package:
 
 ``` r
 list_datasets()
-#>  [1] "superman"      "superman_smes" "hot_ones"      "tip_jokes"    
-#>  [5] "mcu"           "mock_jury"     "candy"         "candy_simple" 
-#>  [9] "affairs"       "football"
+#>  [1] "superman"              "superman_smes"         "hot_ones"             
+#>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
+#>  [7] "candy"                 "candy_simple"          "football"             
+#> [10] "interpersonal_data"    "self_descriptive_data"
 ```
 
 For detailed documentation on any dataset, use the help system:
@@ -38,44 +40,30 @@ package:
 
 ``` r
 head(superman)
-#>   num media year type clark_height lois_height rt_critics_score rt_critic_count
-#> 1   1     1 2025    1         1.93        1.60               83             484
-#> 2   2     2 1978    1         1.93        1.72               88             121
-#> 3   3     3 2001    2         1.90        1.71               78             111
-#> 4   4     4 2006    1         1.89        1.65               72             290
-#> 5   5     5 1951    3         1.86        1.63               NA              NA
-#> 6   6     6 2013    1         1.85        1.63               57             340
-#>   rt_audience_score rt_audience_count ldb_likes ldb_scores clark_height_in
-#> 1                90             25000   1105511        3.9         75.9841
-#> 2                86            250000     99115        3.7         75.9841
-#> 3                72              2500        NA         NA         74.8030
-#> 4                60            250000     26076        2.7         74.4093
-#> 5                79               250       744        2.6         73.2282
-#> 6                75            250000    204463        3.0         72.8345
-#>   lois_height_in clark_grp height_diff height_gap tomatometer rt_avg   rt_diff
-#> 1        62.9920         2     12.9921          3           2   86.5 -86.71433
-#> 2        67.7164         2      8.2677          3           2   87.0 -85.91582
-#> 3        67.3227         2      7.4803          2           2   75.0 -65.62313
-#> 4        64.9605         2      9.4488          3           2   66.0 -59.84706
-#> 5        64.1731         2      9.0551          3          NA     NA        NA
-#> 6        64.1731         2      8.6614          3           1   66.0 -74.82072
-#>   popular
-#> 1       3
-#> 2       2
-#> 3      NA
-#> 4       2
-#> 5       1
-#> 6       3
+#> # A tibble: 6 × 21
+#>     num media  year  type clark_height lois_height rt_critics_score
+#>   <int> <dbl> <dbl> <dbl>        <dbl>       <dbl>            <dbl>
+#> 1     1     1  2025     1         1.93        1.6                83
+#> 2     2     2  1978     1         1.93        1.72               88
+#> 3     3     3  2001     2         1.9         1.71               78
+#> 4     4     4  2006     1         1.89        1.65               72
+#> 5     5     5  1951     3         1.86        1.63               NA
+#> 6     6     6  2013     1         1.85        1.63               57
+#> # ℹ 14 more variables: rt_critic_count <dbl>, rt_audience_score <dbl>,
+#> #   rt_audience_count <dbl>, ldb_likes <dbl>, ldb_scores <dbl>,
+#> #   clark_height_in <dbl>, lois_height_in <dbl>, clark_grp <dbl>,
+#> #   height_diff <dbl>, height_gap <dbl>, tomatometer <dbl>, rt_avg <dbl>,
+#> #   rt_diff <dbl>, popular <dbl>
 ```
 
 ``` r
 str(superman_smes)
-#> Classes 'tbl_df', 'tbl' and 'data.frame':    47 obs. of  5 variables:
-#>  $ num                 : int  1 2 3 4 5 6 7 8 9 10 ...
-#>  $ height_gap          : num  2 2 3 3 3 3 3 1 3 2 ...
-#>  $ emotional_impact    : num  16 9 15 15 11 10 14 10 19 16 ...
-#>  $ aesthetic_appeal    : num  8 8 10 10 13 9 11 9 11 10 ...
-#>  $ cognitive_engagement: num  4.8 3.9 5 3.2 3.6 4.2 3.6 4.3 3 5.4 ...
+#> tibble [47 × 5] (S3: tbl_df/tbl/data.frame)
+#>  $ num                 : int [1:47] 1 2 3 4 5 6 7 8 9 10 ...
+#>  $ height_gap          : num [1:47] 2 2 3 3 3 3 3 1 3 2 ...
+#>  $ emotional_impact    : num [1:47] 16 9 15 15 11 10 14 10 19 16 ...
+#>  $ aesthetic_appeal    : num [1:47] 8 8 10 10 13 9 11 9 11 10 ...
+#>  $ cognitive_engagement: num [1:47] 4.8 3.9 5 3.2 3.6 4.2 3.6 4.3 3 5.4 ...
 ```
 
 ``` r
@@ -158,6 +146,35 @@ superman |>
 When exported to SPSS, these `NA` values are converted to `-99` and
 marked as user-defined missing values.
 
+## Exporting to SPSS
+
+Every dataset has a dedicated export function that creates a fully
+labeled .sav file:
+
+``` r
+# Dataset-specific export functions
+export_superman_sav("superman_data.sav")
+export_football_sav("~/Desktop/football_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
+export_hot_ones_sav("hot_ones_data.sav")
+export_tip_jokes_sav("tip_jokes_data.sav")
+export_mcu_sav("mcu_data.sav")
+export_candy_sav("candy_data.sav")
+export_candy_simple_sav("candy_simple_data.sav")
+export_affairs_sav("affairs_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
+
+# Or use the generic function with any dataset name
+export_sav("superman", path = "superman_data.sav")
+
+# Or export everything at once
+export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
+```
+
+See
+[`vignette("exporting-spss")`](https://emmarshall.github.io/psych350data/articles/exporting-spss.md)
+for full details on what the .sav files contain.
+
 ## Example Analyses
 
 ### T-test with Mock Jury Data
@@ -229,6 +246,9 @@ table(tip_jokes$card, tip_jokes$tip) |>
 - See
   [`vignette("exporting-spss")`](https://emmarshall.github.io/psych350data/articles/exporting-spss.md)
   to learn how to create SPSS files
+- See
+  [`vignette("dataset-guide")`](https://emmarshall.github.io/psych350data/articles/dataset-guide.md)
+  for a complete reference of all datasets and their coding schemes
 - Use `?dataset_name` to view full documentation for any dataset
 - All datasets work with standard R functions:
   [`t.test()`](https://rdrr.io/r/stats/t.test.html),

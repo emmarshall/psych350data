@@ -36,13 +36,7 @@ Invisibly returns the labelled data frame that was written.
 
 ``` r
 if (FALSE) { # \dontrun{
-# Export by name
 export_sav("superman", path = "superman_data.sav")
-
-# Export to a specific directory
 export_sav("hot_ones", path = "~/Desktop/hot_ones_data.sav")
-
-# Export all datasets at once
-export_all_sav(dir = "~/Desktop/spss_files/")
 } # }
 ```

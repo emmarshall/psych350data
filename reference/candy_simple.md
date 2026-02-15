@@ -1,7 +1,7 @@
-# Candy Rankings Data (Simplified)
+# Candy Rankings Data
 
-Simplified version of the candy dataset with only candy name, chocolate
-indicator, sugar percentile, price percentile, and win percentage.
+Simplified version with only candy name, chocolate indicator, sugar
+percentile, price percentile, and win percentage.
 
 ## Usage
 

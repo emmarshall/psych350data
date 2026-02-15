@@ -2,8 +2,7 @@
 
 Data on guests from the YouTube show Hot Ones, including demographic
 information, Scoville ratings for each sauce, and YouTube engagement
-metrics. Categorical variables (gender, result, occupation) are stored
-as numeric codes. Views are in millions.
+metrics.
 
 ## Usage
 
@@ -35,9 +34,45 @@ A tibble with variables including:
 
   Guest primary occupation (1-14, see value labels)
 
-- SHU_1 through SHU_10:
+- SHU_1:
 
-  Scoville Heat Units for sauces 1-10
+  Sauce 1 Scoville Heat Units
+
+- SHU_2:
+
+  Sauce 2 Scoville Heat Units
+
+- SHU_3:
+
+  Sauce 3 Scoville Heat Units
+
+- SHU_4:
+
+  Sauce 4 Scoville Heat Units
+
+- SHU_5:
+
+  Sauce 5 Scoville Heat Units
+
+- SHU_6:
+
+  Sauce 6 Scoville Heat Units
+
+- SHU_7:
+
+  Sauce 7 Scoville Heat Units
+
+- SHU_8:
+
+  Sauce 8 Scoville Heat Units
+
+- SHU_9:
+
+  Sauce 9 Scoville Heat Units
+
+- SHU_10:
+
+  Sauce 10 Scoville Heat Units
 
 - result:
 
