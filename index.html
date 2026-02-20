@@ -13,8 +13,7 @@
 <link rel="manifest" href="site.webmanifest">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/IBM_Plex_Sans-0.4.10/font.css" rel="stylesheet">
-<link href="deps/Newsreader-0.4.10/font.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/Sora-0.4.10/font.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Datasets for UNL PSYC 350 Labs">
@@ -39,14 +38,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="articles/getting-started.html">Get Started</a></li>
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="articles/getting-started.html">Getting Started</a></li>
-    <li><a class="dropdown-item" href="articles/exporting-spss.html">Exporting to SPSS</a></li>
-    <li><a class="dropdown-item" href="articles/dataset-guide.html">Dataset Reference Guide</a></li>
+<li><a class="dropdown-item" href="articles/dataset-guide.html">Dataset Reference Guide</a></li>
+    <li><a class="dropdown-item" href="articles/exporting-spss.html">Exporting Datasets to SPSS</a></li>
+    <li><a class="dropdown-item" href="articles/getting-started.html">Getting Started with psyc350data</a></li>
   </ul>
 </li>
       </ul>
@@ -54,7 +52,6 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/emmarshall/psych350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -62,10 +59,9 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9"><p><code>{r, include = FALSE} knitr::opts_chunk$set(   collapse = TRUE,   comment = "#&gt;",   fig.path = "man/figures/README-",   out.width = "100%" )</code></p>
-<div class="section level1">
+  <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.png" class="logo" alt=""><h1 id="psyc350data">psyc350data<a class="anchor" aria-label="anchor" href="#psyc350data"></a>
+<img src="logo.png" class="logo" alt=""><h1 id="psyc350data-">psyc350data <a class="anchor" aria-label="anchor" href="#psyc350data-"></a>
 </h1>
 </div>
 <!-- badges: start -->
@@ -74,17 +70,23 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>Install from GitHub using <a href="https://pak.r-lib.org/" class="external-link">pak</a>: <code>{r eval = FALSE} # install.packages("pak") pak::pak("emmarshall/psych350data")</code></p>
-<p>Or with devtools: <code>{r eval = FALSE} # install.packages("devtools") devtools::install_github("emmarshall/psych350data")</code></p>
+<p>Install from GitHub using <a href="https://pak.r-lib.org/" class="external-link">pak</a>:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"emmarshall/psych350data"</span><span class="op">)</span></span></code></pre></div>
+<p>Or with devtools:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"emmarshall/psych350data"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="available-datasets">Available Datasets<a class="anchor" aria-label="anchor" href="#available-datasets"></a>
 </h2>
 <table class="table">
 <colgroup>
-<col width="28%">
-<col width="37%">
-<col width="9%">
+<col width="25%">
+<col width="25%">
+<col width="25%">
 <col width="25%">
 </colgroup>
 <thead><tr class="header">
@@ -160,68 +162,91 @@
 <div class="section level2">
 <h2 id="quick-start">Quick Start<a class="anchor" aria-label="anchor" href="#quick-start"></a>
 </h2>
-<p>```{r example} library(psyc350data)</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://emmarshall.github.io/psych350data/">psyc350data</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># See all available datasets</span></span>
+<span><span class="fu"><a href="reference/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "superman"              "superman_smes"         "hot_ones"             </span></span>
+<span><span class="co">#&gt;  [4] "tip_jokes"             "mcu"                   "mock_jury"            </span></span>
+<span><span class="co">#&gt;  [7] "candy"                 "candy_simple"          "football"             </span></span>
+<span><span class="co">#&gt; [10] "huskers"               "interpersonal_data"    "self_descriptive_data"</span></span>
+<span></span>
+<span><span class="co"># Use a dataset directly in R</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 24</span></span>
+<span><span class="co">#&gt;   type    media             year clark_actor clark_height lois_actor lois_height</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 Film    Superman          2025 David Core…         1.93 Rachel Br…        1.6 </span></span>
+<span><span class="co">#&gt; 2 Film    Superman: The M…  1978 Christophe…         1.93 Margot Ki…        1.72</span></span>
+<span><span class="co">#&gt; 3 TV Show Smallville        2001 Tom Welling         1.9  Erica Dur…        1.71</span></span>
+<span><span class="co">#&gt; 4 Film    Superman Returns  2006 Brandon Ro…         1.89 Kate Bosw…        1.65</span></span>
+<span><span class="co">#&gt; 5 Film    Superman &amp; the …  1951 George Ree…         1.86 Phyllis C…        1.63</span></span>
+<span><span class="co">#&gt; 6 Film    Man of Steel      2013 Henry Cavi…         1.85 Amy Adams         1.63</span></span>
+<span><span class="co">#&gt; # ℹ 17 more variables: rt_critics_score &lt;dbl&gt;, rt_audience_score &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   ldb_likes &lt;dbl&gt;, ldb_scores &lt;dbl&gt;, num &lt;int&gt;, clark_age &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   lois_age &lt;dbl&gt;, age_diff &lt;dbl&gt;, age_grp &lt;dbl&gt;, clark_height_in &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   lois_height_in &lt;dbl&gt;, height_diff &lt;dbl&gt;, height_gap &lt;dbl&gt;, clark_grp &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   tomatometer &lt;dbl&gt;, rt_avg &lt;dbl&gt;, popular &lt;dbl&gt;</span></span>
+<span></span>
+<span><span class="co"># Quick summary</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [75 × 3] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ group : num [1:75] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ years : num [1:75] 0 0 0 0 0 0 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ volume: num [1:75] 6.17 6.22 6.36 6.46 6.54 ...</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="exporting-to-spss">Exporting to SPSS<a class="anchor" aria-label="anchor" href="#exporting-to-spss"></a>
+</h2>
+<p>Every dataset can be exported as a .sav file with full SPSS metadata. Each dataset has its own export function:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Dataset-specific export functions</span></span>
+<span><span class="fu"><a href="reference/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_superman_smes_sav.html">export_superman_smes_sav</a></span><span class="op">(</span><span class="st">"superman_smes_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_hot_ones_sav.html">export_hot_ones_sav</a></span><span class="op">(</span><span class="st">"hot_ones_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_tip_jokes_sav.html">export_tip_jokes_sav</a></span><span class="op">(</span><span class="st">"tip_jokes_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_mcu_sav.html">export_mcu_sav</a></span><span class="op">(</span><span class="st">"mcu_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_mock_jury_sav.html">export_mock_jury_sav</a></span><span class="op">(</span><span class="st">"mock_jury_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_candy_sav.html">export_candy_sav</a></span><span class="op">(</span><span class="st">"candy_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_candy_simple_sav.html">export_candy_simple_sav</a></span><span class="op">(</span><span class="st">"candy_simple_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu">export_affairs_sav</span><span class="op">(</span><span class="st">"affairs_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"football_data.sav"</span><span class="op">)</span></span></code></pre></div>
+<p>Or use the generic function with any dataset name:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Export by name</span></span>
+<span><span class="fu"><a href="reference/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Export all datasets to a folder</span></span>
+<span><span class="fu"><a href="reference/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div>
+<p>The exported .sav files include:</p>
+<ul>
+<li>
+<strong>Variable labels</strong> describing each variable</li>
+<li>
+<strong>Value labels</strong> for categorical variables (e.g., 1 = “Film”, 2 = “TV Series”)</li>
+<li>
+<strong>User-defined missing values</strong> (-99) recognized by SPSS</li>
+</ul>
+</div>
+<div class="section level2">
+<h2 id="learning-more">Learning More<a class="anchor" aria-label="anchor" href="#learning-more"></a>
+</h2>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Browse the package website</span></span>
+<span><span class="co"># https://emmarshall.github.io/psych350data/</span></span>
+<span></span>
+<span><span class="co"># Package vignettes</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"getting-started"</span>, package <span class="op">=</span> <span class="st">"psyc350data"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"exporting-spss"</span>, package <span class="op">=</span> <span class="st">"psyc350data"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"dataset-guide"</span>, package <span class="op">=</span> <span class="st">"psyc350data"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View documentation for any dataset</span></span>
+<span><span class="op">?</span><span class="va">superman</span></span>
+<span><span class="op">?</span><span class="va">hot_ones</span></span>
+<span><span class="op">?</span><span class="va">mock_jury</span></span></code></pre></div>
 </div>
 </div>
-<div class="section level1">
-<h1 id="see-all-available-datasets">See all available datasets<a class="anchor" aria-label="anchor" href="#see-all-available-datasets"></a>
-</h1>
-<p>list_datasets()</p>
-</div>
-<div class="section level1">
-<h1 id="use-a-dataset-directly-in-r">Use a dataset directly in R<a class="anchor" aria-label="anchor" href="#use-a-dataset-directly-in-r"></a>
-</h1>
-<p>head(superman)</p>
-</div>
-<div class="section level1">
-<h1 id="quick-summary">Quick summary<a class="anchor" aria-label="anchor" href="#quick-summary"></a>
-</h1>
-<p>str(football)</p>
-<pre><code>
-## Exporting to SPSS
-
-Every dataset can be exported as a .sav file with full SPSS metadata. Each dataset has its own export function:
-```{r eval = FALSE}
-# Dataset-specific export functions
-export_superman_sav("superman_data.sav")
-export_superman_smes_sav("superman_smes_data.sav")
-export_hot_ones_sav("hot_ones_data.sav")
-export_tip_jokes_sav("tip_jokes_data.sav")
-export_mcu_sav("mcu_data.sav")
-export_mock_jury_sav("mock_jury_data.sav")
-export_candy_sav("candy_data.sav")
-export_candy_simple_sav("candy_simple_data.sav")
-export_affairs_sav("affairs_data.sav")
-export_football_sav("football_data.sav")</code></pre>
-<p>Or use the generic function with any dataset name: ```{r eval = FALSE} # Export by name export_sav(“superman”, path = “superman_data.sav”)</p>
-</div>
-<div class="section level1">
-<h1 id="export-all-datasets-to-a-folder">Export all datasets to a folder<a class="anchor" aria-label="anchor" href="#export-all-datasets-to-a-folder"></a>
-</h1>
-<p>export_all_sav(dir = “~/Desktop/PSYC350_SPSS/”)</p>
-<pre><code>
-The exported .sav files include:
-
-- **Variable labels** describing each variable
-- **Value labels** for categorical variables (e.g., 1 = "Film", 2 = "TV Series")
-- **User-defined missing values** (-99) recognized by SPSS
-
-## Learning More
-```{r eval = FALSE}
-# Browse the package website
-# https://emmarshall.github.io/psych350data/
-
-# Package vignettes
-vignette("getting-started", package = "psyc350data")
-vignette("exporting-spss", package = "psyc350data")
-vignette("dataset-guide", package = "psyc350data")
-
-# View documentation for any dataset
-?superman
-?hot_ones
-?mock_jury</code></pre>
-</div>
-
   </main><aside class="col-md-3"><div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">

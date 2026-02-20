@@ -19,5 +19,5 @@ list_datasets()
 #>  [1] "superman"              "superman_smes"         "hot_ones"             
 #>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
 #>  [7] "candy"                 "candy_simple"          "football"             
-#> [10] "interpersonal_data"    "self_descriptive_data"
+#> [10] "huskers"               "interpersonal_data"    "self_descriptive_data"
 ```

@@ -13,8 +13,7 @@
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/IBM_Plex_Sans-0.4.10/font.css" rel="stylesheet">
-<link href="../deps/Newsreader-0.4.10/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Sora-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Dataset Reference Guide">
@@ -36,14 +35,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="nav-item"><a class="nav-link" href="../articles/getting-started.html">Get Started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
-    <li><a class="dropdown-item" href="../articles/exporting-spss.html">Exporting to SPSS</a></li>
-    <li><a class="dropdown-item" href="../articles/dataset-guide.html">Dataset Reference Guide</a></li>
+<li><a class="dropdown-item" href="../articles/dataset-guide.html">Dataset Reference Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/exporting-spss.html">Exporting Datasets to SPSS</a></li>
+    <li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with psyc350data</a></li>
   </ul>
 </li>
       </ul>
@@ -51,7 +49,6 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/emmarshall/psych350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -87,152 +84,72 @@ schemes, available export functions, and suggested analyses.</p>
 TV, and serial media.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
-<span><span class="co">#&gt; tibble [11 × 21] (S3: tbl_df/tbl/data.frame)</span></span>
-<span><span class="co">#&gt;  $ num              : int [1:11] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
-<span><span class="co">#&gt;  $ media            : num [1:11] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt; tibble [11 × 24] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ type             : chr [1:11] "Film" "Film" "TV Show" "Film" ...</span></span>
+<span><span class="co">#&gt;  $ media            : chr [1:11] "Superman" "Superman: The Movie" "Smallville" "Superman Returns" ...</span></span>
 <span><span class="co">#&gt;  $ year             : num [1:11] 2025 1978 2001 2006 1951 ...</span></span>
-<span><span class="co">#&gt;  $ type             : num [1:11] 1 1 2 1 3 1 3 2 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ clark_actor      : chr [1:11] "David Corenswet" "Christopher Reeve" "Tom Welling" "Brandon Routh" ...</span></span>
 <span><span class="co">#&gt;  $ clark_height     : num [1:11] 1.93 1.93 1.9 1.89 1.86 1.85 1.85 1.82 1.81 1.83 ...</span></span>
+<span><span class="co">#&gt;  $ lois_actor       : chr [1:11] "Rachel Brosnahan" "Margot Kidder" "Erica Durance" "Kate Bosworth" ...</span></span>
 <span><span class="co">#&gt;  $ lois_height      : num [1:11] 1.6 1.72 1.71 1.65 1.63 1.63 1.62 1.68 1.68 NA ...</span></span>
 <span><span class="co">#&gt;  $ rt_critics_score : num [1:11] 83 88 78 72 NA 57 83 88 86 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_critic_count  : num [1:11] 484 121 111 290 NA 340 484 55 20 NA ...</span></span>
 <span><span class="co">#&gt;  $ rt_audience_score: num [1:11] 90 86 72 60 79 75 90 84 86 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_audience_count: num [1:11] 25000 250000 2500 250000 250 250000 25000 1000 100 NA ...</span></span>
 <span><span class="co">#&gt;  $ ldb_likes        : num [1:11] 1105511 99115 NA 26076 744 ...</span></span>
 <span><span class="co">#&gt;  $ ldb_scores       : num [1:11] 3.9 3.7 NA 2.7 2.6 3 NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ num              : int [1:11] 1 2 3 4 5 6 7 8 9 10 ...</span></span>
+<span><span class="co">#&gt;  $ clark_age        : num [1:11] 32 26.2 24.5 26.7 37.8 ...</span></span>
+<span><span class="co">#&gt;  $ lois_age         : num [1:11] 35 30.2 23.3 23.5 24.8 ...</span></span>
+<span><span class="co">#&gt;  $ age_diff         : num [1:11] 2.99 3.94 1.15 3.24 13.03 ...</span></span>
+<span><span class="co">#&gt;  $ age_grp          : num [1:11] 2 2 2 2 3 3 3 3 2 NA ...</span></span>
 <span><span class="co">#&gt;  $ clark_height_in  : num [1:11] 76 76 74.8 74.4 73.2 ...</span></span>
 <span><span class="co">#&gt;  $ lois_height_in   : num [1:11] 63 67.7 67.3 65 64.2 ...</span></span>
-<span><span class="co">#&gt;  $ clark_grp        : num [1:11] 2 2 2 2 2 2 2 1 1 2 ...</span></span>
 <span><span class="co">#&gt;  $ height_diff      : num [1:11] 12.99 8.27 7.48 9.45 9.06 ...</span></span>
 <span><span class="co">#&gt;  $ height_gap       : num [1:11] 3 3 2 3 3 3 3 1 1 NA ...</span></span>
+<span><span class="co">#&gt;  $ clark_grp        : num [1:11] 2 2 2 2 2 2 2 1 1 2 ...</span></span>
 <span><span class="co">#&gt;  $ tomatometer      : num [1:11] 2 2 2 2 NA 1 2 2 2 NA ...</span></span>
 <span><span class="co">#&gt;  $ rt_avg           : num [1:11] 86.5 87 75 66 NA 66 86.5 86 86 NA ...</span></span>
-<span><span class="co">#&gt;  $ rt_diff          : num [1:11] -86.7 -85.9 -65.6 -59.8 NA ...</span></span>
 <span><span class="co">#&gt;  $ popular          : num [1:11] 3 2 NA 2 1 3 NA NA NA NA ...</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="categorical-codings">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings"></a>
 </h3>
 <table class="table">
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
-<th>Code</th>
-<th>Label</th>
+<th>Labels</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>media</code></td>
-<td>1</td>
-<td>Superman 2025</td>
-</tr>
-<tr class="even">
-<td><code>media</code></td>
-<td>2</td>
-<td>Superman: The Movie</td>
-</tr>
-<tr class="odd">
-<td><code>media</code></td>
-<td>3</td>
-<td>Smallville</td>
-</tr>
-<tr class="even">
-<td><code>media</code></td>
-<td>4</td>
-<td>Superman Returns</td>
-</tr>
-<tr class="odd">
-<td><code>media</code></td>
-<td>5</td>
-<td>Superman &amp; the Mole Men</td>
-</tr>
-<tr class="even">
-<td><code>media</code></td>
-<td>6</td>
-<td>Man of Steel</td>
-</tr>
-<tr class="odd">
-<td><code>media</code></td>
-<td>7</td>
-<td>Superman</td>
-</tr>
-<tr class="even">
-<td><code>media</code></td>
-<td>8</td>
-<td>Superman &amp; Lois</td>
-</tr>
-<tr class="odd">
-<td><code>media</code></td>
-<td>9</td>
-<td>Lois &amp; Clark</td>
-</tr>
-<tr class="even">
-<td><code>media</code></td>
-<td>10</td>
-<td>The Adventures of Superboy</td>
-</tr>
-<tr class="odd">
-<td><code>type</code></td>
-<td>1</td>
-<td>Film</td>
+<td>1 = Superman 2025, 2 = Superman: The Movie, 3 = Smallville, 4 =
+Superman Returns, 5 = Superman &amp; the Mole Men, 6 = Man of Steel, 7 =
+Superman, 8 = Superman &amp; Lois, 9 = Lois &amp; Clark, 10 = The
+Adventures of Superboy</td>
 </tr>
 <tr class="even">
 <td><code>type</code></td>
-<td>2</td>
-<td>TV Series</td>
-</tr>
-<tr class="odd">
-<td><code>type</code></td>
-<td>3</td>
-<td>Serial</td>
-</tr>
-<tr class="even">
-<td><code>clark_grp</code></td>
-<td>1</td>
-<td>Under 6ft (&lt;72 inches)</td>
+<td>1 = Film, 2 = TV Series, 3 = Serial</td>
 </tr>
 <tr class="odd">
 <td><code>clark_grp</code></td>
-<td>2</td>
-<td>Over 6ft (≥72 inches)</td>
+<td>1 = Under 6ft (&lt;72 inches), 2 = Over 6ft (≥72 inches)</td>
 </tr>
 <tr class="even">
 <td><code>tomatometer</code></td>
-<td>1</td>
-<td>Rotten</td>
-</tr>
-<tr class="odd">
-<td><code>tomatometer</code></td>
-<td>2</td>
-<td>Fresh</td>
-</tr>
-<tr class="even">
-<td><code>height_gap</code></td>
-<td>1</td>
-<td>Minimal (&lt;6 inches)</td>
+<td>1 = Rotten, 2 = Fresh</td>
 </tr>
 <tr class="odd">
 <td><code>height_gap</code></td>
-<td>2</td>
-<td>Average (6-8 inches)</td>
-</tr>
-<tr class="even">
-<td><code>height_gap</code></td>
-<td>3</td>
-<td>Big (&gt;8 inches)</td>
-</tr>
-<tr class="odd">
-<td><code>popular</code></td>
-<td>1</td>
-<td>Low (&lt;1,000 likes)</td>
+<td>1 = Minimal (&lt;6 inches), 2 = Average (6-8 inches), 3 = Big (&gt;8
+inches)</td>
 </tr>
 <tr class="even">
 <td><code>popular</code></td>
-<td>2</td>
-<td>Mid (1,000-100,000 likes)</td>
-</tr>
-<tr class="odd">
-<td><code>popular</code></td>
-<td>3</td>
-<td>High (&gt;100,000 likes)</td>
+<td>1 = Low (&lt;1,000 likes), 2 = Mid (1,000-100,000 likes), 3 = High
+(&gt;100,000 likes)</td>
 </tr>
 </tbody>
 </table>
@@ -276,28 +193,19 @@ actors.</p>
 <h3 id="categorical-codings-1">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-1"></a>
 </h3>
 <table class="table">
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
-<th>Code</th>
-<th>Label</th>
+<th>Labels</th>
 </tr></thead>
-<tbody>
-<tr class="odd">
+<tbody><tr class="odd">
 <td><code>height_gap</code></td>
-<td>1</td>
-<td>Minimal (&lt;6 inches)</td>
-</tr>
-<tr class="even">
-<td><code>height_gap</code></td>
-<td>2</td>
-<td>Average (6-8 inches)</td>
-</tr>
-<tr class="odd">
-<td><code>height_gap</code></td>
-<td>3</td>
-<td>Big (&gt;8 inches)</td>
-</tr>
-</tbody>
+<td>1 = Minimal (&lt;6 inches), 2 = Average (6-8 inches), 3 = Big (&gt;8
+inches)</td>
+</tr></tbody>
 </table>
 </div>
 <div class="section level3">
@@ -381,101 +289,28 @@ ratings for each hot sauce and YouTube engagement metrics.</p>
 <h3 id="categorical-codings-2">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-2"></a>
 </h3>
 <table class="table">
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
-<th>Code</th>
-<th>Label</th>
+<th>Labels</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>gender</code></td>
-<td>1</td>
-<td>Male</td>
-</tr>
-<tr class="even">
-<td><code>gender</code></td>
-<td>2</td>
-<td>Female</td>
-</tr>
-<tr class="odd">
-<td><code>result</code></td>
-<td>1</td>
-<td>Succeeded</td>
+<td>1 = Male, 2 = Female</td>
 </tr>
 <tr class="even">
 <td><code>result</code></td>
-<td>2</td>
-<td>Failed</td>
+<td>1 = Succeeded, 2 = Failed</td>
 </tr>
 <tr class="odd">
 <td><code>occupation</code></td>
-<td>1</td>
-<td>Rapper</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>2</td>
-<td>Athlete</td>
-</tr>
-<tr class="odd">
-<td><code>occupation</code></td>
-<td>3</td>
-<td>Actor</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>4</td>
-<td>Actor-Comedian</td>
-</tr>
-<tr class="odd">
-<td><code>occupation</code></td>
-<td>5</td>
-<td>Comedian</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>6</td>
-<td>Chef</td>
-</tr>
-<tr class="odd">
-<td><code>occupation</code></td>
-<td>7</td>
-<td>Actor-Musician</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>8</td>
-<td>Musician</td>
-</tr>
-<tr class="odd">
-<td><code>occupation</code></td>
-<td>9</td>
-<td>DJ</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>10</td>
-<td>YouTuber</td>
-</tr>
-<tr class="odd">
-<td><code>occupation</code></td>
-<td>11</td>
-<td>Model</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>12</td>
-<td>Wrestler</td>
-</tr>
-<tr class="odd">
-<td><code>occupation</code></td>
-<td>13</td>
-<td>Magician</td>
-</tr>
-<tr class="even">
-<td><code>occupation</code></td>
-<td>14</td>
-<td>Other</td>
+<td>1 = Rapper, 2 = Athlete, 3 = Actor, 4 = Actor-Comedian, 5 =
+Comedian, 6 = Chef, 7 = Actor-Musician, 8 = Musician, 9 = DJ, 10 =
+YouTuber, 11 = Model, 12 = Wrestler, 13 = Magician, 14 = Other</td>
 </tr>
 </tbody>
 </table>
@@ -518,64 +353,28 @@ leaving a joke or advertisement on a card affects tipping.</p>
 <table class="table">
 <thead><tr class="header">
 <th>Variable</th>
-<th>Code</th>
-<th>Label</th>
+<th>Labels</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>card</code></td>
-<td>1</td>
-<td>Advertisement card</td>
-</tr>
-<tr class="even">
-<td><code>card</code></td>
-<td>2</td>
-<td>Joke card</td>
-</tr>
-<tr class="odd">
-<td><code>card</code></td>
-<td>3</td>
-<td>No card</td>
+<td>1 = Advertisement card, 2 = Joke card, 3 = No card</td>
 </tr>
 <tr class="even">
 <td><code>tip</code></td>
-<td>0</td>
-<td>No tip</td>
-</tr>
-<tr class="odd">
-<td><code>tip</code></td>
-<td>1</td>
-<td>Customer left a tip</td>
-</tr>
-<tr class="even">
-<td><code>ad</code></td>
-<td>0</td>
-<td>No ad card</td>
+<td>0 = No tip, 1 = Customer left a tip</td>
 </tr>
 <tr class="odd">
 <td><code>ad</code></td>
-<td>1</td>
-<td>Ad card left</td>
+<td>0 = No ad card, 1 = Ad card left</td>
 </tr>
 <tr class="even">
 <td><code>joke</code></td>
-<td>0</td>
-<td>No joke card</td>
-</tr>
-<tr class="odd">
-<td><code>joke</code></td>
-<td>1</td>
-<td>Joke card left</td>
-</tr>
-<tr class="even">
-<td><code>none</code></td>
-<td>0</td>
-<td>Ad or joke card left</td>
+<td>0 = No joke card, 1 = Joke card left</td>
 </tr>
 <tr class="odd">
 <td><code>none</code></td>
-<td>1</td>
-<td>No card left</td>
+<td>0 = Ad or joke card left, 1 = No card left</td>
 </tr>
 </tbody>
 </table>
@@ -623,34 +422,16 @@ office and Rotten Tomatoes data.</p>
 <table class="table">
 <thead><tr class="header">
 <th>Variable</th>
-<th>Code</th>
-<th>Label</th>
+<th>Labels</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>phase</code></td>
-<td>1</td>
-<td>Phase 1</td>
-</tr>
-<tr class="even">
-<td><code>phase</code></td>
-<td>2</td>
-<td>Phase 2</td>
-</tr>
-<tr class="odd">
-<td><code>phase</code></td>
-<td>3</td>
-<td>Phase 3</td>
+<td>1 = Phase 1, 2 = Phase 2, 3 = Phase 3</td>
 </tr>
 <tr class="even">
 <td><code>favor</code></td>
-<td>1</td>
-<td>Critics score higher</td>
-</tr>
-<tr class="odd">
-<td><code>favor</code></td>
-<td>2</td>
-<td>Audience score higher</td>
+<td>1 = Critics score higher, 2 = Audience score higher</td>
 </tr>
 </tbody>
 </table>
@@ -705,34 +486,16 @@ mock jury sentencing decisions.</p>
 <table class="table">
 <thead><tr class="header">
 <th>Variable</th>
-<th>Code</th>
-<th>Label</th>
+<th>Labels</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>attr</code></td>
-<td>1</td>
-<td>Beautiful</td>
-</tr>
-<tr class="even">
-<td><code>attr</code></td>
-<td>2</td>
-<td>Average</td>
-</tr>
-<tr class="odd">
-<td><code>attr</code></td>
-<td>3</td>
-<td>Unattractive</td>
+<td>1 = Beautiful, 2 = Average, 3 = Unattractive</td>
 </tr>
 <tr class="even">
 <td><code>crime</code></td>
-<td>1</td>
-<td>Burglary</td>
-</tr>
-<tr class="odd">
-<td><code>crime</code></td>
-<td>2</td>
-<td>Swindle</td>
+<td>1 = Burglary, 2 = Swindle</td>
 </tr>
 </tbody>
 </table>
@@ -744,7 +507,7 @@ mock jury sentencing decisions.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/export_mock_jury_sav.html">export_mock_jury_sav</a></span><span class="op">(</span><span class="st">"mock_jury_data.sav"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="suggested-analyses-5">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-5"></a>
+<h3 id="uses">Uses:<a class="anchor" aria-label="anchor" href="#uses"></a>
 </h3>
 <ul>
 <li>Two-way ANOVA (attractiveness × crime type) on sentence length</li>
@@ -774,11 +537,50 @@ variables) | <strong>Export:</strong>
 <div class="section level3">
 <h3 id="binary-variable-codings-full-dataset">Binary Variable Codings (full dataset)<a class="anchor" aria-label="anchor" href="#binary-variable-codings-full-dataset"></a>
 </h3>
-<p>All ingredient variables: 0 = No, 1 = Yes</p>
-<p>Applies to: <code>chocolate</code>, <code>fruity</code>,
-<code>caramel</code>, <code>peanutyalmondy</code>, <code>nougat</code>,
-<code>crispedricewafer</code>, <code>hard</code>, <code>bar</code>,
-<code>pluribus</code></p>
+<table class="table">
+<thead><tr class="header">
+<th>Variable</th>
+<th>Labels</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>chocolate</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td><code>fruity</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td><code>caramel</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td><code>peanutyalmondy</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td><code>nougat</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td><code>crispedricewafer</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td><code>hard</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td><code>bar</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td><code>pluribus</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section level3">
 <h3 id="export-to-spss-6">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-6"></a>
@@ -791,7 +593,7 @@ variables) | <strong>Export:</strong>
 <span><span class="fu"><a href="../reference/export_candy_simple_sav.html">export_candy_simple_sav</a></span><span class="op">(</span><span class="st">"candy_simple_data.sav"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
-<h3 id="suggested-analyses-6">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-6"></a>
+<h3 id="suggested-analyses-5">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-5"></a>
 </h3>
 <ul>
 <li>Independent samples t-test (chocolate vs. non-chocolate win %)</li>
@@ -818,28 +620,19 @@ et al. (2014).</p>
 <h3 id="categorical-codings-6">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-6"></a>
 </h3>
 <table class="table">
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
-<th>Code</th>
-<th>Label</th>
+<th>Labels</th>
 </tr></thead>
-<tbody>
-<tr class="odd">
+<tbody><tr class="odd">
 <td><code>group</code></td>
-<td>1</td>
-<td>Control (no football)</td>
-</tr>
-<tr class="even">
-<td><code>group</code></td>
-<td>2</td>
-<td>Football, no concussions</td>
-</tr>
-<tr class="odd">
-<td><code>group</code></td>
-<td>3</td>
-<td>Football with concussion history</td>
-</tr>
-</tbody>
+<td>1 = Control (no football), 2 = Football no concussions, 3 = Football
+with concussion history</td>
+</tr></tbody>
 </table>
 </div>
 <div class="section level3">
@@ -847,6 +640,390 @@ et al. (2014).</p>
 </h3>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"football_data.sav"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="suggested-analyses-6">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-6"></a>
+</h3>
+<ul>
+<li>One-way ANOVA comparing hippocampus volume across groups</li>
+<li>Post-hoc pairwise comparisons</li>
+<li>Correlation between years played and brain volume</li>
+</ul>
+<hr>
+</div>
+</div>
+<div class="section level2">
+<h2 id="nebraska-football-box-scores">Nebraska Football Box Scores<a class="anchor" aria-label="anchor" href="#nebraska-football-box-scores"></a>
+</h2>
+<p><strong>Dataset:</strong> <code>huskers</code> |
+<strong>Export:</strong> <code><a href="../reference/export_huskers_sav.html">export_huskers_sav()</a></code></p>
+<p>Game-level team statistics for all Nebraska Cornhuskers football
+games from September 1962 through the 2024 season, including scoring,
+rushing, passing, turnovers, penalties, point spreads, and weather
+data.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">huskers</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [770 × 57] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ date                : Date[1:770], format: "1962-09-22" "1962-09-29" ...</span></span>
+<span><span class="co">#&gt;  $ time                : POSIXct[1:770], format: "1899-12-31 14:00:00" "1899-12-31 12:30:00" ...</span></span>
+<span><span class="co">#&gt;  $ season              : int [1:770] 1962 1962 1962 1962 1962 1962 1962 1962 1962 1962 ...</span></span>
+<span><span class="co">#&gt;  $ opp                 : chr [1:770] "South Dakota" "Michigan" "Iowa State" "North Carolina State" ...</span></span>
+<span><span class="co">#&gt;  $ site                : chr [1:770] "home" "away" "home" "home" ...</span></span>
+<span><span class="co">#&gt;  $ conference          : logi [1:770] FALSE FALSE TRUE FALSE TRUE TRUE ...</span></span>
+<span><span class="co">#&gt;  $ opp_rank            : int [1:770] NA NA NA NA NA NA NA NA NA 10 ...</span></span>
+<span><span class="co">#&gt;  $ ne_rank             : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ result              : chr [1:770] "W" "W" "W" "W" ...</span></span>
+<span><span class="co">#&gt;  $ opp_score           : int [1:770] 0 13 22 14 6 6 16 16 0 34 ...</span></span>
+<span><span class="co">#&gt;  $ ne_score            : int [1:770] 53 25 36 19 26 31 7 40 14 6 ...</span></span>
+<span><span class="co">#&gt;  $ opp_score_q1        : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_score_q2        : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_score_q3        : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_score_q4        : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_score_ot        : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_score_q1         : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_score_q2         : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_score_q3         : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_score_q4         : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_score_ot         : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_rush_att        : int [1:770] 42 43 36 44 26 42 57 30 25 50 ...</span></span>
+<span><span class="co">#&gt;  $ opp_rush_yards      : int [1:770] 89 170 147 130 38 94 199 122 96 191 ...</span></span>
+<span><span class="co">#&gt;  $ ne_rush_att         : int [1:770] 42 49 62 47 61 58 34 71 72 32 ...</span></span>
+<span><span class="co">#&gt;  $ ne_rush_yards       : int [1:770] 313 222 234 154 317 365 141 369 272 68 ...</span></span>
+<span><span class="co">#&gt;  $ opp_pass_comp       : int [1:770] 4 8 7 4 7 14 1 1 4 9 ...</span></span>
+<span><span class="co">#&gt;  $ opp_pass_att        : int [1:770] 8 21 14 8 22 28 5 3 12 15 ...</span></span>
+<span><span class="co">#&gt;  $ opp_pass_yards      : int [1:770] 14 83 70 48 156 150 33 11 31 182 ...</span></span>
+<span><span class="co">#&gt;  $ ne_pass_comp        : int [1:770] 11 8 9 15 6 5 2 10 6 10 ...</span></span>
+<span><span class="co">#&gt;  $ ne_pass_att         : int [1:770] 17 15 15 25 15 15 14 20 13 25 ...</span></span>
+<span><span class="co">#&gt;  $ ne_pass_yards       : int [1:770] 142 119 153 202 87 90 7 149 125 130 ...</span></span>
+<span><span class="co">#&gt;  $ opp_first_downs     : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_first_downs      : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_third_down_comp : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_third_down_att  : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_third_down_comp  : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_third_down_att   : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_fourth_down_comp: int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_fourth_down_att : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_fourth_down_comp : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_fourth_down_att  : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_int             : int [1:770] 1 0 2 0 0 1 1 1 2 1 ...</span></span>
+<span><span class="co">#&gt;  $ opp_fum             : int [1:770] 0 3 1 2 3 1 0 0 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ ne_int              : int [1:770] 0 0 0 1 3 1 3 0 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ ne_fum              : int [1:770] 3 2 2 0 2 1 3 1 1 0 ...</span></span>
+<span><span class="co">#&gt;  $ opp_pen_num         : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ opp_pen_yards       : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_pen_num          : int [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_pen_yards        : int [1:770] 65 65 55 43 45 68 15 15 38 19 ...</span></span>
+<span><span class="co">#&gt;  $ opp_possession      : POSIXct[1:770], format: NA NA ...</span></span>
+<span><span class="co">#&gt;  $ ne_possession       : POSIXct[1:770], format: NA NA ...</span></span>
+<span><span class="co">#&gt;  $ spread              : num [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ total               : num [1:770] NA NA NA NA NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ temp                : num [1:770] 66.7 62.7 64.7 78.7 56.8 64.1 41.8 62.8 32.8 53 ...</span></span>
+<span><span class="co">#&gt;  $ humidity            : num [1:770] 0.66 0.43 0.91 0.7 0.53 0.15 0.65 0.35 0.79 0.54 ...</span></span>
+<span><span class="co">#&gt;  $ wind_speed          : num [1:770] 6.9 17.9 10.3 9.2 9.2 18.4 5.8 15 11.6 1.6 ...</span></span>
+<span><span class="co">#&gt;  $ wind_bearing        : num [1:770] 90 293 135 225 0 45 338 158 0 293 ...</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="categorical-codings-7">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-7"></a>
+</h3>
+<table class="table">
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
+<thead><tr class="header">
+<th>Variable</th>
+<th>Labels</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>result</code></td>
+<td>W = Win, L = Loss, T = Tie</td>
+</tr>
+<tr class="even">
+<td><code>site</code></td>
+<td>home = Home, away = Away, neutral-home = Neutral (home),
+neutral-away = Neutral (away)</td>
+</tr>
+<tr class="odd">
+<td><code>conference</code></td>
+<td>0 = Non-conference, 1 = Conference game</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level3">
+<h3 id="data-completeness-notes">Data Completeness Notes<a class="anchor" aria-label="anchor" href="#data-completeness-notes"></a>
+</h3>
+<ul>
+<li>Scoring by quarter, first down, third/fourth down, and opponent
+penalty data begins in 2004</li>
+<li>Nebraska penalty data incomplete before 1972-09-16</li>
+<li>Time of possession data begins in 2012, complete from 2013
+onward</li>
+<li>Point spread data mostly absent before 1978</li>
+<li>Betting total data available for most games from 2006 onward</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="export-to-spss-8">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-8"></a>
+</h3>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_huskers_sav.html">export_huskers_sav</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="suggested-analyses-7">Suggested Analyses<a class="anchor" aria-label="anchor" href="#suggested-analyses-7"></a>
+</h3>
+<ul>
+<li>Regression predicting Nebraska score from rushing/passing yards</li>
+<li>Comparing home vs away performance</li>
+<li>Time series analysis of performance across seasons</li>
+<li>Weather effects on scoring</li>
+</ul>
+<hr>
+</div>
+</div>
+<div class="section level2">
+<h2 id="interpersonal-relationships-survey-data">Interpersonal Relationships Survey Data<a class="anchor" aria-label="anchor" href="#interpersonal-relationships-survey-data"></a>
+</h2>
+<p><strong>Dataset:</strong> <code>interpersonal_data</code> |
+<strong>Export:</strong> <code><a href="../reference/export_interpersonal_sav.html">export_interpersonal_sav()</a></code>
+<strong>Rows:</strong> 574 | <strong>Variables:</strong> 33</p>
+<p>Simulated survey data from college students containing demographics,
+relationship variables, and scores on several interpersonal and
+psychological scales including the DAQ, Interpersonal Dependency
+Inventory, Interpersonal Reactivity Index, Sociability Scale, RISC, GCB,
+and LSAS-SR.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">interpersonal_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [574 × 33] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ age      : int [1:574] 19 19 19 19 21 19 21 21 19 23 ...</span></span>
+<span><span class="co">#&gt;  $ gender   : int [1:574] 2 2 2 2 1 2 2 1 1 3 ...</span></span>
+<span><span class="co">#&gt;  $ sexorient: int [1:574] 6 2 6 10 10 2 6 10 10 10 ...</span></span>
+<span><span class="co">#&gt;  $ race     : int [1:574] 6 6 6 7 6 6 3 6 6 6 ...</span></span>
+<span><span class="co">#&gt;  $ hand     : int [1:574] 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ community: int [1:574] 1 1 4 1 3 3 1 3 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ parentedu: int [1:574] 1 1 0 1 1 0 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ famclass : int [1:574] 4 3 1 4 4 3 1 4 1 3 ...</span></span>
+<span><span class="co">#&gt;  $ faminc   : int [1:574] 84923 60859 36202 114697 90626 74183 35218 103487 34336 59933 ...</span></span>
+<span><span class="co">#&gt;  $ numsib   : int [1:574] 3 0 5 2 3 6 2 2 2 4 ...</span></span>
+<span><span class="co">#&gt;  $ move     : int [1:574] 0 4 1 4 2 1 3 0 2 3 ...</span></span>
+<span><span class="co">#&gt;  $ clsfrn   : int [1:574] 12 8 4 7 6 3 5 5 8 3 ...</span></span>
+<span><span class="co">#&gt;  $ clsfrlst : int [1:574] 11 12 3 6 5 1 6 4 9 1 ...</span></span>
+<span><span class="co">#&gt;  $ greek_in : int [1:574] 2 1 1 1 2 1 2 2 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ campus   : int [1:574] 1 0 0 1 0 0 0 1 0 0 ...</span></span>
+<span><span class="co">#&gt;  $ relsp    : int [1:574] 4 4 1 4 1 1 1 1 1 4 ...</span></span>
+<span><span class="co">#&gt;  $ rlength  : int [1:574] 11 1 7 3 5 1 4 1 6 1 ...</span></span>
+<span><span class="co">#&gt;  $ serious  : int [1:574] NA NA 3 NA 6 5 3 6 5 NA ...</span></span>
+<span><span class="co">#&gt;  $ numrels  : int [1:574] 0 0 5 0 3 3 6 6 2 0 ...</span></span>
+<span><span class="co">#&gt;  $ gcb      : num [1:574] 2.36 1 2.75 2.2 2.01 NA 2.1 1 NA 2.73 ...</span></span>
+<span><span class="co">#&gt;  $ datdaq   : int [1:574] 59 53 51 40 37 NA 34 44 56 35 ...</span></span>
+<span><span class="co">#&gt;  $ assrtdaq : int [1:574] 56 33 58 NA 65 57 61 46 34 57 ...</span></span>
+<span><span class="co">#&gt;  $ emorel   : int [1:574] 41 42 41 40 34 33 32 44 29 43 ...</span></span>
+<span><span class="co">#&gt;  $ lacksc   : int [1:574] 30 29 34 35 38 28 37 35 29 34 ...</span></span>
+<span><span class="co">#&gt;  $ auto     : int [1:574] 33 37 35 27 39 42 34 37 43 24 ...</span></span>
+<span><span class="co">#&gt;  $ perspec  : int [1:574] 13 20 NA 20 16 17 13 25 18 18 ...</span></span>
+<span><span class="co">#&gt;  $ fantasy  : int [1:574] 20 19 15 17 12 8 24 15 17 8 ...</span></span>
+<span><span class="co">#&gt;  $ empath   : int [1:574] 15 26 16 12 17 26 15 16 20 17 ...</span></span>
+<span><span class="co">#&gt;  $ distress : int [1:574] 13 16 17 13 13 14 18 9 18 9 ...</span></span>
+<span><span class="co">#&gt;  $ polsoc   : int [1:574] 17 16 10 17 12 11 17 19 21 18 ...</span></span>
+<span><span class="co">#&gt;  $ npolsoc  : int [1:574] 20 22 15 18 17 20 18 27 21 21 ...</span></span>
+<span><span class="co">#&gt;  $ risc     : num [1:574] 4.19 5.16 4.68 5.83 3.64 4.94 5.5 4.25 4.95 4.8 ...</span></span>
+<span><span class="co">#&gt;  $ lsas     : int [1:574] 59 27 27 59 24 27 62 41 24 39 ...</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="categorical-codings-8">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-8"></a>
+</h3>
+<table class="table">
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
+<thead><tr class="header">
+<th>Variable</th>
+<th>Labels</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>gender</code></td>
+<td>1 = Male, 2 = Female, 3 = Another</td>
+</tr>
+<tr class="even">
+<td><code>sexorient</code></td>
+<td>1 = Asexual, 2 = Bisexual, 3 = Demisexual, 4 = Gay, 5 = Lesbian, 6 =
+Pansexual, 7 = Queer, 8 = Questioning, 9 = Sexually fluid, 10 = Straight
+or heterosexual, 11 = Other</td>
+</tr>
+<tr class="odd">
+<td><code>race</code></td>
+<td>1 = Asian, 2 = Black, 3 = Indigenous/Aboriginal/First Nations, 4 =
+Latino/Hispanic, 5 = Middle Eastern, 6 = White, 7 = Other</td>
+</tr>
+<tr class="even">
+<td><code>hand</code></td>
+<td>1 = Right, 2 = Left, 3 = Both</td>
+</tr>
+<tr class="odd">
+<td><code>community</code></td>
+<td>1 = Rural, 2 = Small town, 3 = Suburban, 4 = Urban</td>
+</tr>
+<tr class="even">
+<td><code>parentedu</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td><code>famclass</code></td>
+<td>1 = Working class, 2 = Lower class, 3 = Lower middle class, 4 =
+Upper middle class, 5 = Upper class</td>
+</tr>
+<tr class="even">
+<td><code>greek_in</code></td>
+<td>1 = Independent, 2 = Greek</td>
+</tr>
+<tr class="odd">
+<td><code>campus</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td><code>relsp</code></td>
+<td>1 = In a monogamous relationship, 2 = In a polyamorous relationship,
+3 = In multiple relationships, 4 = Not in a relationship, 5 = I prefer
+not to answer</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level3">
+<h3 id="export-to-spss-9">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-9"></a>
+</h3>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_interpersonal_sav.html">export_interpersonal_sav</a></span><span class="op">(</span><span class="st">"interpersonal_data.sav"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="uses-1">Uses:<a class="anchor" aria-label="anchor" href="#uses-1"></a>
+</h3>
+<ul>
+<li>Correlation matrix of interpersonal scales</li>
+<li>Regression predicting social anxiety from dependency measures</li>
+<li>Group comparisons by relationship status</li>
+</ul>
+<hr>
+</div>
+</div>
+<div class="section level2">
+<h2 id="self-descriptive-survey-data">Self-Descriptive Survey Data<a class="anchor" aria-label="anchor" href="#self-descriptive-survey-data"></a>
+</h2>
+<p><strong>Dataset:</strong> <code>self_descriptive_data</code> |
+<strong>Export:</strong> <code><a href="../reference/export_selfdescriptive_sav.html">export_selfdescriptive_sav()</a></code>
+<strong>Rows:</strong> 547 | <strong>Variables:</strong> 37</p>
+<p>Simulated survey data from college students containing demographics,
+relationship variables, and scores on personality and self-concept
+measures including the TIPI Big Five, MAAS, RFQ, ATQ-30, Rosenberg
+Self-Esteem, and New General Self-Efficacy scales.</p>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">self_descriptive_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; tibble [547 × 37] (S3: tbl_df/tbl/data.frame)</span></span>
+<span><span class="co">#&gt;  $ age              : int [1:547] 20 21 23 20 22 19 22 20 20 19 ...</span></span>
+<span><span class="co">#&gt;  $ gender           : int [1:547] 2 1 1 2 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ sexorient        : int [1:547] 10 10 10 10 10 10 10 10 10 NA ...</span></span>
+<span><span class="co">#&gt;  $ race             : int [1:547] 6 4 6 2 3 6 6 2 6 6 ...</span></span>
+<span><span class="co">#&gt;  $ hand             : int [1:547] 1 2 1 1 1 1 1 1 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ community        : int [1:547] 2 1 2 3 4 1 4 1 3 1 ...</span></span>
+<span><span class="co">#&gt;  $ parentedu        : int [1:547] 1 1 0 0 0 1 1 0 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ famclass         : int [1:547] 1 4 4 1 1 4 1 3 4 1 ...</span></span>
+<span><span class="co">#&gt;  $ faminc           : int [1:547] 29034 72518 105693 32123 23907 158842 26565 63309 60000 23290 ...</span></span>
+<span><span class="co">#&gt;  $ numsib           : int [1:547] 1 0 3 2 0 2 4 2 2 4 ...</span></span>
+<span><span class="co">#&gt;  $ move             : int [1:547] 3 0 5 1 4 2 2 2 2 2 ...</span></span>
+<span><span class="co">#&gt;  $ clsfrn           : int [1:547] 5 6 7 6 3 8 8 4 10 3 ...</span></span>
+<span><span class="co">#&gt;  $ clsfrlst         : int [1:547] 1 5 6 NA 0 5 9 4 8 1 ...</span></span>
+<span><span class="co">#&gt;  $ greek_in         : int [1:547] 1 1 2 1 1 1 1 1 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ campus           : int [1:547] 0 1 0 0 0 0 1 0 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ relsp            : int [1:547] 4 4 1 4 1 1 1 4 1 1 ...</span></span>
+<span><span class="co">#&gt;  $ rlength          : int [1:547] 10 4 11 1 9 8 13 5 1 8 ...</span></span>
+<span><span class="co">#&gt;  $ serious          : int [1:547] NA NA 7 NA 6 5 4 NA 7 5 ...</span></span>
+<span><span class="co">#&gt;  $ numrels          : int [1:547] 0 4 4 3 5 5 1 0 1 2 ...</span></span>
+<span><span class="co">#&gt;  $ extraversion     : num [1:547] 6 4.5 6 4 4.5 3.5 2 5 5 NA ...</span></span>
+<span><span class="co">#&gt;  $ agreeableness    : num [1:547] 5.5 4 3.5 4 NA 7 4 4.5 7 4 ...</span></span>
+<span><span class="co">#&gt;  $ conscientiousness: num [1:547] 7 4 5.5 5.5 5.5 6 3.5 5.5 6.5 5 ...</span></span>
+<span><span class="co">#&gt;  $ emot_stability   : num [1:547] 5.5 3 5 4.5 4 4.5 5 5 4 6.5 ...</span></span>
+<span><span class="co">#&gt;  $ openness         : num [1:547] 5.5 6.5 5.5 4 4.5 5 3.5 4.5 6 4.5 ...</span></span>
+<span><span class="co">#&gt;  $ disc             : num [1:547] 5.98 3.36 2.45 5.45 2.21 3.45 4.87 3.53 4.64 3.81 ...</span></span>
+<span><span class="co">#&gt;  $ moral            : num [1:547] 4.15 2.16 4.66 4.73 3.81 1.49 3.99 1.5 3.74 3.32 ...</span></span>
+<span><span class="co">#&gt;  $ comp             : num [1:547] 5.73 6.4 6.05 5.4 2.53 5.75 4.53 5.91 4.22 3.32 ...</span></span>
+<span><span class="co">#&gt;  $ maas             : num [1:547] 5.29 3.97 4.39 5.19 2.85 3.56 4.46 3.65 4.2 3.48 ...</span></span>
+<span><span class="co">#&gt;  $ rse              : num [1:547] 36.8 36.2 30.4 30.3 37.5 ...</span></span>
+<span><span class="co">#&gt;  $ promote          : num [1:547] 2.53 3.13 3.31 2.96 3.92 4.24 2.02 3.77 2.44 2.92 ...</span></span>
+<span><span class="co">#&gt;  $ prevent          : num [1:547] 5 3.03 2.51 4.24 3.39 2.76 2.78 2.02 3.69 3.41 ...</span></span>
+<span><span class="co">#&gt;  $ atq              : int [1:547] 64 59 70 41 64 63 46 55 71 39 ...</span></span>
+<span><span class="co">#&gt;  $ pmdc             : num [1:547] 2.62 2.15 2.49 1.55 2.53 2.62 1.94 1.89 2.46 1.85 ...</span></span>
+<span><span class="co">#&gt;  $ nsne             : num [1:547] 1.66 2.03 2.23 1.35 2.04 1.91 1 1.83 NA 1.05 ...</span></span>
+<span><span class="co">#&gt;  $ lse              : num [1:547] 1.48 1.65 2.17 1 NA 2.37 1.04 1 1.8 1.02 ...</span></span>
+<span><span class="co">#&gt;  $ help             : num [1:547] 2.51 1.87 2.4 1.35 2.01 1.56 1.9 NA 2.55 1.09 ...</span></span>
+<span><span class="co">#&gt;  $ ngse             : num [1:547] 32.7 29.1 25.8 37.7 29.7 ...</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="categorical-codings-9">Categorical Codings<a class="anchor" aria-label="anchor" href="#categorical-codings-9"></a>
+</h3>
+<table class="table">
+<colgroup>
+<col width="55%">
+<col width="44%">
+</colgroup>
+<thead><tr class="header">
+<th>Variable</th>
+<th>Labels</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>gender</code></td>
+<td>1 = Male, 2 = Female, 3 = Another</td>
+</tr>
+<tr class="even">
+<td><code>sexorient</code></td>
+<td>1 = Asexual, 2 = Bisexual, 3 = Demisexual, 4 = Gay, 5 = Lesbian, 6 =
+Pansexual, 7 = Queer, 8 = Questioning, 9 = Sexually fluid, 10 = Straight
+or heterosexual, 11 = Other</td>
+</tr>
+<tr class="odd">
+<td><code>race</code></td>
+<td>1 = Asian, 2 = Black, 3 = Indigenous/Aboriginal/First Nations, 4 =
+Latino/Hispanic, 5 = Middle Eastern, 6 = White, 7 = Other</td>
+</tr>
+<tr class="even">
+<td><code>hand</code></td>
+<td>1 = Right, 2 = Left, 3 = Both</td>
+</tr>
+<tr class="odd">
+<td><code>community</code></td>
+<td>1 = Rural, 2 = Small town, 3 = Suburban, 4 = Urban</td>
+</tr>
+<tr class="even">
+<td><code>parentedu</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="odd">
+<td><code>famclass</code></td>
+<td>1 = Working class, 2 = Lower class, 3 = Lower middle class, 4 =
+Upper middle class, 5 = Upper class</td>
+</tr>
+<tr class="even">
+<td><code>greek_in</code></td>
+<td>1 = Independent, 2 = Greek</td>
+</tr>
+<tr class="odd">
+<td><code>campus</code></td>
+<td>0 = No, 1 = Yes</td>
+</tr>
+<tr class="even">
+<td><code>relsp</code></td>
+<td>1 = In a monogamous relationship, 2 = In a polyamorous relationship,
+3 = In multiple relationships, 4 = Not in a relationship, 5 = I prefer
+not to answer</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level3">
+<h3 id="export-to-spss-10">Export to SPSS<a class="anchor" aria-label="anchor" href="#export-to-spss-10"></a>
+</h3>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/export_selfdescriptive_sav.html">export_selfdescriptive_sav</a></span><span class="op">(</span><span class="st">"selfdescriptive_data.sav"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

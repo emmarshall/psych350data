@@ -11,6 +11,15 @@ assignments.
 
 ``` r
 library(psyc350data)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 ```
 
 ## Exporting with Dataset-Specific Functions
@@ -27,8 +36,10 @@ export_mcu_sav("mcu_data.sav")
 export_mock_jury_sav("mock_jury_data.sav")
 export_candy_sav("candy_data.sav")
 export_candy_simple_sav("candy_simple_data.sav")
-export_affairs_sav("affairs_data.sav")
 export_football_sav("football_data.sav")
+export_huskers_sav("huskers_data.sav")
+export_interpersonal_sav("interpersonal_data.sav")
+export_selfdescriptive_sav("selfdescriptive_data.sav")
 
 # Save to a specific location
 export_superman_sav("~/Desktop/superman_data.sav")
@@ -53,6 +64,38 @@ export_sav("mock_jury")
 # Creates: mock_jury_data.sav
 ```
 
+## Exporting a Subset of Variables
+
+Sometimes you only need a few variables from a dataset. You can use
+[`dplyr::select()`](https://dplyr.tidyverse.org/reference/select.html)
+to choose specific columns, then pass the result to
+[`export_sav()`](https://emmarshall.github.io/psych350data/reference/export_sav.md):
+
+``` r
+# Export only selected variables from the superman dataset
+superman |>
+  select(num, media, year, type, clark_height, rt_critics_score) |>
+  export_sav(path = "superman_subset.sav")
+
+# Export demographic and scale variables from interpersonal data
+interpersonal_data |>
+  select(age, gender, race, gcb, risc, lsas) |>
+  export_sav(path = "interpersonal_subset.sav")
+
+# Use tidyselect helpers for flexible selection
+huskers |>
+  select(date, season, opp, result, starts_with("ne_score"), starts_with("ne_rush")) |>
+  export_sav(path = "huskers_nebraska_only.sav")
+
+# Select by column position or range
+mock_jury |>
+  select(attr, crime, years, phyattr:happy) |>
+  export_sav(path = "mock_jury_subset.sav")
+```
+
+The exported `.sav` file will contain only the selected variables, with
+all their labels and metadata preserved.
+
 ## Exporting All Datasets
 
 Use
@@ -75,8 +118,10 @@ This creates one `.sav` file per dataset:
     ├── mock_jury_data.sav
     ├── candy_data.sav
     ├── candy_simple_data.sav
-    ├── affairs_data.sav
-    └── football_data.sav
+    ├── football_data.sav
+    ├── huskers_data.sav
+    ├── interpersonal_data.sav
+    └── selfdescriptive_data.sav
 
 ## What’s in the .sav Files?
 
@@ -139,25 +184,27 @@ list_datasets()
 #>  [1] "superman"              "superman_smes"         "hot_ones"             
 #>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
 #>  [7] "candy"                 "candy_simple"          "football"             
-#> [10] "interpersonal_data"    "self_descriptive_data"
+#> [10] "huskers"               "interpersonal_data"    "self_descriptive_data"
 ```
 
 ## Quick Reference: All Export Functions
 
-| Function                                                                                                        | Default filename         |
-|-----------------------------------------------------------------------------------------------------------------|--------------------------|
-| [`export_superman_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_sav.md)           | `superman_data.sav`      |
-| [`export_superman_smes_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_smes_sav.md) | `superman_smes_data.sav` |
-| [`export_hot_ones_sav()`](https://emmarshall.github.io/psych350data/reference/export_hot_ones_sav.md)           | `hot_ones_data.sav`      |
-| [`export_tip_jokes_sav()`](https://emmarshall.github.io/psych350data/reference/export_tip_jokes_sav.md)         | `tip_jokes_data.sav`     |
-| [`export_mcu_sav()`](https://emmarshall.github.io/psych350data/reference/export_mcu_sav.md)                     | `mcu_data.sav`           |
-| [`export_mock_jury_sav()`](https://emmarshall.github.io/psych350data/reference/export_mock_jury_sav.md)         | `mock_jury_data.sav`     |
-| [`export_candy_sav()`](https://emmarshall.github.io/psych350data/reference/export_candy_sav.md)                 | `candy_data.sav`         |
-| [`export_candy_simple_sav()`](https://emmarshall.github.io/psych350data/reference/export_candy_simple_sav.md)   | `candy_simple_data.sav`  |
-| `export_affairs_sav()`                                                                                          | `affairs_data.sav`       |
-| [`export_football_sav()`](https://emmarshall.github.io/psych350data/reference/export_football_sav.md)           | `football_data.sav`      |
-| `export_sav("name")`                                                                                            | `name_data.sav`          |
-| `export_all_sav(dir)`                                                                                           | All of the above         |
+| Function                                                                                                            | Default filename           |
+|---------------------------------------------------------------------------------------------------------------------|----------------------------|
+| [`export_superman_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_sav.md)               | `superman_data.sav`        |
+| [`export_superman_smes_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_smes_sav.md)     | `superman_smes_data.sav`   |
+| [`export_hot_ones_sav()`](https://emmarshall.github.io/psych350data/reference/export_hot_ones_sav.md)               | `hot_ones_data.sav`        |
+| [`export_tip_jokes_sav()`](https://emmarshall.github.io/psych350data/reference/export_tip_jokes_sav.md)             | `tip_jokes_data.sav`       |
+| [`export_mcu_sav()`](https://emmarshall.github.io/psych350data/reference/export_mcu_sav.md)                         | `mcu_data.sav`             |
+| [`export_mock_jury_sav()`](https://emmarshall.github.io/psych350data/reference/export_mock_jury_sav.md)             | `mock_jury_data.sav`       |
+| [`export_candy_sav()`](https://emmarshall.github.io/psych350data/reference/export_candy_sav.md)                     | `candy_data.sav`           |
+| [`export_candy_simple_sav()`](https://emmarshall.github.io/psych350data/reference/export_candy_simple_sav.md)       | `candy_simple_data.sav`    |
+| [`export_football_sav()`](https://emmarshall.github.io/psych350data/reference/export_football_sav.md)               | `football_data.sav`        |
+| [`export_huskers_sav()`](https://emmarshall.github.io/psych350data/reference/export_huskers_sav.md)                 | `huskers_data.sav`         |
+| [`export_interpersonal_sav()`](https://emmarshall.github.io/psych350data/reference/export_interpersonal_sav.md)     | `interpersonal_data.sav`   |
+| [`export_selfdescriptive_sav()`](https://emmarshall.github.io/psych350data/reference/export_selfdescriptive_sav.md) | `selfdescriptive_data.sav` |
+| `export_sav("name")`                                                                                                | `name_data.sav`            |
+| `export_all_sav(dir)`                                                                                               | All of the above           |
 
 ## Tips for SPSS Users
 
@@ -173,3 +220,7 @@ list_datasets()
     and the generic
     [`export_sav()`](https://emmarshall.github.io/psych350data/reference/export_sav.md)
     produce identical output
+6.  **To export a subset of variables**, pipe through
+    [`select()`](https://dplyr.tidyverse.org/reference/select.html)
+    before calling
+    [`export_sav()`](https://emmarshall.github.io/psych350data/reference/export_sav.md)

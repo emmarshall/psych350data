@@ -15,7 +15,8 @@ export_sav(dataset, path = NULL, use_sentinel = TRUE)
 
   Character string naming the dataset, or the dataset object itself.
   Valid names: "superman", "superman_smes", "hot_ones", "tip_jokes",
-  "mcu", "mock_jury", "candy", "candy_simple", "affairs", "football"
+  "mcu", "mock_jury", "candy", "candy_simple", "football", "huskers",
+  "interpersonal_data", "self_descriptive_data"
 
 - path:
 
@@ -38,5 +39,11 @@ Invisibly returns the labelled data frame that was written.
 if (FALSE) { # \dontrun{
 export_sav("superman", path = "superman_data.sav")
 export_sav("hot_ones", path = "~/Desktop/hot_ones_data.sav")
+
+# Export a subset of variables
+library(dplyr)
+superman |>
+  select(1:8) |>
+  export_sav(path = "superman_subset.sav")
 } # }
 ```

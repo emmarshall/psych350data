@@ -13,8 +13,7 @@
 <link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/IBM_Plex_Sans-0.4.10/font.css" rel="stylesheet">
-<link href="../deps/Newsreader-0.4.10/font.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/Sora-0.4.10/font.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Getting Started with psyc350data">
@@ -36,14 +35,13 @@
 
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
-<li class="active nav-item"><a class="nav-link" href="../articles/getting-started.html">Get Started</a></li>
 <li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
-<li class="nav-item dropdown">
+<li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started</a></li>
-    <li><a class="dropdown-item" href="../articles/exporting-spss.html">Exporting to SPSS</a></li>
-    <li><a class="dropdown-item" href="../articles/dataset-guide.html">Dataset Reference Guide</a></li>
+<li><a class="dropdown-item" href="../articles/dataset-guide.html">Dataset Reference Guide</a></li>
+    <li><a class="dropdown-item" href="../articles/exporting-spss.html">Exporting Datasets to SPSS</a></li>
+    <li><a class="dropdown-item" href="../articles/getting-started.html">Getting Started with psyc350data</a></li>
   </ul>
 </li>
       </ul>
@@ -51,7 +49,6 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/emmarshall/psych350data" aria-label="GitHub"><span class="fa fa-github"></span></a></li>
       </ul>
 </div>
 
@@ -96,7 +93,7 @@ labeled SPSS (.sav) file with a single function call.</p>
 <span><span class="co">#&gt;  [1] "superman"              "superman_smes"         "hot_ones"             </span></span>
 <span><span class="co">#&gt;  [4] "tip_jokes"             "mcu"                   "mock_jury"            </span></span>
 <span><span class="co">#&gt;  [7] "candy"                 "candy_simple"          "football"             </span></span>
-<span><span class="co">#&gt; [10] "interpersonal_data"    "self_descriptive_data"</span></span></code></pre></div>
+<span><span class="co">#&gt; [10] "huskers"               "interpersonal_data"    "self_descriptive_data"</span></span></code></pre></div>
 <p>For detailed documentation on any dataset, use the help system:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">?</span><span class="va">superman</span></span>
@@ -110,20 +107,20 @@ labeled SPSS (.sav) file with a single function call.</p>
 the package:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 21</span></span></span>
-<span><span class="co">#&gt;     num media  year  type clark_height lois_height rt_critics_score</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     1     1  <span style="text-decoration: underline;">2</span>025     1         1.93        1.6                83</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     2     2  <span style="text-decoration: underline;">1</span>978     1         1.93        1.72               88</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     3     3  <span style="text-decoration: underline;">2</span>001     2         1.9         1.71               78</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     4     4  <span style="text-decoration: underline;">2</span>006     1         1.89        1.65               72</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     5     5  <span style="text-decoration: underline;">1</span>951     3         1.86        1.63               <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     6     6  <span style="text-decoration: underline;">2</span>013     1         1.85        1.63               57</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 14 more variables: rt_critic_count &lt;dbl&gt;, rt_audience_score &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   rt_audience_count &lt;dbl&gt;, ldb_likes &lt;dbl&gt;, ldb_scores &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   clark_height_in &lt;dbl&gt;, lois_height_in &lt;dbl&gt;, clark_grp &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   height_diff &lt;dbl&gt;, height_gap &lt;dbl&gt;, tomatometer &lt;dbl&gt;, rt_avg &lt;dbl&gt;,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   rt_diff &lt;dbl&gt;, popular &lt;dbl&gt;</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 24</span></span></span>
+<span><span class="co">#&gt;   type    media             year clark_actor clark_height lois_actor lois_height</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Film    Superman          <span style="text-decoration: underline;">2</span>025 David Core…         1.93 Rachel Br…        1.6 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Film    Superman: The M…  <span style="text-decoration: underline;">1</span>978 Christophe…         1.93 Margot Ki…        1.72</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> TV Show Smallville        <span style="text-decoration: underline;">2</span>001 Tom Welling         1.9  Erica Dur…        1.71</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Film    Superman Returns  <span style="text-decoration: underline;">2</span>006 Brandon Ro…         1.89 Kate Bosw…        1.65</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Film    Superman &amp; the …  <span style="text-decoration: underline;">1</span>951 George Ree…         1.86 Phyllis C…        1.63</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Film    Man of Steel      <span style="text-decoration: underline;">2</span>013 Henry Cavi…         1.85 Amy Adams         1.63</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 17 more variables: rt_critics_score &lt;dbl&gt;, rt_audience_score &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   ldb_likes &lt;dbl&gt;, ldb_scores &lt;dbl&gt;, num &lt;int&gt;, clark_age &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   lois_age &lt;dbl&gt;, age_diff &lt;dbl&gt;, age_grp &lt;dbl&gt;, clark_height_in &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   lois_height_in &lt;dbl&gt;, height_diff &lt;dbl&gt;, height_gap &lt;dbl&gt;, clark_grp &lt;dbl&gt;,</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;">#   tomatometer &lt;dbl&gt;, rt_avg &lt;dbl&gt;, popular &lt;dbl&gt;</span></span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">superman_smes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; tibble [47 × 5] (S3: tbl_df/tbl/data.frame)</span></span>
@@ -175,19 +172,19 @@ to labels that you can see in the documentation. For example, in the
 <span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">media</span>, <span class="va">year</span>, <span class="va">type</span>, <span class="va">type_label</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 11 × 4</span></span></span>
-<span><span class="co">#&gt;    media  year  type type_label</span></span>
-<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1  <span style="text-decoration: underline;">2</span>025     1 Film      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2  <span style="text-decoration: underline;">1</span>978     1 Film      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3  <span style="text-decoration: underline;">2</span>001     2 TV Series </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4  <span style="text-decoration: underline;">2</span>006     1 Film      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5  <span style="text-decoration: underline;">1</span>951     3 Serial    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6  <span style="text-decoration: underline;">2</span>013     1 Film      </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7  <span style="text-decoration: underline;">1</span>948     3 Serial    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8  <span style="text-decoration: underline;">2</span>021     2 TV Series </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9  <span style="text-decoration: underline;">1</span>993     2 TV Series </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10  <span style="text-decoration: underline;">1</span>988     2 TV Series </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>    10  <span style="text-decoration: underline;">1</span>989     2 TV Series</span></span></code></pre></div>
+<span><span class="co">#&gt;    media                                         year type    type_label</span></span>
+<span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> Superman                                      <span style="text-decoration: underline;">2</span>025 Film    <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> Superman: The Movie                           <span style="text-decoration: underline;">1</span>978 Film    <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> Smallville                                    <span style="text-decoration: underline;">2</span>001 TV Show <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> Superman Returns                              <span style="text-decoration: underline;">2</span>006 Film    <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> Superman &amp; the Mole Men                       <span style="text-decoration: underline;">1</span>951 Film    <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> Man of Steel                                  <span style="text-decoration: underline;">2</span>013 Film    <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> Superman                                      <span style="text-decoration: underline;">1</span>948 Serial  <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> Superman &amp; Lois                               <span style="text-decoration: underline;">2</span>021 TV Show <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> Lois &amp; Clark: The New Adventures of Superman  <span style="text-decoration: underline;">1</span>993 TV Show <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span> The Adventures of Superboy                    <span style="text-decoration: underline;">1</span>988 TV Show <span style="color: #BB0000;">NA</span>        </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span> The Adventures of Superboy                    <span style="text-decoration: underline;">1</span>989 TV Show <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="missing-values">Missing Values<a class="anchor" aria-label="anchor" href="#missing-values"></a>
@@ -199,14 +196,14 @@ to labels that you can see in the documentation. For example, in the
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">ldb_likes</span>, <span class="va">ldb_scores</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">ldb_scores</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
-<span><span class="co">#&gt;     num media ldb_likes ldb_scores</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     3     3        <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     7     7        <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     8     8        <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     9     9        <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>    10    10        <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>    11    10        <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
+<span><span class="co">#&gt;     num media                                        ldb_likes ldb_scores</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     3 Smallville                                          <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     7 Superman                                            <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     8 Superman &amp; Lois                                     <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     9 Lois &amp; Clark: The New Adventures of Superman        <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>    10 The Adventures of Superboy                          <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span>    11 The Adventures of Superboy                          <span style="color: #BB0000;">NA</span>         <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
 <p>When exported to SPSS, these <code>NA</code> values are converted to
 <code>-99</code> and marked as user-defined missing values.</p>
 </div>

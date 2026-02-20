@@ -22,6 +22,8 @@ All available datasets for PSYC 350 labs and final projects
   : Candy Rankings Data
 - [`football`](https://emmarshall.github.io/psych350data/reference/football.md)
   : Football Concussion Brain Data
+- [`huskers`](https://emmarshall.github.io/psych350data/reference/huskers.md)
+  : Nebraska Football Box Scores (1962–2024)
 - [`interpersonal_data`](https://emmarshall.github.io/psych350data/reference/interpersonal_data.md)
   : Interpersonal Relationships Survey Data
 - [`self_descriptive_data`](https://emmarshall.github.io/psych350data/reference/self_descriptive_data.md)
@@ -60,6 +62,8 @@ Convenience functions to export individual datasets
   : Export Candy data (simplified) as SPSS .sav file
 - [`export_football_sav()`](https://emmarshall.github.io/psych350data/reference/export_football_sav.md)
   : Export Football Concussion data as SPSS .sav file
+- [`export_huskers_sav()`](https://emmarshall.github.io/psych350data/reference/export_huskers_sav.md)
+  : Export Nebraska Football data as SPSS .sav file
 - [`export_interpersonal_sav()`](https://emmarshall.github.io/psych350data/reference/export_interpersonal_sav.md)
   : Export Interpersonal Relationships data as SPSS .sav file
 - [`export_selfdescriptive_sav()`](https://emmarshall.github.io/psych350data/reference/export_selfdescriptive_sav.md)

@@ -22,7 +22,7 @@ list_datasets()
 #>  [1] "superman"              "superman_smes"         "hot_ones"             
 #>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
 #>  [7] "candy"                 "candy_simple"          "football"             
-#> [10] "interpersonal_data"    "self_descriptive_data"
+#> [10] "huskers"               "interpersonal_data"    "self_descriptive_data"
 ```
 
 For detailed documentation on any dataset, use the help system:
@@ -40,20 +40,20 @@ package:
 
 ``` r
 head(superman)
-#> # A tibble: 6 × 21
-#>     num media  year  type clark_height lois_height rt_critics_score
-#>   <int> <dbl> <dbl> <dbl>        <dbl>       <dbl>            <dbl>
-#> 1     1     1  2025     1         1.93        1.6                83
-#> 2     2     2  1978     1         1.93        1.72               88
-#> 3     3     3  2001     2         1.9         1.71               78
-#> 4     4     4  2006     1         1.89        1.65               72
-#> 5     5     5  1951     3         1.86        1.63               NA
-#> 6     6     6  2013     1         1.85        1.63               57
-#> # ℹ 14 more variables: rt_critic_count <dbl>, rt_audience_score <dbl>,
-#> #   rt_audience_count <dbl>, ldb_likes <dbl>, ldb_scores <dbl>,
-#> #   clark_height_in <dbl>, lois_height_in <dbl>, clark_grp <dbl>,
-#> #   height_diff <dbl>, height_gap <dbl>, tomatometer <dbl>, rt_avg <dbl>,
-#> #   rt_diff <dbl>, popular <dbl>
+#> # A tibble: 6 × 24
+#>   type    media             year clark_actor clark_height lois_actor lois_height
+#>   <chr>   <chr>            <dbl> <chr>              <dbl> <chr>            <dbl>
+#> 1 Film    Superman          2025 David Core…         1.93 Rachel Br…        1.6 
+#> 2 Film    Superman: The M…  1978 Christophe…         1.93 Margot Ki…        1.72
+#> 3 TV Show Smallville        2001 Tom Welling         1.9  Erica Dur…        1.71
+#> 4 Film    Superman Returns  2006 Brandon Ro…         1.89 Kate Bosw…        1.65
+#> 5 Film    Superman & the …  1951 George Ree…         1.86 Phyllis C…        1.63
+#> 6 Film    Man of Steel      2013 Henry Cavi…         1.85 Amy Adams         1.63
+#> # ℹ 17 more variables: rt_critics_score <dbl>, rt_audience_score <dbl>,
+#> #   ldb_likes <dbl>, ldb_scores <dbl>, num <int>, clark_age <dbl>,
+#> #   lois_age <dbl>, age_diff <dbl>, age_grp <dbl>, clark_height_in <dbl>,
+#> #   lois_height_in <dbl>, height_diff <dbl>, height_gap <dbl>, clark_grp <dbl>,
+#> #   tomatometer <dbl>, rt_avg <dbl>, popular <dbl>
 ```
 
 ``` r
@@ -108,19 +108,19 @@ superman |>
   ) |>
   select(media, year, type, type_label)
 #> # A tibble: 11 × 4
-#>    media  year  type type_label
-#>    <dbl> <dbl> <dbl> <fct>     
-#>  1     1  2025     1 Film      
-#>  2     2  1978     1 Film      
-#>  3     3  2001     2 TV Series 
-#>  4     4  2006     1 Film      
-#>  5     5  1951     3 Serial    
-#>  6     6  2013     1 Film      
-#>  7     7  1948     3 Serial    
-#>  8     8  2021     2 TV Series 
-#>  9     9  1993     2 TV Series 
-#> 10    10  1988     2 TV Series 
-#> 11    10  1989     2 TV Series
+#>    media                                         year type    type_label
+#>    <chr>                                        <dbl> <chr>   <fct>     
+#>  1 Superman                                      2025 Film    NA        
+#>  2 Superman: The Movie                           1978 Film    NA        
+#>  3 Smallville                                    2001 TV Show NA        
+#>  4 Superman Returns                              2006 Film    NA        
+#>  5 Superman & the Mole Men                       1951 Film    NA        
+#>  6 Man of Steel                                  2013 Film    NA        
+#>  7 Superman                                      1948 Serial  NA        
+#>  8 Superman & Lois                               2021 TV Show NA        
+#>  9 Lois & Clark: The New Adventures of Superman  1993 TV Show NA        
+#> 10 The Adventures of Superboy                    1988 TV Show NA        
+#> 11 The Adventures of Superboy                    1989 TV Show NA
 ```
 
 ### Missing Values
@@ -133,14 +133,14 @@ superman |>
   select(num, media, ldb_likes, ldb_scores) |>
   filter(is.na(ldb_scores))
 #> # A tibble: 6 × 4
-#>     num media ldb_likes ldb_scores
-#>   <int> <dbl>     <dbl>      <dbl>
-#> 1     3     3        NA         NA
-#> 2     7     7        NA         NA
-#> 3     8     8        NA         NA
-#> 4     9     9        NA         NA
-#> 5    10    10        NA         NA
-#> 6    11    10        NA         NA
+#>     num media                                        ldb_likes ldb_scores
+#>   <int> <chr>                                            <dbl>      <dbl>
+#> 1     3 Smallville                                          NA         NA
+#> 2     7 Superman                                            NA         NA
+#> 3     8 Superman & Lois                                     NA         NA
+#> 4     9 Lois & Clark: The New Adventures of Superman        NA         NA
+#> 5    10 The Adventures of Superboy                          NA         NA
+#> 6    11 The Adventures of Superboy                          NA         NA
 ```
 
 When exported to SPSS, these `NA` values are converted to `-99` and

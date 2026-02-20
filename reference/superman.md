@@ -1,8 +1,7 @@
 # Superman Actor Data
 
-Data on 11 actors who have portrayed Clark Kent/Superman across various
-media, including height measurements, Rotten Tomatoes scores, and
-Letterboxd ratings.
+Physical characteristics and ratings data for actors who have played
+Superman across various films and TV shows.
 
 ## Usage
 
@@ -12,92 +11,101 @@ superman
 
 ## Format
 
-A tibble with 11 rows and 21 variables:
+A tibble with 11 rows and variables:
 
 - num:
 
-  Unique number for each actor
-
-- media:
-
-  Title of media (1-10, see value labels)
-
-- year:
-
-  Year of release
+  Participant id number
 
 - type:
 
-  Type of media: Film (1), TV Series (2), Serial (3)
+  Media type (Film, TV Show, Serial)
+
+- title:
+
+  Title of the production
+
+- year:
+
+  Release year
+
+- clark_actor:
+
+  Actor playing Clark Kent/Superman
 
 - clark_height:
 
-  Height of Superman actor in meters
+  Clark Kent/Superman actor's height in meters
+
+- clark_age:
+
+  Clark Kent/Superman actor's age at debut \#'(years)
+
+- lois_actor:
+
+  Actor playing Lois Lane
 
 - lois_height:
 
-  Height of Lois Lane actor in meters (NA if unknown)
+  Lois Lane actor's height in meters
 
-- rt_critics_score:
+- lois_age:
 
-  Rotten Tomatoes critics score (0-100)
-
-- rt_critic_count:
-
-  Number of critic reviews
-
-- rt_audience_score:
-
-  Rotten Tomatoes audience score (0-100)
-
-- rt_audience_count:
-
-  Number of audience ratings
-
-- ldb_likes:
-
-  Letterboxd user likes
-
-- ldb_scores:
-
-  Letterboxd average rating (1-5 stars)
+  Lois Lane actor's age at debut (years)
 
 - clark_height_in:
 
-  Height of Superman actor in inches
+  Clark Kent/Superman actor's height in inches
 
 - lois_height_in:
 
-  Height of Lois Lane actor in inches
+  Lois Lane actor's height in inches
 
 - clark_grp:
 
-  Whether Superman actor is over 6ft: under (1), over (2)
+  Clark Height group: 1 = under 72 inches, 2 = 72+ inches
 
 - height_diff:
 
-  Height difference in inches
+  Height difference between Lois and Clark in inches (Clark - Lois)
 
-- height_gap:
+- age_diff:
 
-  Height gap category: minimal (1), average (2), big (3)
+  Age difference between Lois and Clark in years
+
+- age_gap:
+
+  Height gap category: 1 = \<6in, 2 = 6-8in, 3 = \>8in
+
+- rt_critics_score:
+
+  Rotten Tomatoes critics score
+
+- rt_audience_score:
+
+  Rotten Tomatoes audience score
 
 - tomatometer:
 
-  Fresh (2) or Rotten (1) on Rotten Tomatoes
+  Critics rating: 1 = Rotten (\<60), 2 = Fresh (60+)
 
 - rt_avg:
 
   Average of critics and audience scores
 
-- rt_diff:
+- ldb_likes:
 
-  Weighted difference between critics and audience
+  Letterboxd likes
+
+- ldb_scores:
+
+  Letterboxd score
 
 - popular:
 
-  Popularity: low (1), mid (2), high (3)
+  Popularity category based on Letterboxd likes
 
 ## Source
 
-Rotten Tomatoes, Letterboxd, IMDB
+Compiled from the internet including Rotten Tomatoes, Letterboxd, and
+IMDb.
