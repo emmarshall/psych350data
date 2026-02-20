@@ -42,25 +42,21 @@ export_sav <- function(dataset, path = NULL, use_sentinel = TRUE) {
 
   } else if (is.data.frame(dataset)) {
     # Data frame provided directly (e.g., piped with select)
-    # Apply basic sentinel conversion without full metadata
     ds_labelled <- dataset
 
     if (use_sentinel) {
+      # Replace NA with -99
       ds_labelled <- ds_labelled |>
-        dplyr::mutate(dplyr::across(
-          dplyr::where(is.numeric),
-          ~ifelse(is.na(.x), -99, .x)
-        )) |>
-        dplyr::mutate(dplyr::across(
-          dplyr::where(is.character),
-          ~ifelse(is.na(.x) | .x == "", "-99", .x)
-        ))
+        dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
+                                    ~ifelse(is.na(.x), -99, .x)))
+      ds_labelled <- ds_labelled |>
+        dplyr::mutate(dplyr::across(dplyr::where(is.character),
+                                    ~ifelse(is.na(.x) | .x == "", "-99", .x)))
 
-      # Set na_values attribute for numeric columns containing -99
-      for (col in names(ds_labelled)) {
-        if (is.numeric(ds_labelled[[col]]) && any(ds_labelled[[col]] == -99, na.rm = TRUE)) {
-          attr(ds_labelled[[col]], "na_values") <- -99
-        }
+      # Set -99 as missing for all numeric columns
+      numeric_vars <- names(ds_labelled)[sapply(ds_labelled, is.numeric)]
+      for (var in numeric_vars) {
+        ds_labelled[[var]] <- labelled::set_na_values(ds_labelled[[var]], na_values = -99)
       }
     }
 
