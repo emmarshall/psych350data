@@ -20,6 +20,7 @@ All psyc350data datasets can be exported as SPSS `.sav` files with full metadata
 ## Setup
 ```{r setup}
 library(psyc350data)
+library(dplyr)
 ```
 
 ## Exporting with Dataset-Specific Functions
@@ -35,8 +36,10 @@ export_mcu_sav("mcu_data.sav")
 export_mock_jury_sav("mock_jury_data.sav")
 export_candy_sav("candy_data.sav")
 export_candy_simple_sav("candy_simple_data.sav")
-export_affairs_sav("affairs_data.sav")
 export_football_sav("football_data.sav")
+export_huskers_sav("huskers_data.sav")
+export_interpersonal_sav("interpersonal_data.sav")
+export_selfdescriptive_sav("selfdescriptive_data.sav")
 
 # Save to a specific location
 export_superman_sav("~/Desktop/superman_data.sav")
@@ -57,6 +60,33 @@ export_sav("mock_jury")
 # Creates: mock_jury_data.sav
 ```
 
+## Exporting a Subset of Variables
+
+Sometimes you only need a few variables from a dataset. You can use `dplyr::select()` to choose specific columns, then pass the result to `export_sav()`:
+```{r eval = FALSE}
+# Export only selected variables from the superman dataset
+superman |>
+  select(num, media, year, type, clark_height, rt_critics_score) |>
+  export_sav(path = "superman_subset.sav")
+
+# Export demographic and scale variables from interpersonal data
+interpersonal_data |>
+  select(age, gender, race, gcb, risc, lsas) |>
+  export_sav(path = "interpersonal_subset.sav")
+
+# Use tidyselect helpers for flexible selection
+huskers |>
+  select(date, season, opp, result, starts_with("ne_score"), starts_with("ne_rush")) |>
+  export_sav(path = "huskers_nebraska_only.sav")
+
+# Select by column position or range
+mock_jury |>
+  select(attr, crime, years, phyattr:happy) |>
+  export_sav(path = "mock_jury_subset.sav")
+```
+
+The exported `.sav` file will contain only the selected variables, with all their labels and metadata preserved.
+
 ## Exporting All Datasets
 
 Use `export_all_sav()` to export every dataset at once:
@@ -76,8 +106,10 @@ PSYC350_SPSS/
 ├── mock_jury_data.sav
 ├── candy_data.sav
 ├── candy_simple_data.sav
-├── affairs_data.sav
-└── football_data.sav
+├── football_data.sav
+├── huskers_data.sav
+├── interpersonal_data.sav
+└── selfdescriptive_data.sav
 ```
 
 ## What's in the .sav Files?
@@ -141,8 +173,10 @@ list_datasets()
 | `export_mock_jury_sav()` | `mock_jury_data.sav` |
 | `export_candy_sav()` | `candy_data.sav` |
 | `export_candy_simple_sav()` | `candy_simple_data.sav` |
-| `export_affairs_sav()` | `affairs_data.sav` |
 | `export_football_sav()` | `football_data.sav` |
+| `export_huskers_sav()` | `huskers_data.sav` |
+| `export_interpersonal_sav()` | `interpersonal_data.sav` |
+| `export_selfdescriptive_sav()` | `selfdescriptive_data.sav` |
 | `export_sav("name")` | `name_data.sav` |
 | `export_all_sav(dir)` | All of the above |
 
@@ -153,3 +187,4 @@ list_datasets()
 3. **Categorical variables** will show value labels in Data View if you toggle "Value Labels" in the toolbar
 4. If you need to re-export after updating the package, just run the export function again
 5. The dataset-specific functions (e.g., `export_superman_sav()`) and the generic `export_sav()` produce identical output
+6. **To export a subset of variables**, pipe through `select()` before calling `export_sav()`

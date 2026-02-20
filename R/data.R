@@ -1,34 +1,38 @@
 #' Superman Actor Data
 #'
-#' Data on 11 actors who have portrayed Clark Kent/Superman across various media,
-#' including height measurements, Rotten Tomatoes scores, and Letterboxd ratings.
+#' Physical characteristics and ratings data for actors who have played
+#' Superman across various films and TV shows.
 #'
-#' @format A tibble with 11 rows and 21 variables:
+#' @format A tibble with 11 rows and variables:
 #' \describe{
-#'   \item{num}{Unique number for each actor}
-#'   \item{media}{Title of media (1-10, see value labels)}
-#'   \item{year}{Year of release}
-#'   \item{type}{Type of media: Film (1), TV Series (2), Serial (3)}
-#'   \item{clark_height}{Height of Superman actor in meters}
-#'   \item{lois_height}{Height of Lois Lane actor in meters (NA if unknown)}
-#'   \item{rt_critics_score}{Rotten Tomatoes critics score (0-100)}
-#'   \item{rt_critic_count}{Number of critic reviews}
-#'   \item{rt_audience_score}{Rotten Tomatoes audience score (0-100)}
-#'   \item{rt_audience_count}{Number of audience ratings}
-#'   \item{ldb_likes}{Letterboxd user likes}
-#'   \item{ldb_scores}{Letterboxd average rating (1-5 stars)}
-#'   \item{clark_height_in}{Height of Superman actor in inches}
-#'   \item{lois_height_in}{Height of Lois Lane actor in inches}
-#'   \item{clark_grp}{Whether Superman actor is over 6ft: under (1), over (2)}
-#'   \item{height_diff}{Height difference in inches}
-#'   \item{height_gap}{Height gap category: minimal (1), average (2), big (3)}
-#'   \item{tomatometer}{Fresh (2) or Rotten (1) on Rotten Tomatoes}
+#'   \item{num}{Participant id number}
+#'   \item{type}{Media type (Film, TV Show, Serial)}
+#'   \item{title}{Title of the production}
+#'   \item{year}{Release year}
+#'   \item{clark_actor}{Actor playing Clark Kent/Superman}
+#'   \item{clark_height}{Clark Kent/Superman actor's height in meters}
+#'   \item{clark_age}{Clark Kent/Superman actor's age at debut
+#'   #'(years)}
+#'   \item{lois_actor}{Actor playing Lois Lane}
+#'   \item{lois_height}{Lois Lane actor's height in meters}
+#'   \item{lois_age}{Lois Lane actor's age at debut (years)}
+#'   \item{clark_height_in}{Clark Kent/Superman actor's height in inches}
+#'   \item{lois_height_in}{Lois Lane actor's height in inches}
+#'   \item{clark_grp}{Clark Height group: 1 = under 72 inches, 2 = 72+ inches}
+#'   \item{height_diff}{Height difference between Lois and Clark in inches (Clark - Lois)}
+#'   \item{age_diff}{Age difference between Lois and Clark in years}
+
+#'   \item{age_gap}{Height gap category: 1 = <6in, 2 = 6-8in, 3 = >8in}
+#'   \item{rt_critics_score}{Rotten Tomatoes critics score}
+#'   \item{rt_audience_score}{Rotten Tomatoes audience score}
+#'   \item{tomatometer}{Critics rating: 1 = Rotten (<60), 2 = Fresh (60+)}
 #'   \item{rt_avg}{Average of critics and audience scores}
-#'   \item{rt_diff}{Weighted difference between critics and audience}
-#'   \item{popular}{Popularity: low (1), mid (2), high (3)}
+#'   \item{ldb_likes}{Letterboxd likes}
+#'   \item{ldb_scores}{Letterboxd score}
+#'   \item{popular}{Popularity category based on Letterboxd likes}
 #' }
 #'
-#' @source Rotten Tomatoes, Letterboxd, IMDB
+#' @source Compiled from the internet including Rotten Tomatoes, Letterboxd, and IMDb.
 "superman"
 
 #' Superman SMES Data
@@ -208,6 +212,90 @@
 #' @source Singh R, Meier T, et al., JAMA, 311(18), 2014.
 "football"
 
+#' Nebraska Football Box Scores (1962–2024)
+#'
+#' Game-level team statistics for all Nebraska Cornhuskers football games
+#' from September 1962 through the 2024 season. Includes scoring, rushing,
+#' passing, turnovers, penalties, point spreads, and weather data.
+#'
+#' @format A data frame with columns:
+#' \describe{
+#'   \item{date}{Date the game was played.}
+#'   \item{time}{Kickoff time (Central Time).}
+#'   \item{season}{Season (year) the game was played.}
+#'   \item{opp}{Nebraska's opponent.}
+#'   \item{site}{Game location: "home", "away", "neutral-home", or "neutral-away".}
+#'   \item{conference}{Whether the opponent was a conference opponent (TRUE/FALSE).}
+#'   \item{opp_rank}{Opponent's ranking entering the game (CFP when available, otherwise AP).}
+#'   \item{ne_rank}{Nebraska's ranking entering the game (CFP when available, otherwise AP).}
+#'   \item{result}{Game result: W (Win), L (Loss), or T (Tie).}
+#'   \item{opp_score}{Opponent's total score.}
+#'   \item{ne_score}{Nebraska's total score.}
+#'   \item{opp_score_q1}{Opponent's first quarter points.}
+#'   \item{opp_score_q2}{Opponent's second quarter points.}
+#'   \item{opp_score_q3}{Opponent's third quarter points.}
+#'   \item{opp_score_q4}{Opponent's fourth quarter points.}
+#'   \item{opp_score_ot}{Opponent's overtime points.}
+#'   \item{ne_score_q1}{Nebraska's first quarter points.}
+#'   \item{ne_score_q2}{Nebraska's second quarter points.}
+#'   \item{ne_score_q3}{Nebraska's third quarter points.}
+#'   \item{ne_score_q4}{Nebraska's fourth quarter points.}
+#'   \item{ne_score_ot}{Nebraska's overtime points.}
+#'   \item{opp_rush_att}{Opponent's rushing attempts.}
+#'   \item{opp_rush_yards}{Opponent's rushing yards.}
+#'   \item{ne_rush_att}{Nebraska's rushing attempts.}
+#'   \item{ne_rush_yards}{Nebraska's rushing yards.}
+#'   \item{opp_pass_comp}{Opponent's passing completions.}
+#'   \item{opp_pass_att}{Opponent's passing attempts.}
+#'   \item{opp_pass_yards}{Opponent's passing yards.}
+#'   \item{ne_pass_comp}{Nebraska's passing completions.}
+#'   \item{ne_pass_att}{Nebraska's passing attempts.}
+#'   \item{ne_pass_yards}{Nebraska's passing yards.}
+#'   \item{opp_first_downs}{Opponent's first downs.}
+#'   \item{ne_first_downs}{Nebraska's first downs.}
+#'   \item{opp_third_down_comp}{Opponent's successful third down conversions.}
+#'   \item{opp_third_down_att}{Opponent's third down attempts.}
+#'   \item{ne_third_down_comp}{Nebraska's successful third down conversions.}
+#'   \item{ne_third_down_att}{Nebraska's third down attempts.}
+#'   \item{opp_fourth_down_comp}{Opponent's successful fourth down conversions.}
+#'   \item{opp_fourth_down_att}{Opponent's fourth down attempts.}
+#'   \item{ne_fourth_down_comp}{Nebraska's successful fourth down conversions.}
+#'   \item{ne_fourth_down_att}{Nebraska's fourth down attempts.}
+#'   \item{opp_int}{Interceptions thrown by the opponent.}
+#'   \item{opp_fum}{Fumbles lost by the opponent.}
+#'   \item{ne_int}{Interceptions thrown by Nebraska.}
+#'   \item{ne_fum}{Fumbles lost by Nebraska.}
+#'   \item{opp_pen_num}{Opponent's number of penalties.}
+#'   \item{opp_pen_yards}{Opponent's penalty yards.}
+#'   \item{ne_pen_num}{Nebraska's number of penalties.}
+#'   \item{ne_pen_yards}{Nebraska's penalty yards.}
+#'   \item{opp_possession}{Opponent's time of possession (MM:SS).}
+#'   \item{ne_possession}{Nebraska's time of possession (MM:SS).}
+#'   \item{spread}{Point spread. Negative means Nebraska was favored.}
+#'   \item{total}{Betting total (Over/Under).}
+#'   \item{temp}{Temperature at kickoff (Fahrenheit).}
+#'   \item{humidity}{Relative humidity at kickoff (0.0 to 1.0).}
+#'   \item{wind_speed}{Wind speed at kickoff (mph).}
+#'   \item{wind_bearing}{Wind direction at kickoff in degrees (0 = North, clockwise).}
+#' }
+#'
+#' @details
+#' Data completeness notes:
+#' \itemize{
+#'   \item Scoring by quarter, first down, third/fourth down, and opponent penalty
+#'     data begins in the 2004 season.
+#'   \item Nebraska penalty data is incomplete before 1972-09-16 (Texas A&M).
+#'   \item Time of possession data begins in 2012, complete from 2013 onward.
+#'   \item Point spread data is mostly absent before 1978; available for most
+#'     games from 1978 onward.
+#'   \item Betting total data is available for most games from 2006 onward.
+#'   \item Weather data sourced from the DarkSky API and Weather Underground.
+#'     Temperature and humidity are fairly reliable; wind data less so.
+#' }
+#'
+#' @source Compiled from historical Nebraska football records.
+"huskers"
+
 #' Interpersonal Relationships Survey Data
 #'
 #' Simulated survey data (n = 574) from college students at a predominantly white
@@ -308,3 +396,4 @@
 #' @source Simulated data generated to resemble plausible survey responses
 #'   from undergraduate psychology students.
 "self_descriptive_data"
+

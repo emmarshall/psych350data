@@ -1,32 +1,27 @@
----
-output: github_document
----
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
 
-# psyc350data
+# psyc350data <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
-psyc350data provides cleaned, documented datasets for PSYC 350 lab exercises. All datasets are available as ready-to-use R tibbles and can be exported as fully labeled SPSS (.sav) files with variable labels, value labels, and defined missing values.
+psyc350data provides cleaned, documented datasets for PSYC 350 lab
+exercises. All datasets are available as ready-to-use R tibbles and can
+be exported as fully labeled SPSS (.sav) files with variable labels,
+value labels, and defined missing values.
 
 ## Installation
 
 Install from GitHub using [pak](https://pak.r-lib.org/):
-```{r eval = FALSE}
+
+``` r
 # install.packages("pak")
 pak::pak("emmarshall/psych350data")
 ```
 
 Or with devtools:
-```{r eval = FALSE}
+
+``` r
 # install.packages("devtools")
 devtools::install_github("emmarshall/psych350data")
 ```
@@ -34,7 +29,7 @@ devtools::install_github("emmarshall/psych350data")
 ## Available Datasets
 
 | Dataset | Description | N | Source |
-|---------|------------|---|--------|
+|----|----|----|----|
 | `superman` | Superman actors across media — heights, RT scores, Letterboxd | 11 | RT, Letterboxd, IMDB |
 | `superman_smes` | Simulated SMES ratings by height gap group | 47 | Simulated |
 | `hot_ones` | Hot Ones guests — demographics, Scoville ratings, YouTube stats | varies | Hot Ones / YouTube |
@@ -44,26 +39,51 @@ devtools::install_github("emmarshall/psych350data")
 | `candy` | Candy rankings with ingredient flags and win % (full) | 85 | FiveThirtyEight |
 | `candy_simple` | Candy rankings (simplified — 5 variables) | 85 | FiveThirtyEight |
 | `affairs` | Extramarital affairs survey (1969) | varies | Fair (1978) |
-| `football` | Football concussions and hippocampus volume | varies | Singh et al. (2014) |
+| `football` | Football concussions and hippocampus volume | varies | Singh et al. (2014) |
 
 ## Quick Start
-```{r example}
+
+``` r
 library(psyc350data)
 
 # See all available datasets
 list_datasets()
+#>  [1] "superman"              "superman_smes"         "hot_ones"             
+#>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
+#>  [7] "candy"                 "candy_simple"          "football"             
+#> [10] "huskers"               "interpersonal_data"    "self_descriptive_data"
 
 # Use a dataset directly in R
 head(superman)
+#> # A tibble: 6 × 24
+#>   type    media             year clark_actor clark_height lois_actor lois_height
+#>   <chr>   <chr>            <dbl> <chr>              <dbl> <chr>            <dbl>
+#> 1 Film    Superman          2025 David Core…         1.93 Rachel Br…        1.6 
+#> 2 Film    Superman: The M…  1978 Christophe…         1.93 Margot Ki…        1.72
+#> 3 TV Show Smallville        2001 Tom Welling         1.9  Erica Dur…        1.71
+#> 4 Film    Superman Returns  2006 Brandon Ro…         1.89 Kate Bosw…        1.65
+#> 5 Film    Superman & the …  1951 George Ree…         1.86 Phyllis C…        1.63
+#> 6 Film    Man of Steel      2013 Henry Cavi…         1.85 Amy Adams         1.63
+#> # ℹ 17 more variables: rt_critics_score <dbl>, rt_audience_score <dbl>,
+#> #   ldb_likes <dbl>, ldb_scores <dbl>, num <int>, clark_age <dbl>,
+#> #   lois_age <dbl>, age_diff <dbl>, age_grp <dbl>, clark_height_in <dbl>,
+#> #   lois_height_in <dbl>, height_diff <dbl>, height_gap <dbl>, clark_grp <dbl>,
+#> #   tomatometer <dbl>, rt_avg <dbl>, popular <dbl>
 
 # Quick summary
 str(football)
+#> tibble [75 × 3] (S3: tbl_df/tbl/data.frame)
+#>  $ group : num [1:75] 1 1 1 1 1 1 1 1 1 1 ...
+#>  $ years : num [1:75] 0 0 0 0 0 0 0 0 0 0 ...
+#>  $ volume: num [1:75] 6.17 6.22 6.36 6.46 6.54 ...
 ```
 
 ## Exporting to SPSS
 
-Every dataset can be exported as a .sav file with full SPSS metadata. Each dataset has its own export function:
-```{r eval = FALSE}
+Every dataset can be exported as a .sav file with full SPSS metadata.
+Each dataset has its own export function:
+
+``` r
 # Dataset-specific export functions
 export_superman_sav("superman_data.sav")
 export_superman_smes_sav("superman_smes_data.sav")
@@ -78,7 +98,8 @@ export_football_sav("football_data.sav")
 ```
 
 Or use the generic function with any dataset name:
-```{r eval = FALSE}
+
+``` r
 # Export by name
 export_sav("superman", path = "superman_data.sav")
 
@@ -89,11 +110,13 @@ export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
 The exported .sav files include:
 
 - **Variable labels** describing each variable
-- **Value labels** for categorical variables (e.g., 1 = "Film", 2 = "TV Series")
+- **Value labels** for categorical variables (e.g., 1 = “Film”, 2 = “TV
+  Series”)
 - **User-defined missing values** (-99) recognized by SPSS
 
 ## Learning More
-```{r eval = FALSE}
+
+``` r
 # Browse the package website
 # https://emmarshall.github.io/psych350data/
 

@@ -5,39 +5,42 @@
 \alias{superman}
 \title{Superman Actor Data}
 \format{
-A tibble with 11 rows and 21 variables:
+A tibble with 11 rows and variables:
 \describe{
-\item{num}{Unique number for each actor}
-\item{media}{Title of media (1-10, see value labels)}
-\item{year}{Year of release}
-\item{type}{Type of media: Film (1), TV Series (2), Serial (3)}
-\item{clark_height}{Height of Superman actor in meters}
-\item{lois_height}{Height of Lois Lane actor in meters (NA if unknown)}
-\item{rt_critics_score}{Rotten Tomatoes critics score (0-100)}
-\item{rt_critic_count}{Number of critic reviews}
-\item{rt_audience_score}{Rotten Tomatoes audience score (0-100)}
-\item{rt_audience_count}{Number of audience ratings}
-\item{ldb_likes}{Letterboxd user likes}
-\item{ldb_scores}{Letterboxd average rating (1-5 stars)}
-\item{clark_height_in}{Height of Superman actor in inches}
-\item{lois_height_in}{Height of Lois Lane actor in inches}
-\item{clark_grp}{Whether Superman actor is over 6ft: under (1), over (2)}
-\item{height_diff}{Height difference in inches}
-\item{height_gap}{Height gap category: minimal (1), average (2), big (3)}
-\item{tomatometer}{Fresh (2) or Rotten (1) on Rotten Tomatoes}
+\item{num}{Participant id number}
+\item{type}{Media type (Film, TV Show, Serial)}
+\item{title}{Title of the production}
+\item{year}{Release year}
+\item{clark_actor}{Actor playing Clark Kent/Superman}
+\item{clark_height}{Clark Kent/Superman actor's height in meters}
+\item{clark_age}{Clark Kent/Superman actor's age at debut
+#'(years)}
+\item{lois_actor}{Actor playing Lois Lane}
+\item{lois_height}{Lois Lane actor's height in meters}
+\item{lois_age}{Lois Lane actor's age at debut (years)}
+\item{clark_height_in}{Clark Kent/Superman actor's height in inches}
+\item{lois_height_in}{Lois Lane actor's height in inches}
+\item{clark_grp}{Clark Height group: 1 = under 72 inches, 2 = 72+ inches}
+\item{height_diff}{Height difference between Lois and Clark in inches (Clark - Lois)}
+\item{age_diff}{Age difference between Lois and Clark in years}
+\item{age_gap}{Height gap category: 1 = <6in, 2 = 6-8in, 3 = >8in}
+\item{rt_critics_score}{Rotten Tomatoes critics score}
+\item{rt_audience_score}{Rotten Tomatoes audience score}
+\item{tomatometer}{Critics rating: 1 = Rotten (<60), 2 = Fresh (60+)}
 \item{rt_avg}{Average of critics and audience scores}
-\item{rt_diff}{Weighted difference between critics and audience}
-\item{popular}{Popularity: low (1), mid (2), high (3)}
+\item{ldb_likes}{Letterboxd likes}
+\item{ldb_scores}{Letterboxd score}
+\item{popular}{Popularity category based on Letterboxd likes}
 }
 }
 \source{
-Rotten Tomatoes, Letterboxd, IMDB
+Compiled from the internet including Rotten Tomatoes, Letterboxd, and IMDb.
 }
 \usage{
 superman
 }
 \description{
-Data on 11 actors who have portrayed Clark Kent/Superman across various media,
-including height measurements, Rotten Tomatoes scores, and Letterboxd ratings.
+Physical characteristics and ratings data for actors who have played
+Superman across various films and TV shows.
 }
 \keyword{datasets}

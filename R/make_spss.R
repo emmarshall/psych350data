@@ -5,7 +5,8 @@
 #'
 #' @param dataset Character string naming the dataset, or the dataset object itself.
 #'   Valid names: "superman", "superman_smes", "hot_ones", "tip_jokes", "mcu",
-#'   "mock_jury", "candy", "candy_simple", "affairs", "football"
+#'   "mock_jury", "candy", "candy_simple", "football", "huskers",
+#'   "interpersonal_data", "self_descriptive_data"
 #' @param path File path for the output .sav file. If NULL, saves to the
 #'   working directory with a default name.
 #' @param use_sentinel Logical. If TRUE (default), NA values are replaced with
@@ -19,23 +20,56 @@
 #' \dontrun{
 #' export_sav("superman", path = "superman_data.sav")
 #' export_sav("hot_ones", path = "~/Desktop/hot_ones_data.sav")
+#'
+#' # Export a subset of variables
+#' library(dplyr)
+#' superman |>
+#'   select(1:8) |>
+#'   export_sav(path = "superman_subset.sav")
 #' }
 export_sav <- function(dataset, path = NULL, use_sentinel = TRUE) {
 
   if (is.character(dataset) && length(dataset) == 1) {
+
+    # Dataset name provided - use full labeling
     ds_name <- dataset
     ds <- get_dataset(ds_name)
+    ds_labelled <- apply_spss_metadata(ds, ds_name, use_sentinel = use_sentinel)
+
+    if (is.null(path)) {
+      path <- paste0(ds_name, "_data.sav")
+    }
+
   } else if (is.data.frame(dataset)) {
-    ds_name <- deparse(substitute(dataset))
-    ds <- dataset
+    # Data frame provided directly (e.g., piped with select)
+    # Apply basic sentinel conversion without full metadata
+    ds_labelled <- dataset
+
+    if (use_sentinel) {
+      ds_labelled <- ds_labelled |>
+        dplyr::mutate(dplyr::across(
+          dplyr::where(is.numeric),
+          ~ifelse(is.na(.x), -99, .x)
+        )) |>
+        dplyr::mutate(dplyr::across(
+          dplyr::where(is.character),
+          ~ifelse(is.na(.x) | .x == "", "-99", .x)
+        ))
+
+      # Set na_values attribute for numeric columns containing -99
+      for (col in names(ds_labelled)) {
+        if (is.numeric(ds_labelled[[col]]) && any(ds_labelled[[col]] == -99, na.rm = TRUE)) {
+          attr(ds_labelled[[col]], "na_values") <- -99
+        }
+      }
+    }
+
+    if (is.null(path)) {
+      path <- "exported_data.sav"
+    }
+
   } else {
     stop("'dataset' must be a dataset name (character) or a data frame.")
-  }
-
-  ds_labelled <- apply_spss_metadata(ds, ds_name, use_sentinel = use_sentinel)
-
-  if (is.null(path)) {
-    path <- paste0(ds_name, "_data.sav")
   }
 
   haven::write_sav(ds_labelled, path = path)
@@ -82,7 +116,7 @@ export_all_sav <- function(dir = ".", use_sentinel = TRUE) {
 #' list_datasets()
 list_datasets <- function() {
   c("superman", "superman_smes", "hot_ones", "tip_jokes",
-    "mcu", "mock_jury", "candy", "candy_simple", "football",
+    "mcu", "mock_jury", "candy", "candy_simple", "football", "huskers",
     "interpersonal_data", "self_descriptive_data")
 }
 
@@ -177,10 +211,18 @@ export_selfdescriptive_sav <- function(path = "selfdescriptive_data.sav", use_se
   export_sav("selfdescriptive_data", path = path, use_sentinel = use_sentinel)
 }
 
+#' Export Nebraska Football data as SPSS .sav file
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_huskers_sav <- function(path = "huskers_data.sav", use_sentinel = TRUE) {
+  export_sav("huskers", path = path, use_sentinel = use_sentinel)
+}
 
 
 
-# ---- Internal helpers -------------------------------------------------------
+########################################################################
+# Internal helpers ########################################################################
 
 #' @noRd
 get_dataset <- function(name) {

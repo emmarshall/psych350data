@@ -40,6 +40,15 @@ label_superman <- function(df, use_sentinel = TRUE) {
     labels = c("Film" = 1, "TV Series" = 2, "Serial" = 3)
   )
 
+  df$age_gap <- labelled::labelled(
+    df$height_gap,
+    labels = c(
+      "minimal (< 2 years)" = 1,
+      "average (2-5 years)" = 2,
+      "big (> 5 years)" = 3
+    )
+  )
+
   df$clark_grp <- labelled::labelled(
     df$clark_grp,
     labels = c(
@@ -62,27 +71,21 @@ label_superman <- function(df, use_sentinel = TRUE) {
     labels = c("rotten" = 1, "fresh" = 2)
   )
 
-  df$height_gap <- labelled::labelled(
-    df$height_gap,
-    labels = c(
-      "minimal (< 6 inches)" = 1,
-      "average (6-8 inches)" = 2,
-      "big (> 8 inches)" = 3
-    )
-  )
-
   labelled::var_label(df) <- list(
     num = "Unique number for each actor in dataset",
     media = "title of media where actor made their first appearance as Clark Kent/Superman",
     year = "Year of release",
     type = "Type of media",
     clark_height = "Height of Clark Kent/Superman actor in meters",
+    clark_age = "Age of Clark Kent/Superman actor at debut in years",
     lois_height = "Height of Lois Lane actor in meters",
+    lois_age = "Age of Lois Lane actor at debut in years",
     clark_height_in = "Height of Clark Kent/Superman actor in inches",
     lois_height_in = "Height of Lois Lane actor in inches",
     clark_grp = "Whether Clark Kent/Superman actor is taller than 6ft",
     height_diff = "Height difference between Clark Kent/Superman and Lois Lane actors in inches",
-    height_gap = "Relative size of height gap between actors (minimal/average/big)",
+    age_diff = "Age difference between Lois and Clark in years",
+    age_gap = "Relative age difference between actors (small/medium/big)",
     rt_critics_score = "Rotten Tomatoes critics score (0-100 scale)",
     rt_critic_count = "Number of critic reviews on Rotten Tomatoes",
     rt_audience_score = "Rotten Tomatoes audience score (0-100 scale)",
@@ -90,8 +93,8 @@ label_superman <- function(df, use_sentinel = TRUE) {
     ldb_likes = "Total number of users that liked the film on Letterboxd",
     ldb_scores = "Letterboxd users average rating (1-5 stars)",
     tomatometer = "whether the media was liked by more than 60% of critics on Rotten Tomatoes",
-    rt_avg = "average number of critics and audience members that liked the media on Rotten Tomatoes",
-    rt_diff = "weighted difference between number of critics and audience members that liked the media on Rotten Tomatoes",
+    rt_avg = "Average number of critics and audience members that liked the media on Rotten Tomatoes",
+    rt_diff = "Weighted difference between number of critics and audience members that liked the media on Rotten Tomatoes",
     popular = "Popularity based on number of user likes on Letterboxd (low/mid/high)"
   )
 
@@ -101,10 +104,13 @@ label_superman <- function(df, use_sentinel = TRUE) {
         clark_height = -99,
         lois_height = -99,
         clark_height_in = -99,
+        clark_age = -99,
         lois_height_in = -99,
+        lois_age = -99,
+        age_diff = -99,
+        age_gap = -99,
         clark_grp = -99,
         height_diff = -99,
-        height_gap = -99,
         rt_critics_score = -99,
         rt_critic_count = -99,
         rt_audience_score = -99,
@@ -725,6 +731,144 @@ label_self_descriptive <- function(df, use_sentinel = TRUE) {
   if (use_sentinel) {
     for (var in names(df)[sapply(df, is.numeric)]) {
       if (-99 %in% df[[var]]) attr(df[[var]], "na_values") <- -99
+    }
+  }
+
+  df
+}
+
+#' Apply SPSS labels to the huskers dataset
+#'
+#' @param df The huskers data frame.
+#' @param use_sentinel If TRUE, replace NA with -99 and set as SPSS missing.
+#' @return A labelled data frame ready for haven::write_sav().
+#' @noRd
+label_huskers <- function(df, use_sentinel = TRUE) {
+
+  # ---- Variable labels -------------------------------------------------------
+  var_labels <- c(
+    date              = "Date the game was played",
+    time              = "Kickoff time (Central Time)",
+    season            = "Season (year)",
+    opp               = "Opponent",
+    site              = "Game location",
+    conference        = "Conference game",
+    opp_rank          = "Opponent ranking entering the game",
+    ne_rank           = "Nebraska ranking entering the game",
+    result            = "Game result",
+    opp_score         = "Opponent total score",
+    ne_score          = "Nebraska total score",
+    opp_score_q1      = "Opponent 1st quarter points",
+    opp_score_q2      = "Opponent 2nd quarter points",
+    opp_score_q3      = "Opponent 3rd quarter points",
+    opp_score_q4      = "Opponent 4th quarter points",
+    opp_score_ot      = "Opponent overtime points",
+    ne_score_q1       = "Nebraska 1st quarter points",
+    ne_score_q2       = "Nebraska 2nd quarter points",
+    ne_score_q3       = "Nebraska 3rd quarter points",
+    ne_score_q4       = "Nebraska 4th quarter points",
+    ne_score_ot       = "Nebraska overtime points",
+    opp_rush_att      = "Opponent rushing attempts",
+    opp_rush_yards    = "Opponent rushing yards",
+    ne_rush_att       = "Nebraska rushing attempts",
+    ne_rush_yards     = "Nebraska rushing yards",
+    opp_pass_comp     = "Opponent passing completions",
+    opp_pass_att      = "Opponent passing attempts",
+    opp_pass_yards    = "Opponent passing yards",
+    ne_pass_comp      = "Nebraska passing completions",
+    ne_pass_att       = "Nebraska passing attempts",
+    ne_pass_yards     = "Nebraska passing yards",
+    opp_first_downs   = "Opponent first downs",
+    ne_first_downs    = "Nebraska first downs",
+    opp_third_down_comp = "Opponent third down conversions",
+    opp_third_down_att  = "Opponent third down attempts",
+    ne_third_down_comp  = "Nebraska third down conversions",
+    ne_third_down_att   = "Nebraska third down attempts",
+    opp_fourth_down_comp = "Opponent fourth down conversions",
+    opp_fourth_down_att  = "Opponent fourth down attempts",
+    ne_fourth_down_comp  = "Nebraska fourth down conversions",
+    ne_fourth_down_att   = "Nebraska fourth down attempts",
+    opp_int           = "Opponent interceptions thrown",
+    opp_fum           = "Opponent fumbles lost",
+    ne_int            = "Nebraska interceptions thrown",
+    ne_fum            = "Nebraska fumbles lost",
+    opp_pen_num       = "Opponent number of penalties",
+    opp_pen_yards     = "Opponent penalty yards",
+    ne_pen_num        = "Nebraska number of penalties",
+    ne_pen_yards      = "Nebraska penalty yards",
+    opp_possession    = "Opponent time of possession (MM:SS)",
+    ne_possession     = "Nebraska time of possession (MM:SS)",
+    spread            = "Point spread (negative = Nebraska favored)",
+    total             = "Betting total (Over/Under)",
+    temp              = "Temperature at kickoff (Fahrenheit)",
+    humidity          = "Relative humidity at kickoff (0-1)",
+    wind_speed        = "Wind speed at kickoff (mph)",
+    wind_bearing      = "Wind direction at kickoff (degrees, 0=North)"
+  )
+
+  # ---- Value labels for categorical variables --------------------------------
+  result_labels <- c("Win" = "W", "Loss" = "L", "Tie" = "T")
+  site_labels   <- c("Home" = "home", "Away" = "away",
+                     "Neutral (home)" = "neutral-home",
+                     "Neutral (away)" = "neutral-away")
+  conference_labels <- c("Conference game" = 1, "Non-conference" = 0)
+
+  # ---- Apply labels ----------------------------------------------------------
+  for (col in names(var_labels)) {
+    if (col %in% names(df)) {
+      attr(df[[col]], "label") <- var_labels[[col]]
+    }
+  }
+
+  # Value labels
+  if ("result" %in% names(df)) {
+    df$result <- haven::labelled(df$result,
+                                 labels = c("Win" = "W", "Loss" = "L", "Tie" = "T"))
+  }
+
+  if ("site" %in% names(df)) {
+    df$site <- haven::labelled(df$site,
+                               labels = c("Home" = "home", "Away" = "away",
+                                          "Neutral (home)" = "neutral-home",
+                                          "Neutral (away)" = "neutral-away"))
+  }
+
+  if ("conference" %in% names(df)) {
+    df$conference <- as.integer(df$conference)
+    df$conference <- haven::labelled(df$conference,
+                                     labels = c("Non-conference" = 0L, "Conference game" = 1L))
+    attr(df$conference, "label") <- var_labels[["conference"]]
+  }
+
+  # ---- Sentinel missing values (-99) -----------------------------------------
+  if (use_sentinel) {
+    sentinel <- -99L
+
+    numeric_cols <- names(df)[sapply(df, is.numeric)]
+    for (col in numeric_cols) {
+      if (any(is.na(df[[col]]))) {
+        if (is.integer(df[[col]])) {
+          df[[col]][is.na(df[[col]])] <- sentinel
+          df[[col]] <- haven::labelled_spss(df[[col]],
+                                            labels = attr(df[[col]], "labels"),
+                                            na_values = sentinel,
+                                            label = attr(df[[col]], "label"))
+        } else {
+          df[[col]][is.na(df[[col]])] <- as.double(sentinel)
+          df[[col]] <- haven::labelled_spss(df[[col]],
+                                            labels = attr(df[[col]], "labels"),
+                                            na_values = as.double(sentinel),
+                                            label = attr(df[[col]], "label"))
+        }
+      }
+    }
+
+    # Handle character columns with NAs (time, opp_possession, ne_possession)
+    char_cols <- names(df)[sapply(df, is.character) | sapply(df, function(x) inherits(x, "haven_labelled"))]
+    for (col in char_cols) {
+      if (any(is.na(df[[col]]))) {
+        df[[col]][is.na(df[[col]])] <- "-99"
+      }
     }
   }
 
