@@ -1,4 +1,4 @@
-# psyc350data
+# psyc350data ![](reference/figures/logo.png)
 
 psyc350data provides cleaned, documented datasets for PSYC 350 lab
 exercises. All datasets are available as ready-to-use R tibbles and can
@@ -136,6 +136,8 @@ All available datasets for PSYC 350 labs and final projects
   : Superman Actor Data
 - [`superman_smes`](https://emmarshall.github.io/psych350data/reference/superman_smes.md)
   : Superman SMES Data
+- [`superman_movies`](https://emmarshall.github.io/psych350data/reference/superman_movies.md)
+  : Superman Movies Box Office Data
 - [`hot_ones`](https://emmarshall.github.io/psych350data/reference/hot_ones.md)
   : Hot Ones Guest Data
 - [`tip_jokes`](https://emmarshall.github.io/psych350data/reference/tip_jokes.md)
@@ -157,6 +159,13 @@ All available datasets for PSYC 350 labs and final projects
 - [`self_descriptive_data`](https://emmarshall.github.io/psych350data/reference/self_descriptive_data.md)
   : Self-Descriptive Survey Data
 
+## Data Utilities
+
+Functions for working with datasets
+
+- [`join_superman_data()`](https://emmarshall.github.io/psych350data/reference/join_superman_data.md)
+  : Join Superman Movies with Actor Data
+
 ## Generic Export Functions
 
 Export any dataset as an SPSS .sav file
@@ -176,6 +185,8 @@ Convenience functions to export individual datasets
   : Export Superman data as SPSS .sav file
 - [`export_superman_smes_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_smes_sav.md)
   : Export Superman SMES data as SPSS .sav file
+- [`export_superman_movies_sav()`](https://emmarshall.github.io/psych350data/reference/export_superman_movies_sav.md)
+  : Export Superman Movies data as SPSS .sav file
 - [`export_hot_ones_sav()`](https://emmarshall.github.io/psych350data/reference/export_hot_ones_sav.md)
   : Export Hot Ones data as SPSS .sav file
 - [`export_tip_jokes_sav()`](https://emmarshall.github.io/psych350data/reference/export_tip_jokes_sav.md)

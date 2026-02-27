@@ -181,10 +181,11 @@ To see all datasets you can export:
 
 ``` r
 list_datasets()
-#>  [1] "superman"              "superman_smes"         "hot_ones"             
-#>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
-#>  [7] "candy"                 "candy_simple"          "football"             
-#> [10] "huskers"               "interpersonal_data"    "self_descriptive_data"
+#>  [1] "superman"              "superman_smes"         "superman_movies"      
+#>  [4] "hot_ones"              "tip_jokes"             "mcu"                  
+#>  [7] "mock_jury"             "candy"                 "candy_simple"         
+#> [10] "football"              "huskers"               "interpersonal_data"   
+#> [13] "self_descriptive_data"
 ```
 
 ## Quick Reference: All Export Functions

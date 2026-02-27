@@ -1,4 +1,4 @@
-# psyc350data
+# psyc350data ![](reference/figures/logo.png)
 
 psyc350data provides cleaned, documented datasets for PSYC 350 lab
 exercises. All datasets are available as ready-to-use R tibbles and can
