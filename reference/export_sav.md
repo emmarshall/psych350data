@@ -1,6 +1,6 @@
 # Export a dataset as an SPSS .sav file
 
-Converts a psyc350data dataset to a labelled SPSS file with variable
+Converts a psych350data dataset to a labelled SPSS file with variable
 labels, value labels, and defined missing values (-99).
 
 ## Usage

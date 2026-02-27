@@ -1,6 +1,6 @@
-# List all available datasets in psyc350data
+# List all available datasets in psych350data
 
-List all available datasets in psyc350data
+List all available datasets in psych350data
 
 ## Usage
 

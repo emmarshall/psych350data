@@ -45,9 +45,9 @@ Export any dataset as an SPSS .sav file
 - [`export_sav()`](https://emmarshall.github.io/psych350data/reference/export_sav.md)
   : Export a dataset as an SPSS .sav file
 - [`export_all_sav()`](https://emmarshall.github.io/psych350data/reference/export_all_sav.md)
-  : Export all psyc350data datasets as SPSS .sav files
+  : Export all psych350data datasets as SPSS .sav files
 - [`list_datasets()`](https://emmarshall.github.io/psych350data/reference/list_datasets.md)
-  : List all available datasets in psyc350data
+  : List all available datasets in psych350data
 
 ## Dataset-Specific Export Functions
 

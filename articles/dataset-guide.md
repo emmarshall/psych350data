@@ -1,8 +1,8 @@
 # Dataset Reference Guide
 
 This guide provides a quick reference for every dataset in the
-psyc350data package, including variable descriptions, categorical coding
-schemes, available export functions, and suggested analyses.
+psych350data package, including variable descriptions, categorical
+coding schemes, available export functions, and suggested analyses.
 
 ------------------------------------------------------------------------
 

@@ -1,8 +1,8 @@
-# Getting Started with psyc350data
+# Getting Started with psych350data
 
 ## Overview
 
-The psyc350data package provides all the datasets you need for PSYC 350
+The psych350data package provides all the datasets you need for PSYC 350
 labs. Each dataset is pre-cleaned and ready to use — no downloading
 files, no import headaches. You can also export any dataset as a fully
 labeled SPSS (.sav) file with a single function call.
@@ -10,7 +10,7 @@ labeled SPSS (.sav) file with a single function call.
 ## Loading the Package
 
 ``` r
-library(psyc350data)
+library(psych350data)
 ```
 
 ## Browsing Available Datasets

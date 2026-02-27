@@ -1,6 +1,6 @@
-# Export all psyc350data datasets as SPSS .sav files
+# Export all psych350data datasets as SPSS .sav files
 
-Export all psyc350data datasets as SPSS .sav files
+Export all psych350data datasets as SPSS .sav files
 
 ## Usage
 

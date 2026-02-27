@@ -2,7 +2,7 @@
 
 ## Overview
 
-All psyc350data datasets can be exported as SPSS `.sav` files with full
+All psych350data datasets can be exported as SPSS `.sav` files with full
 metadata — variable labels, value labels, and user-defined missing
 values. This is useful when you need to work in SPSS for lab
 assignments.
@@ -10,7 +10,7 @@ assignments.
 ## Setup
 
 ``` r
-library(psyc350data)
+library(psych350data)
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'

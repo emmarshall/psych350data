@@ -7,4 +7,4 @@
 - [Exporting Datasets to
   SPSS](https://emmarshall.github.io/psych350data/articles/exporting-spss.md):
 - [Getting Started with
-  psyc350data](https://emmarshall.github.io/psych350data/articles/getting-started.md):
+  psych350data](https://emmarshall.github.io/psych350data/articles/getting-started.md):
