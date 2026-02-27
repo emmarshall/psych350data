@@ -28,6 +28,6 @@ usethis::use_data(football, overwrite = TRUE)
 
 # ============================================================================
 # To export as SPSS:
-#   library(psyc350data)
+#   library(psych350data)
 #   export_football_sav("football_data.sav")
 # ============================================================================

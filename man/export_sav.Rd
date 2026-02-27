@@ -23,7 +23,7 @@ as system-missing.}
 Invisibly returns the labelled data frame that was written.
 }
 \description{
-Converts a psyc350data dataset to a labelled SPSS file with variable labels,
+Converts a psych350data dataset to a labelled SPSS file with variable labels,
 value labels, and defined missing values (-99).
 }
 \examples{

@@ -21,12 +21,12 @@ join_superman_data <- function(movies = NULL, actors = NULL,
 
   if (is.null(movies)) {
     e <- new.env()
-    data("superman_movies", package = "psyc350data", envir = e)
+    data("superman_movies", package = "psych350data", envir = e)
     movies <- e$superman_movies
   }
   if (is.null(actors)) {
     e <- new.env()
-    data("superman", package = "psyc350data", envir = e)
+    data("superman", package = "psych350data", envir = e)
     actors <- e$superman
   }
 

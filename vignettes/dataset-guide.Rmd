@@ -11,10 +11,10 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-library(psyc350data)
+library(psych350data)
 ```
 
-This guide provides a quick reference for every dataset in the psyc350data package, including variable descriptions, categorical coding schemes, available export functions, and suggested analyses.
+This guide provides a quick reference for every dataset in the psych350data package, including variable descriptions, categorical coding schemes, available export functions, and suggested analyses.
 
 ---
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_spss.R
 \name{export_all_sav}
 \alias{export_all_sav}
-\title{Export all psyc350data datasets as SPSS .sav files}
+\title{Export all psych350data datasets as SPSS .sav files}
 \usage{
 export_all_sav(dir = ".", use_sentinel = TRUE)
 }
@@ -15,7 +15,7 @@ export_all_sav(dir = ".", use_sentinel = TRUE)
 Invisibly returns a named list of file paths created.
 }
 \description{
-Export all psyc350data datasets as SPSS .sav files
+Export all psych350data datasets as SPSS .sav files
 }
 \examples{
 \dontrun{

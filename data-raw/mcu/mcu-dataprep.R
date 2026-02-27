@@ -35,6 +35,6 @@ usethis::use_data(mcu, overwrite = TRUE)
 
 # ============================================================================
 # To export as SPSS:
-#   library(psyc350data)
+#   library(psych350data)
 #   export_mcu_sav("mcu_data.sav")
 # ============================================================================

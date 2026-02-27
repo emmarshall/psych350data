@@ -2,7 +2,7 @@
 % Please edit documentation in R/make_spss.R
 \name{list_datasets}
 \alias{list_datasets}
-\title{List all available datasets in psyc350data}
+\title{List all available datasets in psych350data}
 \usage{
 list_datasets()
 }
@@ -10,7 +10,7 @@ list_datasets()
 Character vector of dataset names.
 }
 \description{
-List all available datasets in psyc350data
+List all available datasets in psych350data
 }
 \examples{
 list_datasets()

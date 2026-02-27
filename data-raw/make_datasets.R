@@ -1,5 +1,5 @@
 # ============================================================================
-# Master build script: create all .rda files for psyc350data
+# Master build script: create all .rda files for psych350data
 #
 # Run from the package root directory:
 #   source("data-raw/make_datasets.R")

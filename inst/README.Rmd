@@ -11,12 +11,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-# psyc350data <img src="man/figures/logo.png" align="right" height="139" />
+# psych350data <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-psyc350data provides cleaned, documented datasets for PSYC 350 lab exercises. All datasets are available as ready-to-use R tibbles and can be exported as fully labeled SPSS (.sav) files with variable labels, value labels, and defined missing values.
+psych350data provides cleaned, documented datasets for PSYC 350 lab exercises. All datasets are available as ready-to-use R tibbles and can be exported as fully labeled SPSS (.sav) files with variable labels, value labels, and defined missing values.
 
 ## Installation
 
@@ -89,7 +89,7 @@ gitcreds::gitcreds_set()
 
 ## Quick Start
 ```{r example}
-library(psyc350data)
+library(psych350data)
 
 # See all available datasets
 list_datasets()
@@ -139,9 +139,9 @@ The exported .sav files include:
 # https://emmarshall.github.io/psych350data/
 
 # Package vignettes
-vignette("getting-started", package = "psyc350data")
-vignette("exporting-spss", package = "psyc350data")
-vignette("dataset-guide", package = "psyc350data")
+vignette("getting-started", package = "psych350data")
+vignette("exporting-spss", package = "psych350data")
+vignette("dataset-guide", package = "psych350data")
 
 # View documentation for any dataset
 ?superman

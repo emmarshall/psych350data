@@ -1,6 +1,6 @@
 #' Export a dataset as an SPSS .sav file
 #'
-#' Converts a psyc350data dataset to a labelled SPSS file with variable labels,
+#' Converts a psych350data dataset to a labelled SPSS file with variable labels,
 #' value labels, and defined missing values (-99).
 #'
 #' @param dataset Character string naming the dataset, or the dataset object itself.
@@ -74,7 +74,7 @@ export_sav <- function(dataset, path = NULL, use_sentinel = TRUE) {
 }
 
 
-#' Export all psyc350data datasets as SPSS .sav files
+#' Export all psych350data datasets as SPSS .sav files
 #'
 #' @param dir Directory to save all files. Created if it doesn't exist.
 #' @param use_sentinel Logical. If TRUE, NA -> -99 with SPSS missing value codes.
@@ -103,7 +103,7 @@ export_all_sav <- function(dir = ".", use_sentinel = TRUE) {
 }
 
 
-#' List all available datasets in psyc350data
+#' List all available datasets in psych350data
 #'
 #' @return Character vector of dataset names.
 #' @export
@@ -238,7 +238,7 @@ get_dataset <- function(name) {
 
   # Load lazy-loaded data properly
   e <- new.env()
-  data(list = name, package = "psyc350data", envir = e)
+  data(list = name, package = "psych350data", envir = e)
   e[[name]]
 }
 

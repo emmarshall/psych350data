@@ -1,9 +1,9 @@
 # ============================================================================
-# Build all datasets for psyc350data
+# Build all datasets for psych350data
 # Run from package root: source("data-raw/build_all.R")
 # ============================================================================
 
-cat("Building all psyc350data datasets...\n\n")
+cat("Building all psych350data datasets...\n\n")
 
 scripts <- c(
   "data-raw/superman/superman-dataprep.R",
@@ -27,5 +27,5 @@ cat("====================================\n")
 cat("Available datasets:\n")
 cat(paste(" -", list.files("data", pattern = "\\.rda$")), sep = "\n")
 cat("\n\nTo export all as SPSS after installing:\n")
-cat('  library(psyc350data)\n')
+cat('  library(psych350data)\n')
 cat('  export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")\n')
