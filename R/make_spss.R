@@ -111,7 +111,7 @@ export_all_sav <- function(dir = ".", use_sentinel = TRUE) {
 #' @examples
 #' list_datasets()
 list_datasets <- function() {
-  c("superman", "superman_smes", "hot_ones", "tip_jokes",
+  c("superman", "superman_smes", "superman_movies", "hot_ones", "tip_jokes",
     "mcu", "mock_jury", "candy", "candy_simple", "football", "huskers",
     "interpersonal_data", "self_descriptive_data")
 }
@@ -132,6 +132,14 @@ export_superman_sav <- function(path = "superman_data.sav", use_sentinel = TRUE)
 #' @export
 export_superman_smes_sav <- function(path = "superman_smes_data.sav", use_sentinel = TRUE) {
   export_sav("superman_smes", path = path, use_sentinel = use_sentinel)
+}
+
+#' Export Superman Movies data as SPSS .sav file
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_superman_movies_sav <- function(path = "superman_movies_data.sav", use_sentinel = TRUE) {
+  export_sav("superman_movies", path = path, use_sentinel = use_sentinel)
 }
 
 #' Export Hot Ones data as SPSS .sav file
@@ -227,12 +235,32 @@ get_dataset <- function(name) {
     stop("Unknown dataset '", name, "'. Available: ",
          paste(valid, collapse = ", "), call. = FALSE)
   }
-  get(name, envir = asNamespace("psyc350data"))
+
+  # Load lazy-loaded data properly
+  e <- new.env()
+  data(list = name, package = "psyc350data", envir = e)
+  e[[name]]
 }
 
 #' @noRd
 apply_spss_metadata <- function(df, name, use_sentinel = TRUE) {
-  fn_name <- paste0("label_", name)
-  label_fn <- get(fn_name, envir = asNamespace("psyc350data"))
+  label_fn <- switch(
+    name,
+    "superman" = label_superman,
+    "superman_smes" = label_superman_smes,
+    "superman_movies" = label_superman_movies,
+    "hot_ones" = label_hot_ones,
+    "tip_jokes" = label_tip_jokes,
+    "mcu" = label_mcu,
+    "mock_jury" = label_mock_jury,
+    "candy" = label_candy,
+    "candy_simple" = label_candy_simple,
+    "football" = label_football,
+    "huskers" = label_huskers,
+    "interpersonal_data" = label_interpersonal,
+    "self_descriptive_data" = label_self_descriptive,
+    stop("Unknown dataset: ", name, call. = FALSE)
+  )
+
   label_fn(df, use_sentinel = use_sentinel)
 }

@@ -171,6 +171,100 @@ label_superman <- function(df, use_sentinel = TRUE) {
   df
 }
 
+# ---- Superman Movies --------------------------------------------------------
+
+#' @noRd
+label_superman_movies <- function(df, use_sentinel = TRUE) {
+  # Step 1: Convert character categorical variables to numeric codes
+  df <- df |>
+    dplyr::mutate(
+      mpaa = dplyr::case_match(
+        mpaa,
+        "G" ~ 1,
+        "PG" ~ 2,
+        "PG-13" ~ 3,
+        "R" ~ 4,
+        .default = NA_real_
+      ),
+      budget_cat = dplyr::case_match(
+        budget_cat,
+        "Low" ~ 1,
+        "Medium" ~ 2,
+        "High" ~ 3,
+        .default = NA_real_
+      ),
+      box_office_cat = dplyr::case_match(
+        box_office_cat,
+        "Low" ~ 1,
+        "Medium" ~ 2,
+        "High" ~ 3,
+        .default = NA_real_
+      )
+    )
+
+  # Step 2: Replace NA with -99 in numeric columns
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric),
+                      \(x) dplyr::if_else(is.na(x), -99, x)),
+        dplyr::across(dplyr::where(is.character),
+                      \(x) dplyr::if_else(is.na(x) | x == "", "-99", x))
+      )
+  }
+
+  # Step 3: Apply value labels
+  df$mpaa <- labelled::labelled(
+    df$mpaa,
+    labels = c("G" = 1, "PG" = 2, "PG-13" = 3, "R" = 4)
+  )
+
+  df$budget_cat <- labelled::labelled(
+    df$budget_cat,
+    labels = c("Low (<$50M)" = 1, "Medium ($50-150M)" = 2, "High (>$150M)" = 3)
+  )
+
+  df$box_office_cat <- labelled::labelled(
+    df$box_office_cat,
+    labels = c("Low (<$100M)" = 1, "Medium ($100-500M)" = 2, "High (>$500M)" = 3)
+  )
+
+  # Step 4: Apply variable labels
+  labelled::var_label(df) <- list(
+    imdb_id = "IMDb title ID",
+    title = "Movie title",
+    year = "Release year",
+    description = "Movie description/tagline",
+    domestic_gross = "Domestic box office gross (millions USD)",
+    domestic_pct = "Domestic percentage of worldwide gross",
+    international_gross = "International box office gross (millions USD)",
+    international_pct = "International percentage of worldwide gross",
+    worldwide_gross = "Worldwide box office gross (millions USD)",
+    distributor = "Domestic distributor",
+    opening_weekend = "Domestic opening weekend gross (millions USD)",
+    budget = "Production budget (millions USD)",
+    release_date = "Earliest release date",
+    mpaa = "MPAA rating",
+    runtime_min = "Runtime in minutes",
+    genres = "Genres (comma-separated)",
+    poster_url = "Movie poster URL (low resolution)",
+    poster_url_hires = "Movie poster URL (high resolution)",
+    clark_actor = "Actor playing Clark Kent/Superman",
+    roi = "Return on investment ((worldwide - budget) / budget)",
+    budget_cat = "Budget category",
+    box_office_cat = "Box office success category"
+  )
+
+  # Step 5: Set -99 as missing values
+  if (use_sentinel) {
+    numeric_vars <- names(df)[sapply(df, is.numeric)]
+    for (var in numeric_vars) {
+      df <- labelled::set_na_values(df, !!rlang::sym(var) := -99)
+    }
+  }
+
+  df
+}
 
 # ---- Hot Ones ---------------------------------------------------------------
 

@@ -20,16 +20,56 @@ psyc350data provides cleaned, documented datasets for PSYC 350 lab exercises. Al
 
 ## Installation
 
-Install from GitHub using [pak](https://pak.r-lib.org/):
+### Install from GitHub (recommended)
+
+To install you need to first set up GitHub authentication first.
+
+#### Step 1: Configure GitHub credentials (one-time setup)
+```{r, eval = FALSE}
+# Install required packages if needed
+install.packages(c("gitcreds", "usethis"))
+
+# Check if credentials are already configured
+gitcreds::gitcreds_get()
+
+# If not configured, create a Personal Access Token:
+usethis::create_github_token()  
+# This opens GitHub with the correct scopes pre-selected.
+# Generate the token, copy it, then run:
+
+gitcreds::gitcreds_set()
+# Paste your token when prompted
+```
+
+#### Step 2: Install the package
+
 ```{r eval = FALSE}
 # install.packages("pak")
 pak::pak("emmarshall/psych350data")
 ```
 
-Or with devtools:
-```{r eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("emmarshall/psych350data")
+
+### Install from a local source
+
+If you have a local copy of the package (e.g., a `.tar.gz` file or a cloned repo), you can install it with:
+```{r, eval = FALSE}
+# From a .tar.gz file
+pak::pak("local::path/to/psych350data_0.1.0.tar.gz")
+
+# From a local directory
+pak::pak("local::path/to/psych350data")
+```
+
+
+### Troubleshooting authentication
+
+If you encounter authentication errors:
+```{r, eval = FALSE}
+# Check your current GitHub configuration
+usethis::git_sitrep()
+
+# Reset and reconfigure credentials
+gitcreds::gitcreds_set()
 ```
 
 ## Available Datasets

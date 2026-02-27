@@ -1,33 +1,40 @@
 # ============================================================================
-# Candy Rankings Data (Full and Simplified)
-# Source: FiveThirtyEight candy power rankings
+# Football Concussion Brain Data
 # ============================================================================
 
-library(readxl)
 library(dplyr)
+library(readxl)
 library(usethis)
 library(here)
 
-source_file <- here::here("data-raw", "candy", "candy_data.xlsx")
+source_dir <- here::here("data-raw", "source_data")
 
-candy_raw <- read_excel(source_file, sheet = "data")
+if (file.exists(file.path(source_dir, "football-concussions.xlsx"))) {
 
-candy <- candy_raw |>
-  select(-starts_with("...")) |>
-  select(-any_of("rownames")) |>
-  select(where(~!all(is.na(.)))) |>
-  tibble::as_tibble()
+  football_raw <- read_excel(file.path(source_dir, "football-concussions.xlsx"), sheet = "football")
 
-usethis::use_data(candy, overwrite = TRUE)
+  football_raw <- football_raw |>
+    select(-any_of("rownames"))
 
-candy_simple <- candy |>
-  select(competitorname, chocolate, sugarpercent, pricepercent, winpercent)
+  football <- football_raw |>
+    mutate(
+      # Keep group as string
+      group = case_match(
+        group,
+        "control" ~ "Control",
+        "fb_no_concuss" ~ "Football no concussion",
+        "fb_concuss" ~ "Football with concussion",
+        1 ~ "Control",
+        2 ~ "Football no concussion",
+        3 ~ "Football with concussion",
+        .default = NA_character_
+      )
+    ) |>
+    tibble::as_tibble()
 
-usethis::use_data(candy_simple, overwrite = TRUE)
+  usethis::use_data(football, overwrite = TRUE)
+  cat("Created: football\n")
 
-# ============================================================================
-# To export as SPSS:
-#   library(psyc350data)
-#   export_candy_sav("candy_data.sav")
-#   export_candy_simple_sav("candy_simple_data.sav")
-# ============================================================================
+} else {
+  warning("football-concussions.xlsx not found in ", source_dir, " - skipping football dataset")
+}

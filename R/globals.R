@@ -1,3 +1,7 @@
+#' @importFrom rlang :=
+#' @importFrom utils data
+NULL
+
 # Suppress R CMD check NOTEs for column names used in dplyr/labelled pipelines
 utils::globalVariables(c(
   # interpersonal + self_descriptive labels
@@ -17,5 +21,15 @@ utils::globalVariables(c(
   "SHU_6", "SHU_7", "SHU_8", "SHU_9", "SHU_10",
   "views", "likes", "comments",
   # candy_simple labels
-  "competitorname", "chocolate", "sugarpercent", "pricepercent", "winpercent"
+  "competitorname", "chocolate", "sugarpercent", "pricepercent", "winpercent",
+  # join_superman_data / superman labels
+  "clark_actor", "clark_height", "clark_height_in", "clark_age", "clark_grp",
+  "lois_actor", "lois_height", "lois_height_in", "lois_age",
+  "height_diff", "age_diff", "age_grp",
+  "rt_critics_score", "rt_audience_score", "rt_avg", "tomatometer",
+  "ldb_likes", "ldb_scores", "popular",
+  # superman_movies labels
+  "mpaa", "budget_cat", "box_office_cat",
+  # labelling function reference
+  "label_superman_smes"
 ))

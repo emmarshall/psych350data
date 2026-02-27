@@ -397,3 +397,44 @@
 #'   from undergraduate psychology students.
 "self_descriptive_data"
 
+
+#' Superman Movies Box Office Data
+#'
+#' Box office and production data for Superman theatrical films,
+#' including budget, domestic and international grosses, and MPAA ratings.
+#'
+#' @format A tibble with variables:
+#' \describe{
+#'   \item{imdb_id}{IMDb title ID (e.g., "tt0078346")}
+#'   \item{title}{Movie title}
+#'   \item{year}{Release year}
+#'   \item{description}{Movie description/tagline}
+#'   \item{domestic_gross}{Domestic box office gross (millions USD)}
+#'   \item{domestic_pct}{Domestic percentage of worldwide gross}
+#'   \item{international_gross}{International box office gross (millions USD)}
+#'   \item{international_pct}{International percentage of worldwide gross}
+#'   \item{worldwide_gross}{Worldwide box office gross (millions USD)}
+#'   \item{distributor}{Domestic distributor}
+#'   \item{opening_weekend}{Domestic opening weekend gross (millions USD)}
+#'   \item{budget}{Production budget (millions USD)}
+#'   \item{release_date}{Earliest release date}
+#'   \item{mpaa}{MPAA rating (G, PG, PG-13, R)}
+#'   \item{runtime_min}{Runtime in minutes}
+#'   \item{genres}{Genres (space-separated)}
+#'   \item{poster_url}{Movie poster URL (low resolution)}
+#'   \item{poster_url_hires}{Movie poster URL (high resolution)}
+#'   \item{clark_actor}{Actor playing Clark Kent/Superman (for joining with superman dataset)}
+#'   \item{roi}{Return on investment ((worldwide - budget) / budget)}
+#'   \item{budget_cat}{Budget category: Low (<$50M), Medium ($50-150M), High (>$150M)}
+#'   \item{box_office_cat}{Box office category: Low (<$100M), Medium ($100-500M), High (>$500M)}
+#' }
+#'
+#' @source IMDb Box Office Mojo
+#'
+#' @examples
+#' \dontrun{
+#' superman_movies
+#' combined <- join_superman_data()
+#' combined |> export_sav(path = "superman_combined.sav")
+#' }
+"superman_movies"

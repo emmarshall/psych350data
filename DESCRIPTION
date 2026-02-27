@@ -13,7 +13,8 @@ Depends:
 Imports:
     haven,
     labelled,
-    dplyr
+    dplyr,
+    rlang
 Suggests:
     readxl,
     tidyr,

@@ -9,8 +9,8 @@
 #' @param seed Random seed for reproducibility. Default is 147.
 #'
 #' @return A tibble with \code{n} rows and 33 variables with \code{NA} for
-#'   missing values. Use \code{label_interpersonal()} to apply SPSS labels
-#'   and \code{haven::write_sav()} to export.
+#'   missing values and string values for categorical variables.
+#'   Use \code{export_interpersonal_sav()} to export to SPSS.
 #'
 #' @export
 #'
@@ -19,8 +19,7 @@
 #' head(dat)
 #'
 #' # Export to SPSS:
-#' # labelled_dat <- label_interpersonal(dat)
-#' # haven::write_sav(labelled_dat, "interpersonal_data.sav")
+#' # export_interpersonal_sav("interpersonal_data.sav")
 simulate_interpersonal <- function(n = 574, seed = 147) {
   set.seed(seed)
 
@@ -48,11 +47,10 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
   # STEP 1: GENERATE CORRELATED DEMOGRAPHICS
   # ============================================================
 
-
   # Race (predominantly white rural state university)
   race_vec <- sample(
-    c("Asian", "Black", "Indigenous, Aboriginal, or First Nations",
-      "Latino or Hispanic", "Middle Eastern", "White", "Other"),
+    c("Asian", "Black", "Indigenous/Aboriginal/First Nations",
+      "Latino/Hispanic", "Middle Eastern", "White", "Other"),
     n, replace = TRUE,
     prob = c(0.04, 0.06, 0.03, 0.07, 0.01, 0.77, 0.02)
   )
@@ -62,9 +60,9 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
     probs <- switch(r,
                     "White" = c(0.30, 0.02, 0.33, 0.32, 0.03),
                     "Black" = c(0.42, 0.05, 0.32, 0.19, 0.02),
-                    "Latino or Hispanic" = c(0.40, 0.04, 0.34, 0.20, 0.02),
+                    "Latino/Hispanic" = c(0.40, 0.04, 0.34, 0.20, 0.02),
                     "Asian" = c(0.20, 0.02, 0.30, 0.42, 0.06),
-                    "Indigenous, Aboriginal, or First Nations" = c(0.45, 0.06, 0.30, 0.17, 0.02),
+                    "Indigenous/Aboriginal/First Nations" = c(0.45, 0.06, 0.30, 0.17, 0.02),
                     "Middle Eastern" = c(0.22, 0.02, 0.30, 0.40, 0.06),
                     "Other" = c(0.33, 0.03, 0.34, 0.27, 0.03)
     )
@@ -96,19 +94,17 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
     sample(c("Rural", "Small town", "Suburban", "Urban"), 1, prob = probs)
   }, character(1))
 
-  # Gender: Male=1, Female=2, Another=3
-  gender_code_vec <- sample(1:3, n, replace = TRUE, prob = c(0.48, 0.50, 0.02))
+  # Gender as string
+  gender_vec <- sample(c("Male", "Female", "Another"), n, replace = TRUE,
+                       prob = c(0.48, 0.50, 0.02))
 
   # Sexual orientation conditioned on gender
-  sexorient_vec <- vapply(gender_code_vec, function(g) {
-    probs <- if (g == 1) {
-      # Male
+  sexorient_vec <- vapply(gender_vec, function(g) {
+    probs <- if (g == "Male") {
       c(0.005, 0.02, 0.002, 0.03, 0.001, 0.008, 0.005, 0.005, 0.002, 0.92, 0.003)
-    } else if (g == 3) {
-      # Female
+    } else if (g == "Female") {
       c(0.01, 0.07, 0.008, 0.005, 0.03, 0.03, 0.015, 0.015, 0.008, 0.80, 0.01)
     } else {
-      # Another gender
       c(0.05, 0.15, 0.05, 0.08, 0.08, 0.12, 0.10, 0.05, 0.05, 0.20, 0.07)
     }
     sample(c("Asexual", "Bisexual", "Demisexual", "Gay", "Lesbian", "Pansexual",
@@ -160,8 +156,8 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
 
   # Family income conditioned on famclass
   faminc_vec <- as.integer(dplyr::case_when(
-    famclass_vec == "Lower class"        ~ round(stats::rnorm(n, mean = 20000, sd = 5000)) |> pmax(10000),
-    famclass_vec == "Working class"      ~ round(stats::rnorm(n, mean = 35000, sd = 10000)) |> pmax(15000),
+    famclass_vec == "Lower class" ~ round(stats::rnorm(n, mean = 20000, sd = 5000)) |> pmax(10000),
+    famclass_vec == "Working class" ~ round(stats::rnorm(n, mean = 35000, sd = 10000)) |> pmax(15000),
     famclass_vec == "Lower middle class" ~ round(stats::rnorm(n, mean = 60000, sd = 15000)) |> pmax(25000),
     famclass_vec == "Upper middle class" ~ round(stats::rnorm(n, mean = 120000, sd = 30000)) |> pmax(60000),
     famclass_vec == "Upper class" ~ ifelse(
@@ -201,8 +197,8 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
     probs <- probs / sum(probs)
 
     sample(c("In a monogamous relationship",
-             "In a polyamorous relationship (multiple relationships with the consent of participants)",
-             "In multiple relationships (without those involved knowing about each other)",
+             "In a polyamorous relationship",
+             "In multiple relationships",
              "Not in a relationship",
              "I prefer not to answer"),
            1, prob = probs)
@@ -225,8 +221,8 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
   # Relationship length
   rlength_vec <- as.integer(dplyr::case_when(
     relsp_vec == "In a monogamous relationship" ~ round(stats::rnorm(n, mean = 5, sd = 8)),
-    relsp_vec == "In a polyamorous relationship (multiple relationships with the consent of participants)" ~ round(stats::rnorm(n, mean = 6, sd = 6)),
-    relsp_vec == "In multiple relationships (without those involved knowing about each other)" ~ round(stats::rnorm(n, mean = 8, sd = 5)),
+    relsp_vec == "In a polyamorous relationship" ~ round(stats::rnorm(n, mean = 6, sd = 6)),
+    relsp_vec == "In multiple relationships" ~ round(stats::rnorm(n, mean = 8, sd = 5)),
     relsp_vec == "Not in a relationship" ~ round(stats::rnorm(n, mean = 3, sd = 5)),
     TRUE ~ 0
   ) |> pmax(1) |> pmin(60))
@@ -235,9 +231,9 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
   serious_vec <- as.integer(dplyr::case_when(
     relsp_vec == "In a monogamous relationship" ~
       sample(1:7, n, replace = TRUE, prob = c(0.05, 0.1, 0.15, 0.2, 0.2, 0.15, 0.15)),
-    relsp_vec == "In a polyamorous relationship (multiple relationships with the consent of participants)" ~
+    relsp_vec == "In a polyamorous relationship" ~
       sample(1:7, n, replace = TRUE, prob = c(0.1, 0.15, 0.2, 0.2, 0.15, 0.1, 0.1)),
-    relsp_vec == "In multiple relationships (without those involved knowing about each other)" ~
+    relsp_vec == "In multiple relationships" ~
       sample(1:7, n, replace = TRUE, prob = c(0.2, 0.2, 0.2, 0.15, 0.1, 0.1, 0.05)),
     TRUE ~ NA_real_
   ))
@@ -246,9 +242,9 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
   numrels_vec <- as.integer(dplyr::case_when(
     relsp_vec == "In a monogamous relationship" ~
       pmax(1, stats::rbinom(n, size = 10, prob = 0.3)),
-    relsp_vec == "In a polyamorous relationship (multiple relationships with the consent of participants)" ~
+    relsp_vec == "In a polyamorous relationship" ~
       pmax(2, stats::rpois(n, lambda = 3)),
-    relsp_vec == "In multiple relationships (without those involved knowing about each other)" ~
+    relsp_vec == "In multiple relationships" ~
       pmax(2, stats::rpois(n, lambda = 4)),
     relsp_vec == "Not in a relationship" ~
       sample(0:10, n, replace = TRUE, prob = c(0.7, rep(0.03, 10))),
@@ -322,120 +318,48 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
   lsas <- as.integer(round(pmax(24, pmin(96, lsas_base))))
 
   # ============================================================
-  # STEP 4: ENCODE CATEGORICAL TO NUMERIC
-  # ============================================================
-
-  sexorient_num <- dplyr::case_when(
-    sexorient_vec == "Asexual" ~ 1L,
-    sexorient_vec == "Bisexual" ~ 2L,
-    sexorient_vec == "Demisexual" ~ 3L,
-    sexorient_vec == "Gay" ~ 4L,
-    sexorient_vec == "Lesbian" ~ 5L,
-    sexorient_vec == "Pansexual" ~ 6L,
-    sexorient_vec == "Queer" ~ 7L,
-    sexorient_vec == "Questioning" ~ 8L,
-    sexorient_vec == "Sexually fluid" ~ 9L,
-    sexorient_vec == "Straight or heterosexual" ~ 10L,
-    sexorient_vec == "Other" ~ 11L
-  )
-
-  race_code <- dplyr::case_when(
-    race_vec == "Asian" ~ 1L,
-    race_vec == "Black" ~ 2L,
-    race_vec == "Indigenous, Aboriginal, or First Nations" ~ 3L,
-    race_vec == "Latino or Hispanic" ~ 4L,
-    race_vec == "Middle Eastern" ~ 5L,
-    race_vec == "White" ~ 6L,
-    race_vec == "Other" ~ 7L
-  )
-
-  hand_code <- dplyr::case_when(
-    hand_vec == "Right" ~ 1L,
-    hand_vec == "Left" ~ 2L,
-    hand_vec == "Both" ~ 3L
-  )
-
-  community_code <- dplyr::case_when(
-    community_vec == "Rural" ~ 1L,
-    community_vec == "Small town" ~ 2L,
-    community_vec == "Suburban" ~ 3L,
-    community_vec == "Urban" ~ 4L
-  )
-
-  parentedu_code <- dplyr::case_when(
-    parentedu_vec == "No" ~ 0L,
-    parentedu_vec == "Yes" ~ 1L
-  )
-
-  famclass_code <- dplyr::case_when(
-    famclass_vec == "Working class" ~ 1L,
-    famclass_vec == "Lower class" ~ 2L,
-    famclass_vec == "Lower middle class" ~ 3L,
-    famclass_vec == "Upper middle class" ~ 4L,
-    famclass_vec == "Upper class" ~ 5L
-  )
-
-  greek_in_code <- dplyr::case_when(
-    greek_in_vec == "Independent" ~ 1L,
-    greek_in_vec == "Greek" ~ 2L
-  )
-
-  campus_code <- dplyr::case_when(
-    campus_vec == "No" ~ 0L,
-    campus_vec == "Yes" ~ 1L
-  )
-
-  relsp_code <- dplyr::case_when(
-    relsp_vec == "In a monogamous relationship" ~ 1L,
-    relsp_vec == "In a polyamorous relationship (multiple relationships with the consent of participants)" ~ 2L,
-    relsp_vec == "In multiple relationships (without those involved knowing about each other)" ~ 3L,
-    relsp_vec == "Not in a relationship" ~ 4L,
-    relsp_vec == "I prefer not to answer" ~ 5L
-  )
-
-  # ============================================================
-  # STEP 5: ASSEMBLE TIBBLE
+  # STEP 4: ASSEMBLE TIBBLE (with string categorical variables)
   # ============================================================
 
   dat <- tibble::tibble(
-    age      = as.integer(age_vec),
-    gender   = gender_code_vec,
-    sexorient = sexorient_num,
-    race     = race_code,
-    hand     = hand_code,
-    community = community_code,
-    parentedu = parentedu_code,
-    famclass = famclass_code,
-    faminc   = faminc_vec,
-    numsib   = numsib_vec,
-    move     = move_vec,
-    clsfrn   = clsfrn_vec,
-    clsfrlst = clsfrlst_vec,
-    greek_in = greek_in_code,
-    campus   = campus_code,
-    relsp    = relsp_code,
-    rlength  = rlength_vec,
-    serious  = serious_vec,
-    numrels  = numrels_vec,
-    gcb      = gcb,
-    datdaq   = datdaq,
-    assrtdaq = assrtdaq,
-    emorel   = emorel,
-    lacksc   = lacksc,
-    auto     = auto,
-    perspec  = perspec,
-    fantasy  = fantasy,
-    empath   = empath,
-    distress = distress,
-    polsoc   = polsoc,
-    npolsoc  = npolsoc,
-    risc     = risc,
-    lsas     = lsas
+    age       = as.integer(age_vec),
+    gender    = gender_vec,
+    sexorient = sexorient_vec,
+    race      = race_vec,
+    hand      = hand_vec,
+    community = community_vec,
+    parentedu = parentedu_vec,
+    famclass  = famclass_vec,
+    faminc    = faminc_vec,
+    numsib    = numsib_vec,
+    move      = move_vec,
+    clsfrn    = clsfrn_vec,
+    clsfrlst  = clsfrlst_vec,
+    greek_in  = greek_in_vec,
+    campus    = campus_vec,
+    relsp     = relsp_vec,
+    rlength   = rlength_vec,
+    serious   = serious_vec,
+    numrels   = numrels_vec,
+    gcb       = gcb,
+    datdaq    = datdaq,
+    assrtdaq  = assrtdaq,
+    emorel    = emorel,
+    lacksc    = lacksc,
+    auto      = auto,
+    perspec   = perspec,
+    fantasy   = fantasy,
+    empath    = empath,
+    distress  = distress,
+    polsoc    = polsoc,
+    npolsoc   = npolsoc,
+    risc      = risc,
+    lsas      = lsas
   )
 
-# ============================================================
-  # Make ~2% of data MISSING VALUES (NA) use labelling function to set to -99 for spss .sav
-# ============================================================
+  # ============================================================
+  # Inject ~2% missing values
+  # ============================================================
 
   dat <- dat |>
     dplyr::mutate(dplyr::across(dplyr::everything(), inject_na))
@@ -447,3 +371,4 @@ simulate_interpersonal <- function(n = 574, seed = 147) {
 # devtools::load_all() first so simulate_interpersonal() is available
 interpersonal_data <- simulate_interpersonal(n = 574, seed = 147)
 usethis::use_data(interpersonal_data, overwrite = TRUE)
+cat("Created: interpersonal_data\n")

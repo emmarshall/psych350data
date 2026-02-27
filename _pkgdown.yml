@@ -8,19 +8,17 @@ template:
     primary: "#ff6361"
     base_font: {google: "Sora"}
     heading_font: {google: "Sora"}
-
 navbar:
   structure:
     left: [intro, reference, articles]
     right: [search, github]
-
-
 reference:
   - title: Datasets
     desc: All available datasets for PSYC 350 labs and final projects
     contents:
       - superman
       - superman_smes
+      - superman_movies
       - hot_ones
       - tip_jokes
       - mcu
@@ -31,6 +29,10 @@ reference:
       - huskers
       - interpersonal_data
       - self_descriptive_data
+  - title: Data Utilities
+    desc: Functions for working with datasets
+    contents:
+      - join_superman_data
   - title: Generic Export Functions
     desc: Export any dataset as an SPSS .sav file
     contents:
@@ -42,6 +44,7 @@ reference:
     contents:
       - export_superman_sav
       - export_superman_smes_sav
+      - export_superman_movies_sav
       - export_hot_ones_sav
       - export_tip_jokes_sav
       - export_mcu_sav

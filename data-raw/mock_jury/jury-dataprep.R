@@ -1,38 +1,51 @@
 # ============================================================================
 # Mock Jury Data
-# Source: Plaster, M. E. (1989). East Carolina University.
 # ============================================================================
 
-library(readxl)
 library(dplyr)
+library(readxl)
 library(usethis)
 library(here)
 
-source_file <- here::here("data-raw", "mock_jury", "mock_jury.xlsx")
+source_dir <- here::here("data-raw", "source_data")
 
-mockjury_raw <- read_excel(source_file, sheet = "data")
+if (file.exists(file.path(source_dir, "mock-jury.xlsx"))) {
 
-mockjury_raw <- mockjury_raw |>
-  select(-starts_with("...")) |>
-  select(-any_of("rownames")) |>
-  select(where(~!all(is.na(.))))
+  mockjury_raw <- read_excel(file.path(source_dir, "mock-jury.xlsx"), sheet = "data")
 
-mock_jury <- mockjury_raw |>
-  mutate(
-    attr = case_when(
-      attr == "Beautiful" ~ 1, attr == "Average" ~ 2,
-      attr == "Unattractive" ~ 3, TRUE ~ NA_real_
-    ),
-    crime = case_when(
-      crime == "Burglary" ~ 1, crime == "Swindle" ~ 2, TRUE ~ NA_real_
-    )
-  ) |>
-  tibble::as_tibble()
+  mockjury_raw <- mockjury_raw |>
+    select(-starts_with("...")) |>
+    select(-any_of("rownames")) |>
+    select(where(\(x) !all(is.na(x))))
 
-usethis::use_data(mock_jury, overwrite = TRUE)
+  mock_jury <- mockjury_raw |>
+    mutate(
+      # Keep attr as string
+      attr = case_match(
+        attr,
+        "Beautiful" ~ "Beautiful",
+        "Average" ~ "Average",
+        "Unattractive" ~ "Unattractive",
+        1 ~ "Beautiful",
+        2 ~ "Average",
+        3 ~ "Unattractive",
+        .default = NA_character_
+      ),
+      # Keep crime as string
+      crime = case_match(
+        crime,
+        "Burglary" ~ "Burglary",
+        "Swindle" ~ "Swindle",
+        1 ~ "Burglary",
+        2 ~ "Swindle",
+        .default = NA_character_
+      )
+    ) |>
+    tibble::as_tibble()
 
-# ============================================================================
-# To export as SPSS:
-#   library(psyc350data)
-#   export_mock_jury_sav("mock_jury_data.sav")
-# ============================================================================
+  usethis::use_data(mock_jury, overwrite = TRUE)
+  cat("Created: mock_jury\n")
+
+} else {
+  warning("mock-jury.xlsx not found in ", source_dir, " - skipping mock_jury dataset")
+}
