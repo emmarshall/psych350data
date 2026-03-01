@@ -74,33 +74,33 @@ label_superman_combined <- function(df, use_sentinel = TRUE) {
   if ("clark_grp" %in% names(df)) {
     df <- df |>
       dplyr::mutate(
-        clark_grp = dplyr::case_match(
+        clark_grp = dplyr::recode_values(
           clark_grp,
           "Under 6ft" ~ 1,
           "6ft or taller" ~ 2,
           .default = NA_real_
         ),
-        height_gap = dplyr::case_match(
+        height_gap = dplyr::recode_values(
           height_gap,
           "Minimal" ~ 1,
           "Average" ~ 2,
           "Big" ~ 3,
           .default = NA_real_
         ),
-        age_grp = dplyr::case_match(
+        age_grp = dplyr::recode_values(
           age_grp,
           "Minimal" ~ 1,
           "Average" ~ 2,
           "Big" ~ 3,
           .default = NA_real_
         ),
-        tomatometer = dplyr::case_match(
+        tomatometer = dplyr::recode_values(
           tomatometer,
           "Rotten" ~ 1,
           "Fresh" ~ 2,
           .default = NA_real_
         ),
-        popular = dplyr::case_match(
+        popular = dplyr::recode_values(
           popular,
           "Low" ~ 1,
           "Mid" ~ 2,

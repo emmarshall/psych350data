@@ -29,7 +29,7 @@ utils::globalVariables(c(
   "rt_critics_score", "rt_audience_score", "rt_avg", "tomatometer",
   "ldb_likes", "ldb_scores", "popular",
   # superman_movies labels
-  "mpaa", "budget_cat", "box_office_cat",
+  "mpaa", "budget_cat", "box_office_cat", "budget2", "boxoffice2",
   # labelling function reference
   "label_superman_smes"
 ))

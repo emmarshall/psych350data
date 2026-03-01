@@ -19,7 +19,7 @@ target_n <- 47
 height_gap_sample <- sample(base_gaps, target_n, replace = TRUE)
 
 # Create numeric version for generating scores
-height_gap_numeric <- case_match(
+height_gap_numeric <- recode_values(
   height_gap_sample,
   "Minimal" ~ 1,
   "Average" ~ 2,

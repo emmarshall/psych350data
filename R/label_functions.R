@@ -37,6 +37,28 @@ safe_set_na_values <- function(df) {
   df
 }
 
+#' Apply SPSS metadata based on dataset name
+#' @noRd
+apply_spss_metadata <- function(df, dataset_name, use_sentinel = TRUE) {
+  switch(dataset_name,
+         "superman"            = label_superman(df, use_sentinel),
+         "superman_smes"       = label_superman_smes(df, use_sentinel),
+         "superman_movies"     = label_superman_movies(df, use_sentinel),
+         "superman_combined"   = label_superman_combined(df, use_sentinel),
+         "hot_ones"            = label_hot_ones(df, use_sentinel),
+         "tip_jokes"           = label_tip_jokes(df, use_sentinel),
+         "mcu"                 = label_mcu(df, use_sentinel),
+         "mock_jury"           = label_mock_jury(df, use_sentinel),
+         "candy"               = label_candy(df, use_sentinel),
+         "candy_simple"        = label_candy_simple(df, use_sentinel),
+         "football"            = label_football(df, use_sentinel),
+         "huskers"             = label_huskers(df, use_sentinel),
+         "interpersonal_data"  = label_interpersonal(df, use_sentinel),
+         "self_descriptive_data" = label_self_descriptive(df, use_sentinel),
+         stop("No labelling function for dataset: ", dataset_name, call. = FALSE)
+  )
+}
+
 # ---- Superman ---------------------------------------------------------------
 
 #' @noRd
@@ -363,6 +385,148 @@ label_superman_movies <- function(df, use_sentinel = TRUE) {
 
   df
 }
+
+#' @noRd
+label_superman_combined <- function(df, use_sentinel = TRUE) {
+  # Apply movie labels first
+  df <- label_superman_movies(df, use_sentinel = FALSE)
+
+  # Convert categorical actor variables to numeric
+  if ("clark_grp" %in% names(df) && is.character(df$clark_grp)) {
+    df <- df |>
+      dplyr::mutate(
+        clark_grp = clark_grp |> dplyr::recode_values(
+          "Under 6ft" ~ 1,
+          "6ft or taller" ~ 2,
+          default = NA_real_
+        ),
+        height_gap = height_gap |> dplyr::recode_values(
+          "Minimal" ~ 1,
+          "Average" ~ 2,
+          "Big" ~ 3,
+          default = NA_real_
+        ),
+        age_grp = age_grp |> dplyr::recode_values(
+          "Minimal" ~ 1,
+          "Average" ~ 2,
+          "Big" ~ 3,
+          default = NA_real_
+        ),
+        tomatometer = tomatometer |> dplyr::recode_values(
+          "Rotten" ~ 1,
+          "Fresh" ~ 2,
+          default = NA_real_
+        ),
+        popular = popular |> dplyr::recode_values(
+          "Low" ~ 1,
+          "Mid" ~ 2,
+          "High" ~ 3,
+          default = NA_real_
+        )
+      )
+
+    # Apply value labels
+    df$clark_grp <- labelled::labelled(
+      df$clark_grp,
+      labels = c("Under 6ft (<72 inches)" = 1, "6ft or taller (>=72 inches)" = 2)
+    )
+    df$height_gap <- labelled::labelled(
+      df$height_gap,
+      labels = c("Minimal (<6 inches)" = 1, "Average (6-8 inches)" = 2, "Big (>8 inches)" = 3)
+    )
+    df$age_grp <- labelled::labelled(
+      df$age_grp,
+      labels = c("Minimal (<2 years)" = 1, "Average (2-5 years)" = 2, "Big (>5 years)" = 3)
+    )
+    df$tomatometer <- labelled::labelled(
+      df$tomatometer,
+      labels = c("Rotten" = 1, "Fresh" = 2)
+    )
+    df$popular <- labelled::labelled(
+      df$popular,
+      labels = c("Low (<1,000 likes)" = 1, "Mid (1,000-100,000 likes)" = 2, "High (>100,000 likes)" = 3)
+    )
+  }
+
+  # Add 2-level variables for chi-square analysis
+  if ("budget_cat" %in% names(df)) {
+    df <- df |>
+      dplyr::mutate(
+        budget2 = dplyr::case_when(
+          budget_cat == "High" ~ 1,
+          budget_cat %in% c("Low", "Medium") ~ 2,
+          TRUE ~ NA_real_
+        ),
+        boxoffice2 = dplyr::case_when(
+          box_office_cat == "High" ~ 1,
+          box_office_cat %in% c("Low", "Medium") ~ 2,
+          TRUE ~ NA_real_
+        )
+      )
+
+    df$budget2 <- labelled::labelled(
+      df$budget2,
+      labels = c("High" = 1, "Low/Medium" = 2)
+    )
+    df$boxoffice2 <- labelled::labelled(
+      df$boxoffice2,
+      labels = c("High" = 1, "Low/Medium" = 2)
+    )
+  }
+
+  # Variable labels
+  var_labels <- list(
+    clark_height = "Height of Clark Kent/Superman actor (meters)",
+    clark_height_in = "Height of Clark Kent/Superman actor (inches)",
+    clark_age = "Age of Clark Kent/Superman actor at debut (years)",
+    clark_grp = "Clark height category",
+    lois_actor = "Actor playing Lois Lane",
+    lois_height = "Height of Lois Lane actor (meters)",
+    lois_height_in = "Height of Lois Lane actor (inches)",
+    lois_age = "Age of Lois Lane actor at debut (years)",
+    height_diff = "Height difference Clark minus Lois (inches)",
+    height_gap = "Height gap category",
+    age_diff = "Age difference between actors (years)",
+    age_grp = "Age difference category",
+    rt_critics_score = "Rotten Tomatoes critics score (0-100)",
+    rt_audience_score = "Rotten Tomatoes audience score (0-100)",
+    rt_avg = "Average of critics and audience RT scores",
+    tomatometer = "Rotten Tomatoes classification",
+    ldb_likes = "Letterboxd likes",
+    ldb_scores = "Letterboxd average rating (1-5 stars)",
+    popular = "Popularity category based on Letterboxd likes",
+    budget2 = "Budget Category (2 levels)",
+    boxoffice2 = "Box Office Category (2 levels)"
+  )
+
+  # Apply only labels for columns that exist
+  existing_labels <- var_labels[names(var_labels) %in% names(df)]
+  current_labels <- labelled::var_label(df)
+  labelled::var_label(df) <- c(current_labels, existing_labels)
+
+  # Replace NA with -99 and set missing values
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(
+        dplyr::across(
+          dplyr::where(is.numeric),
+          \(x) dplyr::if_else(is.na(x), -99, x)
+        ),
+        dplyr::across(
+          dplyr::where(is.character),
+          \(x) dplyr::if_else(is.na(x) | x == "", "-99", x)
+        )
+      )
+
+    numeric_vars <- names(df)[sapply(df, is.numeric)]
+    for (var in numeric_vars) {
+      df <- labelled::set_na_values(df, !!rlang::sym(var) := -99)
+    }
+  }
+
+  df
+}
+
 
 # ---- Hot Ones ---------------------------------------------------------------
 

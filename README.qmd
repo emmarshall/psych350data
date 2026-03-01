@@ -1,7 +1,3 @@
----
-output: github_document
----
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -14,6 +10,7 @@ knitr::opts_chunk$set(
 # psych350data <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 psych350data provides cleaned, documented datasets for PSYC 350 lab exercises. All datasets are available as ready-to-use R tibbles and can be exported as fully labeled SPSS (.sav) files with variable labels, value labels, and defined missing values.

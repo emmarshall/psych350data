@@ -1,13 +1,16 @@
 Package: psych350data
 Title: Datasets for UNL PSYC 350 Labs
 Version: 0.1.0
+Date: 2026
 Authors@R: 
-    person("Emma", "Marshall", email = "em.marshall47@gmail.com", role = c("aut", "cre"))
+    person(given = "Emma",
+           family = "Marshall",
+           email = "emmarshall47@pm.me",
+           role = c("aut", "cre"))
 Description: Provides cleaned and labeled datasets used in PSYC 350 lab exercises. Datasets are available as R tibbles and can be exported as SPSS (.sav) files with full variable labels, value labels, and defined missing values.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.3
+LazyData: True
 Depends: 
     R (>= 4.1.0)
 Imports:
@@ -20,8 +23,7 @@ Suggests:
     tidyr,
     knitr,
     purrr,
-    lubridate,
-    testthat (>= 3.0.0)
-VignetteBuilder: knitr
-LazyData: true
+    lubridate
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
 URL: https://emmarshall.github.io/psych350data/

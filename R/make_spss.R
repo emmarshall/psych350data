@@ -111,9 +111,9 @@ export_all_sav <- function(dir = ".", use_sentinel = TRUE) {
 #' @examples
 #' list_datasets()
 list_datasets <- function() {
-  c("superman", "superman_smes", "superman_movies", "hot_ones", "tip_jokes",
-    "mcu", "mock_jury", "candy", "candy_simple", "football", "huskers",
-    "interpersonal_data", "self_descriptive_data")
+  c("superman", "superman_smes", "superman_movies", "superman_combined",
+    "hot_ones", "tip_jokes", "mcu", "mock_jury", "candy", "candy_simple",
+    "football", "huskers", "interpersonal_data", "self_descriptive_data")
 }
 
 
@@ -140,6 +140,23 @@ export_superman_smes_sav <- function(path = "superman_smes_data.sav", use_sentin
 #' @export
 export_superman_movies_sav <- function(path = "superman_movies_data.sav", use_sentinel = TRUE) {
   export_sav("superman_movies", path = path, use_sentinel = use_sentinel)
+}
+
+#' Export Combined Superman Data as SPSS .sav file
+#'
+#' Exports the joined Superman movies + actor dataset with full SPSS labels.
+#' This combines data from superman_movies and superman datasets.
+#'
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' export_superman_combined_sav("superman_combined.sav")
+#' }
+export_superman_combined_sav <- function(path = "superman_combined_data.sav", use_sentinel = TRUE) {
+  export_sav("superman_combined", path = path, use_sentinel = use_sentinel)
 }
 
 #' Export Hot Ones data as SPSS .sav file
@@ -236,31 +253,13 @@ get_dataset <- function(name) {
          paste(valid, collapse = ", "), call. = FALSE)
   }
 
+  # Special case: combined data requires joining
+  if (name == "superman_combined") {
+    return(join_superman_data())
+  }
+
   # Load lazy-loaded data properly
   e <- new.env()
   data(list = name, package = "psych350data", envir = e)
   e[[name]]
-}
-
-#' @noRd
-apply_spss_metadata <- function(df, name, use_sentinel = TRUE) {
-  label_fn <- switch(
-    name,
-    "superman" = label_superman,
-    "superman_smes" = label_superman_smes,
-    "superman_movies" = label_superman_movies,
-    "hot_ones" = label_hot_ones,
-    "tip_jokes" = label_tip_jokes,
-    "mcu" = label_mcu,
-    "mock_jury" = label_mock_jury,
-    "candy" = label_candy,
-    "candy_simple" = label_candy_simple,
-    "football" = label_football,
-    "huskers" = label_huskers,
-    "interpersonal_data" = label_interpersonal,
-    "self_descriptive_data" = label_self_descriptive,
-    stop("Unknown dataset: ", name, call. = FALSE)
-  )
-
-  label_fn(df, use_sentinel = use_sentinel)
 }
