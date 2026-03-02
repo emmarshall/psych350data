@@ -1,29 +1,69 @@
 
-# psyc350data <img src="man/figures/logo.png" align="right" height="139" />
+# psych350data <img src="man/figures/logo.png" align="right" height="139" />
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-psyc350data provides cleaned, documented datasets for PSYC 350 lab
+psych350data provides cleaned, documented datasets for PSYC 350 lab
 exercises. All datasets are available as ready-to-use R tibbles and can
 be exported as fully labeled SPSS (.sav) files with variable labels,
 value labels, and defined missing values.
 
 ## Installation
 
-Install from GitHub using [pak](https://pak.r-lib.org/):
+### Install from GitHub (recommended)
+
+To install you need to first set up GitHub authentication first.
+
+#### Step 1: Configure GitHub credentials (one-time setup)
+
+``` r
+# Install required packages if needed
+install.packages(c("gitcreds", "usethis"))
+
+# Check if credentials are already configured
+gitcreds::gitcreds_get()
+
+# If not configured, create a Personal Access Token:
+usethis::create_github_token()  
+# This opens GitHub with the correct scopes pre-selected.
+# Generate the token, copy it, then run:
+
+gitcreds::gitcreds_set()
+# Paste your token when prompted
+```
+
+#### Step 2: Install the package
 
 ``` r
 # install.packages("pak")
 pak::pak("emmarshall/psych350data")
 ```
 
-Or with devtools:
+### Install from a local source
+
+If you have a local copy of the package (e.g., a `.tar.gz` file or a
+cloned repo), you can install it with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("emmarshall/psych350data")
+# From a .tar.gz file
+pak::pak("local::path/to/psych350data_0.1.0.tar.gz")
+
+# From a local directory
+pak::pak("local::path/to/psych350data")
+```
+
+### Troubleshooting authentication
+
+If you encounter authentication errors:
+
+``` r
+# Check your current GitHub configuration
+usethis::git_sitrep()
+
+# Reset and reconfigure credentials
+gitcreds::gitcreds_set()
 ```
 
 ## Available Datasets
@@ -44,14 +84,15 @@ devtools::install_github("emmarshall/psych350data")
 ## Quick Start
 
 ``` r
-library(psyc350data)
+library(psych350data)
 
 # See all available datasets
 list_datasets()
-#>  [1] "superman"              "superman_smes"         "hot_ones"             
-#>  [4] "tip_jokes"             "mcu"                   "mock_jury"            
-#>  [7] "candy"                 "candy_simple"          "football"             
-#> [10] "huskers"               "interpersonal_data"    "self_descriptive_data"
+#>  [1] "superman"              "superman_smes"         "superman_movies"      
+#>  [4] "superman_combined"     "hot_ones"              "tip_jokes"            
+#>  [7] "mcu"                   "mock_jury"             "candy"                
+#> [10] "candy_simple"          "football"              "huskers"              
+#> [13] "interpersonal_data"    "self_descriptive_data"
 
 # Use a dataset directly in R
 head(superman)
@@ -121,9 +162,9 @@ The exported .sav files include:
 # https://emmarshall.github.io/psych350data/
 
 # Package vignettes
-vignette("getting-started", package = "psyc350data")
-vignette("exporting-spss", package = "psyc350data")
-vignette("dataset-guide", package = "psyc350data")
+vignette("getting-started", package = "psych350data")
+vignette("exporting-spss", package = "psych350data")
+vignette("dataset-guide", package = "psych350data")
 
 # View documentation for any dataset
 ?superman

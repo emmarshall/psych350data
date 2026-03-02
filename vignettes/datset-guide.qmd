@@ -1,10 +1,5 @@
 ---
 title: "Dataset Reference Guide"
-output: rmarkdown::html_vignette
-vignette: >
-  %\VignetteIndexEntry{Dataset Reference Guide}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
 ---
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
