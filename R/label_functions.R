@@ -539,9 +539,7 @@ label_hot_ones <- function(df, use_sentinel = TRUE) {
   if ("gender" %in% names(df) && is.character(df$gender)) {
     df$gender <- dplyr::case_match(
       df$gender,
-      "Man" ~ 1,
       "Male" ~ 1,
-      "Woman" ~ 2,
       "Female" ~ 2,
       .default = NA_real_
     )
