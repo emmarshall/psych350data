@@ -103,20 +103,6 @@ export_all_sav <- function(dir = ".", use_sentinel = TRUE) {
 }
 
 
-#' List all available datasets in psych350data
-#'
-#' @return Character vector of dataset names.
-#' @export
-#'
-#' @examples
-#' list_datasets()
-list_datasets <- function() {
-  c("superman", "superman_smes", "superman_movies", "superman_combined",
-    "hot_ones", "tip_jokes", "mcu", "mock_jury", "candy", "candy_simple",
-    "football", "huskers", "interpersonal_data", "self_descriptive_data")
-}
-
-
 #' Export Superman data as SPSS .sav file
 #' @param path File path. Defaults to "superman_data.sav".
 #' @param use_sentinel If TRUE (default), NA becomes -99 with SPSS missing codes.
@@ -165,6 +151,22 @@ export_superman_combined_sav <- function(path = "superman_combined_data.sav", us
 #' @export
 export_hot_ones_sav <- function(path = "hot_ones_data.sav", use_sentinel = TRUE) {
   export_sav("hot_ones", path = path, use_sentinel = use_sentinel)
+}
+
+#' Export Hot Ones Sauces data as SPSS .sav file
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_hot_ones_sauces_sav <- function(path = "hot_ones_sauces_data.sav", use_sentinel = TRUE) {
+  export_sav("hot_ones_sauces", path = path, use_sentinel = use_sentinel)
+}
+
+#' Export Hot Ones Episodes data as SPSS .sav file
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_hot_ones_episodes_sav <- function(path = "hot_ones_episodes_data.sav", use_sentinel = TRUE) {
+  export_sav("hot_ones_episodes", path = path, use_sentinel = use_sentinel)
 }
 
 #' Export Tip-Jokes data as SPSS .sav file
@@ -262,4 +264,18 @@ get_dataset <- function(name) {
   e <- new.env()
   data(list = name, package = "psych350data", envir = e)
   e[[name]]
+}
+
+#' List all available datasets in psych350data
+#'
+#' @return Character vector of dataset names.
+#' @export
+#'
+#' @examples
+#' list_datasets()
+list_datasets <- function() {
+  c("superman", "superman_smes", "superman_movies", "superman_combined",
+    "hot_ones", "hot_ones_sauces", "hot_ones_episodes",
+    "tip_jokes", "mcu", "mock_jury", "candy", "candy_simple",
+    "football", "huskers", "interpersonal_data", "self_descriptive_data")
 }

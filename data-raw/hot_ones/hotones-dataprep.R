@@ -1,7 +1,6 @@
 # ============================================================================
-# Hot Ones Guest Data
+# Hot Ones Data - Three Datasets
 # ============================================================================
-
 library(dplyr)
 library(tidyr)
 library(readxl)
@@ -9,22 +8,71 @@ library(lubridate)
 library(usethis)
 library(here)
 
-source_dir <- here::here("data-raw", "source_data")
+source_dir <- here::here("data-raw", "hot_ones")
 
 if (file.exists(file.path(source_dir, "hot_ones.xlsx"))) {
 
+  # Read all sheets
   sauces_df <- read_excel(file.path(source_dir, "hot_ones.xlsx"), sheet = "sauces")
   guests_df <- read_excel(file.path(source_dir, "hot_ones.xlsx"), sheet = "guests")
   episodes_df <- read_excel(file.path(source_dir, "hot_ones.xlsx"), sheet = "episodes")
+
+  # ============================================================================
+  # Dataset 1: HOT_ONES_SAUCES - Sauce data by season and position
+  # ============================================================================
+
+  hot_ones_sauces <- sauces_df |>
+    rename(
+      sauce_name = sauce,
+      SHU = scoville
+    ) |>
+    select(season, order, sauce_name, SHU) |>
+    arrange(season, order) |>
+    label_hot_ones_sauces(use_sentinel = FALSE)
+
+  usethis::use_data(hot_ones_sauces, overwrite = TRUE)
+  cat("Created: hot_ones_sauces (Sauce data by season/position)\n")
+
+  # ============================================================================
+  # Dataset 2: HOT_ONES_EPISODES - Episode-level data with YouTube metrics
+  # ============================================================================
+
+  hot_ones_episodes <- episodes_df |>
+    # Select columns, renaming as needed
+    # Use short_description and drop the longer description column
+    select(
+      season,
+      order,
+      guest,
+      episode_title = title,
+      publish_date = published_date,
+      views = view_count,
+      likes = like_count,
+      comments = comment_count,
+      short_description,
+      img,
+      video_id
+    ) |>
+    mutate(
+      views = views / 1000000
+    ) |>
+    arrange(season, order) |>
+    label_hot_ones_episodes(use_sentinel = FALSE)
+
+  usethis::use_data(hot_ones_episodes, overwrite = TRUE)
+  cat("Created: hot_ones_episodes (Episode data with YouTube metrics)\n")
+
+  # ============================================================================
+  # Dataset 3: HOT_ONES - Guest-level data (main dataset)
+  # ============================================================================
 
   # Calculate age
   guests_df <- guests_df |>
     mutate(
       age = time_length(interval(birthday, last_episode), "years")
-    ) |>
-    select(-views_millions, -birthday, -last_episode)
+    )
 
-  # Pivot sauces wide
+  # Pivot sauces wide for guest dataset
   sauces_wide <- sauces_df |>
     pivot_wider(
       id_cols = season,
@@ -57,43 +105,33 @@ if (file.exists(file.path(source_dir, "hot_ones.xlsx"))) {
       SHU_3 = scoville_order3, SHU_4 = scoville_order4,
       SHU_5 = scoville_order5, SHU_6 = scoville_order6,
       SHU_7 = scoville_order7, SHU_8 = scoville_order8,
-      SHU_9 = scoville_order9, SHU_10 = scoville_order10,
-      sauce_1 = sauce_order1, sauce_2 = sauce_order2,
-      sauce_3 = sauce_order3, sauce_4 = sauce_order4,
-      sauce_5 = sauce_order5, sauce_6 = sauce_order6,
-      sauce_7 = sauce_order7, sauce_8 = sauce_order8,
-      sauce_9 = sauce_order9, sauce_10 = sauce_order10
+      SHU_9 = scoville_order9, SHU_10 = scoville_order10
     )
 
-  # Add episodes
+  # Add episode data
   episodes_full <- episodes_df |>
-    select(-guest, -published_date, -video_id, -description)
+    select(season, order, view_count, like_count, comment_count)
 
   hot_ones <- guests_dat |>
     left_join(episodes_full, by = join_by(season, order)) |>
-    select(subn, name, gender, age, occupation, helpers, alt_food, wing_total,
-           SHU_1, SHU_2, SHU_3, SHU_4, SHU_5, SHU_6, SHU_7, SHU_8, SHU_9, SHU_10,
-           sauce_1, sauce_2, sauce_3, sauce_4, sauce_5, sauce_6, sauce_7, sauce_8,
-           sauce_9, sauce_10, result, appearances, date, season, order, title,
-           short_description, img, view_count, like_count, comment_count) |>
     rename(
-      description = short_description,
       views = view_count,
       likes = like_count,
       comments = comment_count
     ) |>
-    # Remove columns not needed, keep strings for categorical variables
-    select(-helpers, -alt_food, -wing_total, -date, -title, -description,
-           -img, -starts_with("sauce_")) |>
     mutate(
-      # Keep gender, result, occupation as strings
-      # Convert views to millions
       views = views / 1000000
-    )
+    ) |>
+    select(subn, name, gender, age, occupation,
+           wing_total, alt_food, helpers,
+           SHU_1, SHU_2, SHU_3, SHU_4, SHU_5, SHU_6, SHU_7, SHU_8, SHU_9, SHU_10,
+           result, appearances, season, order,
+           views, likes, comments) |>
+    label_hot_ones(use_sentinel = FALSE)
 
   usethis::use_data(hot_ones, overwrite = TRUE)
-  cat("Created: hot_ones\n")
+  cat("Created: hot_ones (Guest-level data)\n")
 
 } else {
-  warning("hot_ones.xlsx not found in ", source_dir, " - skipping hot_ones dataset")
+  warning("hot_ones.xlsx not found in ", source_dir, " - skipping hot_ones datasets")
 }

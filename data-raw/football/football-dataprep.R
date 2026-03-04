@@ -2,7 +2,6 @@
 # Football Concussion Brain Data
 # Source: Singh R, Meier T, et al., JAMA, 311(18), 2014.
 # ============================================================================
-
 library(readxl)
 library(dplyr)
 library(usethis)
@@ -17,14 +16,19 @@ football_raw <- football_raw |>
 
 football <- football_raw |>
   mutate(
-    group = case_when(
-      group == "control" ~ 1, group == "fb_no_concuss" ~ 2,
-      group == "fb_concuss" ~ 3, TRUE ~ NA_real_
+    # Keep group as string for R use
+    group = case_match(
+      group,
+      "control" ~ "Control",
+      "fb_no_concuss" ~ "Football no concussion",
+      "fb_concuss" ~ "Football with concussion",
+      .default = NA_character_
     )
   ) |>
   tibble::as_tibble()
 
 usethis::use_data(football, overwrite = TRUE)
+cat("Created: football\n")
 
 # ============================================================================
 # To export as SPSS:

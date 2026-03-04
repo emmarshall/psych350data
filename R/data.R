@@ -105,6 +105,9 @@
 #'   \item{gender}{Guest gender: Male (1), Female (2)}
 #'   \item{age}{Guest age at time of appearance}
 #'   \item{occupation}{Guest primary occupation (1-14, see value labels)}
+#'   \item{wing_total}{Number of wings eaten}
+#'   \item{alt_food}{Alternative food used instead of wings}
+#'   \item{helpers}{Drinks or other items used to help with the heat}
 #'   \item{SHU_1}{Sauce 1 Scoville Heat Units}
 #'   \item{SHU_2}{Sauce 2 Scoville Heat Units}
 #'   \item{SHU_3}{Sauce 3 Scoville Heat Units}
@@ -115,7 +118,7 @@
 #'   \item{SHU_8}{Sauce 8 Scoville Heat Units}
 #'   \item{SHU_9}{Sauce 9 Scoville Heat Units}
 #'   \item{SHU_10}{Sauce 10 Scoville Heat Units}
-#'   \item{result}{Succeeded (1) or Failed (2)}
+#'   \item{result}{Succeeded (1), Failed (2), or Incomplete (3)}
 #'   \item{appearances}{Number of appearances on the show}
 #'   \item{season}{Season number}
 #'   \item{order}{Episode number within season}
@@ -126,6 +129,45 @@
 #'
 #' @source Hot Ones / First We Feast (YouTube)
 "hot_ones"
+
+#' Hot Ones Sauce Data
+#'
+#' Data on hot sauces used in each season and position of Hot Ones,
+#' including Scoville Heat Unit ratings.
+#'
+#' @format A tibble with variables:
+#' \describe{
+#'   \item{season}{Season of Hot Ones}
+#'   \item{order}{Sauce position in the lineup (1-10, from mildest to hottest)}
+#'   \item{sauce_name}{Name of the hot sauce}
+#'   \item{SHU}{Scoville Heat Units (SHU) rating}
+#' }
+#'
+#' @source Hot Ones / First We Feast (YouTube)
+"hot_ones_sauces"
+
+#' Hot Ones Episode Data
+#'
+#' Episode-level data from the YouTube show Hot Ones, including
+#' guest names, titles, and YouTube engagement metrics.
+#'
+#' @format A tibble with variables:
+#' \describe{
+#'   \item{season}{Season of Hot Ones}
+#'   \item{order}{Episode number within season}
+#'   \item{guest}{Name of the guest}
+#'   \item{episode_title}{Full title of the episode}
+#'   \item{publish_date}{Date the episode was published on YouTube}
+#'   \item{views}{Number of YouTube views (in millions)}
+#'   \item{likes}{Number of YouTube likes}
+#'   \item{comments}{Number of YouTube comments}
+#'   \item{short_description}{Short description of the episode}
+#'   \item{img}{URL to episode thumbnail image}
+#'   \item{video_id}{YouTube video ID}
+#' }
+#'
+#' @source Hot Ones / First We Feast (YouTube)
+"hot_ones_episodes"
 
 #' Tip-Jokes Experiment Data
 #'

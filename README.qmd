@@ -1,147 +1,115 @@
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
+---
+format: gfm
+---
 
-# psych350data <img src="man/figures/logo.png" align="right" height="139" />
+# psych350data <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
-
+[![R-CMD-check](https://github.com/emmarshall/psych350data/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/emmarshall/psych350data/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-psych350data provides cleaned, documented datasets for PSYC 350 lab exercises. All datasets are available as ready-to-use R tibbles and can be exported as fully labeled SPSS (.sav) files with variable labels, value labels, and defined missing values.
+Datasets for UNL PSYC 350 Labs. All datasets are ready to use in R with human-readable categorical values, and can be exported as fully labeled SPSS (.sav) files with a single function call.
 
 ## Installation
 
-### Install from GitHub (recommended)
-
-To install you need to first set up GitHub authentication first.
-
-#### Step 1: Configure GitHub credentials (one-time setup)
-```{r, eval = FALSE}
-# Install required packages if needed
-install.packages(c("gitcreds", "usethis"))
-
-# Check if credentials are already configured
-gitcreds::gitcreds_get()
-
-# If not configured, create a Personal Access Token:
-usethis::create_github_token()  
-# This opens GitHub with the correct scopes pre-selected.
-# Generate the token, copy it, then run:
-
-gitcreds::gitcreds_set()
-# Paste your token when prompted
-```
-
-#### Step 2: Install the package
-
-```{r eval = FALSE}
+Install from GitHub:
+```r
 # install.packages("pak")
 pak::pak("emmarshall/psych350data")
 ```
-
-
-### Install from a local source
-
-If you have a local copy of the package (e.g., a `.tar.gz` file or a cloned repo), you can install it with:
-```{r, eval = FALSE}
-# From a .tar.gz file
-pak::pak("local::path/to/psych350data_0.1.0.tar.gz")
-
-# From a local directory
-pak::pak("local::path/to/psych350data")
-```
-
-
-### Troubleshooting authentication
-
-If you encounter authentication errors:
-```{r, eval = FALSE}
-# Check your current GitHub configuration
-usethis::git_sitrep()
-
-# Reset and reconfigure credentials
-gitcreds::gitcreds_set()
-```
-
-## Available Datasets
-
-| Dataset | Description | N | Source |
-|---------|------------|---|--------|
-| `superman` | Superman actors across media — heights, RT scores, Letterboxd | 11 | RT, Letterboxd, IMDB |
-| `superman_smes` | Simulated SMES ratings by height gap group | 47 | Simulated |
-| `hot_ones` | Hot Ones guests — demographics, Scoville ratings, YouTube stats | varies | Hot Ones / YouTube |
-| `tip_jokes` | Joke/ad card effect on tipping | varies | Gueguen (2002) |
-| `mcu` | MCU Infinity Saga films — box office, RT scores | varies | IMDB |
-| `mock_jury` | Attractiveness effects on mock jury sentencing | varies | Plaster (1989) |
-| `candy` | Candy rankings with ingredient flags and win % (full) | 85 | FiveThirtyEight |
-| `candy_simple` | Candy rankings (simplified — 5 variables) | 85 | FiveThirtyEight |
-| `affairs` | Extramarital affairs survey (1969) | varies | Fair (1978) |
-| `football` | Football concussions and hippocampus volume | varies | Singh et al. (2014) |
-
 ## Quick Start
-```{r example}
+```{r}
+#| message: false
 library(psych350data)
 
 # See all available datasets
 list_datasets()
-
+```
+```{r}
 # Use a dataset directly in R
 head(superman)
-
-# Quick summary
-str(football)
 ```
-
-## Exporting to SPSS
-
-Every dataset can be exported as a .sav file with full SPSS metadata. Each dataset has its own export function:
-```{r eval = FALSE}
-# Dataset-specific export functions
+```{r}
+#| eval: false
+# Export to SPSS
 export_superman_sav("superman_data.sav")
-export_superman_smes_sav("superman_smes_data.sav")
-export_hot_ones_sav("hot_ones_data.sav")
-export_tip_jokes_sav("tip_jokes_data.sav")
-export_mcu_sav("mcu_data.sav")
-export_mock_jury_sav("mock_jury_data.sav")
-export_candy_sav("candy_data.sav")
-export_candy_simple_sav("candy_simple_data.sav")
-export_affairs_sav("affairs_data.sav")
-export_football_sav("football_data.sav")
-```
+export_football_sav("~/Desktop/football_data.sav")
 
-Or use the generic function with any dataset name:
-```{r eval = FALSE}
-# Export by name
-export_sav("superman", path = "superman_data.sav")
-
-# Export all datasets to a folder
+# Export all datasets at once
 export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
 ```
 
-The exported .sav files include:
+## Available Datasets
+| Dataset | Description | Rows | Export Function |
+|---------|-------------|------|-----------------|
+| `superman` | Superman actor data with ratings | 11 | `export_superman_sav()` |
+| `superman_smes` | SMES ratings by height gap | 47 | `export_superman_smes_sav()` |
+| `superman_movies` | Superman film box office data | 10 | `export_superman_movies_sav()` |
+| `hot_ones` | Hot Ones guest data | 300+ | `export_hot_ones_sav()` |
+| `hot_ones_sauces` | Hot sauce data by season | 250+ | `export_hot_ones_sauces_sav()` |
+| `hot_ones_episodes` | Episode YouTube metrics | 300+ | `export_hot_ones_episodes_sav()` |
+| `tip_jokes` | Tipping experiment (Gueguen, 2002) | 211 | `export_tip_jokes_sav()` |
+| `mcu` | MCU films box office & ratings | 23 | `export_mcu_sav()` |
+| `mock_jury` | Mock jury sentencing (Plaster, 1989) | 114 | `export_mock_jury_sav()` |
+| `candy` | Candy rankings (full) | 85 | `export_candy_sav()` |
+| `candy_simple` | Candy rankings (simplified) | 85 | `export_candy_simple_sav()` |
+| `football` | Football concussion brain data | 75 | `export_football_sav()` |
+| `huskers` | Nebraska football box scores (1962-2024) | 700+ | `export_huskers_sav()` |
+| `interpersonal_data` | Interpersonal survey scales | 574 | `export_interpersonal_sav()` |
+| `self_descriptive_data` | Personality survey scales | 547 | `export_selfdescriptive_sav()` |
 
-- **Variable labels** describing each variable
-- **Value labels** for categorical variables (e.g., 1 = "Film", 2 = "TV Series")
-- **User-defined missing values** (-99) recognized by SPSS
+## R vs SPSS: What's Different?
 
-## Learning More
-```{r eval = FALSE}
-# Browse the package website
-# https://emmarshall.github.io/psych350data/
+| Aspect | In R | In SPSS (.sav) |
+|--------|------|----------------|
+| Categorical values | Character strings (`"Film"`, `"Control"`) | Numeric codes (1, 2, 3) with value labels |
+| Missing values | `NA` | `-99` with user-defined missing |
+| Variable descriptions | Help files (`?superman`) | Variable labels in Variable View |
 
-# Package vignettes
-vignette("getting-started", package = "psych350data")
-vignette("exporting-spss", package = "psych350data")
-vignette("dataset-guide", package = "psych350data")
+### Example: Using Data in R
+```{r}
+#| message: false
+library(dplyr)
 
-# View documentation for any dataset
-?superman
-?hot_ones
-?mock_jury
+# Categorical variables are human-readable
+football |>
+  count(group)
+
+# Convert to factor for analysis
+football_analysis <- football |>
+  mutate(group = factor(group))
+
+# Run ANOVA
+model <- aov(volume ~ group, data = football_analysis)
+summary(model)
 ```
+
+### Example: Exporting to SPSS
+```{r}
+#| eval: false
+# Export full dataset
+export_football_sav("football_data.sav")
+
+# Export subset of variables
+superman |>
+  select(num, media, type, clark_height, rt_critics_score) |>
+  export_sav(path = "superman_subset.sav")
+```
+
+## What's Included in SPSS Exports?
+
+- **Variable labels** describing each column
+- **Value labels** for categorical variables (e.g., 1 = "Control", 2 = "Football no concussion")
+- **Missing values** coded as `-99` with SPSS missing value definitions
+- **Proper SPSS formats** for all variable types
+
+## Documentation
+
+- `vignette("getting-started")` — Introduction and basic usage
+- `vignette("exporting-spss")` — Detailed SPSS export guide
+- `vignette("dataset-guide")` — Complete reference for all datasets
+- `?dataset_name` — Help for any specific dataset
+
+## License
+
+MIT

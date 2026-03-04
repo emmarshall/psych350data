@@ -12,6 +12,9 @@ A tibble with variables including:
 \item{gender}{Guest gender: Male (1), Female (2)}
 \item{age}{Guest age at time of appearance}
 \item{occupation}{Guest primary occupation (1-14, see value labels)}
+\item{wing_total}{Number of wings eaten}
+\item{alt_food}{Alternative food used instead of wings}
+\item{helpers}{Drinks or other items used to help with the heat}
 \item{SHU_1}{Sauce 1 Scoville Heat Units}
 \item{SHU_2}{Sauce 2 Scoville Heat Units}
 \item{SHU_3}{Sauce 3 Scoville Heat Units}
@@ -22,7 +25,7 @@ A tibble with variables including:
 \item{SHU_8}{Sauce 8 Scoville Heat Units}
 \item{SHU_9}{Sauce 9 Scoville Heat Units}
 \item{SHU_10}{Sauce 10 Scoville Heat Units}
-\item{result}{Succeeded (1) or Failed (2)}
+\item{result}{Succeeded (1), Failed (2), or Incomplete (3)}
 \item{appearances}{Number of appearances on the show}
 \item{season}{Season number}
 \item{order}{Episode number within season}

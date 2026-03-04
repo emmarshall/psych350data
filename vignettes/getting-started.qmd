@@ -2,24 +2,29 @@
 title: "Getting Started with psych350data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting Started with psych350data}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+ %\VignetteIndexEntry{Getting Started with psych350data}
+ %\VignetteEngine{knitr::rmarkdown}
+ %\VignetteEncoding{UTF-8}
 ---
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
+ collapse = TRUE,
+ comment = "#>"
 )
 ```
 
 ## Overview
 
-The psych350data package provides all the datasets you need for PSYC 350 labs. Each dataset is pre-cleaned and ready to use — no downloading files, no import headaches. You can also export any dataset as a fully labeled SPSS (.sav) file with a single function call.
+The psych350data package provides all the datasets you need for PSYC 350 labs. Each dataset is pre-cleaned and ready to use in two ways:
+
+1. **In R** — Datasets use human-readable values (like "Film", "TV Series") and standard `NA` for missing data. Perfect for analysis with psych350lab functions.
+
+2. **In SPSS** — Export functions create `.sav` files with numeric codes, value labels, and `-99` for missing values.
 
 ## Loading the Package
 ```{r setup}
 library(psych350data)
+library(dplyr)
 ```
 
 ## Browsing Available Datasets
@@ -38,89 +43,133 @@ For detailed documentation on any dataset, use the help system:
 
 ## Using Datasets in R
 
-Every dataset is a tibble that's immediately available after loading the package:
+Every dataset is a tibble that's immediately available after loading the package. Categorical variables use descriptive character values that are easy to read and work with:
 ```{r}
-head(superman)
-```
-```{r}
-str(superman_smes)
-```
-```{r}
-summary(football)
-```
-
-### Working with Categorical Variables
-
-Categorical variables are stored as numeric codes in R. The codes map to labels that you can see in the documentation. For example, in the `superman` dataset:
-
-- `type`: 1 = Film, 2 = TV Series, 3 = Serial
-- `tomatometer`: 1 = Rotten, 2 = Fresh
-- `popular`: 1 = Low, 2 = Mid, 3 = High
-
-You can convert these to factors for analysis or plotting:
-```{r}
-library(dplyr)
-
+# Categorical variables are human-readable
 superman |>
-  mutate(
-    type_label = factor(type, 
-                        levels = c(1, 2, 3), 
-                        labels = c("Film", "TV Series", "Serial"))
-  ) |>
-  select(media, year, type, type_label)
+ select(num, media, type, clark_grp, height_gap) |>
+ head()
 ```
 
-### Missing Values
+### Missing Values in R
 
-In R, missing values are represented as `NA`:
+Missing values are represented as `NA`, which R functions handle automatically:
 ```{r}
 # See which Superman entries have missing Letterboxd scores
 superman |>
-  select(num, media, ldb_likes, ldb_scores) |>
-  filter(is.na(ldb_scores))
+ select(num, media, ldb_likes, ldb_scores) |>
+ filter(is.na(ldb_scores))
+```
+```{r}
+# R functions handle NA automatically
+mean(superman$rt_critics_score, na.rm = TRUE)
 ```
 
-When exported to SPSS, these `NA` values are converted to `-99` and marked as user-defined missing values.
+### Converting to Factors for Analysis
+
+For some analyses (like ANOVA), you may want to convert character variables to factors:
+```{r}
+# Convert for analysis - order levels as needed
+superman_for_analysis <- superman |>
+ mutate(
+    type = factor(type),
+    clark_grp = factor(clark_grp),
+   height_gap = factor(height_gap, levels = c("Minimal", "Average", "Big"))
+ )
+
+# Now ready for ANOVA, contrasts, etc.
+levels(superman_for_analysis$height_gap)
+```
 
 ## Exporting to SPSS
 
-Every dataset has a dedicated export function that creates a fully labeled .sav file:
+When you export to SPSS, the package automatically:
+
+- Converts categorical variables to numeric codes
+- Adds value labels so SPSS displays the category names
+- Replaces `NA` with `-99` and marks it as user-defined missing
+- Adds variable labels describing each column
+
+### Dataset-Specific Export Functions
+
+Each dataset has a dedicated export function:
 ```{r eval = FALSE}
-# Dataset-specific export functions
+# Export individual datasets
 export_superman_sav("superman_data.sav")
-export_football_sav("~/Desktop/football_data.sav")
-export_mock_jury_sav("mock_jury_data.sav")
+export_superman_smes_sav("superman_smes_data.sav")
 export_hot_ones_sav("hot_ones_data.sav")
 export_tip_jokes_sav("tip_jokes_data.sav")
 export_mcu_sav("mcu_data.sav")
+export_mock_jury_sav("mock_jury_data.sav")
 export_candy_sav("candy_data.sav")
 export_candy_simple_sav("candy_simple_data.sav")
-export_affairs_sav("affairs_data.sav")
-export_superman_smes_sav("superman_smes_data.sav")
+export_football_sav("football_data.sav")
+export_huskers_sav("huskers_data.sav")
+export_interpersonal_sav("interpersonal_data.sav")
+export_selfdescriptive_sav("selfdescriptive_data.sav")
 
-# Or use the generic function with any dataset name
-export_sav("superman", path = "superman_data.sav")
+# Save to a specific location
+export_superman_sav("~/Desktop/superman_data.sav")
+```
 
-# Or export everything at once
+### Generic Export Function
+
+You can also use `export_sav()` with any dataset name:
+```{r eval = FALSE}
+export_sav("superman", path = "~/Desktop/superman_data.sav")
+export_sav("mock_jury") # Saves to working directory
+```
+
+### Exporting a Subset of Variables
+
+Select specific columns before exporting:
+```{r eval = FALSE}
+# Export only selected variables
+superman |>
+ select(num, media, year, type, clark_height, rt_critics_score) |>
+ export_sav(path = "superman_subset.sav")
+
+# Use tidyselect helpers
+huskers |>
+ select(date, season, opp, result, starts_with("ne_score")) |>
+ export_sav(path = "huskers_subset.sav")
+```
+
+### Export All Datasets
+
+Create a folder with all `.sav` files at once:
+```{r eval = FALSE}
 export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
 ```
 
-See `vignette("exporting-spss")` for full details on what the .sav files contain.
+## R vs SPSS: What's Different?
 
-## Example Analyses
+| Aspect | In R | In SPSS (.sav) |
+|--------|------|----------------|
+| Categorical values | Character strings ("Film", "TV Series") | Numeric codes (1, 2) with value labels |
+| Missing values | `NA` | `-99` with missing value definition |
+| Variable descriptions | In help files (`?superman`) | Variable labels in Variable View |
+
+## Example Analyses in R
 
 ### T-test with Mock Jury Data
 ```{r}
 # Compare sentence length by crime type
-# crime: 1 = Burglary, 2 = Swindle
-t.test(years ~ crime, data = mock_jury)
+# Convert to factor for cleaner output
+mock_jury_analysis <- mock_jury |>
+ mutate(crime = factor(crime))
+
+t.test(years ~ crime, data = mock_jury_analysis)
 ```
 
 ### ANOVA with Football Data
 ```{r}
 # Compare hippocampus volume across groups
-# group: 1 = Control, 2 = Football no concussion, 3 = Football with concussion
-model <- aov(volume ~ factor(group), data = football)
+# Character values convert directly to factor
+football_analysis <- football |>
+ mutate(group = factor(group))
+
+model <- aov(volume ~ group, data = football_analysis)
 summary(model)
 ```
 
@@ -133,13 +182,17 @@ cor.test(candy_simple$sugarpercent, candy_simple$winpercent)
 ### Chi-Square with Tip Jokes Data
 ```{r}
 # Is tipping independent of card type?
-table(tip_jokes$card, tip_jokes$tip) |>
-  chisq.test()
+# Convert card to factor for labeled output
+tip_jokes_analysis <- tip_jokes |>
+ mutate(card = factor(card))
+
+table(tip_jokes_analysis$card, tip_jokes_analysis$tip) |>
+ chisq.test()
 ```
 
 ## Next Steps
 
-- See `vignette("exporting-spss")` to learn how to create SPSS files
-- See `vignette("dataset-guide")` for a complete reference of all datasets and their coding schemes
+- See `vignette("exporting-spss")` for detailed export options
+- See `vignette("dataset-guide")` for complete variable coding schemes
 - Use `?dataset_name` to view full documentation for any dataset
-- All datasets work with standard R functions: `t.test()`, `aov()`, `lm()`, `cor.test()`, `chisq.test()`, etc.
+- All datasets work with psych350lab analysis functions

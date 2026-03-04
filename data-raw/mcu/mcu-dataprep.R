@@ -2,7 +2,6 @@
 # MCU Films Data
 # Source: Internet Movie Database
 # ============================================================================
-
 library(readxl)
 library(dplyr)
 library(usethis)
@@ -24,14 +23,30 @@ mcu <- mcu_raw |>
     opening_weekend_us = as.numeric(opening_weekend_us),
     gross_us = as.numeric(gross_us),
     gross_world = as.numeric(gross_world),
-    phase = as.numeric(phase),
     critics = as.numeric(critics),
     audience = as.numeric(audience),
-    favor = as.numeric(favor)
+
+    # Keep phase as string for R use
+    phase = case_match(
+      as.numeric(phase),
+      1 ~ "Phase 1",
+      2 ~ "Phase 2",
+      3 ~ "Phase 3",
+      .default = NA_character_
+    ),
+
+    # Keep favor as string for R use
+    favor = case_match(
+      as.numeric(favor),
+      1 ~ "Critics",
+      2 ~ "Audience",
+      .default = NA_character_
+    )
   ) |>
   tibble::as_tibble()
 
 usethis::use_data(mcu, overwrite = TRUE)
+cat("Created: mcu\n")
 
 # ============================================================================
 # To export as SPSS:

@@ -8,6 +8,8 @@
 #   2. The na_values attribute is set so SPSS treats -99 as user-missing
 # ============================================================================
 
+
+
 # ---- Helper function --------------------------------------------------------
 
 #' Apply value labels safely (only if column exists)
@@ -46,6 +48,8 @@ apply_spss_metadata <- function(df, dataset_name, use_sentinel = TRUE) {
          "superman_movies"     = label_superman_movies(df, use_sentinel),
          "superman_combined"   = label_superman_combined(df, use_sentinel),
          "hot_ones"            = label_hot_ones(df, use_sentinel),
+         "hot_ones_sauces"     = label_hot_ones_sauces(df, use_sentinel),
+         "hot_ones_episodes"   = label_hot_ones_episodes(df, use_sentinel),
          "tip_jokes"           = label_tip_jokes(df, use_sentinel),
          "mcu"                 = label_mcu(df, use_sentinel),
          "mock_jury"           = label_mock_jury(df, use_sentinel),
@@ -530,27 +534,39 @@ label_superman_combined <- function(df, use_sentinel = TRUE) {
 
 # ---- Hot Ones ---------------------------------------------------------------
 
+# ---- Hot Ones (Guests) ------------------------------------------------------
+
 #' @noRd
 label_hot_ones <- function(df, use_sentinel = TRUE) {
+
+  # Step 0: If NOT using sentinel, convert any existing -99 to NA first
+  if (!use_sentinel) {
+    df <- df |>
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric), ~ dplyr::if_else(.x == -99, NA_real_, .x))
+      )
+  }
 
   # Step 1: Convert character categorical variables to numeric codes
 
   # gender: Male = 1, Female = 2
+  # Trim whitespace first to handle "Male " vs "Male"
   if ("gender" %in% names(df) && is.character(df$gender)) {
     df$gender <- dplyr::case_match(
-      df$gender,
+      trimws(df$gender),
       "Male" ~ 1,
       "Female" ~ 2,
       .default = NA_real_
     )
   }
 
-  # result: Succeeded = 1, Failed = 2
+  # result: Succeeded = 1, Failed = 2, Incomplete = 3
   if ("result" %in% names(df) && is.character(df$result)) {
     df$result <- dplyr::case_match(
-      df$result,
+      trimws(df$result),
       "Succeeded" ~ 1,
       "Failed" ~ 2,
+      "Incomplete" ~ 3,
       .default = NA_real_
     )
   }
@@ -558,7 +574,7 @@ label_hot_ones <- function(df, use_sentinel = TRUE) {
   # occupation: Convert string to numeric codes
   if ("occupation" %in% names(df) && is.character(df$occupation)) {
     df$occupation <- dplyr::case_match(
-      df$occupation,
+      trimws(df$occupation),
       "Rapper" ~ 1,
       "Athlete" ~ 2,
       "Actor" ~ 3,
@@ -577,27 +593,26 @@ label_hot_ones <- function(df, use_sentinel = TRUE) {
     )
   }
 
-  # Step 2: Replace NA with -99
+  # Step 2: Handle missing values based on use_sentinel
   if (use_sentinel) {
+    # Convert NA to -99 for SPSS export
     df <- df |>
       dplyr::mutate(
-        dplyr::across(dplyr::where(is.numeric), ~ifelse(is.na(.x), -99, .x)),
+        dplyr::across(dplyr::where(is.numeric), ~ ifelse(is.na(.x), -99, .x)),
         dplyr::across(dplyr::where(is.character),
-                      ~ifelse(is.na(.) | . == "", "-99", .))
+                      ~ ifelse(is.na(.) | . == "", "-99", .))
       )
   }
 
   # Step 3: Apply value labels
   df <- safe_labelled(df, "gender", c("Male" = 1, "Female" = 2))
-
   df <- safe_labelled(df, "occupation", c(
     "Rapper" = 1, "Athlete" = 2, "Actor" = 3, "Actor-Comedian" = 4,
     "Comedian" = 5, "Chef" = 6, "Actor-Musician" = 7, "Musician" = 8,
     "DJ" = 9, "YouTuber" = 10, "Model" = 11, "Wrestler" = 12,
     "Magician" = 13, "Other" = 14
   ))
-
-  df <- safe_labelled(df, "result", c("Succeeded" = 1, "Failed" = 2))
+  df <- safe_labelled(df, "result", c("Succeeded" = 1, "Failed" = 2, "Incomplete" = 3))
 
   # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
@@ -610,6 +625,9 @@ label_hot_ones <- function(df, use_sentinel = TRUE) {
     appearances = "Number of appearances on Hot Ones",
     season = "Season of Hot Ones",
     order = "Episode number within Season of Hot Ones",
+    wing_total = "Number of wings eaten",
+    alt_food = "Alternative food used instead of wings",
+    helpers = "Drinks or other items used to help with the heat",
     SHU_1 = "Sauce #1 rating in Scoville Heat Units (SHU)",
     SHU_2 = "Sauce #2 rating in Scoville Heat Units (SHU)",
     SHU_3 = "Sauce #3 rating in Scoville Heat Units (SHU)",
@@ -633,14 +651,14 @@ label_hot_ones <- function(df, use_sentinel = TRUE) {
       attr(df[[var]], "format.spss") <- "F2.0"
     } else if (grepl("^SHU_", var)) {
       attr(df[[var]], "format.spss") <- "F10.0"
-    } else if (var %in% c("age", "season", "order", "appearances", "subn")) {
+    } else if (var %in% c("age", "season", "order", "appearances", "subn", "wing_total")) {
       attr(df[[var]], "format.spss") <- "F3.0"
     } else if (var %in% c("views", "likes", "comments")) {
       attr(df[[var]], "format.spss") <- "F12.0"
     }
   }
 
-  # Step 6: Set -99 as missing values
+  # Step 6: Set -99 as SPSS missing values (only if using sentinel)
   if (use_sentinel) {
     df <- safe_set_na_values(df)
   }
@@ -648,55 +666,105 @@ label_hot_ones <- function(df, use_sentinel = TRUE) {
   df
 }
 
-# ---- Tip Jokes --------------------------------------------------------------
+# ---- Hot Ones Sauces --------------------------------------------------------
 
 #' @noRd
-label_tip_jokes <- function(df, use_sentinel = TRUE) {
+label_hot_ones_sauces <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Apply value labels
-  if ("card" %in% names(df)) {
-    df$card <- labelled::labelled(
-      df$card,
-      labels = c("Advertisement card" = 1, "Joke card" = 2, "No card" = 3)
-    )
+  # Step 0: If NOT using sentinel, convert any existing -99 to NA first
+  if (!use_sentinel) {
+    df <- df |>
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric), ~ dplyr::if_else(.x == -99, NA_real_, .x))
+      )
   }
 
-  if ("tip" %in% names(df)) {
-    df$tip <- labelled::labelled(
-      as.numeric(df$tip),
-      labels = c("No tip" = 0, "Customer left a tip" = 1)
-    )
-  }
-
-  if ("ad" %in% names(df)) {
-    df$ad <- labelled::labelled(
-      as.numeric(df$ad),
-      labels = c("No ad card" = 0, "Ad card left" = 1)
-    )
-  }
-
-  if ("joke" %in% names(df)) {
-    df$joke <- labelled::labelled(
-      as.numeric(df$joke),
-      labels = c("No joke card" = 0, "Joke card left" = 1)
-    )
-  }
-
-  if ("none" %in% names(df)) {
-    df$none <- labelled::labelled(
-      as.numeric(df$none),
-      labels = c("Ad or joke card left" = 0, "No card left" = 1)
-    )
+  # Step 1: Handle missing values based on use_sentinel
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric), ~ ifelse(is.na(.x), -99, .x)),
+        dplyr::across(dplyr::where(is.character),
+                      ~ ifelse(is.na(.) | . == "", "-99", .))
+      )
   }
 
   # Step 2: Apply variable labels
   df <- safe_var_labels(df, list(
-    card = "Type of card used by waiter",
-    tip = "Whether customer left a tip",
-    ad = "Indicator for Ad card (1=ad card left, 0=no ad card)",
-    joke = "Indicator for Joke card (1=joke card left, 0=no joke card)",
-    none = "Indicator for no card (1=no card left, 0=ad or joke card left)"
+    season = "Season of Hot Ones",
+    order = "Sauce position in the lineup (1-10)",
+    sauce_name = "Name of the hot sauce",
+    SHU = "Scoville Heat Units (SHU) rating"
   ))
+
+  # Step 3: Set SPSS formats
+  for (var in names(df)) {
+    if (var %in% c("season", "order")) {
+      attr(df[[var]], "format.spss") <- "F2.0"
+    } else if (var == "SHU") {
+      attr(df[[var]], "format.spss") <- "F10.0"
+    }
+  }
+
+  # Step 4: Set -99 as SPSS missing values
+  if (use_sentinel) {
+    df <- safe_set_na_values(df)
+  }
+
+  df
+}
+
+# ---- Hot Ones Episodes ------------------------------------------------------
+
+#' @noRd
+label_hot_ones_episodes <- function(df, use_sentinel = TRUE) {
+
+  # Step 0: If NOT using sentinel, convert any existing -99 to NA first
+  if (!use_sentinel) {
+    df <- df |>
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric), ~ dplyr::if_else(.x == -99, NA_real_, .x))
+      )
+  }
+
+  # Step 1: Handle missing values based on use_sentinel
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(
+        dplyr::across(dplyr::where(is.numeric), ~ ifelse(is.na(.x), -99, .x)),
+        dplyr::across(dplyr::where(is.character),
+                      ~ ifelse(is.na(.) | . == "", "-99", .))
+      )
+  }
+
+  # Step 2: Apply variable labels
+  df <- safe_var_labels(df, list(
+    season = "Season of Hot Ones",
+    order = "Episode number within season",
+    guest = "Name of the guest",
+    episode_title = "Full title of the episode",
+    publish_date = "Date the episode was published on YouTube",
+    views = "Number of YouTube views (in millions)",
+    likes = "Number of YouTube likes",
+    comments = "Number of YouTube comments",
+    short_description = "Short description of the episode",
+    img = "URL to episode thumbnail image",
+    video_id = "YouTube video ID"
+  ))
+
+  # Step 3: Set SPSS formats
+  for (var in names(df)) {
+    if (var %in% c("season", "order")) {
+      attr(df[[var]], "format.spss") <- "F2.0"
+    } else if (var %in% c("views", "likes", "comments")) {
+      attr(df[[var]], "format.spss") <- "F12.0"
+    }
+  }
+
+  # Step 4: Set -99 as SPSS missing values
+  if (use_sentinel) {
+    df <- safe_set_na_values(df)
+  }
 
   df
 }
@@ -706,27 +774,47 @@ label_tip_jokes <- function(df, use_sentinel = TRUE) {
 #' @noRd
 label_mcu <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Ensure numeric columns are numeric
+  # Step 1: Convert character categorical variables to numeric codes
+  if ("phase" %in% names(df) && is.character(df$phase)) {
+    df$phase <- dplyr::case_match(
+      df$phase,
+      "Phase 1" ~ 1,
+      "Phase 2" ~ 2,
+      "Phase 3" ~ 3,
+      .default = NA_real_
+    )
+  }
+
+  if ("favor" %in% names(df) && is.character(df$favor)) {
+    df$favor <- dplyr::case_match(
+      df$favor,
+      "Critics" ~ 1,
+      "Audience" ~ 2,
+      .default = NA_real_
+    )
+  }
+
+  # Step 2: Ensure numeric columns are numeric
   numeric_cols <- c("length_hrs", "length_min", "opening_weekend_us", "gross_us",
-                    "gross_world", "critics", "audience", "phase", "favor")
+                    "gross_world", "critics", "audience")
   for (col in numeric_cols) {
     if (col %in% names(df)) {
       df[[col]] <- as.numeric(df[[col]])
     }
   }
 
-  # Step 2: Replace NA with -99
+  # Step 3: Replace NA with -99
   if (use_sentinel) {
     df <- df |>
       dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
                                   ~ifelse(is.na(.x), -99, .x)))
   }
 
-  # Step 3: Apply value labels
+  # Step 4: Apply value labels
   df <- safe_labelled(df, "phase", c("Phase 1" = 1, "Phase 2" = 2, "Phase 3" = 3))
   df <- safe_labelled(df, "favor", c("Critics" = 1, "Audience" = 2))
 
-  # Step 4: Apply variable labels
+  # Step 5: Apply variable labels
   df <- safe_var_labels(df, list(
     movie = "Title of the movie",
     length_hrs = "Length of the movie: hours portion",
@@ -735,13 +823,13 @@ label_mcu <- function(df, use_sentinel = TRUE) {
     opening_weekend_us = "Box office totals for opening weekend in the US (not adjusted for inflation)",
     gross_us = "All box office totals in US (not adjusted for inflation)",
     gross_world = "All box office totals world wide (not adjusted for inflation)",
-    phase = "Designated phase of the Marvel Cinematic Universe (Phase 1, Phase 2, Phase 3)",
+    phase = "Designated phase of the Marvel Cinematic Universe",
     critics = "Rotten Tomatoes critics score (0-100 scale)",
     audience = "Rotten Tomatoes audience score (0-100 scale)",
-    favor = "Whether critics or audience score is higher on Rotten Tomatoes (critics=1; audience=2)"
+    favor = "Whether critics or audience score is higher on Rotten Tomatoes"
   ))
 
-  # Step 5: Set -99 as missing values
+  # Step 6: Set -99 as missing values
   if (use_sentinel) {
     df <- safe_set_na_values(df)
   }
@@ -754,22 +842,41 @@ label_mcu <- function(df, use_sentinel = TRUE) {
 #' @noRd
 label_mock_jury <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Replace NA with -99
+  # Step 1: Convert character categorical variables to numeric codes
+  if ("attr" %in% names(df) && is.character(df$attr)) {
+    df$attr <- dplyr::case_match(
+      df$attr,
+      "Beautiful" ~ 1,
+      "Average" ~ 2,
+      "Unattractive" ~ 3,
+      .default = NA_real_
+    )
+  }
+
+  if ("crime" %in% names(df) && is.character(df$crime)) {
+    df$crime <- dplyr::case_match(
+      df$crime,
+      "Burglary" ~ 1,
+      "Swindle" ~ 2,
+      .default = NA_real_
+    )
+  }
+
+  # Step 2: Replace NA with -99
   if (use_sentinel) {
     df <- df |>
       dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
                                   ~ifelse(is.na(.x), -99, .x)))
   }
 
-  # Step 2: Apply value labels
+  # Step 3: Apply value labels
   df <- safe_labelled(df, "attr", c("Beautiful" = 1, "Average" = 2, "Unattractive" = 3))
-
   df <- safe_labelled(df, "crime", c(
     "Burglary (theft of items from victim's room)" = 1,
     "Swindle (conned a male victim)" = 2
   ))
 
-  # Step 3: Apply variable labels
+  # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
     attr = "Attractiveness of the photo",
     crime = "Type of crime",
@@ -790,7 +897,7 @@ label_mock_jury <- function(df, use_sentinel = TRUE) {
     ownPA = "Self-rating of the subject for 'physical attractiveness'"
   ))
 
-  # Step 4: Set -99 as missing values
+  # Step 5: Set -99 as missing values
   if (use_sentinel) {
     df <- safe_set_na_values(df)
   }
@@ -803,7 +910,22 @@ label_mock_jury <- function(df, use_sentinel = TRUE) {
 #' @noRd
 label_candy <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Replace NA with -99
+  # Step 1: Convert Yes/No strings to numeric codes
+  binary_vars <- c("chocolate", "fruity", "caramel", "peanutyalmondy",
+                   "nougat", "crispedricewafer", "hard", "bar", "pluribus")
+
+  for (var in binary_vars) {
+    if (var %in% names(df) && is.character(df[[var]])) {
+      df[[var]] <- dplyr::case_match(
+        df[[var]],
+        "Yes" ~ 1,
+        "No" ~ 0,
+        .default = NA_real_
+      )
+    }
+  }
+
+  # Step 2: Replace NA with -99
   if (use_sentinel) {
     df <- df |>
       dplyr::mutate(
@@ -813,14 +935,12 @@ label_candy <- function(df, use_sentinel = TRUE) {
       )
   }
 
-  # Step 2: Apply value labels
-  binary_vars <- c("chocolate", "fruity", "caramel", "peanutyalmondy",
-                   "nougat", "crispedricewafer", "hard", "bar", "pluribus")
+  # Step 3: Apply value labels
   for (var in binary_vars) {
     df <- safe_labelled(df, var, c("No" = 0, "Yes" = 1))
   }
 
-  # Step 3: Apply variable labels
+  # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
     competitorname = "The name of the candy",
     chocolate = "Does it contain chocolate?",
@@ -837,7 +957,7 @@ label_candy <- function(df, use_sentinel = TRUE) {
     winpercent = "The overall win percentage according to 269,000 matchups"
   ))
 
-  # Set SPSS formats (only for existing columns)
+  # Set SPSS formats
   for (v in binary_vars) {
     if (v %in% names(df)) {
       attr(df[[v]], "format.spss") <- "F1.0"
@@ -851,7 +971,7 @@ label_candy <- function(df, use_sentinel = TRUE) {
     }
   }
 
-  # Step 4: Set -99 as missing values
+  # Step 5: Set -99 as missing values
   if (use_sentinel) {
     df <- safe_set_na_values(df)
   }
@@ -864,7 +984,17 @@ label_candy <- function(df, use_sentinel = TRUE) {
 #' @noRd
 label_candy_simple <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Replace NA with -99
+  # Step 1: Convert Yes/No to numeric
+  if ("chocolate" %in% names(df) && is.character(df$chocolate)) {
+    df$chocolate <- dplyr::case_match(
+      df$chocolate,
+      "Yes" ~ 1,
+      "No" ~ 0,
+      .default = NA_real_
+    )
+  }
+
+  # Step 2: Replace NA with -99
   if (use_sentinel) {
     df <- df |>
       dplyr::mutate(
@@ -874,10 +1004,10 @@ label_candy_simple <- function(df, use_sentinel = TRUE) {
       )
   }
 
-  # Step 2: Apply value labels
+  # Step 3: Apply value labels
   df <- safe_labelled(df, "chocolate", c("No" = 0, "Yes" = 1))
 
-  # Step 3: Apply variable labels
+  # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
     competitorname = "The name of the candy",
     chocolate = "Does it contain chocolate?",
@@ -898,7 +1028,7 @@ label_candy_simple <- function(df, use_sentinel = TRUE) {
     }
   }
 
-  # Step 4: Set -99 as missing values
+  # Step 5: Set -99 as missing values
   if (use_sentinel) {
     df <- safe_set_na_values(df)
   }
@@ -906,33 +1036,45 @@ label_candy_simple <- function(df, use_sentinel = TRUE) {
   df
 }
 
+
 # ---- Football ---------------------------------------------------------------
 
 #' @noRd
 label_football <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Replace NA with -99
+  # Step 1: Convert character categorical variables to numeric codes
+  if ("group" %in% names(df) && is.character(df$group)) {
+    df$group <- dplyr::case_match(
+      df$group,
+      "Control" ~ 1,
+      "Football no concussion" ~ 2,
+      "Football with concussion" ~ 3,
+      .default = NA_real_
+    )
+  }
+
+  # Step 2: Replace NA with -99
   if (use_sentinel) {
     df <- df |>
       dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
                                   ~ifelse(is.na(.x), -99, .x)))
   }
 
-  # Step 2: Apply value labels
+  # Step 3: Apply value labels
   df <- safe_labelled(df, "group", c(
     "Control (no football)" = 1,
     "Football player, no concussions" = 2,
     "Football player with concussion history" = 3
   ))
 
-  # Step 3: Apply variable labels
+  # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
     group = "Group classification",
     years = "Number of years a person played football",
     volume = "Total hippocampus volume, in cubic centimeters"
   ))
 
-  # Step 4: Set -99 as missing values
+  # Step 5: Set -99 as missing values
   if (use_sentinel) {
     df <- safe_set_na_values(df)
   }
@@ -1177,10 +1319,10 @@ label_huskers <- function(df, use_sentinel = TRUE) {
   if ("site" %in% names(df) && is.character(df$site)) {
     df$site <- dplyr::case_match(
       df$site,
-      "home" ~ 1,
-      "away" ~ 2,
-      "neutral-home" ~ 3,
-      "neutral-away" ~ 4,
+      "Home" ~ 1,
+      "Away" ~ 2,
+      "Neutral (home)" ~ 3,
+      "Neutral (away)" ~ 4,
       .default = NA_real_
     )
   }
@@ -1188,15 +1330,20 @@ label_huskers <- function(df, use_sentinel = TRUE) {
   if ("result" %in% names(df) && is.character(df$result)) {
     df$result <- dplyr::case_match(
       df$result,
-      "W" ~ 1,
-      "L" ~ 2,
-      "T" ~ 3,
+      "Win" ~ 1,
+      "Loss" ~ 2,
+      "Tie" ~ 3,
       .default = NA_real_
     )
   }
 
-  if ("conference" %in% names(df) && is.logical(df$conference)) {
-    df$conference <- as.integer(df$conference)
+  if ("conference" %in% names(df) && is.character(df$conference)) {
+    df$conference <- dplyr::case_match(
+      df$conference,
+      "Non-conference" ~ 0,
+      "Conference" ~ 1,
+      .default = NA_real_
+    )
   }
 
   # Step 2: Replace NA with -99
@@ -1273,6 +1420,70 @@ label_huskers <- function(df, use_sentinel = TRUE) {
     humidity = "Relative humidity at kickoff (0-1)",
     wind_speed = "Wind speed at kickoff (mph)",
     wind_bearing = "Wind direction at kickoff (degrees, 0=North)"
+  ))
+
+  # Step 5: Set -99 as missing values
+  if (use_sentinel) {
+    df <- safe_set_na_values(df)
+  }
+
+  df
+}
+
+# ---- Tip Jokes --------------------------------------------------------------
+
+#' @noRd
+label_tip_jokes <- function(df, use_sentinel = TRUE) {
+
+  # Step 1: Convert character categorical variables to numeric codes
+  if ("card" %in% names(df) && is.character(df$card)) {
+    df$card <- dplyr::case_match(
+      df$card,
+      "Advertisement" ~ 1,
+      "Joke" ~ 2,
+      "None" ~ 3,
+      .default = NA_real_
+    )
+  }
+
+  # Convert Yes/No variables to 0/1
+  yes_no_vars <- c("tip", "ad", "joke", "none")
+  for (var in yes_no_vars) {
+    if (var %in% names(df) && is.character(df[[var]])) {
+      df[[var]] <- dplyr::case_match(
+        df[[var]],
+        "Yes" ~ 1,
+        "No" ~ 0,
+        .default = NA_real_
+      )
+    }
+  }
+
+  # Step 2: Replace NA with -99
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
+                                  ~ifelse(is.na(.x), -99, .x)))
+  }
+
+  # Step 3: Apply value labels
+  df <- safe_labelled(df, "card", c(
+    "Advertisement card" = 1,
+    "Joke card" = 2,
+    "No card" = 3
+  ))
+  df <- safe_labelled(df, "tip", c("No" = 0, "Yes" = 1))
+  df <- safe_labelled(df, "ad", c("No" = 0, "Yes" = 1))
+  df <- safe_labelled(df, "joke", c("No" = 0, "Yes" = 1))
+  df <- safe_labelled(df, "none", c("No" = 0, "Yes" = 1))
+
+  # Step 4: Apply variable labels
+  df <- safe_var_labels(df, list(
+    card = "Type of card left by waiter",
+    tip = "Whether customer left a tip",
+    ad = "Indicator for advertisement card",
+    joke = "Indicator for joke card",
+    none = "Indicator for no card"
   ))
 
   # Step 5: Set -99 as missing values

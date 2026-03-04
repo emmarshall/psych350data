@@ -210,17 +210,6 @@ pre.sourceCode code {
   overflow-wrap: break-word;
 }
 
-// Code output
-.cell-output pre {
-  padding: $_space-lg;
-  background-color: body-mix(95%);
-  border: $_em-border-width solid $body-color;
-  border-radius: $_radius-md;
-  box-shadow: $_em-shadow;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
 
 p code.sourceCode,
 li code.sourceCode,
@@ -425,12 +414,8 @@ code span.ot { color: var(--em-code-keyword); }
     }
   }
 
-  .cell-output pre {
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 3px 3px 0 0 rgba(255, 255, 255, 0.5);
-    background-color: var(--em-code-bg);
-    color: var(--em-code-fg);
-  }
+
+
 }
 
 // ===========================
@@ -1686,3 +1671,34 @@ nav span code:not(.sourceCode) {
   }
 }
 
+// ===========================
+// CODE OUTPUT - Simple outlined box with background
+// ===========================
+.cell-output pre,
+.cell-output-stdout pre,
+.cell-output-display pre {
+  padding: $_space-lg;
+  background-color: body-mix(95%);
+  color: $body-color;
+  border: $_em-border-width solid $body-color;
+  border-radius: $_radius-md;
+  box-shadow: none;
+  white-space: pre-wrap !important;
+  word-wrap: break-word !important;
+  overflow-wrap: break-word !important;
+  word-break: break-word !important;
+  margin-top: $_space-sm;
+  margin-bottom: $_space-md;
+}
+
+[data-bs-theme="dark"] .cell-output pre,
+[data-bs-theme="dark"] .cell-output-stdout pre,
+[data-bs-theme="dark"] .cell-output-display pre,
+.quarto-dark .cell-output pre,
+.quarto-dark .cell-output-stdout pre,
+.quarto-dark .cell-output-display pre {
+  background-color: body-mix(95%);
+  color: $body-color;
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: none;
+}

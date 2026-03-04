@@ -1,40 +1,56 @@
 # ============================================================================
-# Football Concussion Brain Data
+# Candy Rankings Data
+# Source: FiveThirtyEight candy power rankings
 # ============================================================================
-
 library(dplyr)
 library(readxl)
 library(usethis)
 library(here)
 
-source_dir <- here::here("data-raw", "source_data")
+source_dir <- here::here("data-raw", "candy")
 
-if (file.exists(file.path(source_dir, "football-concussions.xlsx"))) {
+if (file.exists(file.path(source_dir, "candy_data.xlsx"))) {
 
-  football_raw <- read_excel(file.path(source_dir, "football-concussions.xlsx"), sheet = "football")
+  candy_raw <- read_excel(file.path(source_dir, "candy_data.xlsx"), sheet = "data")
 
-  football_raw <- football_raw |>
-    select(-any_of("rownames"))
-
-  football <- football_raw |>
+  candy <- candy_raw |>
+    select(-starts_with("...")) |>
+    select(-any_of("rownames")) |>
+    select(where(\(x) !all(is.na(x)))) |>
     mutate(
-      # Keep group as string
-      group = case_match(
-        group,
-        "control" ~ "Control",
-        "fb_no_concuss" ~ "Football no concussion",
-        "fb_concuss" ~ "Football with concussion",
-        1 ~ "Control",
-        2 ~ "Football no concussion",
-        3 ~ "Football with concussion",
-        .default = NA_character_
-      )
+      # Convert binary variables to Yes/No strings
+      chocolate = if_else(chocolate == 1, "Yes", "No"),
+      fruity = if_else(fruity == 1, "Yes", "No"),
+      caramel = if_else(caramel == 1, "Yes", "No"),
+      peanutyalmondy = if_else(peanutyalmondy == 1, "Yes", "No"),
+      nougat = if_else(nougat == 1, "Yes", "No"),
+      crispedricewafer = if_else(crispedricewafer == 1, "Yes", "No"),
+      hard = if_else(hard == 1, "Yes", "No"),
+      bar = if_else(bar == 1, "Yes", "No"),
+      pluribus = if_else(pluribus == 1, "Yes", "No")
     ) |>
     tibble::as_tibble()
 
-  usethis::use_data(football, overwrite = TRUE)
-  cat("Created: football\n")
+  usethis::use_data(candy, overwrite = TRUE)
+  cat("Created: candy\n")
+
+  # ============================================================================
+  # CANDY SIMPLE
+  # ============================================================================
+
+  candy_simple <- candy |>
+    select(competitorname, chocolate, sugarpercent, pricepercent, winpercent)
+
+  usethis::use_data(candy_simple, overwrite = TRUE)
+  cat("Created: candy_simple\n")
 
 } else {
-  warning("football-concussions.xlsx not found in ", source_dir, " - skipping football dataset")
+  warning("candy_data.xlsx not found in ", source_dir, " - skipping candy datasets")
 }
+
+# ============================================================================
+# To export as SPSS:
+#   library(psych350data)
+#   export_candy_sav("candy_data.sav")
+#   export_candy_simple_sav("candy_simple_data.sav")
+# ============================================================================
