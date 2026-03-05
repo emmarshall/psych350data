@@ -237,7 +237,7 @@ label_superman <- function(df, use_sentinel = TRUE) {
     ldb_scores = "Letterboxd users average rating (1-5 stars)",
     tomatometer = "Whether the media was liked by more than 60% of critics on Rotten Tomatoes",
     rt_avg = "Average of critics and audience scores on Rotten Tomatoes",
-    rt_diff = "Difference between critics and audience scores on Rotten Tomatoes",
+    rt_diff = "Weighted difference between critics and audience scores on Rotten Tomatoes",
     popular = "Popularity based on number of user likes on Letterboxd (low/mid/high)"
   ))
 

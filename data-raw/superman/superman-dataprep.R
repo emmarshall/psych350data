@@ -69,6 +69,9 @@ superman <- read_excel("data-raw/superman/superman_raw.xlsx") |>
     # Rotten Tomatoes average
     rt_avg = (rt_critics_score + rt_audience_score) / 2,
 
+    # Rotten Tomatoes weighted average
+    rt_diff = ((rt_critics_score * rt_critics_count) - (rt_audience_score * rt_audience_count)) / (rt_critics_count + rt_audience_count),
+
     # Popularity category (as string)
     popular = case_when(
       is.na(ldb_likes) ~ NA_character_,

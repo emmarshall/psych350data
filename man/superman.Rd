@@ -29,7 +29,8 @@ A tibble with 11 rows and variables:
 \item{rt_audience_score}{Rotten Tomatoes audience score}
 \item{rt_critics_count}{Number of audience reviews on Rotten Tomatoes}
 \item{tomatometer}{Critics rating: 1 = Rotten (<60), 2 = Fresh (60+)}
-\item{rt_avg}{Average of critics and audience scores}
+\item{rt_avg}{Average of critics and audience Rotten Tomatoes scores}
+\item{rt_diff}{Weighted difference between critics and audience scores on Rotten Tomatoes}
 \item{ldb_likes}{Letterboxd likes}
 \item{ldb_scores}{Letterboxd score}
 \item{popular}{Popularity category based on Letterboxd likes}

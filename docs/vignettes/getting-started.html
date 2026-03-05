@@ -655,7 +655,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="browsing-available-datasets" class="level2"><h2 class="anchored" data-anchor-id="browsing-available-datasets">Browsing Available Datasets</h2>
 <p>To see every dataset in the package:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "superman"              "superman_smes"         "superman_movies"      </span></span>
 <span><span class="co">#&gt;  [4] "superman_combined"     "hot_ones"              "hot_ones_sauces"      </span></span>
 <span><span class="co">#&gt;  [7] "hot_ones_episodes"     "tip_jokes"             "mcu"                  </span></span>
@@ -726,9 +726,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="preparing-data-for-spss-matched-analysis" class="level2"><h2 class="anchored" data-anchor-id="preparing-data-for-spss-matched-analysis">Preparing Data for SPSS-Matched Analysis</h2>
 <p>If your analysis needs to produce numeric output that matches SPSS — for example, when comparing R results to SPSS output from a lab assignment — use the prep functions to convert categorical variables to the same numeric codes SPSS uses.</p>
 <section id="the-prep_data-function" class="level3"><h3 class="anchored" data-anchor-id="the-prep_data-function">The <code>prep_data()</code> Function</h3>
-<p><code><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_data()</a></code> is the main entry point. Pass it a dataset and the dataset name as a string:</p>
+<p><code><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_data()</a></code> is the main entry point. Pass it a dataset and the dataset name as a string:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_data</a></span><span class="op">(</span><span class="va">superman</span>, <span class="st">"superman"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_data</a></span><span class="op">(</span><span class="va">superman</span>, <span class="st">"superman"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_grp</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -747,20 +747,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="dataset-specific-prep-functions" class="level3"><h3 class="anchored" data-anchor-id="dataset-specific-prep-functions">Dataset-Specific Prep Functions</h3>
 <p>Every dataset also has its own dedicated prep function if you prefer to be explicit:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
-<span><span class="va">hot_ones</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_hot_ones</a></span><span class="op">(</span><span class="va">hot_ones</span><span class="op">)</span></span>
-<span><span class="va">mcu</span>            <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_mcu</a></span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
-<span><span class="va">mock_jury</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_mock_jury</a></span><span class="op">(</span><span class="va">mock_jury</span><span class="op">)</span></span>
-<span><span class="va">tip_jokes</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_tip_jokes</a></span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">)</span></span>
-<span><span class="va">candy</span>          <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_candy</a></span><span class="op">(</span><span class="va">candy</span><span class="op">)</span></span>
-<span><span class="va">candy_simple</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_candy_simple</a></span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
-<span><span class="va">football</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_football</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
-<span><span class="va">huskers</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_huskers</a></span><span class="op">(</span><span class="va">huskers</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
+<span><span class="va">hot_ones</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hot_ones</a></span><span class="op">(</span><span class="va">hot_ones</span><span class="op">)</span></span>
+<span><span class="va">mcu</span>            <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_mcu</a></span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
+<span><span class="va">mock_jury</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_mock_jury</a></span><span class="op">(</span><span class="va">mock_jury</span><span class="op">)</span></span>
+<span><span class="va">tip_jokes</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_tip_jokes</a></span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">)</span></span>
+<span><span class="va">candy</span>          <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_candy</a></span><span class="op">(</span><span class="va">candy</span><span class="op">)</span></span>
+<span><span class="va">candy_simple</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_candy_simple</a></span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
+<span><span class="va">football</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_football</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
+<span><span class="va">huskers</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_huskers</a></span><span class="op">(</span><span class="va">huskers</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="keeping-labels-for-plotting" class="level3"><h3 class="anchored" data-anchor-id="keeping-labels-for-plotting">Keeping Labels for Plotting</h3>
 <p>By default, prep functions replace character columns with numeric codes and the original strings are lost. If you need the original values for axis labels or legends in plots, use <code>keep_labels = TRUE</code>. This retains the original character column alongside the numeric one, with a <code>_label</code> suffix:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span>, keep_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span>, keep_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># type is now numeric, type_label has the original strings</span></span>
 <span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
@@ -799,7 +799,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td>Matching SPSS numeric output</td>
-<td>Use <code><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_data()</a></code> or a dataset-specific prep function</td>
+<td>Use <code><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_data()</a></code> or a dataset-specific prep function</td>
 </tr>
 <tr class="odd">
 <td>Analysis + plotting with ggplot2</td>
@@ -809,11 +809,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="even">
 <td>Exporting to <code>.sav</code>
 </td>
-<td>Use <code><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav()</a></code> — it handles conversion internally</td>
+<td>Use <code><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav()</a></code> — it handles conversion internally</td>
 </tr>
 </tbody>
 </table>
-<p>Note that exporting to SPSS with <code><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav()</a></code> does not require running a prep function first — the export functions handle numeric conversion internally.</p>
+<p>Note that exporting to SPSS with <code><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav()</a></code> does not require running a prep function first — the export functions handle numeric conversion internally.</p>
 </section></section><section id="exporting-to-spss" class="level2"><h2 class="anchored" data-anchor-id="exporting-to-spss">Exporting to SPSS</h2>
 <p>When you export to SPSS, the package automatically:</p>
 <ul>
@@ -826,27 +826,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Each dataset has a dedicated export function:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export individual datasets</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_superman_smes_sav.html">export_superman_smes_sav</a></span><span class="op">(</span><span class="st">"superman_smes_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_hot_ones_sav.html">export_hot_ones_sav</a></span><span class="op">(</span><span class="st">"hot_ones_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_tip_jokes_sav.html">export_tip_jokes_sav</a></span><span class="op">(</span><span class="st">"tip_jokes_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_mcu_sav.html">export_mcu_sav</a></span><span class="op">(</span><span class="st">"mcu_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_mock_jury_sav.html">export_mock_jury_sav</a></span><span class="op">(</span><span class="st">"mock_jury_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_candy_sav.html">export_candy_sav</a></span><span class="op">(</span><span class="st">"candy_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_candy_simple_sav.html">export_candy_simple_sav</a></span><span class="op">(</span><span class="st">"candy_simple_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"football_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_huskers_sav.html">export_huskers_sav</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_interpersonal_sav.html">export_interpersonal_sav</a></span><span class="op">(</span><span class="st">"interpersonal_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_selfdescriptive_sav.html">export_selfdescriptive_sav</a></span><span class="op">(</span><span class="st">"selfdescriptive_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_smes_sav.html">export_superman_smes_sav</a></span><span class="op">(</span><span class="st">"superman_smes_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_hot_ones_sav.html">export_hot_ones_sav</a></span><span class="op">(</span><span class="st">"hot_ones_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_tip_jokes_sav.html">export_tip_jokes_sav</a></span><span class="op">(</span><span class="st">"tip_jokes_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_mcu_sav.html">export_mcu_sav</a></span><span class="op">(</span><span class="st">"mcu_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_mock_jury_sav.html">export_mock_jury_sav</a></span><span class="op">(</span><span class="st">"mock_jury_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_candy_sav.html">export_candy_sav</a></span><span class="op">(</span><span class="st">"candy_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_candy_simple_sav.html">export_candy_simple_sav</a></span><span class="op">(</span><span class="st">"candy_simple_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"football_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_huskers_sav.html">export_huskers_sav</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_interpersonal_sav.html">export_interpersonal_sav</a></span><span class="op">(</span><span class="st">"interpersonal_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_selfdescriptive_sav.html">export_selfdescriptive_sav</a></span><span class="op">(</span><span class="st">"selfdescriptive_data.sav"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Save to a specific location</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"data/superman_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"data/superman_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="generic-export-function" class="level3"><h3 class="anchored" data-anchor-id="generic-export-function">Generic Export Function</h3>
-<p>You can also use <code><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav()</a></code> with any dataset name:</p>
+<p>You can also use <code><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav()</a></code> with any dataset name:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"data/superman_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"mock_jury"</span><span class="op">)</span> <span class="co"># Saves to working directory</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"data/superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"mock_jury"</span><span class="op">)</span> <span class="co"># Saves to working directory</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="exporting-a-subset-of-variables" class="level3"><h3 class="anchored" data-anchor-id="exporting-a-subset-of-variables">Exporting a Subset of Variables</h3>
 <p>Select specific columns before exporting:</p>
@@ -854,17 +854,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export only selected variables</span></span>
 <span><span class="va">superman</span> <span class="op">|&gt;</span></span>
 <span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">year</span>, <span class="va">type</span>, <span class="va">clark_height</span>, <span class="va">rt_critics_score</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"superman_subset.sav"</span><span class="op">)</span></span>
+<span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"superman_subset.sav"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Use tidyselect helpers</span></span>
 <span><span class="va">huskers</span> <span class="op">|&gt;</span></span>
 <span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">season</span>, <span class="va">opp</span>, <span class="va">result</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"ne_score"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"huskers_subset.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"huskers_subset.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="export-all-datasets" class="level3"><h3 class="anchored" data-anchor-id="export-all-datasets">Export All Datasets</h3>
 <p>Create a folder with all <code>.sav</code> files at once:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"data/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"data/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section></section><section id="r-vs-spss-whats-different" class="level2"><h2 class="anchored" data-anchor-id="r-vs-spss-whats-different">R vs SPSS: What’s Different?</h2>
 <table class="caption-top table">
@@ -892,7 +892,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td>Variable descriptions</td>
-<td>In help files (<code><a href="https://rdrr.io/pkg/psych350data/man/superman.html">?superman</a></code>)</td>
+<td>In help files (<code><a href="https://emmarshall.github.io/psych350data/man/superman.html">?superman</a></code>)</td>
 <td>Variable labels in Variable View</td>
 </tr>
 </tbody>
