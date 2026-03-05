@@ -27,11 +27,7 @@ if (file.exists(file.path(source_dir, "hot_ones.xlsx"))) {
       SHU = scoville
     ) |>
     select(season, order, sauce_name, SHU) |>
-    arrange(season, order) |>
-    label_hot_ones_sauces(use_sentinel = FALSE) |>
-    haven::zap_labels() |>
-    haven::zap_label() |>
-    haven::zap_formats()
+    arrange(season, order)
 
   usethis::use_data(hot_ones_sauces, overwrite = TRUE)
   cat("Created: hot_ones_sauces (Sauce data by season/position)\n")
@@ -57,11 +53,7 @@ if (file.exists(file.path(source_dir, "hot_ones.xlsx"))) {
     mutate(
       views = views / 1000000
     ) |>
-    arrange(season, order) |>
-    label_hot_ones_episodes(use_sentinel = FALSE) |>
-    haven::zap_labels() |>
-    haven::zap_label() |>
-    haven::zap_formats()
+    arrange(season, order)
 
   usethis::use_data(hot_ones_episodes, overwrite = TRUE)
   cat("Created: hot_ones_episodes (Episode data with YouTube metrics)\n")
@@ -123,18 +115,12 @@ if (file.exists(file.path(source_dir, "hot_ones.xlsx"))) {
       likes = like_count,
       comments = comment_count
     ) |>
-    mutate(
-      views = views / 1000000
-    ) |>
+    mutate(views = views / 1000000) |>
     select(subn, name, gender, age, occupation,
            wing_total, alt_food, helpers,
            SHU_1, SHU_2, SHU_3, SHU_4, SHU_5, SHU_6, SHU_7, SHU_8, SHU_9, SHU_10,
            result, appearances, season, order,
-           views, likes, comments) |>
-    label_hot_ones(use_sentinel = FALSE) |>
-    haven::zap_labels() |>
-    haven::zap_label() |>
-    haven::zap_formats()
+           views, likes, comments)
 
   usethis::use_data(hot_ones, overwrite = TRUE)
   cat("Created: hot_ones (Guest-level data)\n")
