@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Getting Started with psych350data – psych350data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5dc72fe4f8e2ee6edcea9b2c2eeaa369.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-9291fb68f63017f61098342f7067d42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+</head>
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../logo.png" alt="" class="navbar-logo light-content"><img src="../logo.png" alt="" class="navbar-logo dark-content"></a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">psych350data</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/emmarshall/psych350data/"> <i class="bi bi-github" role="img" aria-label="psych350data GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+</div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Getting Started with psych350data</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Articles</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../vignettes/dataset-guide.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Reference Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../vignettes/exporting-spss.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exporting Datasets to SPSS</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../vignettes/getting-started.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Getting Started with psych350data</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Reference</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/candy_simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">candy_simple</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/candy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">candy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_all_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_all_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_candy_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_candy_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_candy_simple_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_candy_simple_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_football_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_football_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hot_ones_episodes_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hot_ones_episodes_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hot_ones_sauces_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hot_ones_sauces_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hot_ones_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hot_ones_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_huskers_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_huskers_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_interpersonal_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_interpersonal_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_mcu_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_mcu_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_mock_jury_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_mock_jury_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_selfdescriptive_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_selfdescriptive_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_superman_combined_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_superman_combined_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_superman_movies_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_superman_movies_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_superman_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_superman_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_superman_smes_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_superman_smes_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_tip_jokes_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_tip_jokes_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/football.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">football</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hot_ones_episodes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hot_ones_episodes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hot_ones_sauces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hot_ones_sauces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hot_ones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hot_ones</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/huskers.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">huskers</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/interpersonal_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">interpersonal_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/join_superman_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">join_superman_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/list_datasets.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">list_datasets</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/mcu.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">mcu</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/mock_jury.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">mock_jury</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/prep_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">prep_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/self_descriptive_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">self_descriptive_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/superman_movies.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">superman_movies</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/superman_smes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">superman_smes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/superman.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">superman</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/tip_jokes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">tip_jokes</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../LICENSE.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">License</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../CITATION.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Citation</span></a>
+  </div>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+   
+  <ul>
+<li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#loading-the-package" id="toc-loading-the-package" class="nav-link" data-scroll-target="#loading-the-package">Loading the Package</a></li>
+  <li><a href="#browsing-available-datasets" id="toc-browsing-available-datasets" class="nav-link" data-scroll-target="#browsing-available-datasets">Browsing Available Datasets</a></li>
+  <li>
+<a href="#using-datasets-in-r" id="toc-using-datasets-in-r" class="nav-link" data-scroll-target="#using-datasets-in-r">Using Datasets in R</a>
+  <ul class="collapse">
+<li><a href="#missing-values-in-r" id="toc-missing-values-in-r" class="nav-link" data-scroll-target="#missing-values-in-r">Missing Values in R</a></li>
+  <li><a href="#converting-to-factors-for-analysis" id="toc-converting-to-factors-for-analysis" class="nav-link" data-scroll-target="#converting-to-factors-for-analysis">Converting to Factors for Analysis</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#preparing-data-for-spss-matched-analysis" id="toc-preparing-data-for-spss-matched-analysis" class="nav-link" data-scroll-target="#preparing-data-for-spss-matched-analysis">Preparing Data for SPSS-Matched Analysis</a>
+  <ul class="collapse">
+<li><a href="#the-prep_data-function" id="toc-the-prep_data-function" class="nav-link" data-scroll-target="#the-prep_data-function">The <code>prep_data()</code> Function</a></li>
+  <li><a href="#dataset-specific-prep-functions" id="toc-dataset-specific-prep-functions" class="nav-link" data-scroll-target="#dataset-specific-prep-functions">Dataset-Specific Prep Functions</a></li>
+  <li><a href="#keeping-labels-for-plotting" id="toc-keeping-labels-for-plotting" class="nav-link" data-scroll-target="#keeping-labels-for-plotting">Keeping Labels for Plotting</a></li>
+  <li><a href="#when-to-use-prep-functions" id="toc-when-to-use-prep-functions" class="nav-link" data-scroll-target="#when-to-use-prep-functions">When to Use Prep Functions</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#exporting-to-spss" id="toc-exporting-to-spss" class="nav-link" data-scroll-target="#exporting-to-spss">Exporting to SPSS</a>
+  <ul class="collapse">
+<li><a href="#dataset-specific-export-functions" id="toc-dataset-specific-export-functions" class="nav-link" data-scroll-target="#dataset-specific-export-functions">Dataset-Specific Export Functions</a></li>
+  <li><a href="#generic-export-function" id="toc-generic-export-function" class="nav-link" data-scroll-target="#generic-export-function">Generic Export Function</a></li>
+  <li><a href="#exporting-a-subset-of-variables" id="toc-exporting-a-subset-of-variables" class="nav-link" data-scroll-target="#exporting-a-subset-of-variables">Exporting a Subset of Variables</a></li>
+  <li><a href="#export-all-datasets" id="toc-export-all-datasets" class="nav-link" data-scroll-target="#export-all-datasets">Export All Datasets</a></li>
+  </ul>
+</li>
+  <li><a href="#r-vs-spss-whats-different" id="toc-r-vs-spss-whats-different" class="nav-link" data-scroll-target="#r-vs-spss-whats-different">R vs SPSS: What’s Different?</a></li>
+  </ul><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Getting Started with psych350data</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Getting Started with psych350data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>The psych350data package provides all the datasets you need for PSYC 350 labs. Each dataset is pre-cleaned and ready to use in two ways:</p>
+<ol type="1">
+<li><p><strong>In R</strong> — Datasets use human-readable values (like “Film”, “TV Series”) and standard <code>NA</code> for missing data. Perfect for analysis with psych350lab functions.</p></li>
+<li><p><strong>In SPSS</strong> — Export functions create <code>.sav</code> files with numeric codes, value labels, and <code>-99</code> for missing values.</p></li>
+</ol></section><section id="loading-the-package" class="level2"><h2 class="anchored" data-anchor-id="loading-the-package">Loading the Package</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emmarshall.github.io/psych350data/">psych350data</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     filter, lag</span></span>
+<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="browsing-available-datasets" class="level2"><h2 class="anchored" data-anchor-id="browsing-available-datasets">Browsing Available Datasets</h2>
+<p>To see every dataset in the package:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  [1] "superman"              "superman_smes"         "superman_movies"      </span></span>
+<span><span class="co">#&gt;  [4] "superman_combined"     "hot_ones"              "hot_ones_sauces"      </span></span>
+<span><span class="co">#&gt;  [7] "hot_ones_episodes"     "tip_jokes"             "mcu"                  </span></span>
+<span><span class="co">#&gt; [10] "mock_jury"             "candy"                 "candy_simple"         </span></span>
+<span><span class="co">#&gt; [13] "football"              "huskers"               "interpersonal_data"   </span></span>
+<span><span class="co">#&gt; [16] "self_descriptive_data"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>For detailed documentation on any dataset, use the help system:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">superman</span></span>
+<span><span class="op">?</span><span class="va">hot_ones</span></span>
+<span><span class="op">?</span><span class="va">mock_jury</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="using-datasets-in-r" class="level2"><h2 class="anchored" data-anchor-id="using-datasets-in-r">Using Datasets in R</h2>
+<p>Every dataset is a tibble that’s immediately available after loading the package. Categorical variables use descriptive character values that are easy to read and work with:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Categorical variables are human-readable</span></span>
+<span><span class="va">superman</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_grp</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;     num media                   type    clark_grp     height_gap</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt; 1     1 Superman                Film    6ft or taller Big       </span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie     Film    6ft or taller Big       </span></span>
+<span><span class="co">#&gt; 3     3 Smallville              TV Show 6ft or taller Average   </span></span>
+<span><span class="co">#&gt; 4     4 Superman Returns        Film    6ft or taller Big       </span></span>
+<span><span class="co">#&gt; 5     5 Superman &amp; the Mole Men Film    6ft or taller Big       </span></span>
+<span><span class="co">#&gt; 6     6 Man of Steel            Film    6ft or taller Big</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="missing-values-in-r" class="level3"><h3 class="anchored" data-anchor-id="missing-values-in-r">Missing Values in R</h3>
+<p>Missing values are represented as <code>NA</code>, which R functions handle automatically:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># See which Superman entries have missing Letterboxd scores</span></span>
+<span><span class="va">superman</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">ldb_likes</span>, <span class="va">ldb_scores</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">ldb_scores</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span><span class="co">#&gt;     num media                                        ldb_likes ldb_scores</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                                            &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     3 Smallville                                          NA         NA</span></span>
+<span><span class="co">#&gt; 2     7 Superman                                            NA         NA</span></span>
+<span><span class="co">#&gt; 3     8 Superman &amp; Lois                                     NA         NA</span></span>
+<span><span class="co">#&gt; 4     9 Lois &amp; Clark: The New Adventures of Superman        NA         NA</span></span>
+<span><span class="co">#&gt; 5    10 The Adventures of Superboy                          NA         NA</span></span>
+<span><span class="co">#&gt; 6    11 The Adventures of Superboy                          NA         NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># R functions handle NA automatically</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">superman</span><span class="op">$</span><span class="va">rt_critics_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 79.375</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="converting-to-factors-for-analysis" class="level3"><h3 class="anchored" data-anchor-id="converting-to-factors-for-analysis">Converting to Factors for Analysis</h3>
+<p>For some analyses (like ANOVA), you may want to convert character variables to factors:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Convert for analysis - order levels as needed</span></span>
+<span><span class="va">superman_for_analysis</span> <span class="op">&lt;-</span> <span class="va">superman</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    type <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">type</span><span class="op">)</span>,</span>
+<span>    clark_grp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">clark_grp</span><span class="op">)</span>,</span>
+<span>   height_gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">height_gap</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Minimal"</span>, <span class="st">"Average"</span>, <span class="st">"Big"</span><span class="op">)</span><span class="op">)</span></span>
+<span> <span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Now ready for ANOVA, contrasts, etc.</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">superman_for_analysis</span><span class="op">$</span><span class="va">height_gap</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Minimal" "Average" "Big"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section><section id="preparing-data-for-spss-matched-analysis" class="level2"><h2 class="anchored" data-anchor-id="preparing-data-for-spss-matched-analysis">Preparing Data for SPSS-Matched Analysis</h2>
+<p>If your analysis needs to produce numeric output that matches SPSS — for example, when comparing R results to SPSS output from a lab assignment — use the prep functions to convert categorical variables to the same numeric codes SPSS uses.</p>
+<section id="the-prep_data-function" class="level3"><h3 class="anchored" data-anchor-id="the-prep_data-function">The <code>prep_data()</code> Function</h3>
+<p><code><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_data()</a></code> is the main entry point. Pass it a dataset and the dataset name as a string:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_data</a></span><span class="op">(</span><span class="va">superman</span>, <span class="st">"superman"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_grp</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
+<span><span class="co">#&gt;     num media                    type clark_grp height_gap</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1 Superman                    1         2          3</span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie         1         2          3</span></span>
+<span><span class="co">#&gt; 3     3 Smallville                  2         2          2</span></span>
+<span><span class="co">#&gt; 4     4 Superman Returns            1         2          3</span></span>
+<span><span class="co">#&gt; 5     5 Superman &amp; the Mole Men     1         2          3</span></span>
+<span><span class="co">#&gt; 6     6 Man of Steel                1         2          3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Each character category is replaced with its numeric code. For example, <code>type</code> becomes <code>1</code> for Film, <code>2</code> for TV Series/TV Show, and <code>3</code> for Serial — matching the value labels in the SPSS <code>.sav</code> file.</p>
+</section><section id="dataset-specific-prep-functions" class="level3"><h3 class="anchored" data-anchor-id="dataset-specific-prep-functions">Dataset-Specific Prep Functions</h3>
+<p>Every dataset also has its own dedicated prep function if you prefer to be explicit:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
+<span><span class="va">hot_ones</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_hot_ones</a></span><span class="op">(</span><span class="va">hot_ones</span><span class="op">)</span></span>
+<span><span class="va">mcu</span>            <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_mcu</a></span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
+<span><span class="va">mock_jury</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_mock_jury</a></span><span class="op">(</span><span class="va">mock_jury</span><span class="op">)</span></span>
+<span><span class="va">tip_jokes</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_tip_jokes</a></span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">)</span></span>
+<span><span class="va">candy</span>          <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_candy</a></span><span class="op">(</span><span class="va">candy</span><span class="op">)</span></span>
+<span><span class="va">candy_simple</span>   <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_candy_simple</a></span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
+<span><span class="va">football</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_football</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
+<span><span class="va">huskers</span>        <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_huskers</a></span><span class="op">(</span><span class="va">huskers</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="keeping-labels-for-plotting" class="level3"><h3 class="anchored" data-anchor-id="keeping-labels-for-plotting">Keeping Labels for Plotting</h3>
+<p>By default, prep functions replace character columns with numeric codes and the original strings are lost. If you need the original values for axis labels or legends in plots, use <code>keep_labels = TRUE</code>. This retains the original character column alongside the numeric one, with a <code>_label</code> suffix:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span>, keep_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># type is now numeric, type_label has the original strings</span></span>
+<span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">type</span>, <span class="va">type_label</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
+<span><span class="co">#&gt;     num  type type_label</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;dbl&gt; &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt; 1     1     1 Film      </span></span>
+<span><span class="co">#&gt; 2     2     1 Film      </span></span>
+<span><span class="co">#&gt; 3     3     2 TV Show   </span></span>
+<span><span class="co">#&gt; 4     4     1 Film      </span></span>
+<span><span class="co">#&gt; 5     5     1 Film      </span></span>
+<span><span class="co">#&gt; 6     6     1 Film</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This is useful when you want numeric codes for analysis but readable labels for <code>ggplot2</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">type_label</span>, y <span class="op">=</span> <span class="va">rt_critics_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="when-to-use-prep-functions" class="level3"><h3 class="anchored" data-anchor-id="when-to-use-prep-functions">When to Use Prep Functions</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 40%">
+<col style="width: 59%">
+</colgroup>
+<thead><tr class="header">
+<th>Situation</th>
+<th>Recommendation</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>General R analysis, plotting</td>
+<td>Use the raw dataset as-is</td>
+</tr>
+<tr class="even">
+<td>Matching SPSS numeric output</td>
+<td>Use <code><a href="https://rdrr.io/pkg/psych350data/man/prep_data.html">prep_data()</a></code> or a dataset-specific prep function</td>
+</tr>
+<tr class="odd">
+<td>Analysis + plotting with ggplot2</td>
+<td>Use <code>keep_labels = TRUE</code>
+</td>
+</tr>
+<tr class="even">
+<td>Exporting to <code>.sav</code>
+</td>
+<td>Use <code><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav()</a></code> — it handles conversion internally</td>
+</tr>
+</tbody>
+</table>
+<p>Note that exporting to SPSS with <code><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav()</a></code> does not require running a prep function first — the export functions handle numeric conversion internally.</p>
+</section></section><section id="exporting-to-spss" class="level2"><h2 class="anchored" data-anchor-id="exporting-to-spss">Exporting to SPSS</h2>
+<p>When you export to SPSS, the package automatically:</p>
+<ul>
+<li>Converts categorical variables to numeric codes</li>
+<li>Adds value labels so SPSS displays the category names</li>
+<li>Replaces <code>NA</code> with <code>-99</code> and marks it as user-defined missing</li>
+<li>Adds variable labels describing each column</li>
+</ul>
+<section id="dataset-specific-export-functions" class="level3"><h3 class="anchored" data-anchor-id="dataset-specific-export-functions">Dataset-Specific Export Functions</h3>
+<p>Each dataset has a dedicated export function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export individual datasets</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_superman_smes_sav.html">export_superman_smes_sav</a></span><span class="op">(</span><span class="st">"superman_smes_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_hot_ones_sav.html">export_hot_ones_sav</a></span><span class="op">(</span><span class="st">"hot_ones_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_tip_jokes_sav.html">export_tip_jokes_sav</a></span><span class="op">(</span><span class="st">"tip_jokes_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_mcu_sav.html">export_mcu_sav</a></span><span class="op">(</span><span class="st">"mcu_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_mock_jury_sav.html">export_mock_jury_sav</a></span><span class="op">(</span><span class="st">"mock_jury_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_candy_sav.html">export_candy_sav</a></span><span class="op">(</span><span class="st">"candy_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_candy_simple_sav.html">export_candy_simple_sav</a></span><span class="op">(</span><span class="st">"candy_simple_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"football_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_huskers_sav.html">export_huskers_sav</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_interpersonal_sav.html">export_interpersonal_sav</a></span><span class="op">(</span><span class="st">"interpersonal_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_selfdescriptive_sav.html">export_selfdescriptive_sav</a></span><span class="op">(</span><span class="st">"selfdescriptive_data.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Save to a specific location</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"data/superman_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="generic-export-function" class="level3"><h3 class="anchored" data-anchor-id="generic-export-function">Generic Export Function</h3>
+<p>You can also use <code><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav()</a></code> with any dataset name:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"data/superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"mock_jury"</span><span class="op">)</span> <span class="co"># Saves to working directory</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="exporting-a-subset-of-variables" class="level3"><h3 class="anchored" data-anchor-id="exporting-a-subset-of-variables">Exporting a Subset of Variables</h3>
+<p>Select specific columns before exporting:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export only selected variables</span></span>
+<span><span class="va">superman</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">year</span>, <span class="va">type</span>, <span class="va">clark_height</span>, <span class="va">rt_critics_score</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"superman_subset.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Use tidyselect helpers</span></span>
+<span><span class="va">huskers</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">season</span>, <span class="va">opp</span>, <span class="va">result</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"ne_score"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span> <span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"huskers_subset.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="export-all-datasets" class="level3"><h3 class="anchored" data-anchor-id="export-all-datasets">Export All Datasets</h3>
+<p>Create a folder with all <code>.sav</code> files at once:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/psych350data/man/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"data/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section></section><section id="r-vs-spss-whats-different" class="level2"><h2 class="anchored" data-anchor-id="r-vs-spss-whats-different">R vs SPSS: What’s Different?</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 20%">
+<col style="width: 53%">
+</colgroup>
+<thead><tr class="header">
+<th>Aspect</th>
+<th>In R</th>
+<th>In SPSS (.sav)</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td>Categorical values</td>
+<td>Character strings (“Film”, “TV Series”)</td>
+<td>Numeric codes (1, 2) with value labels</td>
+</tr>
+<tr class="even">
+<td>Missing values</td>
+<td><code>NA</code></td>
+<td>
+<code>-99</code> with missing value definition</td>
+</tr>
+<tr class="odd">
+<td>Variable descriptions</td>
+<td>In help files (<code><a href="https://rdrr.io/pkg/psych350data/man/superman.html">?superman</a></code>)</td>
+<td>Variable labels in Variable View</td>
+</tr>
+</tbody>
+</table>
+
+
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+</body></html>
