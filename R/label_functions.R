@@ -32,9 +32,19 @@ safe_var_labels <- function(df, all_labels) {
 #' Set -99 as missing for all numeric columns
 #' @noRd
 safe_set_na_values <- function(df) {
-  numeric_vars <- names(df)[sapply(df, is.numeric)]
-  for (var in numeric_vars) {
-    df <- labelled::set_na_values(df, !!rlang::sym(var) := -99)
+  target_vars <- names(df)[sapply(df, \(x) is.numeric(x) || inherits(x, "haven_labelled"))]
+  for (var in target_vars) {
+    na_arg <- list(-99)
+    names(na_arg) <- var
+    df <- do.call(labelled::set_na_values, c(list(df), na_arg))
+    # Convert to haven_labelled_spss so haven::write_sav() preserves na_values bc otherwise it freaks out and is annoying
+    x <- df[[var]]
+    df[[var]] <- haven::labelled_spss(
+      x          = as.double(labelled::remove_labels(x)),
+      labels     = labelled::val_labels(x),
+      na_values  = -99,
+      label      = attr(x, "label")
+    )
   }
   df
 }
@@ -253,49 +263,51 @@ label_superman <- function(df, use_sentinel = TRUE) {
 
 #' @noRd
 label_superman_smes <- function(df, use_sentinel = TRUE) {
-
-  # Step 1: Convert character categorical variables to numeric codes
-
-  # height_gap: Minimal = 1, Average = 2, Big = 3
+  # Step 1: Convert character to numeric if needed
   if ("height_gap" %in% names(df) && is.character(df$height_gap)) {
     df$height_gap <- dplyr::case_match(
       df$height_gap,
       "Minimal" ~ 1,
       "Average" ~ 2,
-      "Big" ~ 3,
-      .default = NA_real_
+      "Big"     ~ 3,
+      .default  = NA_real_
     )
   }
 
-  # Step 2: Replace NA with -99
-  if (use_sentinel) {
-    df <- df |>
-      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
-                                  ~ifelse(is.na(.x), -99, .x)))
-  }
-
-  # Step 3: Apply value labels
+  # Step 2: Apply value labels
   df <- safe_labelled(df, "height_gap", c(
-    "Minimal (<6 inches)" = 1,
+    "Minimal (<6 inches)"  = 1,
     "Average (6-8 inches)" = 2,
-    "Big (>8 inches)" = 3
+    "Big (>8 inches)"      = 3
   ))
 
-  # Step 4: Apply variable labels
+  # Step 3: Apply variable labels
   df <- safe_var_labels(df, list(
-    num = "Unique participant number",
-    height_gap = "Height gap category between Superman and Lois Lane actors",
-    emotional_impact = "Emotional Impact subscale (sum of 4 items, range 4-20)",
-    aesthetic_appeal = "Aesthetic Appeal subscale (sum of 3 items, range 3-15)",
+    num                  = "Unique participant number",
+    height_gap           = "Height gap category between Superman and Lois Lane actors",
+    emotional_impact     = "Emotional Impact subscale (sum of 4 items, range 4-20)",
+    aesthetic_appeal     = "Aesthetic Appeal subscale (sum of 3 items, range 3-15)",
     cognitive_engagement = "Cognitive Engagement subscale (mean of 4 items, range 0-7)"
   ))
 
-  # Step 5: Set SPSS formats
+  # Step 4: Set SPSS formats
   if ("height_gap" %in% names(df)) {
     attr(df$height_gap, "format.spss") <- "F1.0"
   }
 
-  # Step 6: Set -99 as missing values
+  # Step 5: Replace NA with -99 AFTER labeling so haven_labelled columns are caught
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(dplyr::across(
+        dplyr::where(\(x) is.numeric(x) || inherits(x, "haven_labelled")),
+        \(x) {
+          x[is.na(x)] <- -99
+          x
+        }
+      ))
+  }
+
+  # Step 6: Set -99 as SPSS missing values
   if (use_sentinel) {
     df <- safe_set_na_values(df)
   }

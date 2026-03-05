@@ -120,16 +120,7 @@ prep_superman <- function(data, keep_labels = FALSE) {
 #' @rdname prep_data
 #' @export
 prep_superman_smes <- function(data, keep_labels = FALSE) {
-  cat_vars <- c("height_gap")
-  data <- .save_labels(data, cat_vars, keep_labels)
-  data |>
-    dplyr::mutate(
-      height_gap = dplyr::case_match(.data[["height_gap"]],
-                                     "Minimal" ~ 1,
-                                     "Average" ~ 2,
-                                     "Big"     ~ 3,
-                                     .default = NA_real_)
-    )
+  data
 }
 
 
