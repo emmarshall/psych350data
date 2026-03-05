@@ -2,6 +2,9 @@
 #'   left_join filter pull
 NULL
 
+#' @importFrom rlang .data
+NULL
+
 #' Internal: Replace NA with a sentinel value
 #' @param x A vector
 #' @param sentinel The sentinel value to use (default: -99)

@@ -81,6 +81,68 @@ superman_for_analysis <- superman |>
 levels(superman_for_analysis$height_gap)
 ```
 
+## Preparing Data for SPSS-Matched Analysis
+
+If your analysis needs to produce numeric output that matches SPSS — for example, when comparing R results to SPSS output from a lab assignment — use the prep functions to convert categorical variables to the same numeric codes SPSS uses.
+
+### The `prep_data()` Function
+
+`prep_data()` is the main entry point. Pass it a dataset and the dataset name as a string:
+```{r}
+superman_prepped <- prep_data(superman, "superman")
+
+superman_prepped |>
+  select(num, media, type, clark_grp, height_gap) |>
+  head()
+```
+
+Each character category is replaced with its numeric code. For example, `type` becomes `1` for Film, `2` for TV Series/TV Show, and `3` for Serial — matching the value labels in the SPSS `.sav` file.
+
+### Dataset-Specific Prep Functions
+
+Every dataset also has its own dedicated prep function if you prefer to be explicit:
+```{r eval = FALSE}
+superman       <- prep_superman(superman)
+hot_ones       <- prep_hot_ones(hot_ones)
+mcu            <- prep_mcu(mcu)
+mock_jury      <- prep_mock_jury(mock_jury)
+tip_jokes      <- prep_tip_jokes(tip_jokes)
+candy          <- prep_candy(candy)
+candy_simple   <- prep_candy_simple(candy_simple)
+football       <- prep_football(football)
+huskers        <- prep_huskers(huskers)
+```
+
+### Keeping Labels for Plotting
+
+By default, prep functions replace character columns with numeric codes and the original strings are lost. If you need the original values for axis labels or legends in plots, use `keep_labels = TRUE`. This retains the original character column alongside the numeric one, with a `_label` suffix:
+```{r}
+superman_prepped <- prep_superman(superman, keep_labels = TRUE)
+
+# type is now numeric, type_label has the original strings
+superman_prepped |>
+  select(num, type, type_label) |>
+  head()
+```
+
+This is useful when you want numeric codes for analysis but readable labels for `ggplot2`:
+```{r eval = FALSE}
+superman_prepped |>
+  ggplot(aes(x = type_label, y = rt_critics_score)) +
+  geom_boxplot()
+```
+
+### When to Use Prep Functions
+
+| Situation | Recommendation |
+|-----------|----------------|
+| General R analysis, plotting | Use the raw dataset as-is |
+| Matching SPSS numeric output | Use `prep_data()` or a dataset-specific prep function |
+| Analysis + plotting with ggplot2 | Use `keep_labels = TRUE` |
+| Exporting to `.sav` | Use `export_sav()` — it handles conversion internally |
+
+Note that exporting to SPSS with `export_sav()` does not require running a prep function first — the export functions handle numeric conversion internally.
+
 ## Exporting to SPSS
 
 When you export to SPSS, the package automatically:
@@ -109,14 +171,14 @@ export_interpersonal_sav("interpersonal_data.sav")
 export_selfdescriptive_sav("selfdescriptive_data.sav")
 
 # Save to a specific location
-export_superman_sav("~/Desktop/superman_data.sav")
+export_superman_sav("data/superman_data.sav")
 ```
 
 ### Generic Export Function
 
 You can also use `export_sav()` with any dataset name:
 ```{r eval = FALSE}
-export_sav("superman", path = "~/Desktop/superman_data.sav")
+export_sav("superman", path = "data/superman_data.sav")
 export_sav("mock_jury") # Saves to working directory
 ```
 
@@ -139,7 +201,7 @@ huskers |>
 
 Create a folder with all `.sav` files at once:
 ```{r eval = FALSE}
-export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
+export_all_sav(dir = "data/PSYC350_SPSS/")
 ```
 
 ## R vs SPSS: What's Different?
@@ -149,50 +211,3 @@ export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
 | Categorical values | Character strings ("Film", "TV Series") | Numeric codes (1, 2) with value labels |
 | Missing values | `NA` | `-99` with missing value definition |
 | Variable descriptions | In help files (`?superman`) | Variable labels in Variable View |
-
-## Example Analyses in R
-
-### T-test with Mock Jury Data
-```{r}
-# Compare sentence length by crime type
-# Convert to factor for cleaner output
-mock_jury_analysis <- mock_jury |>
- mutate(crime = factor(crime))
-
-t.test(years ~ crime, data = mock_jury_analysis)
-```
-
-### ANOVA with Football Data
-```{r}
-# Compare hippocampus volume across groups
-# Character values convert directly to factor
-football_analysis <- football |>
- mutate(group = factor(group))
-
-model <- aov(volume ~ group, data = football_analysis)
-summary(model)
-```
-
-### Correlation with Candy Data
-```{r}
-# Relationship between sugar content and win percentage
-cor.test(candy_simple$sugarpercent, candy_simple$winpercent)
-```
-
-### Chi-Square with Tip Jokes Data
-```{r}
-# Is tipping independent of card type?
-# Convert card to factor for labeled output
-tip_jokes_analysis <- tip_jokes |>
- mutate(card = factor(card))
-
-table(tip_jokes_analysis$card, tip_jokes_analysis$tip) |>
- chisq.test()
-```
-
-## Next Steps
-
-- See `vignette("exporting-spss")` for detailed export options
-- See `vignette("dataset-guide")` for complete variable coding schemes
-- Use `?dataset_name` to view full documentation for any dataset
-- All datasets work with psych350lab analysis functions

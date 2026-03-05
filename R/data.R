@@ -24,7 +24,9 @@
 
 #'   \item{age_gap}{Height gap category: 1 = <6in, 2 = 6-8in, 3 = >8in}
 #'   \item{rt_critics_score}{Rotten Tomatoes critics score}
+#'   \item{rt_critics_count}{Number of critics reviews on Rotten Tomatoes}
 #'   \item{rt_audience_score}{Rotten Tomatoes audience score}
+#'   \item{rt_critics_count}{Number of audience reviews on Rotten Tomatoes}
 #'   \item{tomatometer}{Critics rating: 1 = Rotten (<60), 2 = Fresh (60+)}
 #'   \item{rt_avg}{Average of critics and audience scores}
 #'   \item{ldb_likes}{Letterboxd likes}
