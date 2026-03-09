@@ -17,6 +17,7 @@ Install from GitHub:
 # install.packages("pak")
 pak::pak("emmarshall/psych350data")
 ```
+
 ## Quick Start
 ```{r}
 #| message: false
@@ -39,58 +40,89 @@ export_football_sav("~/Desktop/football_data.sav")
 export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
 ```
 
+## Three Ways to Use the Data
+
+Each dataset supports three workflows depending on what you need:
+
+**1. Raw data in R** — categorical variables are human-readable character strings, ideal for exploration and plotting with ggplot2:
+```{r}
+#| eval: false
+superman |> count(type)         # "Film", "TV Series", "Serial"
+football |> count(group)        # "Control", "Football no concussion", ...
+```
+
+**2. Prep for numeric R analysis** — `prep_*()` converts character categories to the same numeric codes used in SPSS, so your R output matches SPSS output exactly:
+```{r}
+#| eval: false
+superman_num <- prep_superman(superman)
+superman_num |> count(type)     # 1, 2, 3
+```
+
+**3. Export to SPSS** — `export_*_sav()` produces a fully labeled `.sav` file with numeric codes, value labels, variable labels, and `-99` for missing values:
+```{r}
+#| eval: false
+export_superman_sav("superman_data.sav")
+```
+
+See `vignette("getting-started")` for a full walkthrough of all three workflows.
+
 ## Available Datasets
+
 | Dataset | Description | Rows | Export Function |
 |---------|-------------|------|-----------------|
 | `superman` | Superman actor data with ratings | 11 | `export_superman_sav()` |
 | `superman_smes` | SMES ratings by height gap | 47 | `export_superman_smes_sav()` |
 | `superman_movies` | Superman film box office data | 10 | `export_superman_movies_sav()` |
-| `hot_ones` | Hot Ones guest data | 300+ | `export_hot_ones_sav()` |
-| `hot_ones_sauces` | Hot sauce data by season | 250+ | `export_hot_ones_sauces_sav()` |
-| `hot_ones_episodes` | Episode YouTube metrics | 300+ | `export_hot_ones_episodes_sav()` |
+| `hotones` | Hot Ones guest data | 300+ | `export_hotones_sav()` |
+| `hotones_sauces` | Hot sauce data by season and position | 250+ | `export_hotones_sauces_sav()` |
+| `hotones_episodes` | Episode-level YouTube engagement metrics | 300+ | `export_hotones_episodes_sav()` |
 | `tip_jokes` | Tipping experiment (Gueguen, 2002) | 211 | `export_tip_jokes_sav()` |
-| `mcu` | MCU films box office & ratings | 23 | `export_mcu_sav()` |
+| `mcu` | MCU films box office and ratings | 23 | `export_mcu_sav()` |
 | `mock_jury` | Mock jury sentencing (Plaster, 1989) | 114 | `export_mock_jury_sav()` |
-| `candy` | Candy rankings (full) | 85 | `export_candy_sav()` |
-| `candy_simple` | Candy rankings (simplified) | 85 | `export_candy_simple_sav()` |
-| `football` | Football concussion brain data | 75 | `export_football_sav()` |
-| `huskers` | Nebraska football box scores (1962-2024) | 700+ | `export_huskers_sav()` |
-| `interpersonal_data` | Interpersonal survey scales | 574 | `export_interpersonal_sav()` |
+| `candy` | Candy power rankings — full | 85 | `export_candy_sav()` |
+| `candy_simple` | Candy power rankings — simplified | 85 | `export_candy_simple_sav()` |
+| `football` | Football concussion brain measurements | 75 | `export_football_sav()` |
+| `huskers` | Nebraska football box scores (1962–2024) | 700+ | `export_huskers_sav()` |
+| `cheese_data` | Cheese characteristics and nutrition (TidyTuesday 2024) | — | `export_cheese_sav()` |
+| `lpd_data` | Lincoln Police Department traffic stops | — | `export_lpd_sav()` |
+| `parent_child_data` | Parent-child observational study | 100 | `export_parent_child_sav()` |
+| `hindsight_mg_data` | Hindsight bias — between-groups long format | 600 | `export_hindsight_mg_sav()` |
+| `hindsight_wg_data` | Hindsight bias — within-groups wide format | 60 | `export_hindsight_wg_sav()` |
+| `interpersonal_data` | Interpersonal relationships survey scales | 574 | `export_interpersonal_sav()` |
 | `self_descriptive_data` | Personality survey scales | 547 | `export_selfdescriptive_sav()` |
 
 ## R vs SPSS: What's Different?
 
-| Aspect | In R | In SPSS (.sav) |
-|--------|------|----------------|
-| Categorical values | Character strings (`"Film"`, `"Control"`) | Numeric codes (1, 2, 3) with value labels |
-| Missing values | `NA` | `-99` with user-defined missing |
-| Variable descriptions | Help files (`?superman`) | Variable labels in Variable View |
+| Aspect | Raw R data | After `prep_*()` | SPSS `.sav` export |
+|--------|-----------|-------------------|---------------------|
+| Categorical values | Character strings (`"Film"`, `"Control"`) | Numeric codes (1, 2, 3) | Numeric codes with value labels |
+| Missing values | `NA` | `NA` | `-99` with user-defined missing |
+| Variable descriptions | Help files (`?superman`) | Help files | Variable labels in Variable View |
 
-### Example: Using Data in R
+### Example: All Three Workflows
 ```{r}
 #| message: false
 library(dplyr)
 
-# Categorical variables are human-readable
+# Workflow 1: Raw data — human-readable, great for plots
 football |>
   count(group)
 
-# Convert to factor for analysis
-football_analysis <- football |>
-  mutate(group = factor(group))
+# Workflow 2: Prep for numeric analysis matching SPSS
+football_num <- prep_football(football)
+football_num |>
+  count(group)   # 1, 2, 3
 
-# Run ANOVA
-model <- aov(volume ~ group, data = football_analysis)
+# Run ANOVA with numeric codes
+model <- aov(volume ~ factor(group), data = football_num)
 summary(model)
 ```
-
-### Example: Exporting to SPSS
 ```{r}
 #| eval: false
-# Export full dataset
+# Workflow 3: Export to SPSS with full labels and -99 for missing
 export_football_sav("football_data.sav")
 
-# Export subset of variables
+# Export a subset of variables
 superman |>
   select(num, media, type, clark_height, rt_critics_score) |>
   export_sav(path = "superman_subset.sav")
@@ -103,9 +135,21 @@ superman |>
 - **Missing values** coded as `-99` with SPSS missing value definitions
 - **Proper SPSS formats** for all variable types
 
+### Auditing an Export
+```r
+export_huskers_sav("huskers_data.sav")
+check_sav_export("huskers_data.sav")
+
+# Show all variables, not just issues
+check_sav_export("huskers_data.sav", show_all = TRUE)
+
+# Read back for analysis
+huskers_clean <- get_spss_data("huskers_data.sav")
+```
+
 ## Documentation
 
-- `vignette("getting-started")` — Introduction and basic usage
+- `vignette("getting-started")` — Introduction and all three workflows
 - `vignette("exporting-spss")` — Detailed SPSS export guide
 - `vignette("dataset-guide")` — Complete reference for all datasets
 - `?dataset_name` — Help for any specific dataset

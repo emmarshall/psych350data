@@ -1,0 +1,29 @@
+## List all available datasets in psych350data {.unnumbered}
+
+
+### Description
+
+List all available datasets in psych350data
+
+
+
+### Usage
+
+<pre><code class='language-R'>list_datasets()
+</code></pre>
+
+
+### Value
+
+Character vector of dataset names.
+
+
+
+### Examples
+```{r, warning=FALSE, message=FALSE, eval=TRUE}
+library("psych350data")
+
+list_datasets()
+
+
+```

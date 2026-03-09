@@ -1,0 +1,83 @@
+## Prepare a psych350data dataset for analysis {.unnumbered}
+
+
+### Description
+
+Converts character categorical variables to numeric codes matching
+the SPSS value labels in psych350data. Optionally retains the original
+character columns as <code style="white-space: pre;">_label</code> suffixed columns for use in plotting.
+
+
+
+### Usage
+
+<pre><code class='language-R'>prep_data(data, dataset_name, keep_labels = FALSE)
+
+prep_superman(data, keep_labels = FALSE)
+
+prep_superman_smes(data, keep_labels = FALSE)
+
+prep_superman_movies(data, keep_labels = FALSE)
+
+prep_hotones(data, keep_labels = FALSE)
+
+prep_hotones_sauces(data, keep_labels = FALSE)
+
+prep_hotones_episodes(data, keep_labels = FALSE)
+
+prep_mcu(data, keep_labels = FALSE)
+
+prep_mock_jury(data, keep_labels = FALSE)
+
+prep_tip_jokes(data, keep_labels = FALSE)
+
+prep_candy(data, keep_labels = FALSE)
+
+prep_candy_simple(data, keep_labels = FALSE)
+
+prep_football(data, keep_labels = FALSE)
+
+prep_huskers(data, keep_labels = FALSE)
+
+prep_interpersonal(data, keep_labels = FALSE)
+
+prep_self_descriptive(data, keep_labels = FALSE)
+
+prep_parent_child(data, keep_labels = FALSE)
+
+prep_hindsight_bg(data, keep_labels = FALSE)
+
+prep_hindsight_wg(data, keep_labels = FALSE)
+
+prep_cheese(data, keep_labels = FALSE)
+
+prep_lpd(data, keep_labels = FALSE)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="data">data</code></td>
+<td>
+A dataset from psych350data.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="dataset_name">dataset_name</code></td>
+<td>
+Character. Name of the dataset, e.g. <code>"superman"</code>,
+<code>"hotones"</code>, <code>"mock_jury"</code>.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="keep_labels">keep_labels</code></td>
+<td>
+Logical. If <code>TRUE</code>, retains original character columns
+as <code style="white-space: pre;">_label</code> suffixed columns for plotting. Default <code>FALSE</code>.
+</td></tr>
+</table>
+
+
+### Value
+
+A tibble with categorical variables as numeric codes, and
+optionally <code style="white-space: pre;">_label</code> columns for plotting.
+
+

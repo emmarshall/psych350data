@@ -1,0 +1,84 @@
+## Superman Actor Data {.unnumbered}
+
+
+### Description
+
+Physical characteristics and ratings data for actors who have played
+Superman across various films and TV shows.
+
+
+
+### Usage
+
+<pre><code class='language-R'>superman
+</code></pre>
+
+
+### Format
+
+A tibble with 11 rows and variables:
+
+
+<dl>
+<dt>num</dt><dd>Participant id number
+</dd>
+<dt>type</dt><dd>Media type (Film, TV Show, Serial)
+</dd>
+<dt>title</dt><dd>Title of the production
+</dd>
+<dt>year</dt><dd>Release year
+</dd>
+<dt>clark_actor</dt><dd>Actor playing Clark Kent/Superman
+</dd>
+<dt>clark_height</dt><dd>Clark Kent/Superman actor's height in meters
+</dd>
+<dt>clark_age</dt><dd>Clark Kent/Superman actor's age at debut
+#'(years)
+</dd>
+<dt>lois_actor</dt><dd>Actor playing Lois Lane
+</dd>
+<dt>lois_height</dt><dd>Lois Lane actor's height in meters
+</dd>
+<dt>lois_age</dt><dd>Lois Lane actor's age at debut (years)
+</dd>
+<dt>clark_height_in</dt><dd>Clark Kent/Superman actor's height in inches
+</dd>
+<dt>lois_height_in</dt><dd>Lois Lane actor's height in inches
+</dd>
+<dt>clark_grp</dt><dd>Clark Height group: 1 = under 72 inches, 2 = 72+ inches
+</dd>
+<dt>height_diff</dt><dd>Height difference between Lois and Clark in inches (Clark - Lois)
+</dd>
+<dt>age_diff</dt><dd>Age difference between Lois and Clark in years
+</dd>
+<dt>age_gap</dt><dd>Height gap category: 1 = &lt;6in, 2 = 6-8in, 3 = &gt;8in
+</dd>
+<dt>rt_critics_score</dt><dd>Rotten Tomatoes critics score
+</dd>
+<dt>rt_critics_count</dt><dd>Number of critics reviews on Rotten Tomatoes
+</dd>
+<dt>rt_audience_score</dt><dd>Rotten Tomatoes audience score
+</dd>
+<dt>rt_critics_count</dt><dd>Number of audience reviews on Rotten Tomatoes
+</dd>
+<dt>tomatometer</dt><dd>Critics rating: 1 = Rotten (&lt;60), 2 = Fresh (60+)
+</dd>
+<dt>rt_avg</dt><dd>Average of critics and audience Rotten Tomatoes scores
+</dd>
+<dt>rt_diff</dt><dd>Weighted difference between critics and audience scores on Rotten Tomatoes
+</dd>
+<dt>ldb_likes</dt><dd>Letterboxd likes
+</dd>
+<dt>ldb_scores</dt><dd>Letterboxd score
+</dd>
+<dt>popular</dt><dd>Popularity category based on Letterboxd likes
+</dd>
+</dl>
+
+
+
+### Source
+
+Compiled from the internet including Rotten Tomatoes, Letterboxd, and IMDb.
+
+

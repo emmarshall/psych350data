@@ -1,0 +1,108 @@
+## Self-Descriptive Survey Data {.unnumbered}
+
+
+### Description
+
+Simulated survey data (n = 547) from college students at a predominantly white
+rural state university, containing demographics, relationship variables, and
+scores on personality and self-concept measures including the TIPI Big Five,
+MAAS, RFQ, ATQ-30, Rosenberg Self-Esteem, and New General Self-Efficacy scales.
+
+
+
+### Usage
+
+<pre><code class='language-R'>self_descriptive_data
+</code></pre>
+
+
+### Format
+
+A tibble with 547 rows and 37 variables:
+
+
+<dl>
+<dt>age</dt><dd>Age in years (18-25)
+</dd>
+<dt>gender</dt><dd>Self-described gender: Male (1), Female (2), Another (3)
+</dd>
+<dt>sexorient</dt><dd>Sexual orientation (1-11, see value labels)
+</dd>
+<dt>race</dt><dd>Self-described race: Asian (1), Black (2), Indigenous/Aboriginal/First Nations (3), Latino/Hispanic (4), Middle Eastern (5), White (6), Other (7)
+</dd>
+<dt>hand</dt><dd>Writing hand: Right (1), Left (2), Both (3)
+</dd>
+<dt>community</dt><dd>Childhood community type: Rural (1), Small town (2), Suburban (3), Urban (4)
+</dd>
+<dt>parentedu</dt><dd>Parent graduated from four-year college: No (0), Yes (1)
+</dd>
+<dt>famclass</dt><dd>Childhood social class: Working class (1), Lower class (2), Lower middle class (3), Upper middle class (4), Upper class (5)
+</dd>
+<dt>faminc</dt><dd>Family income during senior year of high school
+</dd>
+<dt>numsib</dt><dd>Number of siblings
+</dd>
+<dt>move</dt><dd>Number of times moved as a child
+</dd>
+<dt>clsfrn</dt><dd>Number of close friends
+</dd>
+<dt>clsfrlst</dt><dd>Number of people who would list you as a close friend
+</dd>
+<dt>greek_in</dt><dd>Fraternity/sorority membership: Independent (1), Greek (2)
+</dd>
+<dt>campus</dt><dd>Living on campus: No (0), Yes (1)
+</dd>
+<dt>relsp</dt><dd>Romantic relationship status (1-5, see value labels)
+</dd>
+<dt>rlength</dt><dd>Length of current or last relationship in months
+</dd>
+<dt>serious</dt><dd>Seriousness rating of current/most recent relationship (1-7)
+</dd>
+<dt>numrels</dt><dd>Number of dating relationships
+</dd>
+<dt>extraversion</dt><dd>Extraversion subscale of the TIPI (1-7)
+</dd>
+<dt>agreeableness</dt><dd>Agreeableness subscale of the TIPI (1-7)
+</dd>
+<dt>conscientiousness</dt><dd>Conscientiousness subscale of the TIPI (1-7)
+</dd>
+<dt>emot_stability</dt><dd>Emotional Stability subscale of the TIPI (1-7)
+</dd>
+<dt>openness</dt><dd>Openness to Experience subscale of the TIPI (1-7)
+</dd>
+<dt>disc</dt><dd>Discomfort with Ambiguity subscale of the MAAS
+</dd>
+<dt>moral</dt><dd>Moral Absolutism/Splitting subscale of the MAAS
+</dd>
+<dt>comp</dt><dd>Need for Complexity and Novelty subscale of the MAAS
+</dd>
+<dt>maas</dt><dd>MAAS total score
+</dd>
+<dt>rse</dt><dd>Rosenberg Self-Esteem scale score
+</dd>
+<dt>promote</dt><dd>Promotion Focus subscale of the RFQ
+</dd>
+<dt>prevent</dt><dd>Prevention Focus subscale of the RFQ
+</dd>
+<dt>atq</dt><dd>Automatic Thoughts Questionnaire (ATQ-30) total score
+</dd>
+<dt>pmdc</dt><dd>Personal Maladjustment and Desire for Change subscale of the ATQ
+</dd>
+<dt>nsne</dt><dd>Negative Self-Concepts and Negative Expectations subscale of the ATQ
+</dd>
+<dt>lse</dt><dd>Low Self-Esteem subscale of the ATQ
+</dd>
+<dt>help</dt><dd>Helplessness subscale of the ATQ
+</dd>
+<dt>ngse</dt><dd>New General Self-Efficacy scale score
+</dd>
+</dl>
+
+
+
+### Source
+
+Simulated data generated to resemble plausible survey responses
+from undergraduate psychology students.
+
+

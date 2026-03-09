@@ -4,9 +4,12 @@
 #' value labels, and defined missing values (-99).
 #'
 #' @param dataset Character string naming the dataset, or the dataset object itself.
-#'   Valid names: "superman", "superman_smes", "hot_ones", "tip_jokes", "mcu",
+#'   Valid names: "superman", "superman_smes", "superman_movies", "superman_combined",
+#'   "hotones", "hotones_sauces", "hotones_episodes", "tip_jokes", "mcu",
 #'   "mock_jury", "candy", "candy_simple", "football", "huskers",
-#'   "interpersonal_data", "self_descriptive_data"
+#'   "cheese_data", "lpd_data", "parent_child_data",
+#'   "hindsight_mg_data", "hindsight_wg_data",
+#'   "interpersonal_data", "selfdescriptive_data"
 #' @param path File path for the output .sav file. If NULL, saves to the
 #'   working directory with a default name.
 #' @param use_sentinel Logical. If TRUE (default), NA values are replaced with
@@ -19,7 +22,7 @@
 #' @examples
 #' \dontrun{
 #' export_sav("superman", path = "superman_data.sav")
-#' export_sav("hot_ones", path = "~/Desktop/hot_ones_data.sav")
+#' export_sav("hotones", path = "~/Desktop/hotones_data.sav")
 #'
 #' # Export a subset of variables
 #' library(dplyr)
@@ -149,24 +152,24 @@ export_superman_combined_sav <- function(path = "superman_combined_data.sav", us
 #' @inheritParams export_superman_sav
 #' @return Invisibly returns the labelled data frame.
 #' @export
-export_hot_ones_sav <- function(path = "hot_ones_data.sav", use_sentinel = TRUE) {
-  export_sav("hot_ones", path = path, use_sentinel = use_sentinel)
+export_hotones_sav <- function(path = "hotones_data.sav", use_sentinel = TRUE) {
+  export_sav("hotones", path = path, use_sentinel = use_sentinel)
 }
 
 #' Export Hot Ones Sauces data as SPSS .sav file
 #' @inheritParams export_superman_sav
 #' @return Invisibly returns the labelled data frame.
 #' @export
-export_hot_ones_sauces_sav <- function(path = "hot_ones_sauces_data.sav", use_sentinel = TRUE) {
-  export_sav("hot_ones_sauces", path = path, use_sentinel = use_sentinel)
+export_hotones_sauces_sav <- function(path = "hotones_sauces_data.sav", use_sentinel = TRUE) {
+  export_sav("hotones_sauces", path = path, use_sentinel = use_sentinel)
 }
 
 #' Export Hot Ones Episodes data as SPSS .sav file
 #' @inheritParams export_superman_sav
 #' @return Invisibly returns the labelled data frame.
 #' @export
-export_hot_ones_episodes_sav <- function(path = "hot_ones_episodes_data.sav", use_sentinel = TRUE) {
-  export_sav("hot_ones_episodes", path = path, use_sentinel = use_sentinel)
+export_hotones_episodes_sav <- function(path = "hotones_episodes_data.sav", use_sentinel = TRUE) {
+  export_sav("hotones_episodes", path = path, use_sentinel = use_sentinel)
 }
 
 #' Export Tip-Jokes data as SPSS .sav file
@@ -242,40 +245,60 @@ export_huskers_sav <- function(path = "huskers_data.sav", use_sentinel = TRUE) {
   export_sav("huskers", path = path, use_sentinel = use_sentinel)
 }
 
-
-
-########################################################################
-# Internal helpers ########################################################################
-
-#' @noRd
-get_dataset <- function(name) {
-  valid <- list_datasets()
-  if (!name %in% valid) {
-    stop("Unknown dataset '", name, "'. Available: ",
-         paste(valid, collapse = ", "), call. = FALSE)
-  }
-
-  # Special case: combined data requires joining
-  if (name == "superman_combined") {
-    return(join_superman_data())
-  }
-
-  # Load lazy-loaded data properly
-  e <- new.env()
-  data(list = name, package = "psych350data", envir = e)
-  e[[name]]
-}
-
-#' List all available datasets in psych350data
+#' Export Hindsight Bias between-groups data as SPSS .sav file
 #'
-#' @return Character vector of dataset names.
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
 #' @export
-#'
-#' @examples
-#' list_datasets()
-list_datasets <- function() {
-  c("superman", "superman_smes", "superman_movies", "superman_combined",
-    "hot_ones", "hot_ones_sauces", "hot_ones_episodes",
-    "tip_jokes", "mcu", "mock_jury", "candy", "candy_simple",
-    "football", "huskers", "interpersonal_data", "self_descriptive_data")
+export_hindsight_mg_sav <- function(
+    path = "hindsight_mg_data.sav",
+    use_sentinel = TRUE
+) {
+  export_sav("hindsight_mg_data", path = path, use_sentinel = use_sentinel)
 }
+
+#' Export Hindsight Bias within-groups data as SPSS .sav file
+#'
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_hindsight_wg_sav <- function(
+    path = "hindsight_wg_data.sav",
+    use_sentinel = TRUE
+) {
+  export_sav("hindsight_wg_data", path = path, use_sentinel = use_sentinel)
+}
+
+#' Export Parent Child data as SPSS .sav file
+#'
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_parent_child_sav <- function(
+    path = "parent_child_data.sav",
+    use_sentinel = TRUE
+) {
+  export_sav("parent_child_data", path = path, use_sentinel = use_sentinel)
+}
+
+
+
+#' Export Cheese data as SPSS .sav file
+#'
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_cheese_sav <- function(path = "cheese_data.sav", use_sentinel = TRUE) {
+  export_sav("cheese_data", path = path, use_sentinel = use_sentinel)
+}
+
+#' Export Lincoln Police Department traffic stops data as SPSS .sav file
+#'
+#' @inheritParams export_superman_sav
+#' @return Invisibly returns the labelled data frame.
+#' @export
+export_lpd_sav <- function(path = "lpd_data.sav", use_sentinel = TRUE) {
+  export_sav("lpd_data", path = path, use_sentinel = use_sentinel)
+}
+
+

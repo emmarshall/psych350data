@@ -1,0 +1,37 @@
+## Football Concussion Brain Data {.unnumbered}
+
+
+### Description
+
+Brain measurements comparing football players (with and without
+concussion history) to non-football-playing controls.
+
+
+
+### Usage
+
+<pre><code class='language-R'>football
+</code></pre>
+
+
+### Format
+
+A data frame with 3 variables:
+
+
+<dl>
+<dt>group</dt><dd>Control (1), Football no concussion (2), Football with concussion (3)
+</dd>
+<dt>years</dt><dd>Years of football played
+</dd>
+<dt>volume</dt><dd>Total hippocampus volume in cubic centimeters
+</dd>
+</dl>
+
+
+
+### Source
+
+Singh R, Meier T, et al., JAMA, 311(18), 2014.
+
+

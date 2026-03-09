@@ -1,0 +1,47 @@
+## Hindsight Bias Data - Within-Groups Format {.unnumbered}
+
+
+### Description
+
+Participant-level summary of the hindsight bias study, averaged
+across faces within each fame level. Each row is one participant
+with separate columns for extremely and moderately famous faces
+at baseline and hindsight phases. Suitable for a 2x2 repeated-
+measures or mixed ANOVA.
+
+
+
+### Usage
+
+<pre><code class='language-R'>hindsight_wg_data
+</code></pre>
+
+
+### Format
+
+A tibble with 60 rows and 6 variables:
+
+
+<dl>
+<dt>participant_id</dt><dd>Unique participant identifier
+</dd>
+<dt>condition</dt><dd>Experimental condition: Old (1), New (2)
+</dd>
+<dt>EXTREMEavg_1</dt><dd>Average baseline score - extremely famous faces (seconds)
+</dd>
+<dt>MODERATEavg_1</dt><dd>Average baseline score - moderately famous faces (seconds)
+</dd>
+<dt>EXTREMEavg_2</dt><dd>Average hindsight score - extremely famous faces (seconds)
+</dd>
+<dt>MODERATEavg_2</dt><dd>Average hindsight score - moderately famous faces (seconds)
+</dd>
+</dl>
+
+
+
+### Source
+
+Simulated data generated to illustrate hindsight bias
+in a within-groups design.
+
+

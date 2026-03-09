@@ -2,10 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.30">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Exporting Datasets to SPSS – psych350data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -63,19 +66,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5dc72fe4f8e2ee6edcea9b2c2eeaa369.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8382ef6bcf9f5a2461e71bacf674783.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8073c01ad402aa5e4ca020b404e1a7a9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8382ef6bcf9f5a2461e71bacf674783.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9291fb68f63017f61098342f7067d42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-5ebff592ac4f903240e5ffaedec87ce4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-95cbb841cadabd7c4edc876cd89a887f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5ebff592ac4f903240e5ffaedec87ce4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -328,6 +330,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Reference Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../vignettes/exporting-spss.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Exporting Datasets to SPSS</span></a>
   </div>
@@ -363,6 +371,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/check_sav_export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">check_sav_export</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/cheese_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">cheese_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_all_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_all_sav</span></a>
   </div>
@@ -381,26 +401,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/export_cheese_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_cheese_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_football_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_football_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_episodes_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_episodes_sav</span></a>
+  <a href="../man/export_hindsight_mg_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hindsight_mg_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_sauces_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_sauces_sav</span></a>
+  <a href="../man/export_hindsight_wg_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hindsight_wg_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_sav</span></a>
+  <a href="../man/export_hotones_episodes_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_episodes_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hotones_sauces_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_sauces_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hotones_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -417,6 +455,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/export_lpd_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_lpd_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_mcu_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_mcu_sav</span></a>
   </div>
@@ -425,6 +469,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../man/export_mock_jury_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_mock_jury_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_parent_child_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_parent_child_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -477,20 +527,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones_episodes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones_episodes</span></a>
+  <a href="../man/get_spss_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_spss_data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones_sauces.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones_sauces</span></a>
+  <a href="../man/get_variable_metadata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_variable_metadata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones</span></a>
+  <a href="../man/hindsight_mg_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hindsight_mg_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hindsight_wg_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hindsight_wg_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones_episodes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones_episodes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones_sauces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones_sauces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -519,6 +593,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/lpd_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">lpd_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/mcu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">mcu</span></a>
   </div>
@@ -527,6 +607,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../man/mock_jury.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">mock_jury</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/parent_child_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">parent_child_data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -602,7 +688,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </li>
   <li><a href="#controlling-missing-value-behavior" id="toc-controlling-missing-value-behavior" class="nav-link" data-scroll-target="#controlling-missing-value-behavior">Controlling Missing Value Behavior</a></li>
-  <li><a href="#tips-for-spss-users" id="toc-tips-for-spss-users" class="nav-link" data-scroll-target="#tips-for-spss-users">Tips for SPSS Users</a></li>
+  <li><a href="#auditing-an-export" id="toc-auditing-an-export" class="nav-link" data-scroll-target="#auditing-an-export">Auditing an Export</a></li>
+  <li><a href="#using-exported-spss-files" id="toc-using-exported-spss-files" class="nav-link" data-scroll-target="#using-exported-spss-files">Using Exported SPSS files</a></li>
   </ul><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -622,16 +709,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>All psych350data datasets can be exported as SPSS <code>.sav</code> files with full metadata. The export process automatically:</p>
+<p>All psych350data datasets can be exported as SPSS <code>.sav</code> files with full metadata. You do not need to prep or transform the data first — export functions handle everything internally. Each export automatically:</p>
 <ul>
-<li>
-<strong>Converts categorical variables</strong> from human-readable strings to numeric codes</li>
-<li>
-<strong>Adds value labels</strong> so SPSS displays category names</li>
-<li>
-<strong>Replaces <code>NA</code> with <code>-99</code></strong> and registers it as user-defined missing</li>
-<li>
-<strong>Adds variable labels</strong> describing each column</li>
+<li>Converts categorical variables from character strings to numeric codes</li>
+<li>Adds value labels so SPSS displays category names in Data View</li>
+<li>Adds variable labels describing each column in Variable View</li>
+<li>Replaces <code>NA</code> with <code>-99</code> and registers it as user-defined missing</li>
 </ul></section><section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emmarshall.github.io/psych350data/">psych350data</a></span><span class="op">)</span></span>
@@ -651,10 +734,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export to current working directory</span></span>
 <span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Export to specific location</span></span>
+<span><span class="co"># Export to a specific location</span></span>
 <span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"~/Desktop/superman_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Or use the generic function:</p>
+<p>Or use the generic function with any dataset name:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -682,16 +765,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>superman_combined_data.sav</code></td>
 </tr>
 <tr class="odd">
-<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hot_ones_sav.html">export_hot_ones_sav()</a></code></td>
-<td><code>hot_ones_data.sav</code></td>
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hotones_sav.html">export_hotones_sav()</a></code></td>
+<td><code>hotones_data.sav</code></td>
 </tr>
 <tr class="even">
-<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hot_ones_sauces_sav.html">export_hot_ones_sauces_sav()</a></code></td>
-<td><code>hot_ones_sauces_data.sav</code></td>
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hotones_sauces_sav.html">export_hotones_sauces_sav()</a></code></td>
+<td><code>hotones_sauces_data.sav</code></td>
 </tr>
 <tr class="odd">
-<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hot_ones_episodes_sav.html">export_hot_ones_episodes_sav()</a></code></td>
-<td><code>hot_ones_episodes_data.sav</code></td>
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hotones_episodes_sav.html">export_hotones_episodes_sav()</a></code></td>
+<td><code>hotones_episodes_data.sav</code></td>
 </tr>
 <tr class="even">
 <td><code><a href="https://emmarshall.github.io/psych350data/man/export_tip_jokes_sav.html">export_tip_jokes_sav()</a></code></td>
@@ -722,16 +805,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>huskers_data.sav</code></td>
 </tr>
 <tr class="odd">
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_cheese_sav.html">export_cheese_sav()</a></code></td>
+<td><code>cheese_data.sav</code></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_lpd_sav.html">export_lpd_sav()</a></code></td>
+<td><code>lpd_data.sav</code></td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_parent_child_sav.html">export_parent_child_sav()</a></code></td>
+<td><code>parent_child_data.sav</code></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hindsight_mg_sav.html">export_hindsight_mg_sav()</a></code></td>
+<td><code>hindsight_mg_data.sav</code></td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://emmarshall.github.io/psych350data/man/export_hindsight_wg_sav.html">export_hindsight_wg_sav()</a></code></td>
+<td><code>hindsight_wg_data.sav</code></td>
+</tr>
+<tr class="even">
 <td><code><a href="https://emmarshall.github.io/psych350data/man/export_interpersonal_sav.html">export_interpersonal_sav()</a></code></td>
 <td><code>interpersonal_data.sav</code></td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><code><a href="https://emmarshall.github.io/psych350data/man/export_selfdescriptive_sav.html">export_selfdescriptive_sav()</a></code></td>
 <td><code>selfdescriptive_data.sav</code></td>
 </tr>
 </tbody>
 </table></section><section id="exporting-a-subset-of-variables" class="level2"><h2 class="anchored" data-anchor-id="exporting-a-subset-of-variables">Exporting a Subset of Variables</h2>
-<p>Use <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code> to choose specific columns before exporting:</p>
+<p>Use <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code> to choose specific columns before exporting. Labels are preserved for all selected variables:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export selected variables</span></span>
 <span><span class="va">superman</span> <span class="op">|&gt;</span></span>
@@ -743,12 +846,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">race</span>, <span class="va">gcb</span>, <span class="va">risc</span>, <span class="va">lsas</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"interpersonal_subset.sav"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Select by pattern</span></span>
 <span><span class="va">huskers</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">season</span>, <span class="va">opp</span>, <span class="va">result</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"ne_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"huskers_nebraska_stats.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Labels are preserved for all selected variables.</p>
 </section><section id="export-all-datasets-at-once" class="level2"><h2 class="anchored" data-anchor-id="export-all-datasets-at-once">Export All Datasets at Once</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -756,7 +857,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>This creates one <code>.sav</code> file per dataset in the specified folder.</p>
 </section><section id="what-gets-converted-during-export" class="level2"><h2 class="anchored" data-anchor-id="what-gets-converted-during-export">What Gets Converted During Export</h2>
 <section id="categorical-variables" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
-<p>In R, categorical variables are stored as readable strings:</p>
+<p>In R, categorical variables are human-readable character strings:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -772,44 +873,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <thead><tr class="header">
 <th>Variable</th>
-<th>R Value</th>
-<th>SPSS Code</th>
-<th>SPSS Label</th>
+<th>R value</th>
+<th>SPSS code</th>
+<th>SPSS label</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>type</code></td>
-<td>“Film”</td>
+<td><code>"Film"</code></td>
 <td>1</td>
 <td>Film</td>
 </tr>
 <tr class="even">
 <td><code>type</code></td>
-<td>“TV Series”</td>
+<td><code>"TV Series"</code></td>
 <td>2</td>
 <td>TV Series</td>
 </tr>
 <tr class="odd">
 <td><code>type</code></td>
-<td>“Serial”</td>
+<td><code>"Serial"</code></td>
 <td>3</td>
 <td>Serial</td>
 </tr>
 <tr class="even">
 <td><code>height_gap</code></td>
-<td>“Minimal”</td>
+<td><code>"Minimal"</code></td>
 <td>1</td>
 <td>Minimal (&lt;6 inches)</td>
 </tr>
 <tr class="odd">
 <td><code>height_gap</code></td>
-<td>“Average”</td>
+<td><code>"Average"</code></td>
 <td>2</td>
-<td>Average (6-8 inches)</td>
+<td>Average (6–8 inches)</td>
 </tr>
 <tr class="even">
 <td><code>height_gap</code></td>
-<td>“Big”</td>
+<td><code>"Big"</code></td>
 <td>3</td>
 <td>Big (&gt;8 inches)</td>
 </tr>
@@ -836,7 +937,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <table class="caption-top table">
 <thead><tr class="header">
 <th>Variable</th>
-<th>SPSS Variable Label</th>
+<th>SPSS variable label</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -845,7 +946,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><code>rt_critics_score</code></td>
-<td>Rotten Tomatoes critics score (0-100 scale)</td>
+<td>Rotten Tomatoes critics score (0–100 scale)</td>
 </tr>
 <tr class="odd">
 <td><code>height_gap</code></td>
@@ -858,16 +959,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_sysmis.sav"</span>, use_sentinel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_sysmis.sav"</span>, use_sentinel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="tips-for-spss-users" class="level2"><h2 class="anchored" data-anchor-id="tips-for-spss-users">Tips for SPSS Users</h2>
+</section><section id="auditing-an-export" class="level2"><h2 class="anchored" data-anchor-id="auditing-an-export">Auditing an Export</h2>
+<p>After exporting, use <code><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export()</a></code> to verify that labels and missing values are correctly applied:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_huskers_sav.html">export_huskers_sav</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Show all variables, not just those with issues</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span>, show_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Read back into R for verification</span></span>
+<span><span class="va">huskers_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/get_spss_data.html">get_spss_data</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="using-exported-spss-files" class="level2"><h2 class="anchored" data-anchor-id="using-exported-spss-files">Using Exported SPSS files</h2>
 <ol type="1">
 <li>
-<strong>Check Variable View</strong> after opening to see all labels</li>
+<strong>Check Variable View</strong> after opening to see all variable and value labels</li>
 <li>
-<strong>Toggle “Value Labels”</strong> in the toolbar to see category names in Data View</li>
+<strong>Toggle Value Labels</strong> in the toolbar to see category names in Data View</li>
 <li>
 <strong>Missing values are pre-configured</strong> — no manual setup needed</li>
 <li>
-<strong>Re-export anytime</strong> by running the export function again after updating the package</li>
+<strong>Re-export anytime</strong> by running the export function again</li>
 <li>
 <strong>Subset before exporting</strong> if you only need certain variables for an assignment</li>
 </ol>

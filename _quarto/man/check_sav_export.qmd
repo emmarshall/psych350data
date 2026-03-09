@@ -1,0 +1,63 @@
+## Check SPSS Export Quality {.unnumbered}
+
+
+### Description
+
+Reads an exported <code>.sav</code> file and audits its structure to confirm that
+variable labels, value labels, and missing value codes are correctly applied.
+Prints a formatted summary report and invisibly returns a list of audit
+results.
+
+
+
+### Usage
+
+<pre><code class='language-R'>check_sav_export(file_path, sentinel = -99, show_all = FALSE)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="file_path">file_path</code></td>
+<td>
+Character string. Path to the <code>.sav</code> file to check.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="sentinel">sentinel</code></td>
+<td>
+Numeric. The missing value sentinel to look for.
+Default <code>-99</code>.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="show_all">show_all</code></td>
+<td>
+Logical. If <code>TRUE</code>, prints details for every variable
+including those that pass all checks. If <code>FALSE</code> (default), only
+prints variables with issues.
+</td></tr>
+</table>
+
+
+### Value
+
+Invisibly returns a list with components:
+
+
+<dl>
+<dt>variables</dt><dd>Data frame with one row per variable and audit columns.
+</dd>
+<dt>n_vars</dt><dd>Total number of variables.
+</dd>
+<dt>missing_var_labels</dt><dd>Variables with no variable label.
+</dd>
+<dt>missing_val_labels</dt><dd>Numeric variables with no value labels
+(informational only &ndash; not all numeric vars need them).
+</dd>
+<dt>missing_na_values</dt><dd>Numeric variables where sentinel appears in
+data but is not declared as SPSS missing.
+</dd>
+<dt>sentinel_not_found</dt><dd>Numeric variables with NAs in raw data but
+no sentinel value found in export.
+</dd>
+</dl>
+
+

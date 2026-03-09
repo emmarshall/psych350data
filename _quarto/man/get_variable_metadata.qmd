@@ -1,0 +1,52 @@
+## Extract variable metadata from a psych350data dataset {.unnumbered}
+
+
+### Description
+
+Calls the dataset's labelling function (via apply_spss_metadata) to get
+variable labels and value labels, without modifying the actual data.
+
+
+
+### Usage
+
+<pre><code class='language-R'>get_variable_metadata(data, dataset_name, vars)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="data">data</code></td>
+<td>
+A data frame from psych350data (pre-prep_data).
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="dataset_name">dataset_name</code></td>
+<td>
+The dataset name string passed to apply_spss_metadata,
+e.g. &quot;superman&quot;, &quot;hotones&quot;.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="vars">vars</code></td>
+<td>
+Character vector of variable names to extract metadata for.
+</td></tr>
+</table>
+
+
+### Value
+
+A named list, one element per variable, each containing:
+
+
+<dl>
+<dt>name</dt><dd>Variable name
+</dd>
+<dt>label</dt><dd>Variable label string
+</dd>
+<dt>value_labels</dt><dd>Named numeric vector of value labels, or NULL
+</dd>
+<dt>missing</dt><dd>Logical, whether any values were NA in the original data
+</dd>
+</dl>
+
+

@@ -1,0 +1,34 @@
+## Export Hindsight Bias within-groups data as SPSS .sav file {.unnumbered}
+
+
+### Description
+
+Export Hindsight Bias within-groups data as SPSS .sav file
+
+
+
+### Usage
+
+<pre><code class='language-R'>export_hindsight_wg_sav(path = "hindsight_wg_data.sav", use_sentinel = TRUE)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="path">path</code></td>
+<td>
+File path. Defaults to &quot;superman_data.sav&quot;.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="use_sentinel">use_sentinel</code></td>
+<td>
+If TRUE (default), NA becomes -99 with SPSS missing codes.
+</td></tr>
+</table>
+
+
+### Value
+
+Invisibly returns the labelled data frame.
+
+

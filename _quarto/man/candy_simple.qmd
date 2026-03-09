@@ -1,0 +1,41 @@
+## Candy Rankings Data {.unnumbered}
+
+
+### Description
+
+Simplified version with only candy name, chocolate indicator,
+sugar percentile, price percentile, and win percentage.
+
+
+
+### Usage
+
+<pre><code class='language-R'>candy_simple
+</code></pre>
+
+
+### Format
+
+A data frame with 85 rows and 5 variables:
+
+
+<dl>
+<dt>competitorname</dt><dd>The name of the candy
+</dd>
+<dt>chocolate</dt><dd>Contains chocolate? (0=No, 1=Yes)
+</dd>
+<dt>sugarpercent</dt><dd>Sugar percentile within dataset
+</dd>
+<dt>pricepercent</dt><dd>Unit price percentile
+</dd>
+<dt>winpercent</dt><dd>Win percentage from 269,000 matchups
+</dd>
+</dl>
+
+
+
+### Source
+
+FiveThirtyEight candy power rankings
+
+

@@ -1,0 +1,65 @@
+## Lincoln Police Department Traffic Stops Data {.unnumbered}
+
+
+### Description
+
+Traffic stop records from the Lincoln Police Department Open Data Portal,
+compiled from a multi-sheet Excel file with one sheet per year and stacked
+into a single data frame. Date and time variables have been parsed and
+a time-of-day category added. All categorical variables are stored as
+integers with SPSS-style value labels.
+
+
+
+### Usage
+
+<pre><code class='language-R'>lpd_data
+</code></pre>
+
+
+### Format
+
+A tibble with the following variables:
+
+
+<dl>
+<dt>year</dt><dd>Year of the traffic stop (from Excel sheet name)
+</dd>
+<dt>fid</dt><dd>Feature ID — unique stop identifier
+</dd>
+<dt>date</dt><dd>Date of the traffic stop
+</dd>
+<dt>month</dt><dd>Month of the traffic stop (1–12)
+</dd>
+<dt>time</dt><dd>Time of the traffic stop (HH:MM, 24-hour format)
+</dd>
+<dt>time_of_day</dt><dd>Time of day: Morning 5am–noon (1), Afternoon noon–5pm (2), Evening 5pm–9pm (3), Night 9pm–5am (4)
+</dd>
+<dt>race</dt><dd>Driver race/ethnicity: White (1), Black (2), Hispanic (3), Asian (4), American Indian (5), Other (6)
+</dd>
+<dt>sex</dt><dd>Driver sex: Male (1), Female (2)
+</dd>
+<dt>reason</dt><dd>Reason for stop: Traffic probable cause (1), Criminal probable cause (2), Other (3)
+</dd>
+<dt>outcome</dt><dd>Stop outcome: Traffic warning (1), Traffic official (2), Criminal cite and release (3), Lodged in jail (4), None (5)
+</dd>
+<dt>search</dt><dd>Search conducted: None (1), Incident to arrest (2), Inventory (3), Consent (4), Probable cause (5)
+</dd>
+</dl>
+
+
+
+### Note
+
+Column names and categorical values reflect the LPD data dictionary.
+Check <code>data-raw/lpd_stops_data.R</code> if the portal changes its export
+format.
+
+
+
+### Source
+
+Lincoln Police Department Open Data Portal.
+<a href="https://opendata.lincoln.ne.gov/datasets/lpd-traffic-stops-2023/about">https://opendata.lincoln.ne.gov/datasets/lpd-traffic-stops-2023/about</a>
+
+

@@ -1,0 +1,36 @@
+## Superman SMES Data {.unnumbered}
+
+
+### Description
+
+Simulated data for 47 participants rating Superman media on the
+Subjective Media Experience Scale (SMES), grouped by height gap
+between the Superman and Lois Lane actors.
+
+
+
+### Usage
+
+<pre><code class='language-R'>superman_smes
+</code></pre>
+
+
+### Format
+
+A data frame with 47 rows and 5 variables:
+
+
+<dl>
+<dt>num</dt><dd>Unique participant number
+</dd>
+<dt>height_gap</dt><dd>Height gap category: Minimal (1), Average (2), Big (3)
+</dd>
+<dt>emotional_impact</dt><dd>Emotional Impact subscale (sum of 4 items, range 4-20)
+</dd>
+<dt>aesthetic_appeal</dt><dd>Aesthetic Appeal subscale (sum of 3 items, range 3-15)
+</dd>
+<dt>cognitive_engagement</dt><dd>Cognitive Engagement subscale (mean of 4 items, range 0-7)
+</dd>
+</dl>
+
+

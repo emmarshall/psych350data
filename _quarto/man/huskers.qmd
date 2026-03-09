@@ -1,0 +1,176 @@
+## Nebraska Football Box Scores (1962–2024) {.unnumbered}
+
+
+### Description
+
+Game-level team statistics for all Nebraska Cornhuskers football games
+from September 1962 through the 2024 season. Includes scoring, rushing,
+passing, turnovers, penalties, point spreads, and weather data.
+
+
+
+### Usage
+
+<pre><code class='language-R'>huskers
+</code></pre>
+
+
+### Format
+
+A data frame with columns:
+
+
+<dl>
+<dt>date</dt><dd>Date the game was played.
+</dd>
+<dt>time</dt><dd>Kickoff time (Central Time).
+</dd>
+<dt>season</dt><dd>Season (year) the game was played.
+</dd>
+<dt>opp</dt><dd>Nebraska's opponent.
+</dd>
+<dt>site</dt><dd>Game location: &quot;home&quot;, &quot;away&quot;, &quot;neutral-home&quot;, or &quot;neutral-away&quot;.
+</dd>
+<dt>conference</dt><dd>Whether the opponent was a conference opponent (TRUE/FALSE).
+</dd>
+<dt>opp_rank</dt><dd>Opponent's ranking entering the game (CFP when available, otherwise AP).
+</dd>
+<dt>ne_rank</dt><dd>Nebraska's ranking entering the game (CFP when available, otherwise AP).
+</dd>
+<dt>result</dt><dd>Game result: W (Win), L (Loss), or T (Tie).
+</dd>
+<dt>opp_score</dt><dd>Opponent's total score.
+</dd>
+<dt>ne_score</dt><dd>Nebraska's total score.
+</dd>
+<dt>opp_score_q1</dt><dd>Opponent's first quarter points.
+</dd>
+<dt>opp_score_q2</dt><dd>Opponent's second quarter points.
+</dd>
+<dt>opp_score_q3</dt><dd>Opponent's third quarter points.
+</dd>
+<dt>opp_score_q4</dt><dd>Opponent's fourth quarter points.
+</dd>
+<dt>opp_score_ot</dt><dd>Opponent's overtime points.
+</dd>
+<dt>ne_score_q1</dt><dd>Nebraska's first quarter points.
+</dd>
+<dt>ne_score_q2</dt><dd>Nebraska's second quarter points.
+</dd>
+<dt>ne_score_q3</dt><dd>Nebraska's third quarter points.
+</dd>
+<dt>ne_score_q4</dt><dd>Nebraska's fourth quarter points.
+</dd>
+<dt>ne_score_ot</dt><dd>Nebraska's overtime points.
+</dd>
+<dt>opp_rush_att</dt><dd>Opponent's rushing attempts.
+</dd>
+<dt>opp_rush_yards</dt><dd>Opponent's rushing yards.
+</dd>
+<dt>ne_rush_att</dt><dd>Nebraska's rushing attempts.
+</dd>
+<dt>ne_rush_yards</dt><dd>Nebraska's rushing yards.
+</dd>
+<dt>opp_pass_comp</dt><dd>Opponent's passing completions.
+</dd>
+<dt>opp_pass_att</dt><dd>Opponent's passing attempts.
+</dd>
+<dt>opp_pass_yards</dt><dd>Opponent's passing yards.
+</dd>
+<dt>ne_pass_comp</dt><dd>Nebraska's passing completions.
+</dd>
+<dt>ne_pass_att</dt><dd>Nebraska's passing attempts.
+</dd>
+<dt>ne_pass_yards</dt><dd>Nebraska's passing yards.
+</dd>
+<dt>opp_first_downs</dt><dd>Opponent's first downs.
+</dd>
+<dt>ne_first_downs</dt><dd>Nebraska's first downs.
+</dd>
+<dt>opp_third_down_comp</dt><dd>Opponent's successful third down conversions.
+</dd>
+<dt>opp_third_down_att</dt><dd>Opponent's third down attempts.
+</dd>
+<dt>ne_third_down_comp</dt><dd>Nebraska's successful third down conversions.
+</dd>
+<dt>ne_third_down_att</dt><dd>Nebraska's third down attempts.
+</dd>
+<dt>opp_fourth_down_comp</dt><dd>Opponent's successful fourth down conversions.
+</dd>
+<dt>opp_fourth_down_att</dt><dd>Opponent's fourth down attempts.
+</dd>
+<dt>ne_fourth_down_comp</dt><dd>Nebraska's successful fourth down conversions.
+</dd>
+<dt>ne_fourth_down_att</dt><dd>Nebraska's fourth down attempts.
+</dd>
+<dt>opp_int</dt><dd>Interceptions thrown by the opponent.
+</dd>
+<dt>opp_fum</dt><dd>Fumbles lost by the opponent.
+</dd>
+<dt>ne_int</dt><dd>Interceptions thrown by Nebraska.
+</dd>
+<dt>ne_fum</dt><dd>Fumbles lost by Nebraska.
+</dd>
+<dt>opp_pen_num</dt><dd>Opponent's number of penalties.
+</dd>
+<dt>opp_pen_yards</dt><dd>Opponent's penalty yards.
+</dd>
+<dt>ne_pen_num</dt><dd>Nebraska's number of penalties.
+</dd>
+<dt>ne_pen_yards</dt><dd>Nebraska's penalty yards.
+</dd>
+<dt>opp_possession</dt><dd>Opponent's time of possession (MM:SS).
+</dd>
+<dt>ne_possession</dt><dd>Nebraska's time of possession (MM:SS).
+</dd>
+<dt>spread</dt><dd>Point spread. Negative means Nebraska was favored.
+</dd>
+<dt>total</dt><dd>Betting total (Over/Under).
+</dd>
+<dt>temp</dt><dd>Temperature at kickoff (Fahrenheit).
+</dd>
+<dt>humidity</dt><dd>Relative humidity at kickoff (0.0 to 1.0).
+</dd>
+<dt>wind_speed</dt><dd>Wind speed at kickoff (mph).
+</dd>
+<dt>wind_bearing</dt><dd>Wind direction at kickoff in degrees (0 = North, clockwise).
+</dd>
+</dl>
+
+
+
+### Details
+
+Data completeness notes:
+
+
+<ul>
+<li> Scoring by quarter, first down, third/fourth down, and opponent penalty
+data begins in the 2004 season.
+
+</li>
+<li> Nebraska penalty data is incomplete before 1972-09-16 (Texas A&amp;M).
+
+</li>
+<li> Time of possession data begins in 2012, complete from 2013 onward.
+
+</li>
+<li> Point spread data is mostly absent before 1978; available for most
+games from 1978 onward.
+
+</li>
+<li> Betting total data is available for most games from 2006 onward.
+
+</li>
+<li> Weather data sourced from the DarkSky API and Weather Underground.
+Temperature and humidity are fairly reliable; wind data less so.
+
+</li></ul>
+
+
+
+### Source
+
+Compiled from historical Nebraska football records.
+
+

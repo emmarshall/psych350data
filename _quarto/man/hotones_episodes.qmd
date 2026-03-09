@@ -1,0 +1,53 @@
+## Hot Ones Episode Data {.unnumbered}
+
+
+### Description
+
+Episode-level data from the YouTube show Hot Ones, including
+guest names, titles, and YouTube engagement metrics.
+
+
+
+### Usage
+
+<pre><code class='language-R'>hotones_episodes
+</code></pre>
+
+
+### Format
+
+A tibble with variables:
+
+
+<dl>
+<dt>season</dt><dd>Season of Hot Ones
+</dd>
+<dt>order</dt><dd>Episode number within season
+</dd>
+<dt>guest</dt><dd>Name of the guest
+</dd>
+<dt>episode_title</dt><dd>Full title of the episode
+</dd>
+<dt>publish_date</dt><dd>Date the episode was published on YouTube
+</dd>
+<dt>views</dt><dd>Number of YouTube views (in millions)
+</dd>
+<dt>likes</dt><dd>Number of YouTube likes
+</dd>
+<dt>comments</dt><dd>Number of YouTube comments
+</dd>
+<dt>short_description</dt><dd>Short description of the episode
+</dd>
+<dt>img</dt><dd>URL to episode thumbnail image
+</dd>
+<dt>video_id</dt><dd>YouTube video ID
+</dd>
+</dl>
+
+
+
+### Source
+
+Hot Ones / First We Feast (YouTube)
+
+

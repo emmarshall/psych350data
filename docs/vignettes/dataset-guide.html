@@ -2,10 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.30">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Dataset Reference Guide – psych350data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -63,19 +66,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5dc72fe4f8e2ee6edcea9b2c2eeaa369.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8382ef6bcf9f5a2461e71bacf674783.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8073c01ad402aa5e4ca020b404e1a7a9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8382ef6bcf9f5a2461e71bacf674783.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9291fb68f63017f61098342f7067d42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="../site_libs/bootstrap/bootstrap-5ebff592ac4f903240e5ffaedec87ce4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-95cbb841cadabd7c4edc876cd89a887f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5ebff592ac4f903240e5ffaedec87ce4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -328,6 +330,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Reference Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../vignettes/exporting-spss.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exporting Datasets to SPSS</span></a>
   </div>
@@ -363,6 +371,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/check_sav_export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">check_sav_export</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/cheese_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">cheese_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_all_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_all_sav</span></a>
   </div>
@@ -381,26 +401,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/export_cheese_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_cheese_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_football_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_football_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_episodes_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_episodes_sav</span></a>
+  <a href="../man/export_hindsight_mg_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hindsight_mg_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_sauces_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_sauces_sav</span></a>
+  <a href="../man/export_hindsight_wg_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hindsight_wg_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_sav</span></a>
+  <a href="../man/export_hotones_episodes_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_episodes_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hotones_sauces_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_sauces_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hotones_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -417,6 +455,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/export_lpd_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_lpd_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_mcu_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_mcu_sav</span></a>
   </div>
@@ -425,6 +469,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../man/export_mock_jury_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_mock_jury_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_parent_child_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_parent_child_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -477,20 +527,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones_episodes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones_episodes</span></a>
+  <a href="../man/get_spss_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_spss_data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones_sauces.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones_sauces</span></a>
+  <a href="../man/get_variable_metadata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_variable_metadata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones</span></a>
+  <a href="../man/hindsight_mg_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hindsight_mg_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hindsight_wg_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hindsight_wg_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones_episodes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones_episodes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones_sauces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones_sauces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -519,6 +593,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/lpd_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">lpd_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/mcu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">mcu</span></a>
   </div>
@@ -527,6 +607,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="sidebar-item-container"> 
   <a href="../man/mock_jury.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">mock_jury</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/parent_child_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">parent_child_data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -587,7 +673,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#how-categorical-variables-work" id="toc-how-categorical-variables-work" class="nav-link active" data-scroll-target="#how-categorical-variables-work">How Categorical Variables Work</a></li>
+<li><a href="#quick-reference" id="toc-quick-reference" class="nav-link active" data-scroll-target="#quick-reference">Quick Reference</a></li>
+  <li><a href="#how-categorical-variables-work" id="toc-how-categorical-variables-work" class="nav-link" data-scroll-target="#how-categorical-variables-work">How Categorical Variables Work</a></li>
   <li>
 <a href="#superman-actor-data" id="toc-superman-actor-data" class="nav-link" data-scroll-target="#superman-actor-data">Superman Actor Data</a>
   <ul class="collapse">
@@ -664,7 +751,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#scale-variables-1" id="toc-scale-variables-1" class="nav-link" data-scroll-target="#scale-variables-1">Scale Variables</a></li>
   </ul>
 </li>
-  <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link" data-scroll-target="#quick-reference">Quick Reference</a></li>
   </ul><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></nav>
     </div>
 <!-- main -->
@@ -683,8 +769,114 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>This guide provides a quick reference for every dataset in the psych350data package.</p>
-<section id="how-categorical-variables-work" class="level2"><h2 class="anchored" data-anchor-id="how-categorical-variables-work">How Categorical Variables Work</h2>
+</header><p>A quick overview of datasets in the psych350data package.</p>
+<section id="quick-reference" class="level2"><h2 class="anchored" data-anchor-id="quick-reference">Quick Reference</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 36%">
+<col style="width: 26%">
+</colgroup>
+<thead><tr class="header">
+<th>Dataset</th>
+<th>Labeling &amp; Prep Functions</th>
+<th>Export Function</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>superman</code></td>
+<td><code>label_superman()</code></td>
+<td><code>export_superman_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>superman_smes</code></td>
+<td><code>label_superman_smes()</code></td>
+<td><code>export_superman_smes_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>superman_movies</code></td>
+<td><code>label_superman_movies()</code></td>
+<td><code>export_superman_movies_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>hotones</code></td>
+<td><code>label_hotones()</code></td>
+<td><code>export_hotones_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>hotones_sauces</code></td>
+<td><code>label_hotones_sauces()</code></td>
+<td><code>export_hotones_sauces_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>hotones_episodes</code></td>
+<td><code>label_hotones_episodes</code></td>
+<td><code>export_hotones_episodes_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>tip_jokes</code></td>
+<td><code>tip_jokes</code></td>
+<td><code>export_tip_jokes_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>mcu</code></td>
+<td><code>label_mcu</code></td>
+<td><code>export_mcu_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>mock_jury</code></td>
+<td><code>label_mock_jury()</code></td>
+<td><code>export_mock_jury_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>candy</code></td>
+<td><code>label_candy()</code></td>
+<td><code>export_candy_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>candy_simple</code></td>
+<td><code>label_candy_simpl()</code></td>
+<td><code>export_candy_simple_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>football</code></td>
+<td><code>football()</code></td>
+<td><code>export_football_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>huskers</code></td>
+<td><code>label_husker()</code></td>
+<td><code>export_huskers_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>lpd_data</code></td>
+<td><code>label_lpd()</code></td>
+<td><code>export_lpd_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>parent_child</code></td>
+<td><code>label_parent_chil()</code></td>
+<td><code>export_parent_child_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>cheese</code></td>
+<td><code>label_cheese()</code></td>
+<td><code>export_cheese_sav()</code></td>
+</tr>
+<tr class="odd">
+<td><code>interpersonal_data</code></td>
+<td><code>label_interpersonal_data()</code></td>
+<td><code>export_interpersonal_sav()</code></td>
+</tr>
+<tr class="even">
+<td><code>self_descriptive_data</code></td>
+<td><code>labelself_descriptive_data()</code></td>
+<td><code>export_selfdescriptive_sav()</code></td>
+</tr>
+</tbody>
+</table>
+<p>Use <code>list_datasets()</code> to see all available datasets.</p>
+</section><section id="how-categorical-variables-work" class="level2"><h2 class="anchored" data-anchor-id="how-categorical-variables-work">How Categorical Variables Work</h2>
 <p><strong>In R:</strong> Categorical variables use human-readable character values (e.g., <code>"Film"</code>, <code>"TV Series"</code>, <code>"Minimal"</code>).</p>
 <p><strong>In SPSS exports:</strong> These are automatically converted to numeric codes with value labels.</p>
 <div class="cell">
@@ -849,10 +1041,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <hr></section></section><section id="hot-ones-guest-data" class="level2"><h2 class="anchored" data-anchor-id="hot-ones-guest-data">Hot Ones Guest Data</h2>
-<p><strong>Dataset:</strong> <code>hot_ones</code> | <strong>Export:</strong> <code>export_hot_ones_sav()</code></p>
+<p><strong>Dataset:</strong> <code>hotones</code> | <strong>Export:</strong> <code>export_hotones_sav()</code></p>
 <p>Data on guests from the YouTube show Hot Ones.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hot_ones</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hotones</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 369</span></span>
 <span><span class="co">#&gt; Columns: 25</span></span>
 <span><span class="co">#&gt; $ subn        &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17,…</span></span>
@@ -903,10 +1095,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <hr></section></section><section id="hot-ones-sauces-data" class="level2"><h2 class="anchored" data-anchor-id="hot-ones-sauces-data">Hot Ones Sauces Data</h2>
-<p><strong>Dataset:</strong> <code>hot_ones_sauces</code> | <strong>Export:</strong> <code>export_hot_ones_sauces_sav()</code></p>
+<p><strong>Dataset:</strong> <code>hotones_sauces</code> | <strong>Export:</strong> <code>export_hotones_sauces_sav()</code></p>
 <p>Hot sauce data by season and position in the lineup.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hot_ones_sauces</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hotones_sauces</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 250</span></span>
 <span><span class="co">#&gt; Columns: 4</span></span>
 <span><span class="co">#&gt; $ season     &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,…</span></span>
@@ -915,10 +1107,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ SHU        &lt;dbl&gt; 747, 3600, 5790, 15000, 13000, 40600, 30000, 57000, 180000,…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr></section><section id="hot-ones-episodes-data" class="level2"><h2 class="anchored" data-anchor-id="hot-ones-episodes-data">Hot Ones Episodes Data</h2>
-<p><strong>Dataset:</strong> <code>hot_ones_episodes</code> | <strong>Export:</strong> <code>export_hot_ones_episodes_sav()</code></p>
+<p><strong>Dataset:</strong> <code>hotones_episodes</code> | <strong>Export:</strong> <code>export_hotones_episodes_sav()</code></p>
 <p>Episode-level data with YouTube engagement metrics.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hot_ones_episodes</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hotones_episodes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 345</span></span>
 <span><span class="co">#&gt; Columns: 11</span></span>
 <span><span class="co">#&gt; $ season            &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2…</span></span>
@@ -965,7 +1157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <hr></section></section><section id="mcu-films-data" class="level2"><h2 class="anchored" data-anchor-id="mcu-films-data">MCU Films Data</h2>
 <p><strong>Dataset:</strong> <code>mcu</code> | <strong>Export:</strong> <code>export_mcu_sav()</code></p>
-<p>Marvel Cinematic Universe films through the Infinity Saga.</p>
+<p>Marvel Cinematic Universe films through the Infinity Saga. Credit to (openstats)[https://github.com/OpenIntroStat/openintro-statistics]</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 23</span></span>
@@ -1043,7 +1235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <hr></section></section><section id="candy-rankings-data" class="level2"><h2 class="anchored" data-anchor-id="candy-rankings-data">Candy Rankings Data</h2>
 <p><strong>Full dataset:</strong> <code>candy</code> | <strong>Export:</strong> <code>export_candy_sav()</code> <strong>Simplified:</strong> <code>candy_simple</code> | <strong>Export:</strong> <code>export_candy_simple_sav()</code></p>
-<p>Candy power rankings based on 269,000 head-to-head matchups.</p>
+<p>Candy power rankings based on 269,000 head-to-head matchups from <a href="https://web.archive.org/web/20201101001713/https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking (2017)</a></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 85</span></span>
@@ -1150,6 +1342,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="categorical-variables-spss-codes-7" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-7">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 18%">
+<col style="width: 81%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
 <th>Values</th>
@@ -1177,21 +1373,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Rows: 574</span></span>
 <span><span class="co">#&gt; Columns: 33</span></span>
 <span><span class="co">#&gt; $ age       &lt;int&gt; 19, 19, 19, 19, 21, 19, 21, 21, 19, 23, 19, 21, 19, 19, 20, …</span></span>
-<span><span class="co">#&gt; $ gender    &lt;int&gt; 2, 2, 2, 2, 1, 2, 2, 1, 1, 3, 3, 2, 1, 1, 1, 2, 1, 3, 2, 2, …</span></span>
-<span><span class="co">#&gt; $ sexorient &lt;int&gt; 6, 2, 6, 10, 10, 2, 6, 10, 10, 10, 10, 10, 4, 4, 10, 2, 10, …</span></span>
-<span><span class="co">#&gt; $ race      &lt;int&gt; 6, 6, 6, 7, 6, 6, 3, 6, 6, 6, 6, 6, 6, 2, 6, 6, 4, 4, 6, 6, …</span></span>
-<span><span class="co">#&gt; $ hand      &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, …</span></span>
-<span><span class="co">#&gt; $ community &lt;int&gt; 1, 1, 4, 1, 3, 3, 1, 3, 1, 2, 3, 3, 1, 2, 4, 2, 3, 3, 1, 3, …</span></span>
-<span><span class="co">#&gt; $ parentedu &lt;int&gt; 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, …</span></span>
-<span><span class="co">#&gt; $ famclass  &lt;int&gt; 4, 3, 1, 4, 4, 3, 1, 4, 1, 3, 1, 3, 4, 4, 5, 4, 4, 1, 4, 4, …</span></span>
+<span><span class="co">#&gt; $ gender    &lt;chr&gt; "Female", "Female", "Female", "Female", "Male", "Female", "F…</span></span>
+<span><span class="co">#&gt; $ sexorient &lt;chr&gt; "Straight or heterosexual", "Straight or heterosexual", "Str…</span></span>
+<span><span class="co">#&gt; $ race      &lt;chr&gt; "White", "White", "White", "Other", "White", "White", "Indig…</span></span>
+<span><span class="co">#&gt; $ hand      &lt;chr&gt; "Right", "Right", "Right", "Right", "Right", "Right", "Right…</span></span>
+<span><span class="co">#&gt; $ community &lt;chr&gt; "Rural", "Rural", "Urban", "Rural", "Suburban", "Suburban", …</span></span>
+<span><span class="co">#&gt; $ parentedu &lt;chr&gt; "Yes", "Yes", "No", "Yes", "Yes", "No", "Yes", "Yes", "Yes",…</span></span>
+<span><span class="co">#&gt; $ famclass  &lt;chr&gt; "Upper middle class", "Lower middle class", "Working class",…</span></span>
 <span><span class="co">#&gt; $ faminc    &lt;int&gt; 84923, 60859, 36202, 114697, 90626, 74183, 35218, 103487, 34…</span></span>
 <span><span class="co">#&gt; $ numsib    &lt;int&gt; 3, 0, 5, 2, 3, 6, 2, 2, 2, 4, 1, 0, 1, 3, 2, 1, 1, 2, 0, 1, …</span></span>
 <span><span class="co">#&gt; $ move      &lt;int&gt; 0, 4, 1, 4, 2, 1, 3, 0, 2, 3, 1, 1, 4, 2, 2, 5, 4, 2, 4, 1, …</span></span>
 <span><span class="co">#&gt; $ clsfrn    &lt;int&gt; 12, 8, 4, 7, 6, 3, 5, 5, 8, 3, 5, 7, 2, 4, 6, 5, 8, 13, 5, 4…</span></span>
 <span><span class="co">#&gt; $ clsfrlst  &lt;int&gt; 11, 12, 3, 6, 5, 1, 6, 4, 9, 1, 3, 8, 0, 7, 3, 1, 11, 16, 6,…</span></span>
-<span><span class="co">#&gt; $ greek_in  &lt;int&gt; 2, 1, 1, 1, 2, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 2, …</span></span>
-<span><span class="co">#&gt; $ campus    &lt;int&gt; 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, …</span></span>
-<span><span class="co">#&gt; $ relsp     &lt;int&gt; 4, 4, 1, 4, 1, 1, 1, 1, 1, 4, 4, 1, 1, 1, 4, 3, 4, 4, 1, 4, …</span></span>
+<span><span class="co">#&gt; $ greek_in  &lt;chr&gt; "Greek", "Independent", "Independent", "Independent", "Greek…</span></span>
+<span><span class="co">#&gt; $ campus    &lt;chr&gt; "Yes", "No", "No", "Yes", "No", "No", "No", "Yes", "No", "No…</span></span>
+<span><span class="co">#&gt; $ relsp     &lt;chr&gt; "Not in a relationship", "Not in a relationship", "In a mono…</span></span>
 <span><span class="co">#&gt; $ rlength   &lt;int&gt; 11, 1, 7, 3, 5, 1, 4, 1, 6, 1, 7, 12, 9, 6, 4, 3, 1, 2, 1, 3…</span></span>
 <span><span class="co">#&gt; $ serious   &lt;int&gt; NA, NA, 3, NA, 6, 5, 3, 6, 5, NA, NA, 7, 4, 2, NA, 3, NA, NA…</span></span>
 <span><span class="co">#&gt; $ numrels   &lt;int&gt; 0, 0, 5, 0, 3, 3, 6, 6, 2, 0, 0, 4, 2, 5, 0, 2, 0, 4, 1, 0, …</span></span>
@@ -1256,21 +1452,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; Rows: 547</span></span>
 <span><span class="co">#&gt; Columns: 37</span></span>
 <span><span class="co">#&gt; $ age               &lt;int&gt; 20, 21, 23, 20, 22, 19, 22, 20, 20, 19, 19, 19, 19, …</span></span>
-<span><span class="co">#&gt; $ gender            &lt;int&gt; 2, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1…</span></span>
-<span><span class="co">#&gt; $ sexorient         &lt;int&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, NA, 10, 10, 10, …</span></span>
-<span><span class="co">#&gt; $ race              &lt;int&gt; 6, 4, 6, 2, 3, 6, 6, 2, 6, 6, 3, 6, 6, 6, 6, 2, 6, 6…</span></span>
-<span><span class="co">#&gt; $ hand              &lt;int&gt; 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 2, 1, 1, 1…</span></span>
-<span><span class="co">#&gt; $ community         &lt;int&gt; 2, 1, 2, 3, 4, 1, 4, 1, 3, 1, 4, 3, 1, 3, 3, 3, 2, 1…</span></span>
-<span><span class="co">#&gt; $ parentedu         &lt;int&gt; 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 1…</span></span>
-<span><span class="co">#&gt; $ famclass          &lt;int&gt; 1, 4, 4, 1, 1, 4, 1, 3, 4, 1, 3, 4, 3, 3, 1, 4, 3, 1…</span></span>
+<span><span class="co">#&gt; $ gender            &lt;chr&gt; "Female", "Male", "Male", "Female", "Male", "Male", …</span></span>
+<span><span class="co">#&gt; $ sexorient         &lt;chr&gt; "Straight or heterosexual", "Straight or heterosexua…</span></span>
+<span><span class="co">#&gt; $ race              &lt;chr&gt; "White", "Latino/Hispanic", "White", "Black", "Indig…</span></span>
+<span><span class="co">#&gt; $ hand              &lt;chr&gt; "Right", "Left", "Right", "Right", "Right", "Right",…</span></span>
+<span><span class="co">#&gt; $ community         &lt;chr&gt; "Small town", "Rural", "Small town", "Suburban", "Ur…</span></span>
+<span><span class="co">#&gt; $ parentedu         &lt;chr&gt; "Yes", "Yes", "No", "No", "No", "Yes", "Yes", "No", …</span></span>
+<span><span class="co">#&gt; $ famclass          &lt;chr&gt; "Working class", "Upper middle class", "Upper middle…</span></span>
 <span><span class="co">#&gt; $ faminc            &lt;int&gt; 29034, 72518, 105693, 32123, 23907, 158842, 26565, 6…</span></span>
 <span><span class="co">#&gt; $ numsib            &lt;int&gt; 1, 0, 3, 2, 0, 2, 4, 2, 2, 4, 4, 3, 2, 3, 1, 1, 2, 1…</span></span>
 <span><span class="co">#&gt; $ move              &lt;int&gt; 3, 0, 5, 1, 4, 2, 2, 2, 2, 2, 1, 3, 1, 4, 2, 2, 4, 2…</span></span>
 <span><span class="co">#&gt; $ clsfrn            &lt;int&gt; 5, 6, 7, 6, 3, 8, 8, 4, 10, 3, 5, 2, 6, 4, 8, 4, 6, …</span></span>
 <span><span class="co">#&gt; $ clsfrlst          &lt;int&gt; 1, 5, 6, NA, 0, 5, 9, 4, 8, 1, 6, 1, 5, 3, 14, 5, 8,…</span></span>
-<span><span class="co">#&gt; $ greek_in          &lt;int&gt; 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1…</span></span>
-<span><span class="co">#&gt; $ campus            &lt;int&gt; 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0…</span></span>
-<span><span class="co">#&gt; $ relsp             &lt;int&gt; 4, 4, 1, 4, 1, 1, 1, 4, 1, 1, 4, 4, NA, 1, 4, 1, 4, …</span></span>
+<span><span class="co">#&gt; $ greek_in          &lt;chr&gt; "Independent", "Independent", "Greek", "Independent"…</span></span>
+<span><span class="co">#&gt; $ campus            &lt;chr&gt; "No", "Yes", "No", "No", "No", "No", "Yes", "No", "Y…</span></span>
+<span><span class="co">#&gt; $ relsp             &lt;chr&gt; "Not in a relationship", "Not in a relationship", "I…</span></span>
 <span><span class="co">#&gt; $ rlength           &lt;int&gt; 10, 4, 11, 1, 9, 8, 13, 5, 1, 8, 1, 1, 1, 8, 2, 10, …</span></span>
 <span><span class="co">#&gt; $ serious           &lt;int&gt; NA, NA, 7, NA, 6, 5, 4, NA, 7, 5, NA, NA, NA, 3, NA,…</span></span>
 <span><span class="co">#&gt; $ numrels           &lt;int&gt; 0, 4, 4, 3, 5, 5, 1, 0, 1, 2, 4, 0, 0, 4, 0, 3, 0, 6…</span></span>
@@ -1297,79 +1493,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Same coding as <code>interpersonal_data</code> for demographic variables.</p>
 </section><section id="scale-variables-1" class="level3"><h3 class="anchored" data-anchor-id="scale-variables-1">Scale Variables</h3>
 <p>TIPI Big Five, MAAS subscales, RFQ subscales, ATQ-30 subscales, Rosenberg Self-Esteem, NGSE</p>
-<hr></section></section><section id="quick-reference" class="level2"><h2 class="anchored" data-anchor-id="quick-reference">Quick Reference</h2>
-<table class="caption-top table">
-<thead><tr class="header">
-<th>Dataset</th>
-<th>Export Function</th>
-</tr></thead>
-<tbody>
-<tr class="odd">
-<td><code>superman</code></td>
-<td><code>export_superman_sav()</code></td>
-</tr>
-<tr class="even">
-<td><code>superman_smes</code></td>
-<td><code>export_superman_smes_sav()</code></td>
-</tr>
-<tr class="odd">
-<td><code>superman_movies</code></td>
-<td><code>export_superman_movies_sav()</code></td>
-</tr>
-<tr class="even">
-<td><code>hot_ones</code></td>
-<td><code>export_hot_ones_sav()</code></td>
-</tr>
-<tr class="odd">
-<td><code>hot_ones_sauces</code></td>
-<td><code>export_hot_ones_sauces_sav()</code></td>
-</tr>
-<tr class="even">
-<td><code>hot_ones_episodes</code></td>
-<td><code>export_hot_ones_episodes_sav()</code></td>
-</tr>
-<tr class="odd">
-<td><code>tip_jokes</code></td>
-<td><code>export_tip_jokes_sav()</code></td>
-</tr>
-<tr class="even">
-<td><code>mcu</code></td>
-<td><code>export_mcu_sav()</code></td>
-</tr>
-<tr class="odd">
-<td><code>mock_jury</code></td>
-<td><code>export_mock_jury_sav()</code></td>
-</tr>
-<tr class="even">
-<td><code>candy</code></td>
-<td><code>export_candy_sav()</code></td>
-</tr>
-<tr class="odd">
-<td><code>candy_simple</code></td>
-<td><code>export_candy_simple_sav()</code></td>
-</tr>
-<tr class="even">
-<td><code>football</code></td>
-<td><code>export_football_sav()</code></td>
-</tr>
-<tr class="odd">
-<td><code>huskers</code></td>
-<td><code>export_huskers_sav()</code></td>
-</tr>
-<tr class="even">
-<td><code>interpersonal_data</code></td>
-<td><code>export_interpersonal_sav()</code></td>
-</tr>
-<tr class="odd">
-<td><code>self_descriptive_data</code></td>
-<td><code>export_selfdescriptive_sav()</code></td>
-</tr>
-</tbody>
-</table>
-<p>Use <code>list_datasets()</code> to see all available datasets.</p>
+<hr>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {

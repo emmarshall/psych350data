@@ -1,0 +1,41 @@
+## Tip-Jokes Experiment Data {.unnumbered}
+
+
+### Description
+
+Data from Gueguen (2002) examining whether a waiter leaving a joke
+or an advertisement on a card affects tipping behavior.
+
+
+
+### Usage
+
+<pre><code class='language-R'>tip_jokes
+</code></pre>
+
+
+### Format
+
+A data frame with variables:
+
+
+<dl>
+<dt>card</dt><dd>Type of card: Advertisement (1), Joke (2), None (3)
+</dd>
+<dt>tip</dt><dd>Whether customer left a tip: No (0), Yes (1)
+</dd>
+<dt>ad</dt><dd>Indicator for ad card: 0/1
+</dd>
+<dt>joke</dt><dd>Indicator for joke card: 0/1
+</dd>
+<dt>none</dt><dd>Indicator for no card: 0/1
+</dd>
+</dl>
+
+
+
+### Source
+
+Gueguen, N. (2002). Journal of Applied Social Psychology.
+
+

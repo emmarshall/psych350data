@@ -14,15 +14,18 @@ LazyData: True
 Depends: 
     R (>= 4.1.0)
 Imports:
-    haven,
-    labelled,
     dplyr,
-    rlang
+    haven,
+    here,
+    labelled,
+    purrr,
+    rlang,
+    stringr,
+    tibble
 Suggests:
     readxl,
     tidyr,
     knitr,
-    purrr,
     lubridate
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3

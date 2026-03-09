@@ -15,7 +15,7 @@ utils::globalVariables(c(
   "pmdc", "nsne", "lse", "help", "atq", "ngse",
   # superman_smes labels
   "num", "height_gap", "emotional_impact", "aesthetic_appeal", "cognitive_engagement",
-  # hot_ones labels
+  # hotones labels
   "subn", "name", "occupation", "result", "appearances", "season",
   "SHU_1", "SHU_2", "SHU_3", "SHU_4", "SHU_5",
   "SHU_6", "SHU_7", "SHU_8", "SHU_9", "SHU_10",
@@ -31,5 +31,6 @@ utils::globalVariables(c(
   # superman_movies labels
   "mpaa", "budget_cat", "box_office_cat", "budget2", "boxoffice2",
   # labelling function reference
-  "label_superman_smes"
+  "label_superman_smes", "label_hindsight_mg", "prep_hindsight_mg",
+"label_hotones", "label_hotones_episodes", "label_hotones_sauces"
 ))

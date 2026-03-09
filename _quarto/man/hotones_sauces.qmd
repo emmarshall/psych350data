@@ -1,0 +1,39 @@
+## Hot Ones Sauce Data {.unnumbered}
+
+
+### Description
+
+Data on hot sauces used in each season and position of Hot Ones,
+including Scoville Heat Unit ratings.
+
+
+
+### Usage
+
+<pre><code class='language-R'>hotones_sauces
+</code></pre>
+
+
+### Format
+
+A tibble with variables:
+
+
+<dl>
+<dt>season</dt><dd>Season of Hot Ones
+</dd>
+<dt>order</dt><dd>Sauce position in the lineup (1-10, from mildest to hottest)
+</dd>
+<dt>sauce_name</dt><dd>Name of the hot sauce
+</dd>
+<dt>SHU</dt><dd>Scoville Heat Units (SHU) rating
+</dd>
+</dl>
+
+
+
+### Source
+
+Hot Ones / First We Feast (YouTube)
+
+

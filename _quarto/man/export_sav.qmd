@@ -1,0 +1,65 @@
+## Export a dataset as an SPSS .sav file {.unnumbered}
+
+
+### Description
+
+Converts a psych350data dataset to a labelled SPSS file with variable labels,
+value labels, and defined missing values (-99).
+
+
+
+### Usage
+
+<pre><code class='language-R'>export_sav(dataset, path = NULL, use_sentinel = TRUE)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="dataset">dataset</code></td>
+<td>
+Character string naming the dataset, or the dataset object itself.
+Valid names: &quot;superman&quot;, &quot;superman_smes&quot;, &quot;superman_movies&quot;, &quot;superman_combined&quot;,
+&quot;hotones&quot;, &quot;hotones_sauces&quot;, &quot;hotones_episodes&quot;, &quot;tip_jokes&quot;, &quot;mcu&quot;,
+&quot;mock_jury&quot;, &quot;candy&quot;, &quot;candy_simple&quot;, &quot;football&quot;, &quot;huskers&quot;,
+&quot;cheese_data&quot;, &quot;lpd_data&quot;, &quot;parent_child_data&quot;,
+&quot;hindsight_mg_data&quot;, &quot;hindsight_wg_data&quot;,
+&quot;interpersonal_data&quot;, &quot;selfdescriptive_data&quot;
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="path">path</code></td>
+<td>
+File path for the output .sav file. If NULL, saves to the
+working directory with a default name.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="use_sentinel">use_sentinel</code></td>
+<td>
+Logical. If TRUE (default), NA values are replaced with
+-99 and marked as SPSS user-defined missing. If FALSE, NAs are written
+as system-missing.
+</td></tr>
+</table>
+
+
+### Value
+
+Invisibly returns the labelled data frame that was written.
+
+
+
+### Examples
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+library("psych350data")
+
+export_sav("superman", path = "superman_data.sav")
+export_sav("hotones", path = "~/Desktop/hotones_data.sav")
+
+# Export a subset of variables
+library(dplyr)
+superman |>
+  select(1:8) |>
+  export_sav(path = "superman_subset.sav")
+
+
+
+```

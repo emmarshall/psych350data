@@ -1,0 +1,411 @@
+---
+title: "Dataset Reference Guide"
+---
+```{r}
+#| include: false
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+library(psych350data)
+library(dplyr)
+```
+
+A complete reference for all datasets in the psych350data package. Each dataset supports three workflows — see `vignette("getting-started")` for details.
+
+## Quick Reference
+
+| Dataset | Prep function | Label & export function |
+|---------------------------|---------------------------|-------------------|
+| `superman` | `prep_superman()` | `label_superman()` / `export_superman_sav()` |
+| `superman_smes` | `prep_superman_smes()` | `label_superman_smes()` / `export_superman_smes_sav()` |
+| `superman_movies` | `prep_superman_movies()` | `label_superman_movies()` / `export_superman_movies_sav()` |
+| `hotones` | `prep_hotones()` | `label_hotones()` / `export_hotones_sav()` |
+| `hotones_sauces` | `prep_hotones_sauces()` | `label_hotones_sauces()` / `export_hotones_sauces_sav()` |
+| `hotones_episodes` | `prep_hotones_episodes()` | `label_hotones_episodes()` / `export_hotones_episodes_sav()` |
+| `tip_jokes` | `prep_tip_jokes()` | `label_tip_jokes()` / `export_tip_jokes_sav()` |
+| `mcu` | `prep_mcu()` | `label_mcu()` / `export_mcu_sav()` |
+| `mock_jury` | `prep_mock_jury()` | `label_mock_jury()` / `export_mock_jury_sav()` |
+| `candy` | `prep_candy()` | `label_candy()` / `export_candy_sav()` |
+| `candy_simple` | `prep_candy_simple()` | `label_candy_simple()` / `export_candy_simple_sav()` |
+| `football` | `prep_football()` | `label_football()` / `export_football_sav()` |
+| `huskers` | `prep_huskers()` | `label_huskers()` / `export_huskers_sav()` |
+| `cheese_data` | `prep_cheese()` | `label_cheese()` / `export_cheese_sav()` |
+| `lpd_data` | `prep_lpd()` | `label_lpd()` / `export_lpd_sav()` |
+| `parent_child_data` | `prep_parent_child()` | `label_parent_child()` / `export_parent_child_sav()` |
+| `hindsight_mg_data` | `prep_hindsight_mg()` | `label_hindsight_mg()` / `export_hindsight_mg_sav()` |
+| `hindsight_wg_data` | `prep_hindsight_wg()` | `label_hindsight_wg()` / `export_hindsight_wg_sav()` |
+| `interpersonal_data` | `prep_interpersonal()` | `label_interpersonal()` / `export_interpersonal_sav()` |
+| `self_descriptive_data` | `prep_selfdescriptive()` | `label_self_descriptive()` / `export_selfdescriptive_sav()` |
+
+Use `list_datasets()` to see all available datasets.
+
+## How Categorical Variables Work
+
+**In R (raw):** Categorical variables use human-readable character values (e.g., `"Film"`, `"Control"`, `"Minimal"`). Best for exploration and plotting.
+
+**After `prep_*()`:** Character categories are replaced with numeric codes matching SPSS. Use when your R analysis needs to produce output that matches SPSS.
+
+**In SPSS exports:** Numeric codes are stored with value labels, so SPSS displays both the number and the category name.
+```{r}
+# Raw: human-readable
+superman |>
+  select(num, media, type, height_gap) |>
+  head(4)
+```
+```{r}
+# After prep: numeric codes matching SPSS
+prep_superman(superman) |>
+  select(num, media, type, height_gap) |>
+  head(4)
+```
+
+---
+
+## Superman Actor Data
+
+**Dataset:** `superman` | **Export:** `export_superman_sav()`
+
+Data on actors who have portrayed Clark Kent/Superman across film, TV, and serial media.
+```{r}
+glimpse(superman)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|---------------|-------------------------------------|
+| `type` | 1 = Film, 2 = TV Series, 3 = Serial |
+| `clark_grp` | 1 = Under 6ft, 2 = 6ft or taller |
+| `height_gap` | 1 = Minimal, 2 = Average, 3 = Big |
+| `tomatometer` | 1 = Rotten, 2 = Fresh |
+| `popular` | 1 = Low, 2 = Mid, 3 = High |
+
+---
+
+## Superman SMES Data
+
+**Dataset:** `superman_smes` | **Export:** `export_superman_smes_sav()`
+
+Simulated participant ratings on the Subjective Media Experience Scale (SMES).
+```{r}
+glimpse(superman_smes)
+```
+
+### Scale Information
+
+| Subscale | Range |
+|------------------------|-------|
+| `emotional_impact` | 4–20 |
+| `aesthetic_appeal` | 3–15 |
+| `cognitive_engagement` | 0–7 |
+
+---
+
+## Superman Movies Data
+
+**Dataset:** `superman_movies` | **Export:** `export_superman_movies_sav()`
+
+Box office and production data for Superman theatrical films.
+```{r}
+glimpse(superman_movies)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|------------------|---------------------------------|
+| `mpaa` | 1 = G, 2 = PG, 3 = PG-13, 4 = R |
+| `budget_cat` | 1 = Low, 2 = Medium, 3 = High |
+| `box_office_cat` | 1 = Low, 2 = Medium, 3 = High |
+
+---
+
+## Hot Ones Guest Data
+
+**Dataset:** `hotones` | **Export:** `export_hotones_sav()`
+
+Data on guests from the YouTube show Hot Ones.
+```{r}
+glimpse(hotones)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|--------------|-------------------------------------------|
+| `gender` | 1 = Male, 2 = Female |
+| `result` | 1 = Succeeded, 2 = Failed, 3 = Incomplete |
+| `occupation` | 1–14 (Rapper, Athlete, Actor, etc.) |
+
+---
+
+## Hot Ones Sauces Data
+
+**Dataset:** `hotones_sauces` | **Export:** `export_hotones_sauces_sav()`
+
+Hot sauce data by season and position in the lineup.
+```{r}
+glimpse(hotones_sauces)
+```
+
+---
+
+## Hot Ones Episodes Data
+
+**Dataset:** `hotones_episodes` | **Export:** `export_hotones_episodes_sav()`
+
+Episode-level data with YouTube engagement metrics.
+```{r}
+glimpse(hotones_episodes)
+```
+
+---
+
+## Tip-Jokes Experiment Data
+
+**Dataset:** `tip_jokes` | **Export:** `export_tip_jokes_sav()`
+
+Experimental data from Gueguen (2002) examining whether a waiter leaving a joke or advertisement on a card affects tipping behavior.
+```{r}
+glimpse(tip_jokes)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|----------|---------------------------------------|
+| `card` | 1 = Advertisement, 2 = Joke, 3 = None |
+| `tip` | 0 = No, 1 = Yes |
+
+---
+
+## MCU Films Data
+
+**Dataset:** `mcu` | **Export:** `export_mcu_sav()`
+
+Marvel Cinematic Universe films through the Infinity Saga. Credit to [openintro](https://github.com/OpenIntroStat/openintro-statistics).
+```{r}
+glimpse(mcu)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|----------|----------------------------------------|
+| `phase` | 1 = Phase 1, 2 = Phase 2, 3 = Phase 3 |
+| `favor` | 1 = Critics, 2 = Audience |
+
+---
+
+## Mock Jury Data
+
+**Dataset:** `mock_jury` | **Export:** `export_mock_jury_sav()`
+
+Data from Plaster (1989) on effects of defendant attractiveness on mock jury sentencing.
+```{r}
+glimpse(mock_jury)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|----------|----------------------------------------------|
+| `attr` | 1 = Beautiful, 2 = Average, 3 = Unattractive |
+| `crime` | 1 = Burglary, 2 = Swindle |
+
+---
+
+## Candy Rankings Data
+
+**Full dataset:** `candy` | **Export:** `export_candy_sav()`
+**Simplified:** `candy_simple` | **Export:** `export_candy_simple_sav()`
+
+Candy power rankings based on 269,000 head-to-head matchups from [The Ultimate Halloween Candy Power Ranking (2017)](https://web.archive.org/web/20201101001713/https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/).
+```{r}
+glimpse(candy_simple)
+```
+
+### Binary Variables (SPSS codes)
+
+All binary variables: 0 = No, 1 = Yes
+
+Variables: `chocolate`, `fruity`, `caramel`, `peanutyalmondy`, `nougat`, `crispedricewafer`, `hard`, `bar`, `pluribus`
+
+---
+
+## Football Concussion Data
+
+**Dataset:** `football` | **Export:** `export_football_sav()`
+
+Brain measurements comparing football players to controls (Singh et al., 2014).
+```{r}
+glimpse(football)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|----------|------------------------------------------------------------------------|
+| `group` | 1 = Control, 2 = Football no concussion, 3 = Football with concussion |
+
+---
+
+## Nebraska Football Box Scores
+
+**Dataset:** `huskers` | **Export:** `export_huskers_sav()`
+
+Game-level statistics for Nebraska Cornhuskers football (1962–2024).
+```{r}
+glimpse(huskers)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|--------------|------------------------------------------------------------|
+| `result` | 1 = Win, 2 = Loss, 3 = Tie |
+| `site` | 1 = Home, 2 = Away, 3 = Neutral (home), 4 = Neutral (away) |
+| `conference` | 0 = Non-conference, 1 = Conference |
+
+---
+
+## Cheese Characteristics Data
+
+**Dataset:** `cheese_data` | **Export:** `export_cheese_sav()`
+
+Cheese characteristics and nutritional content from cheese.com, originally featured in TidyTuesday (June 2024). Contains cheeses with known calcium content, cleaned and recoded for teaching data entry and transformation.
+```{r}
+glimpse(cheese_data)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|-------------|--------------------------------------------------------------|
+| `milk_source` | 1 = Cow, 2 = Goat, 3 = Sheep, 4 = Buffalo, 5 = Multiple, 6 = Other |
+| `vegetarian` | 0 = No, 1 = Yes |
+
+---
+
+## Lincoln Police Department Traffic Stops
+
+**Dataset:** `lpd_data` | **Export:** `export_lpd_sav()`
+
+Traffic stop records from the Lincoln Police Department Open Data Portal, stacked across years. Includes date, time, driver demographics, and stop outcome.
+```{r}
+glimpse(lpd_data)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|-------------|--------------------------------------------------------------|
+| `time_of_day` | 1 = Morning (5am–noon), 2 = Afternoon (noon–5pm), 3 = Evening (5pm–9pm), 4 = Night (9pm–5am) |
+| `race` | 1 = White, 2 = Black, 3 = Hispanic, 4 = Asian, 5 = American Indian, 6 = Other |
+| `sex` | 1 = Male, 2 = Female |
+| `reason` | 1 = Traffic probable cause, 2 = Criminal probable cause, 3 = Other |
+| `outcome` | 1 = Traffic warning, 2 = Traffic official, 3 = Criminal cite & release, 4 = Lodged in jail, 5 = None |
+| `search` | 1 = None, 2 = Incident to arrest, 3 = Inventory, 4 = Consent, 5 = Probable cause |
+
+---
+
+## Parent-Child Observation Data
+
+**Dataset:** `parent_child_data` | **Export:** `export_parent_child_sav()`
+
+Simulated parent-child observational data (n = 100) examining the effects of a remediation treatment on parenting behaviors. Includes maternal and child demographics alongside coded behavioral counts.
+```{r}
+glimpse(parent_child_data)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|------------|--------------------------------------|
+| `magegroup` | 1 = 18–27, 2 = 28–35 |
+| `cagegroup` | 1 = 2–3 years, 2 = 4–5 years |
+| `famtype` | 1 = 2-parent family, 2 = mother-only |
+| `CLINREM` | 0 = Remediation suggested, 1 = Not suggested |
+| `tx` | 0 = Control, 1 = Remediation |
+
+---
+
+## Hindsight Bias Data — Between-Groups
+
+**Dataset:** `hindsight_mg_data` | **Export:** `export_hindsight_mg_sav()`
+
+Simulated data from a hindsight bias study in which participants viewed celebrity faces and estimated recognition time at baseline and again after receiving an outcome cue. The between-groups factor is whether participants saw old or new faces in the hindsight phase. Each row is one participant-face trial (60 participants × 10 faces).
+```{r}
+glimpse(hindsight_mg_data)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|------------|----------------------------------------------|
+| `condition` | 1 = Old, 2 = New |
+| `fame_level` | 1 = Extremely Famous, 2 = Moderately Famous |
+| `correct` | 0 = Incorrect, 1 = Correct |
+
+---
+
+## Hindsight Bias Data — Within-Groups
+
+**Dataset:** `hindsight_wg_data` | **Export:** `export_hindsight_wg_sav()`
+
+Participant-level summary of the same hindsight bias study, averaged across faces within each fame level. Each row is one participant with separate columns for extremely and moderately famous faces at baseline and hindsight phases. Suitable for a 2×2 repeated-measures or mixed ANOVA.
+```{r}
+glimpse(hindsight_wg_data)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|------------|------------------|
+| `condition` | 1 = Old, 2 = New |
+
+---
+
+## Interpersonal Relationships Survey Data
+
+**Dataset:** `interpersonal_data` | **Export:** `export_interpersonal_sav()`
+
+Simulated survey data (n = 574) with demographics and interpersonal scales.
+```{r}
+glimpse(interpersonal_data)
+```
+
+### Categorical Variables (SPSS codes)
+
+| Variable | Values |
+|------------|--------------------------------------------------------------|
+| `gender` | 1 = Male, 2 = Female, 3 = Another |
+| `race` | 1 = Asian, 2 = Black, 3 = Indigenous, 4 = Latino/Hispanic, 5 = Middle Eastern, 6 = White, 7 = Other |
+| `hand` | 1 = Right, 2 = Left, 3 = Both |
+| `community` | 1 = Rural, 2 = Small town, 3 = Suburban, 4 = Urban |
+| `famclass` | 1 = Working, 2 = Lower, 3 = Lower middle, 4 = Upper middle, 5 = Upper |
+| `greek_in` | 1 = Independent, 2 = Greek |
+
+### Scale Variables
+
+DAQ subscales, IDI subscales, IRI subscales, Sociability subscales, RISC, GCB, LSAS-SR
+
+---
+
+## Self-Descriptive Survey Data
+
+**Dataset:** `self_descriptive_data` | **Export:** `export_selfdescriptive_sav()`
+
+Simulated survey data (n = 547) with demographics and personality scales.
+```{r}
+glimpse(self_descriptive_data)
+```
+
+### Categorical Variables
+
+Same demographic coding as `interpersonal_data`.
+
+### Scale Variables
+
+TIPI Big Five, MAAS subscales, RFQ subscales, ATQ-30 subscales, Rosenberg Self-Esteem, NGSE

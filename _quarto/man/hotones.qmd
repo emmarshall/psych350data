@@ -1,0 +1,81 @@
+## Hot Ones Guest Data {.unnumbered}
+
+
+### Description
+
+Data on guests from the YouTube show Hot Ones, including demographic
+information, Scoville ratings for each sauce, and YouTube engagement metrics.
+
+
+
+### Usage
+
+<pre><code class='language-R'>hotones
+</code></pre>
+
+
+### Format
+
+A tibble with variables including:
+
+
+<dl>
+<dt>subn</dt><dd>Unique guest/participant number
+</dd>
+<dt>name</dt><dd>Guest full name
+</dd>
+<dt>gender</dt><dd>Guest gender: Male (1), Female (2)
+</dd>
+<dt>age</dt><dd>Guest age at time of appearance
+</dd>
+<dt>occupation</dt><dd>Guest primary occupation (1-14, see value labels)
+</dd>
+<dt>wing_total</dt><dd>Number of wings eaten
+</dd>
+<dt>alt_food</dt><dd>Alternative food used instead of wings
+</dd>
+<dt>helpers</dt><dd>Drinks or other items used to help with the heat
+</dd>
+<dt>SHU_1</dt><dd>Sauce 1 Scoville Heat Units
+</dd>
+<dt>SHU_2</dt><dd>Sauce 2 Scoville Heat Units
+</dd>
+<dt>SHU_3</dt><dd>Sauce 3 Scoville Heat Units
+</dd>
+<dt>SHU_4</dt><dd>Sauce 4 Scoville Heat Units
+</dd>
+<dt>SHU_5</dt><dd>Sauce 5 Scoville Heat Units
+</dd>
+<dt>SHU_6</dt><dd>Sauce 6 Scoville Heat Units
+</dd>
+<dt>SHU_7</dt><dd>Sauce 7 Scoville Heat Units
+</dd>
+<dt>SHU_8</dt><dd>Sauce 8 Scoville Heat Units
+</dd>
+<dt>SHU_9</dt><dd>Sauce 9 Scoville Heat Units
+</dd>
+<dt>SHU_10</dt><dd>Sauce 10 Scoville Heat Units
+</dd>
+<dt>result</dt><dd>Succeeded (1), Failed (2), or Incomplete (3)
+</dd>
+<dt>appearances</dt><dd>Number of appearances on the show
+</dd>
+<dt>season</dt><dd>Season number
+</dd>
+<dt>order</dt><dd>Episode number within season
+</dd>
+<dt>views</dt><dd>YouTube views (in millions)
+</dd>
+<dt>likes</dt><dd>YouTube likes
+</dd>
+<dt>comments</dt><dd>YouTube comments
+</dd>
+</dl>
+
+
+
+### Source
+
+Hot Ones / First We Feast (YouTube)
+
+

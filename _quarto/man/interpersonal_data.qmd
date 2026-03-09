@@ -1,0 +1,101 @@
+## Interpersonal Relationships Survey Data {.unnumbered}
+
+
+### Description
+
+Simulated survey data (n = 574) from college students at a predominantly white
+rural state university, containing demographics, relationship variables, and
+scores on several interpersonal and psychological scales including the DAQ,
+Interpersonal Dependency Inventory, Interpersonal Reactivity Index,
+Sociability Scale, RISC, GCB, and LSAS-SR.
+
+
+
+### Usage
+
+<pre><code class='language-R'>interpersonal_data
+</code></pre>
+
+
+### Format
+
+A tibble with 574 rows and 33 variables:
+
+
+<dl>
+<dt>age</dt><dd>Age in years (18-25)
+</dd>
+<dt>gender</dt><dd>Self-described gender: Male (1), Female (2), Another (3)
+</dd>
+<dt>sexorient</dt><dd>Sexual orientation (1-11, see value labels)
+</dd>
+<dt>race</dt><dd>Self-described race: Asian (1), Black (2), Indigenous/Aboriginal/First Nations (3), Latino/Hispanic (4), Middle Eastern (5), White (6), Other (7)
+</dd>
+<dt>hand</dt><dd>Writing hand: Right (1), Left (2), Both (3)
+</dd>
+<dt>community</dt><dd>Childhood community type: Rural (1), Small town (2), Suburban (3), Urban (4)
+</dd>
+<dt>parentedu</dt><dd>Parent graduated from four-year college: No (0), Yes (1)
+</dd>
+<dt>famclass</dt><dd>Childhood social class: Working class (1), Lower class (2), Lower middle class (3), Upper middle class (4), Upper class (5)
+</dd>
+<dt>faminc</dt><dd>Family income during senior year of high school
+</dd>
+<dt>numsib</dt><dd>Number of siblings
+</dd>
+<dt>move</dt><dd>Number of times moved as a child
+</dd>
+<dt>clsfrn</dt><dd>Number of close friends
+</dd>
+<dt>clsfrlst</dt><dd>Number of people who would list you as a close friend
+</dd>
+<dt>greek_in</dt><dd>Fraternity/sorority membership: Independent (1), Greek (2)
+</dd>
+<dt>campus</dt><dd>Living on campus: No (0), Yes (1)
+</dd>
+<dt>relsp</dt><dd>Romantic relationship status (1-5, see value labels)
+</dd>
+<dt>rlength</dt><dd>Length of current or last relationship in months
+</dd>
+<dt>serious</dt><dd>Seriousness rating of current/most recent relationship (1-7)
+</dd>
+<dt>numrels</dt><dd>Number of dating relationships
+</dd>
+<dt>gcb</dt><dd>Generic Conspiracist Beliefs scale score
+</dd>
+<dt>datdaq</dt><dd>Dating subscale of the DAQ
+</dd>
+<dt>assrtdaq</dt><dd>Assertiveness subscale of the DAQ
+</dd>
+<dt>emorel</dt><dd>Emotional Reliance on Others subscale of the IDI
+</dd>
+<dt>lacksc</dt><dd>Lack of Self-Confidence subscale of the IDI
+</dd>
+<dt>auto</dt><dd>Assertion of Autonomy subscale of the IDI
+</dd>
+<dt>perspec</dt><dd>Perspective-Taking subscale of the IRI
+</dd>
+<dt>fantasy</dt><dd>Fantasy subscale of the IRI
+</dd>
+<dt>empath</dt><dd>Empathic Concern subscale of the IRI
+</dd>
+<dt>distress</dt><dd>Personal Distress subscale of the IRI
+</dd>
+<dt>polsoc</dt><dd>Political Sociability subscale of Sociability Scale
+</dd>
+<dt>npolsoc</dt><dd>Non-Political Sociability subscale of Sociability Scale
+</dd>
+<dt>risc</dt><dd>Relational-Interdependent Self-Construal Scale score
+</dd>
+<dt>lsas</dt><dd>Liebowitz Social Anxiety Scale self-report total (LSAS-SR)
+</dd>
+</dl>
+
+
+
+### Source
+
+Simulated data generated to resemble plausible survey responses
+from undergraduate psychology students.
+
+

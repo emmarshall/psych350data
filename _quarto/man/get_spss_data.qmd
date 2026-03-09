@@ -1,0 +1,41 @@
+## Read SPSS Data File {.unnumbered}
+
+
+### Description
+
+Reads an SPSS <code>.sav</code> file, converts user-missing values to <code>NA</code>,
+and removes all labels. Optionally applies any active SPSS filter variable.
+
+
+
+### Usage
+
+<pre><code class='language-R'>get_spss_data(file_path, check_filter = TRUE, verbose = FALSE)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="file_path">file_path</code></td>
+<td>
+Character string. Path to the <code>.sav</code> file.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="check_filter">check_filter</code></td>
+<td>
+Logical. If <code>TRUE</code>, checks for and applies any
+active SPSS filter variable. Default is <code>TRUE</code>.
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="verbose">verbose</code></td>
+<td>
+Logical. If <code>TRUE</code>, prints diagnostic information.
+Default is <code>FALSE</code>.
+</td></tr>
+</table>
+
+
+### Value
+
+A tibble with numeric values and no SPSS labels.
+
+

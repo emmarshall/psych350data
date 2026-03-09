@@ -1,0 +1,87 @@
+## Superman Movies Box Office Data {.unnumbered}
+
+
+### Description
+
+Box office and production data for Superman theatrical films,
+including budget, domestic and international grosses, and MPAA ratings.
+
+
+
+### Usage
+
+<pre><code class='language-R'>superman_movies
+</code></pre>
+
+
+### Format
+
+A tibble with variables:
+
+
+<dl>
+<dt>imdb_id</dt><dd>IMDb title ID (e.g., &quot;tt0078346&quot;)
+</dd>
+<dt>title</dt><dd>Movie title
+</dd>
+<dt>year</dt><dd>Release year
+</dd>
+<dt>description</dt><dd>Movie description/tagline
+</dd>
+<dt>domestic_gross</dt><dd>Domestic box office gross (millions USD)
+</dd>
+<dt>domestic_pct</dt><dd>Domestic percentage of worldwide gross
+</dd>
+<dt>international_gross</dt><dd>International box office gross (millions USD)
+</dd>
+<dt>international_pct</dt><dd>International percentage of worldwide gross
+</dd>
+<dt>worldwide_gross</dt><dd>Worldwide box office gross (millions USD)
+</dd>
+<dt>distributor</dt><dd>Domestic distributor
+</dd>
+<dt>opening_weekend</dt><dd>Domestic opening weekend gross (millions USD)
+</dd>
+<dt>budget</dt><dd>Production budget (millions USD)
+</dd>
+<dt>release_date</dt><dd>Earliest release date
+</dd>
+<dt>mpaa</dt><dd>MPAA rating (G, PG, PG-13, R)
+</dd>
+<dt>runtime_min</dt><dd>Runtime in minutes
+</dd>
+<dt>genres</dt><dd>Genres (space-separated)
+</dd>
+<dt>poster_url</dt><dd>Movie poster URL (low resolution)
+</dd>
+<dt>poster_url_hires</dt><dd>Movie poster URL (high resolution)
+</dd>
+<dt>clark_actor</dt><dd>Actor playing Clark Kent/Superman (for joining with superman dataset)
+</dd>
+<dt>roi</dt><dd>Return on investment ((worldwide - budget) / budget)
+</dd>
+<dt>budget_cat</dt><dd>Budget category: Low (&lt;\$50M), Medium (\$50-150M), High (&gt;\$150M)
+</dd>
+<dt>box_office_cat</dt><dd>Box office category: Low (&lt;\$100M), Medium (\$100-500M), High (&gt;\$500M)
+</dd>
+</dl>
+
+
+
+### Source
+
+IMDb Box Office Mojo
+
+
+
+### Examples
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+library("psych350data")
+
+superman_movies
+combined <- join_superman_data()
+combined |> export_sav(path = "superman_combined.sav")
+
+
+
+```

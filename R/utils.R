@@ -1,5 +1,4 @@
-#' @importFrom dplyr mutate across where case_when if_else select rename
-#'   left_join filter pull
+#' @importFrom dplyr mutate across where case_when if_else select filter pull
 NULL
 
 #' @importFrom rlang .data
@@ -67,3 +66,47 @@ replace_sentinel_na <- function(x, sentinel = -99) {
 #'
 #' @keywords internal
 "_PACKAGE"
+
+#' Extract variable metadata from a psych350data dataset
+#'
+#' Calls the dataset's labelling function (via apply_spss_metadata) to get
+#' variable labels and value labels, without modifying the actual data.
+#'
+#' @importFrom purrr map set_names
+#'
+#' @param data A data frame from psych350data (pre-prep_data).
+#' @param dataset_name The dataset name string passed to apply_spss_metadata,
+#'   e.g. "superman", "hotones".
+#' @param vars Character vector of variable names to extract metadata for.
+#'
+#' @return A named list, one element per variable, each containing:
+#'   \describe{
+#'     \item{name}{Variable name}
+#'     \item{label}{Variable label string}
+#'     \item{value_labels}{Named numeric vector of value labels, or NULL}
+#'     \item{missing}{Logical, whether any values were NA in the original data}
+#'   }
+#'
+#' @export
+get_variable_metadata <- function(data, dataset_name, vars) {
+
+  labelled_df <- apply_spss_metadata(data, dataset_name, use_sentinel = FALSE)
+
+  vars |>
+    purrr::map(\(v) {
+      col <- labelled_df[[v]]
+
+      var_label <- attr(col, "label")
+      if (is.null(var_label) || var_label == "") var_label <- v
+
+      val_labels <- attr(col, "labels")
+
+      list(
+        name         = v,
+        label        = var_label,
+        value_labels = if (!is.null(val_labels) && length(val_labels) > 0) val_labels else NULL,
+        missing      = anyNA(data[[v]])
+      )
+    }) |>
+    purrr::set_names(vars)
+}

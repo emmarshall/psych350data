@@ -1,0 +1,54 @@
+## MCU Films Data {.unnumbered}
+
+
+### Description
+
+Data on Marvel Cinematic Universe films through the Infinity Saga,
+including box office performance and Rotten Tomatoes scores.
+Source is openintro package
+
+
+
+### Usage
+
+<pre><code class='language-R'>mcu
+</code></pre>
+
+
+### Format
+
+A data frame with variables:
+
+
+<dl>
+<dt>movie</dt><dd>Title of the movie
+</dd>
+<dt>length_hrs</dt><dd>Movie length: hours portion
+</dd>
+<dt>length_min</dt><dd>Movie length: minutes portion
+</dd>
+<dt>release_date</dt><dd>US release date
+</dd>
+<dt>opening_weekend_us</dt><dd>Opening weekend US box office (unadjusted)
+</dd>
+<dt>gross_us</dt><dd>Total US box office (unadjusted)
+</dd>
+<dt>gross_world</dt><dd>Total worldwide box office (unadjusted)
+</dd>
+<dt>phase</dt><dd>MCU Phase: 1, 2, or 3
+</dd>
+<dt>critics</dt><dd>RT critics score (0-100)
+</dd>
+<dt>audience</dt><dd>RT audience score (0-100)
+</dd>
+<dt>favor</dt><dd>Whether critics (1) or audience (2) score is higher
+</dd>
+</dl>
+
+
+
+### Source
+
+Internet Movie Database
+
+

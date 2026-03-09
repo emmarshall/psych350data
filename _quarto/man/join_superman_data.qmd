@@ -1,0 +1,55 @@
+## Join Superman Movies with Actor Data {.unnumbered}
+
+
+### Description
+
+Combines the superman_movies dataset with physical characteristics and
+ratings data from the superman dataset, matched by actor name.
+
+
+
+### Usage
+
+<pre><code class='language-R'>join_superman_data(
+  movies = NULL,
+  actors = NULL,
+  suffix = c("_movie", "_actor")
+)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="movies">movies</code></td>
+<td>
+A data frame of Superman movies (default: superman_movies)
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="actors">actors</code></td>
+<td>
+A data frame of Superman actor data (default: superman)
+</td></tr>
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="suffix">suffix</code></td>
+<td>
+Suffixes for disambiguating duplicate column names.
+Default c(&quot;_movie&quot;, &quot;_actor&quot;).
+</td></tr>
+</table>
+
+
+### Value
+
+A tibble with movie data joined to actor data.
+
+
+
+### Examples
+```{r, warning=FALSE, message=FALSE, eval=FALSE}
+library("psych350data")
+
+combined <- join_superman_data()
+combined |> export_sav(path = "superman_combined.sav")
+
+
+
+```

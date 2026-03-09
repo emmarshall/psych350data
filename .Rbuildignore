@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^pkgdown$
+^docs$
+^data-raw$
+^\.github$
+^README\.Rmd$
+^README\.qmd$
+^LICENSE\.md$
+^altdoc$
+^_quarto$
+^vignettes$

@@ -1,10 +1,21 @@
+# R
 .RData
-.Rbuildignore
 .Rhistory
 .Rproj.user
+
+# macOS
 .DS_Store
+
+# Temp files
 .httr-oauth
-.quarto
+~$*
+
+# altdoc - freeze cache only, not the whole folder
 altdoc/freeze.rds
-_quarto/*
-!_quarto/_freeze/
+
+# Quarto internal cache - safe to ignore, regenerated locally
+_quarto/.quarto/
+_quarto/freeze.rds
+
+# pkgdown DS_Store
+pkgdown/.DS_Store

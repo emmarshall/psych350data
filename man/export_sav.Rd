@@ -8,9 +8,12 @@ export_sav(dataset, path = NULL, use_sentinel = TRUE)
 }
 \arguments{
 \item{dataset}{Character string naming the dataset, or the dataset object itself.
-Valid names: "superman", "superman_smes", "hot_ones", "tip_jokes", "mcu",
+Valid names: "superman", "superman_smes", "superman_movies", "superman_combined",
+"hotones", "hotones_sauces", "hotones_episodes", "tip_jokes", "mcu",
 "mock_jury", "candy", "candy_simple", "football", "huskers",
-"interpersonal_data", "self_descriptive_data"}
+"cheese_data", "lpd_data", "parent_child_data",
+"hindsight_mg_data", "hindsight_wg_data",
+"interpersonal_data", "selfdescriptive_data"}
 
 \item{path}{File path for the output .sav file. If NULL, saves to the
 working directory with a default name.}
@@ -29,7 +32,7 @@ value labels, and defined missing values (-99).
 \examples{
 \dontrun{
 export_sav("superman", path = "superman_data.sav")
-export_sav("hot_ones", path = "~/Desktop/hot_ones_data.sav")
+export_sav("hotones", path = "~/Desktop/hotones_data.sav")
 
 # Export a subset of variables
 library(dplyr)

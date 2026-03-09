@@ -1,0 +1,49 @@
+## Hindsight Bias Data - Between-Groups Format {.unnumbered}
+
+
+### Description
+
+Simulated data from a hindsight bias study in which participants
+viewed celebrity faces and estimated recognition time at baseline
+and again after receiving an outcome cue. The between-groups factor
+is whether participants saw old or new faces in the hindsight phase.
+Each row represents one participant-face trial.
+
+
+
+### Usage
+
+<pre><code class='language-R'>hindsight_mg_data
+</code></pre>
+
+
+### Format
+
+A tibble with 600 rows (60 participants x 10 faces) and 7 variables:
+
+
+<dl>
+<dt>participant_id</dt><dd>Unique participant identifier
+</dd>
+<dt>face_id</dt><dd>Face stimulus identifier (1-10)
+</dd>
+<dt>condition</dt><dd>Between-groups experimental condition: Old (1), New (2)
+</dd>
+<dt>fame_level</dt><dd>Celebrity fame level: Extremely Famous (1), Moderately Famous (2)
+</dd>
+<dt>score_1</dt><dd>Time to identify celebrity at baseline (seconds)
+</dd>
+<dt>score_2</dt><dd>Time to identify celebrity in hindsight phase (seconds)
+</dd>
+<dt>correct</dt><dd>Correct identification at baseline: Incorrect (0), Correct (1)
+</dd>
+</dl>
+
+
+
+### Source
+
+Simulated data generated to illustrate hindsight bias
+in a between-groups design.
+
+

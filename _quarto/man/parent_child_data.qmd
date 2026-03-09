@@ -1,0 +1,56 @@
+## Parent-Child Observation Data {.unnumbered}
+
+
+### Description
+
+Simulated parent-child observational data from a study examining
+the effects of a remediation treatment on parenting behaviours.
+Maternal and child demographics are included alongside coded
+behavioural counts from structured observations.
+
+
+
+### Usage
+
+<pre><code class='language-R'>parent_child_data
+</code></pre>
+
+
+### Format
+
+A tibble with 100 rows and 11 variables:
+
+
+<dl>
+<dt>casenum</dt><dd>Unique case number
+</dd>
+<dt>mage</dt><dd>Mother's age in years
+</dd>
+<dt>magegroup</dt><dd>Mother's age group: 18-27 (1), 28-35 (2)
+</dd>
+<dt>cage</dt><dd>Child's age in years
+</dd>
+<dt>cagegroup</dt><dd>Child's age group: 2-3 years (1), 4-5 years (2)
+</dd>
+<dt>famtype</dt><dd>Family type: 2-parent (1), mother-only (2)
+</dd>
+<dt>CLINREM</dt><dd>Clinical remediation status: suggested (0), not suggested (1)
+</dd>
+<dt>tx</dt><dd>Treatment condition: control (0), remediation (1)
+</dd>
+<dt>praise</dt><dd>Count of praise behaviours observed
+</dd>
+<dt>direct</dt><dd>Count of directive behaviours observed
+</dd>
+<dt>negat</dt><dd>Count of negative behaviours observed
+</dd>
+</dl>
+
+
+
+### Source
+
+Simulated data generated to resemble a plausible
+parent-child observational study sample.
+
+

@@ -1,0 +1,59 @@
+## Cheese Characteristics Data {.unnumbered}
+
+
+### Description
+
+Cleaned subset of the cheese.com dataset originally featured in
+TidyTuesday (June 2024). Contains cheeses with known calcium content,
+with fat content and milk source cleaned and recoded for teaching
+data entry and transformation in SPSS and JAMOVI.
+
+
+
+### Usage
+
+<pre><code class='language-R'>cheese_data
+</code></pre>
+
+
+### Format
+
+A tibble with variables:
+
+
+<dl>
+<dt>id</dt><dd>Unique cheese identifier
+</dd>
+<dt>cheese</dt><dd>Cheese name
+</dd>
+<dt>url</dt><dd>URL to the cheese page on cheese.com
+</dd>
+<dt>milk</dt><dd>Raw milk source text as listed on cheese.com
+</dd>
+<dt>milk_source</dt><dd>Milk source category: Cow (1), Goat (2), Sheep (3),
+Buffalo (4), Multiple (5), Other (6)
+</dd>
+<dt>country</dt><dd>Country of origin
+</dd>
+<dt>family</dt><dd>Cheese family
+</dd>
+<dt>type</dt><dd>Cheese type (texture and style)
+</dd>
+<dt>vegetarian</dt><dd>Vegetarian-suitable: No (0), Yes (1)
+</dd>
+<dt>color</dt><dd>Cheese color
+</dd>
+<dt>fat_content</dt><dd>Fat content as a percentage per serving
+</dd>
+<dt>calcium_content</dt><dd>Calcium content in mg per 100g
+</dd>
+</dl>
+
+
+
+### Source
+
+cheese.com via TidyTuesday 2024-06-04.
+Raw data extracted and saved locally via <code>data-raw/extract_cheese_raw.R</code>.
+
+

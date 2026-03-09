@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.27">
+<meta name="generator" content="quarto-1.9.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>export_selfdescriptive_sav – psych350data</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -32,19 +35,18 @@ ul.task-list li input[type="checkbox"] {
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-5dc72fe4f8e2ee6edcea9b2c2eeaa369.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-aba01c956b72409b36012bbc0149ef07.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8382ef6bcf9f5a2461e71bacf674783.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8073c01ad402aa5e4ca020b404e1a7a9.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-c8382ef6bcf9f5a2461e71bacf674783.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-9291fb68f63017f61098342f7067d42f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-33ad8e3470424c659cd96ff6886cea3d.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5ebff592ac4f903240e5ffaedec87ce4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-95cbb841cadabd7c4edc876cd89a887f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-5ebff592ac4f903240e5ffaedec87ce4.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -311,6 +313,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Dataset Reference Guide</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../vignettes/exporting-spss.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Exporting Datasets to SPSS</span></a>
   </div>
@@ -346,6 +354,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/check_sav_export.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">check_sav_export</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/cheese_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">cheese_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_all_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_all_sav</span></a>
   </div>
@@ -364,26 +384,44 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/export_cheese_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_cheese_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_football_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_football_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_episodes_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_episodes_sav</span></a>
+  <a href="../man/export_hindsight_mg_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hindsight_mg_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_sauces_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_sauces_sav</span></a>
+  <a href="../man/export_hindsight_wg_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hindsight_wg_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/export_hot_ones_sav.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">export_hot_ones_sav</span></a>
+  <a href="../man/export_hotones_episodes_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_episodes_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hotones_sauces_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_sauces_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_hotones_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_hotones_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -400,6 +438,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/export_lpd_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_lpd_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/export_mcu_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_mcu_sav</span></a>
   </div>
@@ -408,6 +452,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../man/export_mock_jury_sav.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">export_mock_jury_sav</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/export_parent_child_sav.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">export_parent_child_sav</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -460,20 +510,44 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones_episodes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones_episodes</span></a>
+  <a href="../man/get_spss_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_spss_data</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones_sauces.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones_sauces</span></a>
+  <a href="../man/get_variable_metadata.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">get_variable_metadata</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/hot_ones.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">hot_ones</span></a>
+  <a href="../man/hindsight_mg_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hindsight_mg_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hindsight_wg_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hindsight_wg_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones_episodes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones_episodes</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones_sauces.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones_sauces</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/hotones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">hotones</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -502,6 +576,12 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../man/lpd_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">lpd_data</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../man/mcu.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">mcu</span></a>
   </div>
@@ -510,6 +590,12 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="../man/mock_jury.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">mock_jury</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../man/parent_child_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">parent_child_data</span></a>
   </div>
 </li>
           <li class="sidebar-item">

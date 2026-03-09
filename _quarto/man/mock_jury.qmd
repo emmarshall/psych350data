@@ -1,0 +1,65 @@
+## Mock Jury Data {.unnumbered}
+
+
+### Description
+
+Data from Plaster (1989) examining effects of physical attractiveness
+on mock jury sentencing decisions.
+
+
+
+### Usage
+
+<pre><code class='language-R'>mock_jury
+</code></pre>
+
+
+### Format
+
+A data frame with variables:
+
+
+<dl>
+<dt>attr</dt><dd>Attractiveness: Beautiful (1), Average (2), Unattractive (3)
+</dd>
+<dt>crime</dt><dd>Crime type: Burglary (1), Swindle (2)
+</dd>
+<dt>years</dt><dd>Sentence length in years
+</dd>
+<dt>serious</dt><dd>Seriousness rating
+</dd>
+<dt>exciting</dt><dd>Rating of the photo for 'exciting'
+</dd>
+<dt>calm</dt><dd>Rating of the photo for 'calm'
+</dd>
+<dt>independent</dt><dd>Rating of the photo for 'independent'
+</dd>
+<dt>sincere</dt><dd>Rating of the photo for 'sincere'
+</dd>
+<dt>warm</dt><dd>Rating of the photo for 'warm'
+</dd>
+<dt>phyattr</dt><dd>Rating of the photo for 'physical attractiveness'
+</dd>
+<dt>sociable</dt><dd>Rating of the photo for 'sociable'
+</dd>
+<dt>kind</dt><dd>Rating of the photo for 'kind'
+</dd>
+<dt>intelligent</dt><dd>Rating of the photo for 'intelligent'
+</dd>
+<dt>strong</dt><dd>Rating of the photo for 'strong'
+</dd>
+<dt>sophisticated</dt><dd>Rating of the photo for 'sophisticated'
+</dd>
+<dt>happy</dt><dd>Rating of the photo for 'happy'
+</dd>
+<dt>ownPA</dt><dd>Self-rating of physical attractiveness
+</dd>
+</dl>
+
+
+
+### Source
+
+Plaster, M. E. (1989). East Carolina University.
+
+
