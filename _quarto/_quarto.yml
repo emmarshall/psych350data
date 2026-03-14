@@ -20,7 +20,6 @@ website:
         file: index.qmd
       - section: Articles
         contents:
-          - vignettes/dataset-guide.qmd
           - vignettes/dataset-reference.qmd
           - vignettes/exporting-spss.qmd
           - vignettes/getting-started.qmd

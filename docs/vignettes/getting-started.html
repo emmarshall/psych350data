@@ -299,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Getting Started with psych350data</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Getting Started with psych350data</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -324,14 +324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../vignettes/dataset-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
+ <span class="menu-text">Dataset Reference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -674,24 +668,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li><a href="#overview" id="toc-overview" class="nav-link active" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation">Installation</a></li>
   <li><a href="#loading-the-package" id="toc-loading-the-package" class="nav-link" data-scroll-target="#loading-the-package">Loading the Package</a></li>
   <li><a href="#browsing-available-datasets" id="toc-browsing-available-datasets" class="nav-link" data-scroll-target="#browsing-available-datasets">Browsing Available Datasets</a></li>
-  <li><a href="#workflow-1-raw-data-in-r" id="toc-workflow-1-raw-data-in-r" class="nav-link" data-scroll-target="#workflow-1-raw-data-in-r">Workflow 1: Raw Data in R</a></li>
   <li>
-<a href="#workflow-2-prep-for-numeric-r-analysis" id="toc-workflow-2-prep-for-numeric-r-analysis" class="nav-link" data-scroll-target="#workflow-2-prep-for-numeric-r-analysis">Workflow 2: Prep for Numeric R Analysis</a>
+<a href="#workflow-1-raw-data-in-r" id="toc-workflow-1-raw-data-in-r" class="nav-link" data-scroll-target="#workflow-1-raw-data-in-r">Workflow 1: Raw Data in R</a>
   <ul class="collapse">
-<li><a href="#the-prep_data-function" id="toc-the-prep_data-function" class="nav-link" data-scroll-target="#the-prep_data-function">The <code>prep_data()</code> Function</a></li>
-  <li><a href="#dataset-specific-prep-functions" id="toc-dataset-specific-prep-functions" class="nav-link" data-scroll-target="#dataset-specific-prep-functions">Dataset-Specific Prep Functions</a></li>
-  <li><a href="#keeping-labels-for-plotting" id="toc-keeping-labels-for-plotting" class="nav-link" data-scroll-target="#keeping-labels-for-plotting">Keeping Labels for Plotting</a></li>
+<li><a href="#plotting-with-ggplot2" id="toc-plotting-with-ggplot2" class="nav-link" data-scroll-target="#plotting-with-ggplot2">Plotting with ggplot2</a></li>
+  <li><a href="#handling-missing-values" id="toc-handling-missing-values" class="nav-link" data-scroll-target="#handling-missing-values">Handling Missing Values</a></li>
+  <li><a href="#running-analyses-with-raw-data" id="toc-running-analyses-with-raw-data" class="nav-link" data-scroll-target="#running-analyses-with-raw-data">Running Analyses with Raw Data</a></li>
   </ul>
 </li>
-  <li><a href="#workflow-3-export-to-spss" id="toc-workflow-3-export-to-spss" class="nav-link" data-scroll-target="#workflow-3-export-to-spss">Workflow 3: Export to SPSS</a></li>
+  <li>
+<a href="#workflow-2-prep-for-numeric-analysis" id="toc-workflow-2-prep-for-numeric-analysis" class="nav-link" data-scroll-target="#workflow-2-prep-for-numeric-analysis">Workflow 2: Prep for Numeric Analysis</a>
+  <ul class="collapse">
+<li><a href="#what-prep_-does" id="toc-what-prep_-does" class="nav-link" data-scroll-target="#what-prep_-does">What <code>prep_*()</code> Does</a></li>
+  <li><a href="#using-the-generic-prep_data-function" id="toc-using-the-generic-prep_data-function" class="nav-link" data-scroll-target="#using-the-generic-prep_data-function">Using the Generic <code>prep_data()</code> Function</a></li>
+  <li><a href="#all-prep-functions" id="toc-all-prep-functions" class="nav-link" data-scroll-target="#all-prep-functions">All Prep Functions</a></li>
+  <li><a href="#compatibility-with-psych350lab" id="toc-compatibility-with-psych350lab" class="nav-link" data-scroll-target="#compatibility-with-psych350lab">Compatibility with psych350lab</a></li>
+  <li><a href="#keeping-labels-for-plotting-after-prep" id="toc-keeping-labels-for-plotting-after-prep" class="nav-link" data-scroll-target="#keeping-labels-for-plotting-after-prep">Keeping Labels for Plotting After Prep</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#workflow-3-export-to-spss" id="toc-workflow-3-export-to-spss" class="nav-link" data-scroll-target="#workflow-3-export-to-spss">Workflow 3: Export to SPSS</a>
+  <ul class="collapse">
+<li><a href="#quick-export" id="toc-quick-export" class="nav-link" data-scroll-target="#quick-export">Quick Export</a></li>
+  <li><a href="#exporting-for-answer-keys-vs.-student-data" id="toc-exporting-for-answer-keys-vs.-student-data" class="nav-link" data-scroll-target="#exporting-for-answer-keys-vs.-student-data">Exporting for Answer Keys vs.&nbsp;Student Data</a></li>
+  <li><a href="#export-all-datasets-at-once" id="toc-export-all-datasets-at-once" class="nav-link" data-scroll-target="#export-all-datasets-at-once">Export All Datasets at Once</a></li>
+  </ul>
+</li>
   <li><a href="#choosing-the-right-workflow" id="toc-choosing-the-right-workflow" class="nav-link" data-scroll-target="#choosing-the-right-workflow">Choosing the Right Workflow</a></li>
-  <li><a href="#r-vs-spss-whats-different" id="toc-r-vs-spss-whats-different" class="nav-link" data-scroll-target="#r-vs-spss-whats-different">R vs SPSS: What’s Different?</a></li>
+  <li><a href="#r-vs.-spss-whats-different" id="toc-r-vs.-spss-whats-different" class="nav-link" data-scroll-target="#r-vs.-spss-whats-different">R vs.&nbsp;SPSS: What’s Different?</a></li>
   </ul><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Getting Started with psych350data</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/getting-started.html">Getting Started with psych350data</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Getting Started with psych350data</h1>
 </div>
 
@@ -707,27 +718,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>The psych350data package provides all the datasets you need for PSYC 350 labs. Each dataset supports three workflows:</p>
+<p>The psych350data package provides all the datasets used in PSYC 350 labs at UNL. Every dataset is ready to use the moment you load the package — no file downloading, no manual data entry, and no SPSS license needed.</p>
+<p>The package supports <strong>three workflows</strong> depending on what you need to do:</p>
 <ol type="1">
-<li><p><strong>Raw data in R</strong> — Categorical variables are human-readable character strings (like <code>"Film"</code>, <code>"Control"</code>). Use this for exploration, plotting with ggplot2, and any analysis that doesn’t need to match SPSS output.</p></li>
-<li><p><strong>Prepped for numeric R analysis</strong> — <code>prep_*()</code> functions convert character categories to numeric codes that match SPSS exactly. Use this when you need your R output to match SPSS output from a lab assignment.</p></li>
-<li><p><strong>Exported to SPSS</strong> — <code>export_*_sav()</code> functions produce fully labeled <code>.sav</code> files with numeric codes, value labels, variable labels, and <code>-99</code> for missing values. Use this to create the SPSS file for a lab.</p></li>
-</ol></section><section id="loading-the-package" class="level2"><h2 class="anchored" data-anchor-id="loading-the-package">Loading the Package</h2>
+<li><p><strong>Use the raw R data directly</strong> — categorical variables are human-readable strings like <code>"Film"</code> or <code>"Control"</code>, which work perfectly with ggplot2 and most R functions.</p></li>
+<li><p><strong>Prep for numeric analysis matching SPSS</strong> — <code>prep_*()</code> functions convert character categories to the same numeric codes used in the SPSS files (e.g., 1, 2, 3), so your R output matches SPSS output exactly. This is useful when working with functions from the <a href="https://github.com/emmarshall/psych350lab">psych350lab</a> package that expect numeric grouping variables.</p></li>
+<li><p><strong>Export to SPSS</strong> — <code>export_*_sav()</code> functions create fully labeled <code>.sav</code> files with numeric codes, value labels, variable labels, and <code>-99</code> for missing values. Use this to create answer key files or student data files for labs.</p></li>
+</ol></section><section id="installation" class="level2"><h2 class="anchored" data-anchor-id="installation">Installation</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emmarshall.github.io/psych350data/">psych350data</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'dplyr'</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:stats':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     filter, lag</span></span>
-<span><span class="co">#&gt; The following objects are masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Install from GitHub (one time only)</span></span>
+<span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html">pak</a></span><span class="op">(</span><span class="st">"emmarshall/psych350data"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="loading-the-package" class="level2"><h2 class="anchored" data-anchor-id="loading-the-package">Loading the Package</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emmarshall.github.io/psych350data/">psych350data</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="browsing-available-datasets" class="level2"><h2 class="anchored" data-anchor-id="browsing-available-datasets">Browsing Available Datasets</h2>
+<p>Use <code><a href="https://emmarshall.github.io/psych350data/man/list_datasets.html">list_datasets()</a></code> to see every dataset in the package:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/list_datasets.html">list_datasets</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt;  [1] "superman"              "superman_smes"         "superman_movies"      </span></span>
 <span><span class="co">#&gt;  [4] "superman_combined"     "hotones"               "hotones_sauces"       </span></span>
 <span><span class="co">#&gt;  [7] "hotones_episodes"      "tip_jokes"             "mcu"                  </span></span>
@@ -736,31 +747,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; [16] "self_descriptive_data" "parent_child_data"     "hindsight_mg_data"    </span></span>
 <span><span class="co">#&gt; [19] "hindsight_wg_data"     "cheese_data"           "lpd_data"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>For detailed documentation on any dataset:</p>
+<p>For detailed documentation on any dataset, use <code>?</code> in the R console:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">superman</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="op">?</span><span class="va">superman</span></span>
 <span><span class="op">?</span><span class="va">hotones</span></span>
 <span><span class="op">?</span><span class="va">mock_jury</span></span>
-<span><span class="op">?</span><span class="va">hindsight_mg_data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="op">?</span><span class="va">football</span></span>
+<span><span class="op">?</span><span class="va">interpersonal_data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<p>See the <a href="../vignettes/dataset-reference.html">Dataset Reference</a> for a complete guide to every dataset including sources and variable descriptions.</p>
 <hr></section><section id="workflow-1-raw-data-in-r" class="level2"><h2 class="anchored" data-anchor-id="workflow-1-raw-data-in-r">Workflow 1: Raw Data in R</h2>
-<p>Every dataset is a tibble available immediately after loading the package. Categorical variables use descriptive character values:</p>
+<p>Every dataset is a tibble that’s available immediately after loading the package. Categorical variables use descriptive character values that are easy to read and plot:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_grp</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_grp</span>, <span class="va">age_grp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
-<span><span class="co">#&gt;     num media                   type    clark_grp     height_gap</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;     </span></span>
-<span><span class="co">#&gt; 1     1 Superman                Film    6ft or taller Big       </span></span>
-<span><span class="co">#&gt; 2     2 Superman: The Movie     Film    6ft or taller Big       </span></span>
-<span><span class="co">#&gt; 3     3 Smallville              TV Show 6ft or taller Average   </span></span>
-<span><span class="co">#&gt; 4     4 Superman Returns        Film    6ft or taller Big       </span></span>
-<span><span class="co">#&gt; 5     5 Superman &amp; the Mole Men Film    6ft or taller Big       </span></span>
+<span><span class="co">#&gt;     num media                   type    clark_grp     age_grp</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1     1 Superman                Film    6ft or taller Average</span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie     Film    6ft or taller Average</span></span>
+<span><span class="co">#&gt; 3     3 Smallville              TV Show 6ft or taller Minimal</span></span>
+<span><span class="co">#&gt; 4     4 Superman Returns        Film    6ft or taller Average</span></span>
+<span><span class="co">#&gt; 5     5 Superman &amp; the Mole Men Film    6ft or taller Big    </span></span>
 <span><span class="co">#&gt; 6     6 Man of Steel            Film    6ft or taller Big</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">football</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">football</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
 <span><span class="co">#&gt;   group                        n</span></span>
@@ -769,68 +782,169 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 2 Football no concussion      25</span></span>
 <span><span class="co">#&gt; 3 Football with concussion    25</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This format works well with ggplot2 since axis labels are already readable. Missing values are standard <code>NA</code>, which R handles automatically:</p>
+<section id="plotting-with-ggplot2" class="level3"><h3 class="anchored" data-anchor-id="plotting-with-ggplot2">Plotting with ggplot2</h3>
+<p>Because categorical variables are already human-readable strings, they work directly as axis labels and legend entries in ggplot2 — no extra formatting needed:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">superman</span><span class="op">$</span><span class="va">rt_critics_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bar chart — group labels appear automatically</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">football</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">group</span>, y <span class="op">=</span> <span class="va">volume</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Group"</span>, y <span class="op">=</span> <span class="st">"Brain Volume"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># The labels "Control", "Football no concussion", etc.</span></span>
+<span><span class="co"># appear on the x-axis without any extra work.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>If you need to control the <strong>order</strong> of categories on the axis (e.g., for a specific ordering in a bar chart), convert to a factor with explicit levels:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">football</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
+<span>    group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">group</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Control"</span>,</span>
+<span>                                     <span class="st">"Football no concussion"</span>,</span>
+<span>                                     <span class="st">"Football with concussion"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">group</span>, y <span class="op">=</span> <span class="va">volume</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="handling-missing-values" class="level3"><h3 class="anchored" data-anchor-id="handling-missing-values">Handling Missing Values</h3>
+<p>Missing values in the raw R data are standard <code>NA</code>, which R handles automatically in most functions:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># NA values are excluded with na.rm = TRUE</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">superman</span><span class="op">$</span><span class="va">rt_critics_score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 79.375</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>For analyses like ANOVA that need factor inputs, convert directly from the raw data:</p>
+</section><section id="running-analyses-with-raw-data" class="level3"><h3 class="anchored" data-anchor-id="running-analyses-with-raw-data">Running Analyses with Raw Data</h3>
+<p>For analyses like ANOVA or t-tests that need a factor grouping variable, wrap the character column in <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span></span>
-<span>    height_gap <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">height_gap</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Minimal"</span>, <span class="st">"Average"</span>, <span class="st">"Big"</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "Minimal" "Average" "Big"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># One-way ANOVA using the character group variable</span></span>
+<span><span class="va">model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">volume</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span>, data <span class="op">=</span> <span class="va">football</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">model</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               Df Sum Sq Mean Sq F value   Pr(&gt;F)    </span></span>
+<span><span class="co">#&gt; factor(group)  2  44.35  22.174   31.47 1.51e-10 ***</span></span>
+<span><span class="co">#&gt; Residuals     72  50.73   0.705                     </span></span>
+<span><span class="co">#&gt; ---</span></span>
+<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<hr></section><section id="workflow-2-prep-for-numeric-r-analysis" class="level2"><h2 class="anchored" data-anchor-id="workflow-2-prep-for-numeric-r-analysis">Workflow 2: Prep for Numeric R Analysis</h2>
-<p>If your analysis needs to produce numeric output that matches SPSS — for example, when comparing R results to SPSS output from a lab assignment — use <code>prep_*()</code> functions to convert categorical variables to the same numeric codes SPSS uses.</p>
-<section id="the-prep_data-function" class="level3"><h3 class="anchored" data-anchor-id="the-prep_data-function">The <code>prep_data()</code> Function</h3>
-<p><code><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_data()</a></code> is the main entry point. Pass it a dataset and the dataset name as a string:</p>
+<hr></section></section><section id="workflow-2-prep-for-numeric-analysis" class="level2"><h2 class="anchored" data-anchor-id="workflow-2-prep-for-numeric-analysis">Workflow 2: Prep for Numeric Analysis</h2>
+<p>If your analysis needs to produce output with <strong>numeric codes that match SPSS</strong> — for example, when comparing your R results to SPSS output in a lab, or when using functions from the <a href="https://github.com/emmarshall/psych350lab">psych350lab</a> package — use <code>prep_*()</code> functions.</p>
+<section id="what-prep_-does" class="level3"><h3 class="anchored" data-anchor-id="what-prep_-does">What <code>prep_*()</code> Does</h3>
+<p>Each <code>prep_*()</code> function replaces character categorical variables with the same numeric codes used in the SPSS <code>.sav</code> file. For example, in the <code>superman</code> dataset, <code>type</code> goes from <code>"Film"</code> / <code>"TV Series"</code> / <code>"Serial"</code> to <code>1</code> / <code>2</code> / <code>3</code>, and <code>age_grp</code> goes from <code>"Minimal"</code> / <code>"Average"</code> / <code>"Big"</code> to <code>1</code> / <code>2</code> / <code>3</code>.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_data</a></span><span class="op">(</span><span class="va">superman</span>, <span class="st">"superman"</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_grp</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span><span class="va">superman_num</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_grp</span>, <span class="va">age_grp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 5</span></span>
-<span><span class="co">#&gt;     num media                    type clark_grp height_gap</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1     1 Superman                    1         2          3</span></span>
-<span><span class="co">#&gt; 2     2 Superman: The Movie         1         2          3</span></span>
-<span><span class="co">#&gt; 3     3 Smallville                  2         2          2</span></span>
-<span><span class="co">#&gt; 4     4 Superman Returns            1         2          3</span></span>
-<span><span class="co">#&gt; 5     5 Superman &amp; the Mole Men     1         2          3</span></span>
-<span><span class="co">#&gt; 6     6 Man of Steel                1         2          3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;     num media                    type clark_grp age_grp</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1 Superman                    1         2       2</span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie         1         2       2</span></span>
+<span><span class="co">#&gt; 3     3 Smallville                  2         2       1</span></span>
+<span><span class="co">#&gt; 4     4 Superman Returns            1         2       2</span></span>
+<span><span class="co">#&gt; 5     5 Superman &amp; the Mole Men     1         2       3</span></span>
+<span><span class="co">#&gt; 6     6 Man of Steel                1         2       3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Each character category is replaced with its numeric code. For example, <code>type</code> becomes <code>1</code> for Film, <code>2</code> for TV Series, and <code>3</code> for Serial — the same codes used in the SPSS <code>.sav</code> file.</p>
-</section><section id="dataset-specific-prep-functions" class="level3"><h3 class="anchored" data-anchor-id="dataset-specific-prep-functions">Dataset-Specific Prep Functions</h3>
-<p>Every dataset also has its own dedicated prep function:</p>
+</section><section id="using-the-generic-prep_data-function" class="level3"><h3 class="anchored" data-anchor-id="using-the-generic-prep_data-function">Using the Generic <code>prep_data()</code> Function</h3>
+<p>You can also use the generic <code><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_data()</a></code> function with any dataset name as a string:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span>          <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
-<span><span class="va">hotones</span>           <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hotones</a></span><span class="op">(</span><span class="va">hotones</span><span class="op">)</span></span>
-<span><span class="va">hotones_sauces</span>    <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hotones_sauces</a></span><span class="op">(</span><span class="va">hotones_sauces</span><span class="op">)</span></span>
-<span><span class="va">hotones_episodes</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hotones_episodes</a></span><span class="op">(</span><span class="va">hotones_episodes</span><span class="op">)</span></span>
-<span><span class="va">mcu</span>               <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_mcu</a></span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
-<span><span class="va">mock_jury</span>         <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_mock_jury</a></span><span class="op">(</span><span class="va">mock_jury</span><span class="op">)</span></span>
-<span><span class="va">tip_jokes</span>         <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_tip_jokes</a></span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">)</span></span>
-<span><span class="va">candy</span>             <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_candy</a></span><span class="op">(</span><span class="va">candy</span><span class="op">)</span></span>
-<span><span class="va">candy_simple</span>      <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_candy_simple</a></span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
-<span><span class="va">football</span>          <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_football</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
-<span><span class="va">huskers</span>           <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_huskers</a></span><span class="op">(</span><span class="va">huskers</span><span class="op">)</span></span>
-<span><span class="va">cheese_data</span>       <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_cheese</a></span><span class="op">(</span><span class="va">cheese_data</span><span class="op">)</span></span>
-<span><span class="va">lpd_data</span>          <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_lpd</a></span><span class="op">(</span><span class="va">lpd_data</span><span class="op">)</span></span>
-<span><span class="va">parent_child_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_parent_child</a></span><span class="op">(</span><span class="va">parent_child_data</span><span class="op">)</span></span>
-<span><span class="va">hindsight_mg_data</span> <span class="op">&lt;-</span> <span class="fu">prep_hindsight_mg</span><span class="op">(</span><span class="va">hindsight_mg_data</span><span class="op">)</span></span>
-<span><span class="va">hindsight_wg_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hindsight_wg</a></span><span class="op">(</span><span class="va">hindsight_wg_data</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section><section id="keeping-labels-for-plotting" class="level3"><h3 class="anchored" data-anchor-id="keeping-labels-for-plotting">Keeping Labels for Plotting</h3>
-<p>By default, prep functions replace character columns with numeric codes and the original strings are lost. If you need the original values for axis labels or legends in plots, use <code>keep_labels = TRUE</code>. This retains the original character column alongside the numeric one with a <code>_label</code> suffix:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span>, keep_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_data</a></span><span class="op">(</span><span class="va">superman</span>, <span class="st">"superman"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
+<span><span class="va">superman_num</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">age_grp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 4</span></span>
+<span><span class="co">#&gt;     num media                    type age_grp</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;                   &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1 Superman                    1       2</span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie         1       2</span></span>
+<span><span class="co">#&gt; 3     3 Smallville                  2       1</span></span>
+<span><span class="co">#&gt; 4     4 Superman Returns            1       2</span></span>
+<span><span class="co">#&gt; 5     5 Superman &amp; the Mole Men     1       3</span></span>
+<span><span class="co">#&gt; 6     6 Man of Steel                1       3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="all-prep-functions" class="level3"><h3 class="anchored" data-anchor-id="all-prep-functions">All Prep Functions</h3>
+<p>Every dataset has its own dedicated prep function:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman_smes</a></span><span class="op">(</span><span class="va">superman_smes</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman_movies</a></span><span class="op">(</span><span class="va">superman_movies</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hotones</a></span><span class="op">(</span><span class="va">hotones</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hotones_sauces</a></span><span class="op">(</span><span class="va">hotones_sauces</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hotones_episodes</a></span><span class="op">(</span><span class="va">hotones_episodes</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_mcu</a></span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_mock_jury</a></span><span class="op">(</span><span class="va">mock_jury</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_tip_jokes</a></span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_candy</a></span><span class="op">(</span><span class="va">candy</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_candy_simple</a></span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_football</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_huskers</a></span><span class="op">(</span><span class="va">huskers</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_interpersonal</a></span><span class="op">(</span><span class="va">interpersonal_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_self_descriptive</a></span><span class="op">(</span><span class="va">self_descriptive_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_parent_child</a></span><span class="op">(</span><span class="va">parent_child_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hindsight_bg</a></span><span class="op">(</span><span class="va">hindsight_mg_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_hindsight_wg</a></span><span class="op">(</span><span class="va">hindsight_wg_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_cheese</a></span><span class="op">(</span><span class="va">cheese_data</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_lpd</a></span><span class="op">(</span><span class="va">lpd_data</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Some datasets (like <code>mock_jury</code>, <code>tip_jokes</code>, <code>interpersonal_data</code>, and <code>self_descriptive_data</code>) already store their categorical variables as numeric codes. Their prep functions still exist for consistency, but they return the data unchanged.</p>
+</div>
+</div>
+</section><section id="compatibility-with-psych350lab" class="level3"><h3 class="anchored" data-anchor-id="compatibility-with-psych350lab">Compatibility with psych350lab</h3>
+<p>The <a href="https://github.com/emmarshall/psych350lab">psych350lab</a> package provides helper functions for PSYC 350 lab assignments. Many of these functions expect data that looks like an SPSS <code>.sav</code> file — that is, categorical/grouping variables stored as <strong>numbers</strong> (not character strings) and missing values coded as <code>-99</code> rather than <code>NA</code>.</p>
+<p>To make any psych350data dataset work with psych350lab functions, you need two steps:</p>
+<p><strong>Step 1: Convert categories to numeric codes</strong> with <code>prep_*()</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">football_num</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_football</a></span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
+<span><span class="va">football_num</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">group</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 3 × 2</span></span>
+<span><span class="co">#&gt;   group     n</span></span>
+<span><span class="co">#&gt;   &lt;dbl&gt; &lt;int&gt;</span></span>
+<span><span class="co">#&gt; 1     1    25</span></span>
+<span><span class="co">#&gt; 2     2    25</span></span>
+<span><span class="co">#&gt; 3     3    25</span></span>
+<span><span class="co"># group is now 1, 2, 3 instead of "Control", "Football no concussion", ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Step 2: Replace NA with -99</strong> (if your psych350lab function expects <code>-99</code> for missing):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emmarshall.github.io/psych350lab">psych350lab</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Replace NA with -99 across all numeric columns</span></span>
+<span><span class="va">football_spss</span> <span class="op">&lt;-</span> <span class="va">football_num</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html">where</a></span><span class="op">(</span><span class="va">is.numeric</span><span class="op">)</span>, \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, <span class="op">-</span><span class="fl">99</span>, <span class="va">x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Now the data looks exactly like it would in SPSS</span></span>
+<span><span class="co"># and is ready for psych350lab functions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If you’re only running standard R functions like <code><a href="https://rdrr.io/r/stats/aov.html">aov()</a></code>, <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code>, or <code><a href="https://rdrr.io/r/stats/cor.test.html">cor.test()</a></code>, you do <strong>not</strong> need the <code>-99</code> step — R handles <code>NA</code> natively. The <code>-99</code> replacement is only needed for functions that specifically expect SPSS-style missing value coding.</p>
+</div>
+</div>
+</section><section id="keeping-labels-for-plotting-after-prep" class="level3"><h3 class="anchored" data-anchor-id="keeping-labels-for-plotting-after-prep">Keeping Labels for Plotting After Prep</h3>
+<p>By default, <code>prep_*()</code> replaces the character values with numbers, and the original labels are lost. If you need both the numeric codes (for analysis) and the original labels (for plotting), use <code>keep_labels = TRUE</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_both</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/prep_data.html">prep_superman</a></span><span class="op">(</span><span class="va">superman</span>, keep_labels <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">superman_both</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">type</span>, <span class="va">type_label</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
@@ -843,36 +957,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5     5     1 Film      </span></span>
 <span><span class="co">#&gt; 6     6     1 Film</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This is useful when you want numeric codes for analysis but readable labels for ggplot2:</p>
+<p>This is useful when you want numeric codes for analysis but readable labels in ggplot2:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman_prepped</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">type_label</span>, y <span class="op">=</span> <span class="va">rt_critics_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use the _label column for readable axis labels</span></span>
+<span><span class="va">superman_both</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">type_label</span>, y <span class="op">=</span> <span class="va">rt_critics_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Media Type"</span>, y <span class="op">=</span> <span class="st">"Rotten Tomatoes Critics Score"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <hr></section></section><section id="workflow-3-export-to-spss" class="level2"><h2 class="anchored" data-anchor-id="workflow-3-export-to-spss">Workflow 3: Export to SPSS</h2>
-<p>Use <code>export_*_sav()</code> functions to create <code>.sav</code> files for use in SPSS or JASP. The export functions handle everything automatically — you do not need to run a prep function first.</p>
+<p>Use <code>export_*_sav()</code> functions to create <code>.sav</code> files for SPSS or JASP. The export functions handle everything automatically — you do <strong>not</strong> need to run a prep function first.</p>
 <p>Each export produces a file with:</p>
 <ul>
-<li>Numeric codes for all categorical variables</li>
-<li>Value labels so SPSS displays category names</li>
-<li>Variable labels describing each column</li>
 <li>
-<code>-99</code> for missing values, registered as user-defined missing in SPSS</li>
+<strong>Numeric codes</strong> for all categorical variables</li>
+<li>
+<strong>Value labels</strong> so SPSS displays category names (e.g., 1 = “Control”)</li>
+<li>
+<strong>Variable labels</strong> describing each column in SPSS Variable View</li>
+<li>
+<strong><code>-99</code> for missing values</strong>, registered as user-defined missing so SPSS excludes them automatically</li>
 </ul>
+<section id="quick-export" class="level3"><h3 class="anchored" data-anchor-id="quick-export">Quick Export</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"~/Desktop/football_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_hotones_sav.html">export_hotones_sav</a></span><span class="op">(</span><span class="st">"hotones_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_hindsight_mg_sav.html">export_hindsight_mg_sav</a></span><span class="op">(</span><span class="st">"hindsight_mg_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_hindsight_wg_sav.html">export_hindsight_wg_sav</a></span><span class="op">(</span><span class="st">"hindsight_wg_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export to current working directory</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Export to a specific location</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"~/Desktop/football_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Or use the generic function with any dataset name:</p>
+</section><section id="exporting-for-answer-keys-vs.-student-data" class="level3"><h3 class="anchored" data-anchor-id="exporting-for-answer-keys-vs.-student-data">Exporting for Answer Keys vs.&nbsp;Student Data</h3>
+<p>A common workflow is to export the <strong>full dataset</strong> as an instructor answer key, and a <strong>subset of variables</strong> as the student version.</p>
+<p><strong>Full dataset (answer key):</strong></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"hotones"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_answer_key.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>See <code>vignette("exporting-spss")</code> for the full export guide including subsetting variables, auditing exports, and controlling missing value behavior.</p>
-<hr></section><section id="choosing-the-right-workflow" class="level2"><h2 class="anchored" data-anchor-id="choosing-the-right-workflow">Choosing the Right Workflow</h2>
+<p><strong>Subset of variables (student version):</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Use select() to choose only the variables students need,</span></span>
+<span><span class="co"># then pipe to export_sav()</span></span>
+<span><span class="va">superman</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_height</span>, <span class="va">rt_critics_score</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"superman_student.sav"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Works with tidyselect helpers too</span></span>
+<span><span class="va">interpersonal_data</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">race</span>, <span class="va">gcb</span>, <span class="va">risc</span>, <span class="va">lsas</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"interpersonal_student.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="export-all-datasets-at-once" class="level3"><h3 class="anchored" data-anchor-id="export-all-datasets-at-once">Export All Datasets at Once</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This creates one <code>.sav</code> file per dataset in the specified folder.</p>
+<p>See the <a href="../vignettes/exporting-spss.html">Exporting to SPSS</a> vignette for the full export guide, including how to audit exports and control missing value behavior.</p>
+<hr></section></section><section id="choosing-the-right-workflow" class="level2"><h2 class="anchored" data-anchor-id="choosing-the-right-workflow">Choosing the Right Workflow</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -884,15 +1023,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td>Exploring data, plotting with ggplot2</td>
-<td>Raw data as-is</td>
+<td>Exploring data, making plots with ggplot2</td>
+<td>Use the raw data as-is</td>
 </tr>
 <tr class="even">
-<td>R analysis that needs to match SPSS output</td>
-<td><code>prep_*()</code></td>
+<td>Running standard R analyses (t-test, ANOVA, correlation)</td>
+<td>Use the raw data with <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> for grouping variables</td>
 </tr>
 <tr class="odd">
-<td>Plotting after prepping (need readable labels)</td>
+<td>R analysis that needs to match SPSS numeric output</td>
+<td><code>prep_*()</code></td>
+</tr>
+<tr class="even">
+<td>Using psych350lab functions that expect numeric groups and -99</td>
+<td>
+<code>prep_*()</code> then replace NA with -99</td>
+</tr>
+<tr class="odd">
+<td>Plotting after prepping (need readable axis labels)</td>
 <td><code>prep_*(..., keep_labels = TRUE)</code></td>
 </tr>
 <tr class="even">
@@ -900,34 +1048,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>export_*_sav()</code></td>
 </tr>
 <tr class="odd">
-<td>Exporting a subset of variables to SPSS</td>
+<td>Creating a student data file with fewer variables</td>
 <td>
 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> then <code><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav()</a></code>
 </td>
 </tr>
+<tr class="even">
+<td>Creating instructor answer key <code>.sav</code> files</td>
+<td>
+<code>export_*_sav()</code> with full dataset</td>
+</tr>
 </tbody>
 </table>
-<hr></section><section id="r-vs-spss-whats-different" class="level2"><h2 class="anchored" data-anchor-id="r-vs-spss-whats-different">R vs SPSS: What’s Different?</h2>
+<hr></section><section id="r-vs.-spss-whats-different" class="level2"><h2 class="anchored" data-anchor-id="r-vs.-spss-whats-different">R vs.&nbsp;SPSS: What’s Different?</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 15%">
-<col style="width: 21%">
-<col style="width: 37%">
-<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 32%">
+<col style="width: 35%">
 </colgroup>
 <thead><tr class="header">
 <th>Aspect</th>
 <th>Raw R data</th>
 <th>After <code>prep_*()</code>
 </th>
-<th>SPSS <code>.sav</code>
-</th>
+<th>SPSS <code>.sav</code> export</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td>Categorical values</td>
-<td>Character strings</td>
-<td>Numeric codes</td>
+<td>Character strings (<code>"Film"</code>, <code>"Control"</code>)</td>
+<td>Numeric codes (1, 2, 3)</td>
 <td>Numeric codes with value labels</td>
 </tr>
 <tr class="even">
@@ -944,6 +1096,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>
 <code>?dataset</code> help files</td>
 <td>Variable labels in Variable View</td>
+</tr>
+<tr class="even">
+<td>Best for</td>
+<td>Plotting, exploration</td>
+<td>Matching SPSS output in R</td>
+<td>SPSS / JASP labs</td>
 </tr>
 </tbody>
 </table>

@@ -41,13 +41,14 @@
 #' Superman SMES Data
 #'
 #' Simulated data for 47 participants rating Superman media on the
-#' Subjective Media Experience Scale (SMES), grouped by height gap
-#' between the Superman and Lois Lane actors.
+#' Subjective Media Experience Scale (SMES), grouped by the height gap
+#' and age difference between the Superman and Lois Lane actors.
 #'
-#' @format A data frame with 47 rows and 5 variables:
+#' @format A data frame with 47 rows and 6 variables:
 #' \describe{
 #'   \item{num}{Unique participant number}
 #'   \item{height_gap}{Height gap category: Minimal (1), Average (2), Big (3)}
+#'   \item{age_grp}{Age difference category: Minimal (1), Average (2), Big (3)}
 #'   \item{emotional_impact}{Emotional Impact subscale (sum of 4 items, range 4-20)}
 #'   \item{aesthetic_appeal}{Aesthetic Appeal subscale (sum of 3 items, range 3-15)}
 #'   \item{cognitive_engagement}{Cognitive Engagement subscale (mean of 4 items, range 0-7)}
@@ -302,6 +303,16 @@ label_superman_smes <- function(df, use_sentinel = TRUE) {
     )
   }
 
+  if ("age_grp" %in% names(df) && is.character(df$age_grp)) {
+    df$age_grp <- dplyr::case_match(
+      df$age_grp,
+      "Minimal" ~ 1,
+      "Average" ~ 2,
+      "Big"     ~ 3,
+      .default  = NA_real_
+    )
+  }
+
   # Step 2: Apply value labels
   df <- safe_labelled(df, "height_gap", c(
     "Minimal (<6 inches)"  = 1,
@@ -309,10 +320,17 @@ label_superman_smes <- function(df, use_sentinel = TRUE) {
     "Big (>8 inches)"      = 3
   ))
 
+  df <- safe_labelled(df, "age_grp", c(
+    "Minimal (<2 years)"  = 1,
+    "Average (2-5 years)" = 2,
+    "Big (>5 years)"      = 3
+  ))
+
   # Step 3: Apply variable labels
   df <- safe_var_labels(df, list(
     num                  = "Unique participant number",
-    height_gap           = "Height gap category between Superman and Lois Lane actors (1=Minimal (<6 inches), 2=Average (6-8 inches), 3=Big (>8 inches)",
+    height_gap           = "Height gap category between Superman and Lois Lane actors (1=Minimal (<6 inches), 2=Average (6-8 inches), 3=Big (>8 inches))",
+    age_grp              = "Age difference category between Superman and Lois Lane actors (1=Minimal (<2 years), 2=Average (2-5 years), 3=Big (>5 years))",
     emotional_impact     = "Emotional Impact subscale (sum of 4 items, range 4-20)",
     aesthetic_appeal     = "Aesthetic Appeal subscale (sum of 3 items, range 3-15)",
     cognitive_engagement = "Cognitive Engagement subscale (mean of 4 items, range 0-7)"
@@ -321,6 +339,9 @@ label_superman_smes <- function(df, use_sentinel = TRUE) {
   # Step 4: Set SPSS formats
   if ("height_gap" %in% names(df)) {
     attr(df$height_gap, "format.spss") <- "F1.0"
+  }
+  if ("age_grp" %in% names(df)) {
+    attr(df$age_grp, "format.spss") <- "F1.0"
   }
 
   # Step 5: Replace NA with -99 AFTER labeling so haven_labelled columns are caught

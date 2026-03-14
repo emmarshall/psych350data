@@ -307,14 +307,8 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../vignettes/dataset-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
+ <span class="menu-text">Dataset Reference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -678,7 +672,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="unnumbered anchored" data-anchor-id="superman-smes-data">Superman SMES Data</h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Simulated data for 47 participants rating Superman media on the Subjective Media Experience Scale (SMES), grouped by height gap between the Superman and Lois Lane actors.</p>
+<p>Simulated data for 47 participants rating Superman media on the Subjective Media Experience Scale (SMES), grouped by the height gap and age difference between the Superman and Lois Lane actors.</p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
@@ -687,7 +681,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="format" class="level3">
 <h3 class="anchored" data-anchor-id="format">Format</h3>
-<p>A data frame with 47 rows and 5 variables:</p>
+<p>A data frame with 47 rows and 6 variables:</p>
 <dl>
 <dt>
 num
@@ -700,6 +694,12 @@ height_gap
 </dt>
 <dd>
 Height gap category: Minimal (1), Average (2), Big (3)
+</dd>
+<dt>
+age_grp
+</dt>
+<dd>
+Age difference category: Minimal (1), Average (2), Big (3)
 </dd>
 <dt>
 emotional_impact

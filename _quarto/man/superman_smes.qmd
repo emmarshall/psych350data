@@ -4,8 +4,8 @@
 ### Description
 
 Simulated data for 47 participants rating Superman media on the
-Subjective Media Experience Scale (SMES), grouped by height gap
-between the Superman and Lois Lane actors.
+Subjective Media Experience Scale (SMES), grouped by the height gap
+and age difference between the Superman and Lois Lane actors.
 
 
 
@@ -17,13 +17,15 @@ between the Superman and Lois Lane actors.
 
 ### Format
 
-A data frame with 47 rows and 5 variables:
+A data frame with 47 rows and 6 variables:
 
 
 <dl>
 <dt>num</dt><dd>Unique participant number
 </dd>
 <dt>height_gap</dt><dd>Height gap category: Minimal (1), Average (2), Big (3)
+</dd>
+<dt>age_grp</dt><dd>Age difference category: Minimal (1), Average (2), Big (3)
 </dd>
 <dt>emotional_impact</dt><dd>Emotional Impact subscale (sum of 4 items, range 4-20)
 </dd>

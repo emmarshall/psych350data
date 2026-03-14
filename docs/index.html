@@ -342,14 +342,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./vignettes/dataset-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
+ <span class="menu-text">Dataset Reference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -699,6 +693,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#quick-start" id="toc-quick-start" class="nav-link" data-scroll-target="#quick-start">Quick Start</a></li>
   <li><a href="#three-ways-to-use-the-data" id="toc-three-ways-to-use-the-data" class="nav-link" data-scroll-target="#three-ways-to-use-the-data">Three Ways to Use the Data</a></li>
   <li><a href="#available-datasets" id="toc-available-datasets" class="nav-link" data-scroll-target="#available-datasets">Available Datasets</a></li>
+  <li><a href="#exporting-for-answer-keys-vs.-student-data" id="toc-exporting-for-answer-keys-vs.-student-data" class="nav-link" data-scroll-target="#exporting-for-answer-keys-vs.-student-data">Exporting for Answer Keys vs.&nbsp;Student Data</a></li>
   <li><a href="#r-vs-spss-whats-different" id="toc-r-vs-spss-whats-different" class="nav-link" data-scroll-target="#r-vs-spss-whats-different">R vs SPSS: What’s Different?</a>
   <ul class="collapse">
   <li><a href="#example-all-three-workflows" id="toc-example-all-three-workflows" class="nav-link" data-scroll-target="#example-all-three-workflows">Example: All Three Workflows</a></li>
@@ -723,7 +718,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="psych350data" class="level1">
 <h1>psych350data <img src="man/figures/logo.png" align="right" height="139" alt=""></h1>
 <!-- badges: start -->
-<p><a href="https://github.com/emmarshall/psych350data/actions/workflows/R-CMD-check.yaml"><img src="https://github.com/emmarshall/psych350data/actions/workflows/R-CMD-check.yaml/badge.svg" class="img-fluid" alt="R-CMD-check"></a> <!-- badges: end --></p>
+<!-- badges: end -->
 <p>Datasets for UNL PSYC 350 Labs. All datasets are ready to use in R with human-readable categorical values, and can be exported as fully labeled SPSS (.sav) files with a single function call.</p>
 <section id="installation" class="level2">
 <h2 class="anchored" data-anchor-id="installation">Installation</h2>
@@ -737,199 +732,175 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># See all available datasets</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">list_datasets</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code> [1] "superman"              "superman_smes"         "superman_movies"      
- [4] "superman_combined"     "hotones"               "hotones_sauces"       
- [7] "hotones_episodes"      "tip_jokes"             "mcu"                  
-[10] "mock_jury"             "candy"                 "candy_simple"         
-[13] "football"              "huskers"               "interpersonal_data"   
-[16] "self_descriptive_data" "parent_child_data"     "hindsight_mg_data"    
-[19] "hindsight_wg_data"     "cheese_data"           "lpd_data"             </code></pre>
+<pre><code> [1] "superman"              "superman_smes"         "superman_movies"
+ [4] "superman_combined"     "hotones"               "hotones_sauces"
+ [7] "hotones_episodes"      "tip_jokes"             "mcu"
+[10] "mock_jury"             "candy"                 "candy_simple"
+[13] "football"              "huskers"               "interpersonal_data"
+[16] "self_descriptive_data" "parent_child_data"     "hindsight_mg_data"
+[19] "hindsight_wg_data"     "cheese_data"           "lpd_data"</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Use a dataset directly in R</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(superman)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code># A tibble: 6 × 27
-  type    media             year clark_actor clark_height lois_actor lois_height
-  &lt;chr&gt;   &lt;chr&gt;            &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt; &lt;chr&gt;            &lt;dbl&gt;
-1 Film    Superman          2025 David Core…         1.93 Rachel Br…        1.6 
-2 Film    Superman: The M…  1978 Christophe…         1.93 Margot Ki…        1.72
-3 TV Show Smallville        2001 Tom Welling         1.9  Erica Dur…        1.71
-4 Film    Superman Returns  2006 Brandon Ro…         1.89 Kate Bosw…        1.65
-5 Film    Superman &amp; the …  1951 George Ree…         1.86 Phyllis C…        1.63
-6 Film    Man of Steel      2013 Henry Cavi…         1.85 Amy Adams         1.63
-# ℹ 20 more variables: rt_critics_score &lt;dbl&gt;, rt_critics_count &lt;dbl&gt;,
-#   rt_audience_score &lt;dbl&gt;, rt_audience_count &lt;dbl&gt;, ldb_likes &lt;dbl&gt;,
-#   ldb_scores &lt;dbl&gt;, num &lt;int&gt;, clark_age &lt;dbl&gt;, lois_age &lt;dbl&gt;,
-#   age_diff &lt;dbl&gt;, age_grp &lt;chr&gt;, clark_height_in &lt;dbl&gt;, lois_height_in &lt;dbl&gt;,
-#   height_diff &lt;dbl&gt;, height_gap &lt;chr&gt;, clark_grp &lt;chr&gt;, tomatometer &lt;chr&gt;,
-#   rt_avg &lt;dbl&gt;, rt_diff &lt;dbl&gt;, popular &lt;chr&gt;</code></pre>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to SPSS</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export_superman_sav</span>(<span class="st">"superman_data.sav"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">export_football_sav</span>(<span class="st">"~/Desktop/football_data.sav"</span>)</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Export all datasets at once</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="fu">export_all_sav</span>(<span class="at">dir =</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to SPSS</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">export_superman_sav</span>(<span class="st">"superman_data.sav"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">export_football_sav</span>(<span class="st">"~/Desktop/football_data.sav"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Export all datasets at once</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">export_all_sav</span>(<span class="at">dir =</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="three-ways-to-use-the-data" class="level2">
 <h2 class="anchored" data-anchor-id="three-ways-to-use-the-data">Three Ways to Use the Data</h2>
 <p>Each dataset supports three workflows depending on what you need:</p>
 <p><strong>1. Raw data in R</strong> — categorical variables are human-readable character strings, ideal for exploration and plotting with ggplot2:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>superman <span class="sc">|&gt;</span> <span class="fu">count</span>(type)         <span class="co"># "Film", "TV Series", "Serial"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>football <span class="sc">|&gt;</span> <span class="fu">count</span>(group)        <span class="co"># "Control", "Football no concussion", ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p><strong>2. Prep for numeric R analysis</strong> — <code>prep_*()</code> converts character categories to the same numeric codes used in SPSS, so your R output matches SPSS output exactly:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>superman_num <span class="ot">&lt;-</span> <span class="fu">prep_superman</span>(superman)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>superman_num <span class="sc">|&gt;</span> <span class="fu">count</span>(type)     <span class="co"># 1, 2, 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>superman <span class="sc">|&gt;</span> <span class="fu">count</span>(type)         <span class="co"># "Film", "TV Series", "Serial"</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>football <span class="sc">|&gt;</span> <span class="fu">count</span>(group)        <span class="co"># "Control", "Football no concussion", ...</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>2. Prep for numeric R analysis</strong> — <code>prep_*()</code> converts character categories to the same numeric codes used in SPSS, so your R output matches SPSS output exactly. This is also useful when working with <a href="https://github.com/emmarshall/psych350lab">psych350lab</a> functions that expect numeric grouping variables:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>superman_num <span class="ot">&lt;-</span> <span class="fu">prep_superman</span>(superman)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>superman_num <span class="sc">|&gt;</span> <span class="fu">count</span>(type)     <span class="co"># 1, 2, 3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>3. Export to SPSS</strong> — <code>export_*_sav()</code> produces a fully labeled <code>.sav</code> file with numeric codes, value labels, variable labels, and <code>-99</code> for missing values:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_superman_sav</span>(<span class="st">"superman_data.sav"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">export_superman_sav</span>(<span class="st">"superman_data.sav"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>See <code>vignette("getting-started")</code> for a full walkthrough of all three workflows.</p>
 </section>
 <section id="available-datasets" class="level2">
 <h2 class="anchored" data-anchor-id="available-datasets">Available Datasets</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 30%">
+<col style="width: 43%">
+<col style="width: 26%">
 </colgroup>
 <thead>
 <tr class="header">
 <th>Dataset</th>
 <th>Description</th>
-<th>Rows</th>
-<th>Export Function</th>
+<th>Source</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td><code>superman</code></td>
 <td>Superman actor data with ratings</td>
-<td>11</td>
-<td><code>export_superman_sav()</code></td>
+<td>Rotten Tomatoes, Letterboxd, IMDb</td>
 </tr>
 <tr class="even">
 <td><code>superman_smes</code></td>
-<td>SMES ratings by height gap</td>
-<td>47</td>
-<td><code>export_superman_smes_sav()</code></td>
+<td>SMES ratings by height gap and age difference</td>
+<td>Simulated</td>
 </tr>
 <tr class="odd">
 <td><code>superman_movies</code></td>
 <td>Superman film box office data</td>
-<td>10</td>
-<td><code>export_superman_movies_sav()</code></td>
+<td>IMDb Box Office Mojo</td>
 </tr>
 <tr class="even">
 <td><code>hotones</code></td>
 <td>Hot Ones guest data</td>
-<td>300+</td>
-<td><code>export_hotones_sav()</code></td>
+<td>First We Feast (YouTube)</td>
 </tr>
 <tr class="odd">
 <td><code>hotones_sauces</code></td>
 <td>Hot sauce data by season and position</td>
-<td>250+</td>
-<td><code>export_hotones_sauces_sav()</code></td>
+<td>First We Feast (YouTube)</td>
 </tr>
 <tr class="even">
 <td><code>hotones_episodes</code></td>
 <td>Episode-level YouTube engagement metrics</td>
-<td>300+</td>
-<td><code>export_hotones_episodes_sav()</code></td>
+<td>First We Feast (YouTube)</td>
 </tr>
 <tr class="odd">
 <td><code>tip_jokes</code></td>
-<td>Tipping experiment (Gueguen, 2002)</td>
-<td>211</td>
-<td><code>export_tip_jokes_sav()</code></td>
+<td>Tipping experiment</td>
+<td>Gueguen (2002)</td>
 </tr>
 <tr class="even">
 <td><code>mcu</code></td>
 <td>MCU films box office and ratings</td>
-<td>23</td>
-<td><code>export_mcu_sav()</code></td>
+<td>IMDb via openintro</td>
 </tr>
 <tr class="odd">
 <td><code>mock_jury</code></td>
-<td>Mock jury sentencing (Plaster, 1989)</td>
-<td>114</td>
-<td><code>export_mock_jury_sav()</code></td>
+<td>Mock jury sentencing</td>
+<td>Plaster (1989)</td>
 </tr>
 <tr class="even">
 <td><code>candy</code></td>
 <td>Candy power rankings — full</td>
-<td>85</td>
-<td><code>export_candy_sav()</code></td>
+<td>FiveThirtyEight (2017)</td>
 </tr>
 <tr class="odd">
 <td><code>candy_simple</code></td>
 <td>Candy power rankings — simplified</td>
-<td>85</td>
-<td><code>export_candy_simple_sav()</code></td>
+<td>FiveThirtyEight (2017)</td>
 </tr>
 <tr class="even">
 <td><code>football</code></td>
 <td>Football concussion brain measurements</td>
-<td>75</td>
-<td><code>export_football_sav()</code></td>
+<td>Singh et al.&nbsp;(2014), JAMA</td>
 </tr>
 <tr class="odd">
 <td><code>huskers</code></td>
 <td>Nebraska football box scores (1962–2024)</td>
-<td>700+</td>
-<td><code>export_huskers_sav()</code></td>
+<td>Historical records</td>
 </tr>
 <tr class="even">
 <td><code>cheese_data</code></td>
-<td>Cheese characteristics and nutrition (TidyTuesday 2024)</td>
-<td>—</td>
-<td><code>export_cheese_sav()</code></td>
+<td>Cheese characteristics and nutrition</td>
+<td>cheese.com via TidyTuesday</td>
 </tr>
 <tr class="odd">
 <td><code>lpd_data</code></td>
-<td>Lincoln Police Department traffic stops</td>
-<td>—</td>
-<td><code>export_lpd_sav()</code></td>
+<td>Lincoln Police Dept. traffic stops</td>
+<td>LPD Open Data Portal</td>
 </tr>
 <tr class="even">
 <td><code>parent_child_data</code></td>
 <td>Parent-child observational study</td>
-<td>100</td>
-<td><code>export_parent_child_sav()</code></td>
+<td>Simulated</td>
 </tr>
 <tr class="odd">
 <td><code>hindsight_mg_data</code></td>
-<td>Hindsight bias — between-groups long format</td>
-<td>600</td>
-<td><code>export_hindsight_mg_sav()</code></td>
+<td>Hindsight bias — between-groups (long)</td>
+<td>Simulated</td>
 </tr>
 <tr class="even">
 <td><code>hindsight_wg_data</code></td>
-<td>Hindsight bias — within-groups wide format</td>
-<td>60</td>
-<td><code>export_hindsight_wg_sav()</code></td>
+<td>Hindsight bias — within-groups (wide)</td>
+<td>Simulated</td>
 </tr>
 <tr class="odd">
 <td><code>interpersonal_data</code></td>
 <td>Interpersonal relationships survey scales</td>
-<td>574</td>
-<td><code>export_interpersonal_sav()</code></td>
+<td>Simulated</td>
 </tr>
 <tr class="even">
 <td><code>self_descriptive_data</code></td>
 <td>Personality survey scales</td>
-<td>547</td>
-<td><code>export_selfdescriptive_sav()</code></td>
+<td>Simulated</td>
 </tr>
 </tbody>
 </table>
+</section>
+<section id="exporting-for-answer-keys-vs.-student-data" class="level2">
+<h2 class="anchored" data-anchor-id="exporting-for-answer-keys-vs.-student-data">Exporting for Answer Keys vs.&nbsp;Student Data</h2>
+<p>Export the full dataset as an instructor answer key, and a subset as the student version:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Full dataset — answer key with all variables</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">export_football_sav</span>(<span class="st">"football_answer_key.sav"</span>)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Student version — only the variables they need</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>football <span class="sc">|&gt;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(group, volume) <span class="sc">|&gt;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">export_sav</span>(<span class="at">path =</span> <span class="st">"football_student.sav"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="r-vs-spss-whats-different" class="level2">
 <h2 class="anchored" data-anchor-id="r-vs-spss-whats-different">R vs SPSS: What’s Different?</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 32%">
+<col style="width: 35%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -986,9 +957,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run ANOVA with numeric codes</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>model <span class="ot">&lt;-</span> <span class="fu">aov</span>(volume <span class="sc">~</span> <span class="fu">factor</span>(group), <span class="at">data =</span> football_num)</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<pre><code>              Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+<pre><code>              Df Sum Sq Mean Sq F value   Pr(&gt;F)
 factor(group)  2  44.35  22.174   31.47 1.51e-10 ***
-Residuals     72  50.73   0.705                     
+Residuals     72  50.73   0.705
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Workflow 3: Export to SPSS with full labels and -99 for missing</span></span>
@@ -1023,9 +994,9 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <section id="documentation" class="level2">
 <h2 class="anchored" data-anchor-id="documentation">Documentation</h2>
 <ul>
-<li><code>vignette("getting-started")</code> — Introduction and all three workflows</li>
-<li><code>vignette("exporting-spss")</code> — Detailed SPSS export guide</li>
-<li><code>vignette("dataset-guide")</code> — Complete reference for all datasets</li>
+<li><code>vignette("getting-started")</code> — Introduction and all three workflows, including psych350lab compatibility</li>
+<li><code>vignette("exporting-spss")</code> — Detailed SPSS export guide with answer key vs.&nbsp;student workflows</li>
+<li><code>vignette("dataset-reference")</code> — Complete reference for all datasets with source attribution</li>
 <li><code>?dataset_name</code> — Help for any specific dataset</li>
 </ul>
 </section>

@@ -6,50 +6,71 @@ vignette: >
  %\VignetteEngine{knitr::rmarkdown}
  %\VignetteEncoding{UTF-8}
 ---
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
- collapse = TRUE,
- comment = "#>"
+  collapse = TRUE,
+  comment = "#>"
 )
 ```
 
 ## Overview
 
-The psych350data package provides all the datasets you need for PSYC 350 labs. Each dataset supports three workflows:
+The psych350data package provides all the datasets used in PSYC 350 labs at UNL. Every dataset is ready to use the moment you load the package — no file downloading, no manual data entry, and no SPSS license needed.
 
-1. **Raw data in R** — Categorical variables are human-readable character strings (like `"Film"`, `"Control"`). Use this for exploration, plotting with ggplot2, and any analysis that doesn't need to match SPSS output.
+The package supports **three workflows** depending on what you need to do:
 
-2. **Prepped for numeric R analysis** — `prep_*()` functions convert character categories to numeric codes that match SPSS exactly. Use this when you need your R output to match SPSS output from a lab assignment.
+1. **Use the raw R data directly** — categorical variables are human-readable strings like `"Film"` or `"Control"`, which work perfectly with ggplot2 and most R functions.
 
-3. **Exported to SPSS** — `export_*_sav()` functions produce fully labeled `.sav` files with numeric codes, value labels, variable labels, and `-99` for missing values. Use this to create the SPSS file for a lab.
+2. **Prep for numeric analysis matching SPSS** — `prep_*()` functions convert character categories to the same numeric codes used in the SPSS files (e.g., 1, 2, 3), so your R output matches SPSS output exactly. This is useful when working with functions from the [psych350lab](https://github.com/emmarshall/psych350lab) package that expect numeric grouping variables.
+
+3. **Export to SPSS** — `export_*_sav()` functions create fully labeled `.sav` files with numeric codes, value labels, variable labels, and `-99` for missing values. Use this to create answer key files or student data files for labs.
+
+
+## Installation
+```{r}
+#| eval: false
+# Install from GitHub (one time only)
+# install.packages("pak")
+pak::pak("emmarshall/psych350data")
+```
+
 
 ## Loading the Package
 ```{r setup}
+#| message: false
 library(psych350data)
 library(dplyr)
 ```
 
+
 ## Browsing Available Datasets
+
+Use `list_datasets()` to see every dataset in the package:
 ```{r}
 list_datasets()
 ```
 
-For detailed documentation on any dataset:
-```{r eval = FALSE}
+For detailed documentation on any dataset, use `?` in the R console:
+```{r}
+#| eval: false
 ?superman
 ?hotones
 ?mock_jury
-?hindsight_mg_data
+?football
+?interpersonal_data
 ```
+
+See the [Dataset Reference](dataset-reference.qmd) for a complete guide to every dataset including sources and variable descriptions.
 
 ---
 
 ## Workflow 1: Raw Data in R
 
-Every dataset is a tibble available immediately after loading the package. Categorical variables use descriptive character values:
+Every dataset is a tibble that's available immediately after loading the package. Categorical variables use descriptive character values that are easy to read and plot:
 ```{r}
 superman |>
-  select(num, media, type, clark_grp, height_gap) |>
+  select(num, media, type, clark_grp, age_grp) |>
   head()
 ```
 ```{r}
@@ -57,107 +78,219 @@ football |>
   count(group)
 ```
 
-This format works well with ggplot2 since axis labels are already readable. Missing values are standard `NA`, which R handles automatically:
+### Plotting with ggplot2
+
+Because categorical variables are already human-readable strings, they work directly as axis labels and legend entries in ggplot2 — no extra formatting needed:
 ```{r}
+#| eval: false
+library(ggplot2)
+
+# Bar chart — group labels appear automatically
+ggplot(football, aes(x = group, y = volume)) +
+  geom_boxplot() +
+  labs(x = "Group", y = "Brain Volume")
+
+# The labels "Control", "Football no concussion", etc.
+# appear on the x-axis without any extra work.
+```
+
+If you need to control the **order** of categories on the axis (e.g., for a specific ordering in a bar chart), convert to a factor with explicit levels:
+```{r}
+#| eval: false
+football |>
+  mutate(
+    group = factor(group, levels = c("Control",
+                                     "Football no concussion",
+                                     "Football with concussion"))
+  ) |>
+  ggplot(aes(x = group, y = volume)) +
+  geom_boxplot()
+```
+
+### Handling Missing Values
+
+Missing values in the raw R data are standard `NA`, which R handles automatically in most functions:
+```{r}
+# NA values are excluded with na.rm = TRUE
 mean(superman$rt_critics_score, na.rm = TRUE)
 ```
 
-For analyses like ANOVA that need factor inputs, convert directly from the raw data:
+### Running Analyses with Raw Data
+
+For analyses like ANOVA or t-tests that need a factor grouping variable, wrap the character column in `factor()`:
 ```{r}
-superman |>
-  mutate(
-    height_gap = factor(height_gap, levels = c("Minimal", "Average", "Big"))
-  ) |>
-  pull(height_gap) |>
-  levels()
+# One-way ANOVA using the character group variable
+model <- aov(volume ~ factor(group), data = football)
+summary(model)
 ```
 
 ---
 
-## Workflow 2: Prep for Numeric R Analysis
+## Workflow 2: Prep for Numeric Analysis
 
-If your analysis needs to produce numeric output that matches SPSS — for example, when comparing R results to SPSS output from a lab assignment — use `prep_*()` functions to convert categorical variables to the same numeric codes SPSS uses.
+If your analysis needs to produce output with **numeric codes that match SPSS** — for example, when comparing your R results to SPSS output in a lab, or when using functions from the [psych350lab](https://github.com/emmarshall/psych350lab) package — use `prep_*()` functions.
 
-### The `prep_data()` Function
+### What `prep_*()` Does
 
-`prep_data()` is the main entry point. Pass it a dataset and the dataset name as a string:
+Each `prep_*()` function replaces character categorical variables with the same numeric codes used in the SPSS `.sav` file. For example, in the `superman` dataset, `type` goes from `"Film"` / `"TV Series"` / `"Serial"` to `1` / `2` / `3`, and `age_grp` goes from `"Minimal"` / `"Average"` / `"Big"` to `1` / `2` / `3`.
 ```{r}
-superman_prepped <- prep_data(superman, "superman")
+superman_num <- prep_superman(superman)
 
-superman_prepped |>
-  select(num, media, type, clark_grp, height_gap) |>
+superman_num |>
+  select(num, media, type, clark_grp, age_grp) |>
   head()
 ```
 
-Each character category is replaced with its numeric code. For example, `type` becomes `1` for Film, `2` for TV Series, and `3` for Serial — the same codes used in the SPSS `.sav` file.
+### Using the Generic `prep_data()` Function
 
-### Dataset-Specific Prep Functions
+You can also use the generic `prep_data()` function with any dataset name as a string:
+```{r}
+superman_num <- prep_data(superman, "superman")
 
-Every dataset also has its own dedicated prep function:
-```{r eval = FALSE}
-superman          <- prep_superman(superman)
-hotones           <- prep_hotones(hotones)
-hotones_sauces    <- prep_hotones_sauces(hotones_sauces)
-hotones_episodes  <- prep_hotones_episodes(hotones_episodes)
-mcu               <- prep_mcu(mcu)
-mock_jury         <- prep_mock_jury(mock_jury)
-tip_jokes         <- prep_tip_jokes(tip_jokes)
-candy             <- prep_candy(candy)
-candy_simple      <- prep_candy_simple(candy_simple)
-football          <- prep_football(football)
-huskers           <- prep_huskers(huskers)
-cheese_data       <- prep_cheese(cheese_data)
-lpd_data          <- prep_lpd(lpd_data)
-parent_child_data <- prep_parent_child(parent_child_data)
-hindsight_mg_data <- prep_hindsight_mg(hindsight_mg_data)
-hindsight_wg_data <- prep_hindsight_wg(hindsight_wg_data)
+superman_num |>
+  select(num, media, type, age_grp) |>
+  head()
 ```
 
-### Keeping Labels for Plotting
+### All Prep Functions
 
-By default, prep functions replace character columns with numeric codes and the original strings are lost. If you need the original values for axis labels or legends in plots, use `keep_labels = TRUE`. This retains the original character column alongside the numeric one with a `_label` suffix:
+Every dataset has its own dedicated prep function:
 ```{r}
-superman_prepped <- prep_superman(superman, keep_labels = TRUE)
+#| eval: false
+prep_superman(superman)
+prep_superman_smes(superman_smes)
+prep_superman_movies(superman_movies)
+prep_hotones(hotones)
+prep_hotones_sauces(hotones_sauces)
+prep_hotones_episodes(hotones_episodes)
+prep_mcu(mcu)
+prep_mock_jury(mock_jury)
+prep_tip_jokes(tip_jokes)
+prep_candy(candy)
+prep_candy_simple(candy_simple)
+prep_football(football)
+prep_huskers(huskers)
+prep_interpersonal(interpersonal_data)
+prep_self_descriptive(self_descriptive_data)
+prep_parent_child(parent_child_data)
+prep_hindsight_bg(hindsight_mg_data)
+prep_hindsight_wg(hindsight_wg_data)
+prep_cheese(cheese_data)
+prep_lpd(lpd_data)
+```
 
-superman_prepped |>
+::: {.callout-note}
+Some datasets (like `mock_jury`, `tip_jokes`, `interpersonal_data`, and `self_descriptive_data`) already store their categorical variables as numeric codes. Their prep functions still exist for consistency, but they return the data unchanged.
+:::
+
+### Compatibility with psych350lab
+
+The [psych350lab](https://github.com/emmarshall/psych350lab) package provides helper functions for PSYC 350 lab assignments. Many of these functions expect data that looks like an SPSS `.sav` file — that is, categorical/grouping variables stored as **numbers** (not character strings) and missing values coded as `-99` rather than `NA`.
+
+To make any psych350data dataset work with psych350lab functions, you need two steps:
+
+**Step 1: Convert categories to numeric codes** with `prep_*()`:
+```{r}
+football_num <- prep_football(football)
+football_num |> count(group)
+# group is now 1, 2, 3 instead of "Control", "Football no concussion", ...
+```
+
+**Step 2: Replace NA with -99** (if your psych350lab function expects `-99` for missing):
+```{r}
+#| eval: false
+library(psych350lab)
+
+# Replace NA with -99 across all numeric columns
+football_spss <- football_num |>
+  mutate(across(where(is.numeric), \(x) ifelse(is.na(x), -99, x)))
+
+# Now the data looks exactly like it would in SPSS
+# and is ready for psych350lab functions
+```
+
+::: {.callout-tip}
+If you're only running standard R functions like `aov()`, `t.test()`, or `cor.test()`, you do **not** need the `-99` step — R handles `NA` natively. The `-99` replacement is only needed for functions that specifically expect SPSS-style missing value coding.
+:::
+
+### Keeping Labels for Plotting After Prep
+
+By default, `prep_*()` replaces the character values with numbers, and the original labels are lost. If you need both the numeric codes (for analysis) and the original labels (for plotting), use `keep_labels = TRUE`:
+```{r}
+superman_both <- prep_superman(superman, keep_labels = TRUE)
+
+superman_both |>
   select(num, type, type_label) |>
   head()
 ```
 
-This is useful when you want numeric codes for analysis but readable labels for ggplot2:
-```{r eval = FALSE}
-superman_prepped |>
+This is useful when you want numeric codes for analysis but readable labels in ggplot2:
+```{r}
+#| eval: false
+# Use the _label column for readable axis labels
+superman_both |>
   ggplot(aes(x = type_label, y = rt_critics_score)) +
-  geom_boxplot()
+  geom_boxplot() +
+  labs(x = "Media Type", y = "Rotten Tomatoes Critics Score")
 ```
 
 ---
 
 ## Workflow 3: Export to SPSS
 
-Use `export_*_sav()` functions to create `.sav` files for use in SPSS or JASP. The export functions handle everything automatically — you do not need to run a prep function first.
+Use `export_*_sav()` functions to create `.sav` files for SPSS or JASP. The export functions handle everything automatically — you do **not** need to run a prep function first.
 
 Each export produces a file with:
 
-- Numeric codes for all categorical variables
-- Value labels so SPSS displays category names
-- Variable labels describing each column
-- `-99` for missing values, registered as user-defined missing in SPSS
-```{r eval = FALSE}
-export_superman_sav("superman_data.sav")
+- **Numeric codes** for all categorical variables
+- **Value labels** so SPSS displays category names (e.g., 1 = "Control")
+- **Variable labels** describing each column in SPSS Variable View
+- **`-99` for missing values**, registered as user-defined missing so SPSS excludes them automatically
+
+### Quick Export
+```{r}
+#| eval: false
+# Export to current working directory
+export_superman_sav()
+
+# Export to a specific location
 export_football_sav("~/Desktop/football_data.sav")
-export_hotones_sav("hotones_data.sav")
-export_hindsight_mg_sav("hindsight_mg_data.sav")
-export_hindsight_wg_sav("hindsight_wg_data.sav")
 ```
 
-Or use the generic function with any dataset name:
-```{r eval = FALSE}
-export_sav("superman", path = "superman_data.sav")
-export_sav("hotones")
+### Exporting for Answer Keys vs. Student Data
+
+A common workflow is to export the **full dataset** as an instructor answer key, and a **subset of variables** as the student version.
+
+**Full dataset (answer key):**
+```{r}
+#| eval: false
+export_superman_sav("superman_answer_key.sav")
 ```
 
-See `vignette("exporting-spss")` for the full export guide including subsetting variables, auditing exports, and controlling missing value behavior.
+**Subset of variables (student version):**
+```{r}
+#| eval: false
+# Use select() to choose only the variables students need,
+# then pipe to export_sav()
+superman |>
+  select(num, media, type, clark_height, rt_critics_score) |>
+  export_sav(path = "superman_student.sav")
+
+# Works with tidyselect helpers too
+interpersonal_data |>
+  select(age, gender, race, gcb, risc, lsas) |>
+  export_sav(path = "interpersonal_student.sav")
+```
+
+### Export All Datasets at Once
+```{r}
+#| eval: false
+export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
+```
+
+This creates one `.sav` file per dataset in the specified folder.
+
+See the [Exporting to SPSS](exporting-spss.qmd) vignette for the full export guide, including how to audit exports and control missing value behavior.
 
 ---
 
@@ -165,18 +298,22 @@ See `vignette("exporting-spss")` for the full export guide including subsetting 
 
 | Situation | Recommended workflow |
 |-----------|----------------------|
-| Exploring data, plotting with ggplot2 | Raw data as-is |
-| R analysis that needs to match SPSS output | `prep_*()` |
-| Plotting after prepping (need readable labels) | `prep_*(..., keep_labels = TRUE)` |
+| Exploring data, making plots with ggplot2 | Use the raw data as-is |
+| Running standard R analyses (t-test, ANOVA, correlation) | Use the raw data with `factor()` for grouping variables |
+| R analysis that needs to match SPSS numeric output | `prep_*()` |
+| Using psych350lab functions that expect numeric groups and -99 | `prep_*()` then replace NA with -99 |
+| Plotting after prepping (need readable axis labels) | `prep_*(..., keep_labels = TRUE)` |
 | Creating a `.sav` file for SPSS or JASP | `export_*_sav()` |
-| Exporting a subset of variables to SPSS | `select()` then `export_sav()` |
+| Creating a student data file with fewer variables | `select()` then `export_sav()` |
+| Creating instructor answer key `.sav` files | `export_*_sav()` with full dataset |
 
 ---
 
-## R vs SPSS: What's Different?
+## R vs. SPSS: What's Different?
 
-| Aspect | Raw R data | After `prep_*()` | SPSS `.sav` |
-|--------|-----------|-------------------|-------------|
-| Categorical values | Character strings | Numeric codes | Numeric codes with value labels |
+| Aspect | Raw R data | After `prep_*()` | SPSS `.sav` export |
+|--------|-----------|-------------------|---------------------|
+| Categorical values | Character strings (`"Film"`, `"Control"`) | Numeric codes (1, 2, 3) | Numeric codes with value labels |
 | Missing values | `NA` | `NA` | `-99` with user-defined missing |
 | Variable descriptions | `?dataset` help files | `?dataset` help files | Variable labels in Variable View |
+| Best for | Plotting, exploration | Matching SPSS output in R | SPSS / JASP labs |

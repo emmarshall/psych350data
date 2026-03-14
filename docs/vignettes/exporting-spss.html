@@ -299,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/exporting-spss.html">Exporting Datasets to SPSS</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/exporting-spss.html">Exporting Datasets to SPSS</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -324,14 +324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../vignettes/dataset-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
+ <span class="menu-text">Dataset Reference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -677,7 +671,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup">Setup</a></li>
   <li><a href="#quick-export" id="toc-quick-export" class="nav-link" data-scroll-target="#quick-export">Quick Export</a></li>
   <li><a href="#all-export-functions" id="toc-all-export-functions" class="nav-link" data-scroll-target="#all-export-functions">All Export Functions</a></li>
-  <li><a href="#exporting-a-subset-of-variables" id="toc-exporting-a-subset-of-variables" class="nav-link" data-scroll-target="#exporting-a-subset-of-variables">Exporting a Subset of Variables</a></li>
+  <li>
+<a href="#sec-answer-key-vs-student" id="toc-sec-answer-key-vs-student" class="nav-link" data-scroll-target="#sec-answer-key-vs-student">Exporting for Answer Keys vs.&nbsp;Student Data</a>
+  <ul class="collapse">
+<li><a href="#full-dataset-answer-key" id="toc-full-dataset-answer-key" class="nav-link" data-scroll-target="#full-dataset-answer-key">Full Dataset (Answer Key)</a></li>
+  <li><a href="#subset-of-variables-student-version" id="toc-subset-of-variables-student-version" class="nav-link" data-scroll-target="#subset-of-variables-student-version">Subset of Variables (Student Version)</a></li>
+  </ul>
+</li>
   <li><a href="#export-all-datasets-at-once" id="toc-export-all-datasets-at-once" class="nav-link" data-scroll-target="#export-all-datasets-at-once">Export All Datasets at Once</a></li>
   <li>
 <a href="#what-gets-converted-during-export" id="toc-what-gets-converted-during-export" class="nav-link" data-scroll-target="#what-gets-converted-during-export">What Gets Converted During Export</a>
@@ -689,11 +689,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
   <li><a href="#controlling-missing-value-behavior" id="toc-controlling-missing-value-behavior" class="nav-link" data-scroll-target="#controlling-missing-value-behavior">Controlling Missing Value Behavior</a></li>
   <li><a href="#auditing-an-export" id="toc-auditing-an-export" class="nav-link" data-scroll-target="#auditing-an-export">Auditing an Export</a></li>
-  <li><a href="#using-exported-spss-files" id="toc-using-exported-spss-files" class="nav-link" data-scroll-target="#using-exported-spss-files">Using Exported SPSS files</a></li>
+  <li><a href="#reading-an-exported-file-back-into-r" id="toc-reading-an-exported-file-back-into-r" class="nav-link" data-scroll-target="#reading-an-exported-file-back-into-r">Reading an Exported File Back into R</a></li>
+  <li><a href="#tips-for-instructors" id="toc-tips-for-instructors" class="nav-link" data-scroll-target="#tips-for-instructors">Tips for Instructors</a></li>
+  <li><a href="#using-exported-files-in-spss" id="toc-using-exported-files-in-spss" class="nav-link" data-scroll-target="#using-exported-files-in-spss">Using Exported Files in SPSS</a></li>
   </ul><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/exporting-spss.html">Exporting Datasets to SPSS</a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/exporting-spss.html">Exporting Datasets to SPSS</a></li></ol></nav><div class="quarto-title">
 <h1 class="title">Exporting Datasets to SPSS</h1>
 </div>
 
@@ -709,12 +711,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><section id="overview" class="level2"><h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>All psych350data datasets can be exported as SPSS <code>.sav</code> files with full metadata. You do not need to prep or transform the data first — export functions handle everything internally. Each export automatically:</p>
+<p>All psych350data datasets can be exported as SPSS <code>.sav</code> files with full metadata. You do <strong>not</strong> need to prep or transform the data first — the export functions handle everything internally. Each export automatically:</p>
 <ul>
 <li>Converts categorical variables from character strings to numeric codes</li>
-<li>Adds value labels so SPSS displays category names in Data View</li>
-<li>Adds variable labels describing each column in Variable View</li>
-<li>Replaces <code>NA</code> with <code>-99</code> and registers it as user-defined missing</li>
+<li>Adds <strong>value labels</strong> so SPSS displays category names in Data View</li>
+<li>Adds <strong>variable labels</strong> describing each column in Variable View</li>
+<li>Replaces <code>NA</code> with <strong><code>-99</code></strong> and registers it as user-defined missing</li>
 </ul></section><section id="setup" class="level2"><h2 class="anchored" data-anchor-id="setup">Setup</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://emmarshall.github.io/psych350data/">psych350data</a></span><span class="op">)</span></span>
@@ -729,17 +731,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt;     intersect, setdiff, setequal, union</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="quick-export" class="level2"><h2 class="anchored" data-anchor-id="quick-export">Quick Export</h2>
-<p>Each dataset has a dedicated export function:</p>
+<p>Each dataset has a dedicated export function that writes a <code>.sav</code> file:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export to current working directory</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export to current working directory (uses default filename)</span></span>
 <span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Export to a specific location</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"~/Desktop/superman_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"~/Desktop/football_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Or use the generic function with any dataset name:</p>
+<p>Or use the generic <code><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav()</a></code> function with a dataset name:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"hotones"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section><section id="all-export-functions" class="level2"><h2 class="anchored" data-anchor-id="all-export-functions">All Export Functions</h2>
 <table class="caption-top table">
@@ -833,41 +836,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>selfdescriptive_data.sav</code></td>
 </tr>
 </tbody>
-</table></section><section id="exporting-a-subset-of-variables" class="level2"><h2 class="anchored" data-anchor-id="exporting-a-subset-of-variables">Exporting a Subset of Variables</h2>
-<p>Use <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code> to choose specific columns before exporting. Labels are preserved for all selected variables:</p>
+</table></section><section id="sec-answer-key-vs-student" class="level2"><h2 class="anchored" data-anchor-id="sec-answer-key-vs-student">Exporting for Answer Keys vs.&nbsp;Student Data</h2>
+<p>A common instructor workflow is to export the <strong>full dataset</strong> as an answer key and a <strong>subset of variables</strong> as the version students receive.</p>
+<section id="full-dataset-answer-key" class="level3"><h3 class="anchored" data-anchor-id="full-dataset-answer-key">Full Dataset (Answer Key)</h3>
+<p>The default export includes every variable with all labels:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Export selected variables</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Full dataset — all variables, all labels, -99 for missing</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_answer_key.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_interpersonal_sav.html">export_interpersonal_sav</a></span><span class="op">(</span><span class="st">"interpersonal_answer_key.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="subset-of-variables-student-version" class="level3"><h3 class="anchored" data-anchor-id="subset-of-variables-student-version">Subset of Variables (Student Version)</h3>
+<p>Use <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select()</a></code> to choose only the variables students need, then pipe the result to <code><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav()</a></code>. All available labels are automatically preserved for the selected variables:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Superman — only the variables needed for a specific lab</span></span>
 <span><span class="va">superman</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">year</span>, <span class="va">type</span>, <span class="va">clark_height</span>, <span class="va">rt_critics_score</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"superman_subset.sav"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">clark_height</span>, <span class="va">rt_critics_score</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"superman_student.sav"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># Use tidyselect helpers</span></span>
+<span><span class="co"># Interpersonal survey — just demographics and a few scales</span></span>
 <span><span class="va">interpersonal_data</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">age</span>, <span class="va">gender</span>, <span class="va">race</span>, <span class="va">gcb</span>, <span class="va">risc</span>, <span class="va">lsas</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"interpersonal_subset.sav"</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"interpersonal_student.sav"</span><span class="op">)</span></span>
 <span></span>
+<span><span class="co"># Huskers — select with tidyselect helpers</span></span>
 <span><span class="va">huskers</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">date</span>, <span class="va">season</span>, <span class="va">opp</span>, <span class="va">result</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">"ne_"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"huskers_nebraska_stats.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="export-all-datasets-at-once" class="level2"><h2 class="anchored" data-anchor-id="export-all-datasets-at-once">Export All Datasets at Once</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
-<p>This creates one <code>.sav</code> file per dataset in the specified folder.</p>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>When you pipe a data frame directly to <code><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav()</a></code>, it still replaces <code>NA</code> with <code>-99</code> and declares <code>-99</code> as user-missing for all numeric columns. Variable labels and value labels are applied for any columns that have them defined in the package’s internal label functions.</p>
+</div>
+</div>
+</section></section><section id="export-all-datasets-at-once" class="level2"><h2 class="anchored" data-anchor-id="export-all-datasets-at-once">Export All Datasets at Once</h2>
+<p>To create <code>.sav</code> files for every dataset in the package:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_all_sav.html">export_all_sav</a></span><span class="op">(</span>dir <span class="op">=</span> <span class="st">"~/Desktop/PSYC350_SPSS/"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This creates one <code>.sav</code> file per dataset in the specified folder, using the default filenames. The folder is created if it doesn’t exist.</p>
 </section><section id="what-gets-converted-during-export" class="level2"><h2 class="anchored" data-anchor-id="what-gets-converted-during-export">What Gets Converted During Export</h2>
 <section id="categorical-variables" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
 <p>In R, categorical variables are human-readable character strings:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">age_grp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 3 × 4</span></span>
-<span><span class="co">#&gt;     num media               type    height_gap</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;               &lt;chr&gt;   &lt;chr&gt;     </span></span>
-<span><span class="co">#&gt; 1     1 Superman            Film    Big       </span></span>
-<span><span class="co">#&gt; 2     2 Superman: The Movie Film    Big       </span></span>
-<span><span class="co">#&gt; 3     3 Smallville          TV Show Average</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;     num media               type    age_grp</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;               &lt;chr&gt;   &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1     1 Superman            Film    Average</span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie Film    Average</span></span>
+<span><span class="co">#&gt; 3     3 Smallville          TV Show Minimal</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>In the exported SPSS file, these become numeric codes with value labels:</p>
 <table class="caption-top table">
@@ -875,7 +902,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <th>Variable</th>
 <th>R value</th>
 <th>SPSS code</th>
-<th>SPSS label</th>
+<th>SPSS value label</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
@@ -897,28 +924,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Serial</td>
 </tr>
 <tr class="even">
-<td><code>height_gap</code></td>
+<td><code>age_grp</code></td>
 <td><code>"Minimal"</code></td>
 <td>1</td>
-<td>Minimal (&lt;6 inches)</td>
+<td>Minimal (&lt;2 years)</td>
 </tr>
 <tr class="odd">
-<td><code>height_gap</code></td>
+<td><code>age_grp</code></td>
 <td><code>"Average"</code></td>
 <td>2</td>
-<td>Average (6–8 inches)</td>
+<td>Average (2–5 years)</td>
 </tr>
 <tr class="even">
-<td><code>height_gap</code></td>
+<td><code>age_grp</code></td>
 <td><code>"Big"</code></td>
 <td>3</td>
-<td>Big (&gt;8 inches)</td>
+<td>Big (&gt;5 years)</td>
 </tr>
 </tbody>
 </table></section><section id="missing-values" class="level3"><h3 class="anchored" data-anchor-id="missing-values">Missing Values</h3>
 <p>In R, missing values are <code>NA</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">superman</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">ldb_scores</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">ldb_scores</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 3</span></span>
@@ -931,10 +958,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; 5    10 The Adventures of Superboy                           NA</span></span>
 <span><span class="co">#&gt; 6    11 The Adventures of Superboy                           NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>In SPSS, these become <code>-99</code> with the missing value attribute set, so SPSS automatically excludes them from analyses.</p>
+<p>In the exported SPSS file, these become <code>-99</code> with the missing value attribute set, so SPSS automatically excludes them from analyses — no manual setup needed.</p>
 </section><section id="variable-labels" class="level3"><h3 class="anchored" data-anchor-id="variable-labels">Variable Labels</h3>
-<p>Every variable gets a descriptive label visible in SPSS Variable View:</p>
+<p>Every variable gets a descriptive label visible in SPSS Variable View. For example:</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 67%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
 <th>SPSS variable label</th>
@@ -949,40 +980,87 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Rotten Tomatoes critics score (0–100 scale)</td>
 </tr>
 <tr class="odd">
-<td><code>height_gap</code></td>
-<td>Relative size of height gap between actors</td>
+<td><code>age_grp</code></td>
+<td>Age difference category between Superman and Lois Lane actors</td>
 </tr>
 </tbody>
 </table></section></section><section id="controlling-missing-value-behavior" class="level2"><h2 class="anchored" data-anchor-id="controlling-missing-value-behavior">Controlling Missing Value Behavior</h2>
-<p>By default, <code>NA</code> values are converted to <code>-99</code> with SPSS missing value codes. To use SPSS system-missing instead:</p>
+<p>By default, <code>NA</code> values are converted to <code>-99</code> with SPSS user-defined missing value codes. This is the standard behavior expected for PSYC 350 labs.</p>
+<p>If you instead want SPSS system-missing (<code>.</code> in SPSS, which is the equivalent of <code>NA</code>), set <code>use_sentinel = FALSE</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_sysmis.sav"</span>, use_sentinel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_sysmis.sav"</span>, use_sentinel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_superman_sav.html">export_superman_sav</a></span><span class="op">(</span><span class="st">"superman_sysmis.sav"</span>, use_sentinel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span><span class="st">"superman"</span>, path <span class="op">=</span> <span class="st">"superman_sysmis.sav"</span>, use_sentinel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>System-missing is how SPSS represents truly blank/unknown values. User-defined missing (<code>-99</code>) is a specific number that SPSS is told to treat as missing. Both are excluded from analyses, but <code>-99</code> is more common in psychology lab settings because it makes it visually obvious that a value is missing when scrolling through Data View.</p>
+</div>
 </div>
 </section><section id="auditing-an-export" class="level2"><h2 class="anchored" data-anchor-id="auditing-an-export">Auditing an Export</h2>
 <p>After exporting, use <code><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export()</a></code> to verify that labels and missing values are correctly applied:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_huskers_sav.html">export_huskers_sav</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Show all variables, not just those with issues</span></span>
-<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span>, show_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span></span>
-<span><span class="co"># Read back into R for verification</span></span>
-<span><span class="va">huskers_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/get_spss_data.html">get_spss_data</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_huskers_sav.html">export_huskers_sav</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</section><section id="using-exported-spss-files" class="level2"><h2 class="anchored" data-anchor-id="using-exported-spss-files">Using Exported SPSS files</h2>
+<p>This prints a summary report flagging any issues — for example, variables with missing variable labels or <code>-99</code> values that aren’t declared as user-missing.</p>
+<p>To see details for every variable (not just those with issues):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span>, show_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section><section id="reading-an-exported-file-back-into-r" class="level2"><h2 class="anchored" data-anchor-id="reading-an-exported-file-back-into-r">Reading an Exported File Back into R</h2>
+<p>If you need to read an exported <code>.sav</code> file back into R — for example, to verify what students will see — use <code><a href="https://emmarshall.github.io/psych350data/man/get_spss_data.html">get_spss_data()</a></code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">huskers_clean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/get_spss_data.html">get_spss_data</a></span><span class="op">(</span><span class="st">"huskers_data.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This reads the <code>.sav</code> file, converts <code>-99</code> back to <code>NA</code>, and removes all SPSS labels, giving you a clean tibble ready for R analysis.</p>
+</section><section id="tips-for-instructors" class="level2"><h2 class="anchored" data-anchor-id="tips-for-instructors">Tips for Instructors</h2>
+<p>Here’s a practical workflow for preparing lab materials:</p>
 <ol type="1">
 <li>
-<strong>Check Variable View</strong> after opening to see all variable and value labels</li>
+<strong>Generate the answer key</strong> by exporting the full dataset:</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_football_sav.html">export_football_sav</a></span><span class="op">(</span><span class="st">"football_answer_key.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="2" type="1">
 <li>
-<strong>Toggle Value Labels</strong> in the toolbar to see category names in Data View</li>
+<strong>Generate the student file</strong> by selecting only the variables students need:</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">football</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">group</span>, <span class="va">volume</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://emmarshall.github.io/psych350data/man/export_sav.html">export_sav</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"football_student.sav"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="3" type="1">
 <li>
-<strong>Missing values are pre-configured</strong> — no manual setup needed</li>
+<strong>Verify both files</strong> to make sure labels and missing values look correct:</li>
+</ol>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"football_answer_key.sav"</span>, show_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://emmarshall.github.io/psych350data/man/check_sav_export.html">check_sav_export</a></span><span class="op">(</span><span class="st">"football_student.sav"</span>, show_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<ol start="4" type="1">
 <li>
-<strong>Re-export anytime</strong> by running the export function again</li>
+<strong>Distribute</strong> the student <code>.sav</code> file through Canvas or your LMS. Students can open it in SPSS (or JASP) and the value labels, variable labels, and missing value definitions are all pre-configured — no manual data setup required.</li>
+</ol></section><section id="using-exported-files-in-spss" class="level2"><h2 class="anchored" data-anchor-id="using-exported-files-in-spss">Using Exported Files in SPSS</h2>
+<p>After opening the <code>.sav</code> file in SPSS:</p>
+<ol type="1">
 <li>
-<strong>Subset before exporting</strong> if you only need certain variables for an assignment</li>
+<strong>Check Variable View</strong> to see all variable labels and value labels</li>
+<li>
+<strong>Toggle “Value Labels”</strong> in the toolbar (or View → Value Labels) to see category names instead of numeric codes in Data View</li>
+<li>
+<strong>Missing values are pre-configured</strong> — SPSS will automatically exclude <code>-99</code> values from all analyses without any manual setup</li>
+<li>
+<strong>Re-export anytime</strong> from R if you need to update the data or change which variables are included</li>
 </ol>
 
 

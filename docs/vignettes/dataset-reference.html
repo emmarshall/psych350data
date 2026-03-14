@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.9.30">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Dataset Reference Guide – psych350data</title>
+<title>Dataset Reference – psych350data</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -299,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Dataset Reference Guide</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Dataset Reference</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -324,14 +324,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../vignettes/dataset-guide.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dataset Reference Guide</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="../vignettes/dataset-reference.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Dataset Reference Guide</span></a>
+ <span class="menu-text">Dataset Reference</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -676,106 +670,107 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#quick-reference" id="toc-quick-reference" class="nav-link active" data-scroll-target="#quick-reference">Quick Reference</a></li>
   <li><a href="#how-categorical-variables-work" id="toc-how-categorical-variables-work" class="nav-link" data-scroll-target="#how-categorical-variables-work">How Categorical Variables Work</a></li>
   <li>
-<a href="#superman-actor-data" id="toc-superman-actor-data" class="nav-link" data-scroll-target="#superman-actor-data">Superman Actor Data</a>
+<a href="#sec-superman" id="toc-sec-superman" class="nav-link" data-scroll-target="#sec-superman">Superman Actor Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes" id="toc-categorical-variables-spss-codes" class="nav-link" data-scroll-target="#categorical-variables-spss-codes">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#superman-smes-data" id="toc-superman-smes-data" class="nav-link" data-scroll-target="#superman-smes-data">Superman SMES Data</a>
-  <ul class="collapse">
-<li><a href="#scale-information" id="toc-scale-information" class="nav-link" data-scroll-target="#scale-information">Scale Information</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#superman-movies-data" id="toc-superman-movies-data" class="nav-link" data-scroll-target="#superman-movies-data">Superman Movies Data</a>
+<a href="#sec-superman-smes" id="toc-sec-superman-smes" class="nav-link" data-scroll-target="#sec-superman-smes">Superman SMES Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-1" id="toc-categorical-variables-spss-codes-1" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-1">Categorical Variables (SPSS codes)</a></li>
+  <li><a href="#scale-information" id="toc-scale-information" class="nav-link" data-scroll-target="#scale-information">Scale Information</a></li>
   </ul>
 </li>
   <li>
-<a href="#hot-ones-guest-data" id="toc-hot-ones-guest-data" class="nav-link" data-scroll-target="#hot-ones-guest-data">Hot Ones Guest Data</a>
+<a href="#sec-superman-movies" id="toc-sec-superman-movies" class="nav-link" data-scroll-target="#sec-superman-movies">Superman Movies Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-2" id="toc-categorical-variables-spss-codes-2" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-2">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
-  <li><a href="#hot-ones-sauces-data" id="toc-hot-ones-sauces-data" class="nav-link" data-scroll-target="#hot-ones-sauces-data">Hot Ones Sauces Data</a></li>
-  <li><a href="#hot-ones-episodes-data" id="toc-hot-ones-episodes-data" class="nav-link" data-scroll-target="#hot-ones-episodes-data">Hot Ones Episodes Data</a></li>
   <li>
-<a href="#tip-jokes-experiment-data" id="toc-tip-jokes-experiment-data" class="nav-link" data-scroll-target="#tip-jokes-experiment-data">Tip-Jokes Experiment Data</a>
+<a href="#sec-hotones" id="toc-sec-hotones" class="nav-link" data-scroll-target="#sec-hotones">Hot Ones Guest Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-3" id="toc-categorical-variables-spss-codes-3" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-3">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
+  <li><a href="#sec-hotones-sauces" id="toc-sec-hotones-sauces" class="nav-link" data-scroll-target="#sec-hotones-sauces">Hot Ones Sauces Data</a></li>
+  <li><a href="#sec-hotones-episodes" id="toc-sec-hotones-episodes" class="nav-link" data-scroll-target="#sec-hotones-episodes">Hot Ones Episodes Data</a></li>
   <li>
-<a href="#mcu-films-data" id="toc-mcu-films-data" class="nav-link" data-scroll-target="#mcu-films-data">MCU Films Data</a>
+<a href="#sec-tip-jokes" id="toc-sec-tip-jokes" class="nav-link" data-scroll-target="#sec-tip-jokes">Tip-Jokes Experiment Data</a>
+  <ul class="collapse">
+<li><a href="#variables-spss-codes" id="toc-variables-spss-codes" class="nav-link" data-scroll-target="#variables-spss-codes">Variables (SPSS codes)</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#sec-mcu" id="toc-sec-mcu" class="nav-link" data-scroll-target="#sec-mcu">MCU Films Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-4" id="toc-categorical-variables-spss-codes-4" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-4">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#mock-jury-data" id="toc-mock-jury-data" class="nav-link" data-scroll-target="#mock-jury-data">Mock Jury Data</a>
+<a href="#sec-mock-jury" id="toc-sec-mock-jury" class="nav-link" data-scroll-target="#sec-mock-jury">Mock Jury Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-5" id="toc-categorical-variables-spss-codes-5" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-5">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#candy-rankings-data" id="toc-candy-rankings-data" class="nav-link" data-scroll-target="#candy-rankings-data">Candy Rankings Data</a>
+<a href="#sec-candy" id="toc-sec-candy" class="nav-link" data-scroll-target="#sec-candy">Candy Rankings Data</a>
   <ul class="collapse">
 <li><a href="#binary-variables-spss-codes" id="toc-binary-variables-spss-codes" class="nav-link" data-scroll-target="#binary-variables-spss-codes">Binary Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#football-concussion-data" id="toc-football-concussion-data" class="nav-link" data-scroll-target="#football-concussion-data">Football Concussion Data</a>
+<a href="#sec-football" id="toc-sec-football" class="nav-link" data-scroll-target="#sec-football">Football Concussion Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-6" id="toc-categorical-variables-spss-codes-6" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-6">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#nebraska-football-box-scores" id="toc-nebraska-football-box-scores" class="nav-link" data-scroll-target="#nebraska-football-box-scores">Nebraska Football Box Scores</a>
+<a href="#sec-huskers" id="toc-sec-huskers" class="nav-link" data-scroll-target="#sec-huskers">Nebraska Football Box Scores</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-7" id="toc-categorical-variables-spss-codes-7" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-7">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#cheese-characteristics-data" id="toc-cheese-characteristics-data" class="nav-link" data-scroll-target="#cheese-characteristics-data">Cheese Characteristics Data</a>
+<a href="#sec-cheese" id="toc-sec-cheese" class="nav-link" data-scroll-target="#sec-cheese">Cheese Characteristics Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-8" id="toc-categorical-variables-spss-codes-8" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-8">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#lincoln-police-department-traffic-stops" id="toc-lincoln-police-department-traffic-stops" class="nav-link" data-scroll-target="#lincoln-police-department-traffic-stops">Lincoln Police Department Traffic Stops</a>
+<a href="#sec-lpd" id="toc-sec-lpd" class="nav-link" data-scroll-target="#sec-lpd">Lincoln Police Department Traffic Stops</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-9" id="toc-categorical-variables-spss-codes-9" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-9">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#parent-child-observation-data" id="toc-parent-child-observation-data" class="nav-link" data-scroll-target="#parent-child-observation-data">Parent-Child Observation Data</a>
+<a href="#sec-parent-child" id="toc-sec-parent-child" class="nav-link" data-scroll-target="#sec-parent-child">Parent-Child Observation Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-10" id="toc-categorical-variables-spss-codes-10" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-10">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#hindsight-bias-data-between-groups" id="toc-hindsight-bias-data-between-groups" class="nav-link" data-scroll-target="#hindsight-bias-data-between-groups">Hindsight Bias Data — Between-Groups</a>
+<a href="#sec-hindsight-mg" id="toc-sec-hindsight-mg" class="nav-link" data-scroll-target="#sec-hindsight-mg">Hindsight Bias Data — Between-Groups</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-11" id="toc-categorical-variables-spss-codes-11" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-11">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#hindsight-bias-data-within-groups" id="toc-hindsight-bias-data-within-groups" class="nav-link" data-scroll-target="#hindsight-bias-data-within-groups">Hindsight Bias Data — Within-Groups</a>
+<a href="#sec-hindsight-wg" id="toc-sec-hindsight-wg" class="nav-link" data-scroll-target="#sec-hindsight-wg">Hindsight Bias Data — Within-Groups</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-12" id="toc-categorical-variables-spss-codes-12" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-12">Categorical Variables (SPSS codes)</a></li>
   </ul>
 </li>
   <li>
-<a href="#interpersonal-relationships-survey-data" id="toc-interpersonal-relationships-survey-data" class="nav-link" data-scroll-target="#interpersonal-relationships-survey-data">Interpersonal Relationships Survey Data</a>
+<a href="#sec-interpersonal" id="toc-sec-interpersonal" class="nav-link" data-scroll-target="#sec-interpersonal">Interpersonal Relationships Survey Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables-spss-codes-13" id="toc-categorical-variables-spss-codes-13" class="nav-link" data-scroll-target="#categorical-variables-spss-codes-13">Categorical Variables (SPSS codes)</a></li>
   <li><a href="#scale-variables" id="toc-scale-variables" class="nav-link" data-scroll-target="#scale-variables">Scale Variables</a></li>
   </ul>
 </li>
   <li>
-<a href="#self-descriptive-survey-data" id="toc-self-descriptive-survey-data" class="nav-link" data-scroll-target="#self-descriptive-survey-data">Self-Descriptive Survey Data</a>
+<a href="#sec-self-descriptive" id="toc-sec-self-descriptive" class="nav-link" data-scroll-target="#sec-self-descriptive">Self-Descriptive Survey Data</a>
   <ul class="collapse">
 <li><a href="#categorical-variables" id="toc-categorical-variables" class="nav-link" data-scroll-target="#categorical-variables">Categorical Variables</a></li>
   <li><a href="#scale-variables-1" id="toc-scale-variables-1" class="nav-link" data-scroll-target="#scale-variables-1">Scale Variables</a></li>
@@ -784,8 +779,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul><div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-guide.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Dataset Reference Guide</a></li></ol></nav><div class="quarto-title">
-<h1 class="title">Dataset Reference Guide</h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Articles</a></li><li class="breadcrumb-item"><a href="../vignettes/dataset-reference.html">Dataset Reference</a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Dataset Reference</h1>
 </div>
 
 
@@ -799,196 +794,251 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>A complete reference for all datasets in the psych350data package. Each dataset supports three workflows — see <code>vignette("getting-started")</code> for details.</p>
+</header><p>A complete reference for all datasets in the psych350data package. Each entry includes a description, source attribution, variable overview, and the categorical variable codes used in SPSS exports and after <code>prep_*()</code>.</p>
+<p>For guidance on how to use these datasets, see the <a href="../vignettes/getting-started.html">Getting Started</a> vignette.</p>
 <section id="quick-reference" class="level2"><h2 class="anchored" data-anchor-id="quick-reference">Quick Reference</h2>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 36%">
-<col style="width: 36%">
 <col style="width: 26%">
+<col style="width: 34%">
+<col style="width: 38%">
 </colgroup>
 <thead><tr class="header">
 <th>Dataset</th>
-<th>Prep function</th>
-<th>Label &amp; export function</th>
+<th>Related Functions</th>
+<th>Source</th>
 </tr></thead>
 <tbody>
 <tr class="odd">
 <td><code>superman</code></td>
-<td><code>prep_superman()</code></td>
 <td>
-<code>label_superman()</code> / <code>export_superman_sav()</code>
+<p><code>prep_superman()</code></p>
+<p><code>label_superman()</code></p>
+<p><code>export_superman_sav()</code></p>
 </td>
+<td>Rotten Tomatoes, Letterboxd, IMDb</td>
 </tr>
 <tr class="even">
 <td><code>superman_smes</code></td>
-<td><code>prep_superman_smes()</code></td>
 <td>
-<code>label_superman_smes()</code> / <code>export_superman_smes_sav()</code>
+<p><code>prep_superman_smes()</code></p>
+<p><code>label_superman_smes()</code></p>
+<p><code>export_superman_smes_sav()</code></p>
 </td>
+<td>Simulated</td>
 </tr>
 <tr class="odd">
 <td><code>superman_movies</code></td>
-<td><code>prep_superman_movies()</code></td>
 <td>
-<code>label_superman_movies()</code> / <code>export_superman_movies_sav()</code>
+<p><code>prep_superman_movies()</code></p>
+<p><code>label_superman_movies</code></p>
+<p><code>export_superman_movies_sav()</code></p>
 </td>
+<td>IMDb Box Office Mojo</td>
 </tr>
 <tr class="even">
 <td><code>hotones</code></td>
-<td><code>prep_hotones()</code></td>
 <td>
-<code>label_hotones()</code> / <code>export_hotones_sav()</code>
+<p><code>prep_hotones()</code></p>
+<p><code>label_hotones()</code></p>
+<p><code>export_hotones_sav()</code></p>
 </td>
+<td>Hot Ones / First We Feast (YouTube)</td>
 </tr>
 <tr class="odd">
 <td><code>hotones_sauces</code></td>
-<td><code>prep_hotones_sauces()</code></td>
 <td>
-<code>label_hotones_sauces()</code> / <code>export_hotones_sauces_sav()</code>
+<p><code>prep_hotones_sauces()</code></p>
+<p><code>label_hotones_sauces()</code></p>
+<p><code>export_hotones_sauces_sav()</code></p>
 </td>
+<td>Hot Ones / First We Feast (YouTube)</td>
 </tr>
 <tr class="even">
 <td><code>hotones_episodes</code></td>
-<td><code>prep_hotones_episodes()</code></td>
 <td>
-<code>label_hotones_episodes()</code> / <code>export_hotones_episodes_sav()</code>
+<p><code>prep_hotones_episodes()</code></p>
+<p><code>label_hotones_episodes()</code></p>
+<p><code>export_hotones_episodes_sav()</code></p>
 </td>
+<td>Hot Ones / First We Feast (YouTube)</td>
 </tr>
 <tr class="odd">
 <td><code>tip_jokes</code></td>
-<td><code>prep_tip_jokes()</code></td>
 <td>
-<code>label_tip_jokes()</code> / <code>export_tip_jokes_sav()</code>
+<p><code>prep_tip_jokes()</code></p>
+<p><code>label_tip_jokes()</code></p>
+<p><code>export_tip_jokes_sav()</code></p>
 </td>
+<td>Gueguen (2002)</td>
 </tr>
 <tr class="even">
 <td><code>mcu</code></td>
-<td><code>prep_mcu()</code></td>
 <td>
-<code>label_mcu()</code> / <code>export_mcu_sav()</code>
+<p><code>prep_mcu()</code></p>
+<p><code>label_mcu()</code></p>
+<p><code>export_mcu_sav()</code></p>
 </td>
+<td>IMDb via openintro package</td>
 </tr>
 <tr class="odd">
 <td><code>mock_jury</code></td>
-<td><code>prep_mock_jury()</code></td>
 <td>
-<code>label_mock_jury()</code> / <code>export_mock_jury_sav()</code>
+<p><code>prep_mock_jury()</code></p>
+<p><code>label_mock_jury()</code></p>
+<p><code>export_mock_jury_sav()</code></p>
 </td>
+<td>Plaster (1989)</td>
 </tr>
 <tr class="even">
 <td><code>candy</code></td>
-<td><code>prep_candy()</code></td>
 <td>
-<code>label_candy()</code> / <code>export_candy_sav()</code>
+<p><code>prep_candy()</code></p>
+<p><code>label_candy()</code></p>
+<p><code>export_candy_sav()</code></p>
 </td>
+<td>FiveThirtyEight</td>
 </tr>
 <tr class="odd">
 <td><code>candy_simple</code></td>
-<td><code>prep_candy_simple()</code></td>
 <td>
-<code>label_candy_simple()</code> / <code>export_candy_simple_sav()</code>
+<p><code>prep_candy_simple()</code></p>
+<p><code>label_candy_simple()</code></p>
+<p><code>export_candy_simple_sav()</code></p>
 </td>
+<td>FiveThirtyEight</td>
 </tr>
 <tr class="even">
 <td><code>football</code></td>
-<td><code>prep_football()</code></td>
 <td>
-<code>label_football()</code> / <code>export_football_sav()</code>
+<p><code>prep_football()</code></p>
+<p><code>label_football()</code></p>
+<p><code>export_football_sav()</code></p>
 </td>
+<td>Singh et al.&nbsp;(2014), JAMA</td>
 </tr>
 <tr class="odd">
 <td><code>huskers</code></td>
-<td><code>prep_huskers()</code></td>
 <td>
-<code>label_huskers()</code> / <code>export_huskers_sav()</code>
+<p><code>prep_huskers()</code></p>
+<p><code>label_huskers()</code></p>
+<p><code>export_huskers_sav()</code></p>
 </td>
+<td>Historical records</td>
 </tr>
 <tr class="even">
 <td><code>cheese_data</code></td>
-<td><code>prep_cheese()</code></td>
 <td>
-<code>label_cheese()</code> / <code>export_cheese_sav()</code>
+<p><code>prep_cheese()</code></p>
+<p><code>label_cheese()</code></p>
+<p><code>export_cheese_sav()</code></p>
 </td>
+<td>cheese.com via TidyTuesday</td>
 </tr>
 <tr class="odd">
 <td><code>lpd_data</code></td>
-<td><code>prep_lpd()</code></td>
 <td>
-<code>label_lpd()</code> / <code>export_lpd_sav()</code>
+<p><code>prep_lpd()</code></p>
+<p><code>label_lpd()</code></p>
+<p><code>export_lpd_sav()</code></p>
 </td>
+<td>Lincoln Police Dept. Open Data</td>
 </tr>
 <tr class="even">
 <td><code>parent_child_data</code></td>
-<td><code>prep_parent_child()</code></td>
 <td>
-<code>label_parent_child()</code> / <code>export_parent_child_sav()</code>
+<p><code>prep_parent_child()</code></p>
+<p><code>label_parent_child()</code></p>
+<p><code>export_parent_child_sav()</code></p>
 </td>
+<td>Simulated</td>
 </tr>
 <tr class="odd">
 <td><code>hindsight_mg_data</code></td>
-<td><code>prep_hindsight_mg()</code></td>
 <td>
-<code>label_hindsight_mg()</code> / <code>export_hindsight_mg_sav()</code>
+<p><code>prep_hindsight_bg()</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><code>label_hindsight_mg()</code></p>
+<p><code>export_hindsight_mg_sav()</code></p>
 </td>
+<td>Simulated</td>
 </tr>
 <tr class="even">
 <td><code>hindsight_wg_data</code></td>
-<td><code>prep_hindsight_wg()</code></td>
 <td>
-<code>label_hindsight_wg()</code> / <code>export_hindsight_wg_sav()</code>
+<p><code>prep_hindsight_wg()</code></p>
+<p><code>label_hindsight_wg()</code></p>
+<p><code>export_hindsight_wg_sav()</code></p>
 </td>
+<td>Simulated</td>
 </tr>
 <tr class="odd">
 <td><code>interpersonal_data</code></td>
-<td><code>prep_interpersonal()</code></td>
 <td>
-<code>label_interpersonal()</code> / <code>export_interpersonal_sav()</code>
+<p><code>prep_interpersonal()</code></p>
+<p><code>label_interpersonal()</code></p>
+<p><code>export_interpersonal_sav()</code></p>
 </td>
+<td>Simulated</td>
 </tr>
 <tr class="even">
 <td><code>self_descriptive_data</code></td>
-<td><code>prep_selfdescriptive()</code></td>
 <td>
-<code>label_self_descriptive()</code> / <code>export_selfdescriptive_sav()</code>
+<p><code>prep_self_descriptive()</code></p>
+<p><code>label_self_descriptive()</code></p>
+<p><code>export_selfdescriptive_sav()</code></p>
 </td>
+<td>Simulated</td>
 </tr>
 </tbody>
 </table>
-<p>Use <code>list_datasets()</code> to see all available datasets.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A <strong>combined</strong> Superman dataset (<code>superman_combined</code>) can be exported with <code>export_superman_combined_sav()</code>. It joins <code>superman_movies</code> with <code>superman</code> actor data using <code>join_superman_data()</code>.</p>
+</div>
+</div>
+<p>Use <code>list_datasets()</code> to see all available dataset names from the R console.</p>
 </section><section id="how-categorical-variables-work" class="level2"><h2 class="anchored" data-anchor-id="how-categorical-variables-work">How Categorical Variables Work</h2>
-<p><strong>In R (raw):</strong> Categorical variables use human-readable character values (e.g., <code>"Film"</code>, <code>"Control"</code>, <code>"Minimal"</code>). Best for exploration and plotting.</p>
-<p><strong>After <code>prep_*()</code>:</strong> Character categories are replaced with numeric codes matching SPSS. Use when your R analysis needs to produce output that matches SPSS.</p>
+<p><strong>In R (raw):</strong> Categorical variables use human-readable character values like <code>"Film"</code>, <code>"Control"</code>, or <code>"Minimal"</code>. These are ideal for plotting and exploration.</p>
+<p><strong>After <code>prep_*()</code>:</strong> Character categories are replaced with numeric codes that match SPSS. Use this when your R output needs to match SPSS output or when working with psych350lab functions.</p>
 <p><strong>In SPSS exports:</strong> Numeric codes are stored with value labels, so SPSS displays both the number and the category name.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Raw: human-readable</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Raw R data: human-readable categories</span></span>
 <span><span class="va">superman</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">age_grp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 4</span></span>
-<span><span class="co">#&gt;     num media               type    height_gap</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;               &lt;chr&gt;   &lt;chr&gt;     </span></span>
-<span><span class="co">#&gt; 1     1 Superman            Film    Big       </span></span>
-<span><span class="co">#&gt; 2     2 Superman: The Movie Film    Big       </span></span>
-<span><span class="co">#&gt; 3     3 Smallville          TV Show Average   </span></span>
-<span><span class="co">#&gt; 4     4 Superman Returns    Film    Big</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;     num media               type    age_grp</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;               &lt;chr&gt;   &lt;chr&gt;  </span></span>
+<span><span class="co">#&gt; 1     1 Superman            Film    Average</span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie Film    Average</span></span>
+<span><span class="co">#&gt; 3     3 Smallville          TV Show Minimal</span></span>
+<span><span class="co">#&gt; 4     4 Superman Returns    Film    Average</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># After prep: numeric codes matching SPSS</span></span>
 <span><span class="fu">prep_superman</span><span class="op">(</span><span class="va">superman</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">height_gap</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">num</span>, <span class="va">media</span>, <span class="va">type</span>, <span class="va">age_grp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 4 × 4</span></span>
-<span><span class="co">#&gt;     num media                type height_gap</span></span>
-<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;      &lt;dbl&gt;</span></span>
-<span><span class="co">#&gt; 1     1 Superman                1          3</span></span>
-<span><span class="co">#&gt; 2     2 Superman: The Movie     1          3</span></span>
-<span><span class="co">#&gt; 3     3 Smallville              2          2</span></span>
-<span><span class="co">#&gt; 4     4 Superman Returns        1          3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span><span class="co">#&gt;     num media                type age_grp</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;               &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1     1 Superman                1       2</span></span>
+<span><span class="co">#&gt; 2     2 Superman: The Movie     1       2</span></span>
+<span><span class="co">#&gt; 3     3 Smallville              2       1</span></span>
+<span><span class="co">#&gt; 4     4 Superman Returns        1       2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<hr></section><section id="superman-actor-data" class="level2"><h2 class="anchored" data-anchor-id="superman-actor-data">Superman Actor Data</h2>
-<p><strong>Dataset:</strong> <code>superman</code> | <strong>Export:</strong> <code>export_superman_sav()</code></p>
-<p>Data on actors who have portrayed Clark Kent/Superman across film, TV, and serial media.</p>
+<hr></section><section id="sec-superman" class="level2"><h2 class="anchored" data-anchor-id="sec-superman">Superman Actor Data</h2>
+<p><strong>Dataset:</strong> <code>superman</code> | <strong>11 rows, 27 columns</strong></p>
+<p>Physical characteristics and ratings data for actors who have played Superman across film, TV, and serial media. Includes actor heights, Rotten Tomatoes scores, Letterboxd ratings, and popularity metrics.</p>
+<p><strong>Source:</strong> Compiled from Rotten Tomatoes, Letterboxd, and IMDb.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">superman</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 11</span></span>
@@ -1041,29 +1091,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1 = Minimal, 2 = Average, 3 = Big</td>
 </tr>
 <tr class="even">
+<td><code>age_grp</code></td>
+<td>1 = Minimal, 2 = Average, 3 = Big</td>
+</tr>
+<tr class="odd">
 <td><code>tomatometer</code></td>
 <td>1 = Rotten, 2 = Fresh</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><code>popular</code></td>
 <td>1 = Low, 2 = Mid, 3 = High</td>
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="superman-smes-data" class="level2"><h2 class="anchored" data-anchor-id="superman-smes-data">Superman SMES Data</h2>
-<p><strong>Dataset:</strong> <code>superman_smes</code> | <strong>Export:</strong> <code>export_superman_smes_sav()</code></p>
-<p>Simulated participant ratings on the Subjective Media Experience Scale (SMES).</p>
+<hr></section></section><section id="sec-superman-smes" class="level2"><h2 class="anchored" data-anchor-id="sec-superman-smes">Superman SMES Data</h2>
+<p><strong>Dataset:</strong> <code>superman_smes</code> | <strong>47 rows, 6 columns</strong></p>
+<p>Simulated participant ratings on the Subjective Media Experience Scale (SMES), grouped by both the height gap and age difference between the Superman and Lois Lane actors. All variables are already numeric — no data prep conversion is needed.</p>
+<p><strong>Source:</strong> Simulated data for teaching purposes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">superman_smes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 47</span></span>
-<span><span class="co">#&gt; Columns: 5</span></span>
+<span><span class="co">#&gt; Columns: 6</span></span>
 <span><span class="co">#&gt; $ num                  &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15…</span></span>
 <span><span class="co">#&gt; $ height_gap           &lt;int&gt; 3, 3, 3, 3, 1, 1, 3, 3, 3, 2, 2, 1, 2, 3, 1, 3, 3…</span></span>
+<span><span class="co">#&gt; $ age_grp              &lt;int&gt; 2, 3, 2, 2, 1, 3, 2, 2, 2, 1, 1, 3, 1, 3, 1, 3, 3…</span></span>
 <span><span class="co">#&gt; $ emotional_impact     &lt;dbl&gt; 10, 10, 13, 12, NA, 17, 14, 16, 14, 18, 16, 8, 13…</span></span>
 <span><span class="co">#&gt; $ aesthetic_appeal     &lt;dbl&gt; 12, 12, 13, 10, 6, 10, 9, 9, 11, 9, 11, 8, 10, 6,…</span></span>
 <span><span class="co">#&gt; $ cognitive_engagement &lt;dbl&gt; 4.5, 4.5, 4.5, 4.3, 3.7, 4.0, 4.7, 4.0, 4.4, 4.8,…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="scale-information" class="level3"><h3 class="anchored" data-anchor-id="scale-information">Scale Information</h3>
+<section id="categorical-variables-spss-codes-1" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-1">Categorical Variables (SPSS codes)</h3>
+<table class="caption-top table">
+<thead><tr class="header">
+<th>Variable</th>
+<th>Values</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code>height_gap</code></td>
+<td>1 = Minimal, 2 = Average, 3 = Big</td>
+</tr>
+<tr class="even">
+<td><code>age_grp</code></td>
+<td>1 = Minimal, 2 = Average, 3 = Big</td>
+</tr>
+</tbody>
+</table></section><section id="scale-information" class="level3"><h3 class="anchored" data-anchor-id="scale-information">Scale Information</h3>
 <table class="caption-top table">
 <thead><tr class="header">
 <th>Subscale</th>
@@ -1084,9 +1156,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="superman-movies-data" class="level2"><h2 class="anchored" data-anchor-id="superman-movies-data">Superman Movies Data</h2>
-<p><strong>Dataset:</strong> <code>superman_movies</code> | <strong>Export:</strong> <code>export_superman_movies_sav()</code></p>
-<p>Box office and production data for Superman theatrical films.</p>
+<hr></section></section><section id="sec-superman-movies" class="level2"><h2 class="anchored" data-anchor-id="sec-superman-movies">Superman Movies Data</h2>
+<p><strong>Dataset:</strong> <code>superman_movies</code> | <strong>10 rows, 22 columns</strong></p>
+<p>Box office and production data for Superman theatrical films, including budget, domestic and international grosses, and MPAA ratings.</p>
+<p><strong>Source:</strong> IMDb Box Office Mojo.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">superman_movies</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 8</span></span>
@@ -1113,7 +1186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ budget_cat          &lt;chr&gt; NA, "Medium", "High", "High", "Medium", NA, "Low",…</span></span>
 <span><span class="co">#&gt; $ box_office_cat      &lt;chr&gt; NA, "Medium", "High", "Medium", "Medium", "Low", "…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="categorical-variables-spss-codes-1" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-1">Categorical Variables (SPSS codes)</h3>
+<section id="categorical-variables-spss-codes-2" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-2">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
 <thead><tr class="header">
 <th>Variable</th>
@@ -1134,9 +1207,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="hot-ones-guest-data" class="level2"><h2 class="anchored" data-anchor-id="hot-ones-guest-data">Hot Ones Guest Data</h2>
+<hr></section></section><section id="sec-hotones" class="level2"><h2 class="anchored" data-anchor-id="sec-hotones">Hot Ones Guest Data</h2>
 <p><strong>Dataset:</strong> <code>hotones</code> | <strong>Export:</strong> <code>export_hotones_sav()</code></p>
-<p>Data on guests from the YouTube show Hot Ones.</p>
+<p>Data on guests from the YouTube show <em>Hot Ones</em>, including demographic information, Scoville ratings for each sauce consumed (SHU_1 through SHU_10), and whether the guest succeeded in eating all ten wings.</p>
+<p><strong>Source:</strong> <a href="https://www.youtube.com/firstwefeast">Hot Ones / First We Feast</a> (YouTube).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hotones</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 369</span></span>
@@ -1167,8 +1241,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ likes       &lt;dbl&gt; 18108, 11301, 49026, 15473, 13761, 9627, 7572, 79735, 9395…</span></span>
 <span><span class="co">#&gt; $ comments    &lt;dbl&gt; 1011, 1041, 3609, 1226, 1148, 681, 595, 24666, 740, 1669, …</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="categorical-variables-spss-codes-2" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-2">Categorical Variables (SPSS codes)</h3>
+<section id="categorical-variables-spss-codes-3" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-3">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 91%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
 <th>Values</th>
@@ -1184,13 +1262,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><code>occupation</code></td>
-<td>1–14 (Rapper, Athlete, Actor, etc.)</td>
+<td>1 = Rapper, 2 = Athlete, 3 = Actor, 4 = Actor-Comedian, 5 = Comedian, 6 = Chef, 7 = Actor-Musician, 8 = Musician, 9 = DJ, 10 = YouTuber, 11 = Model, 12 = Wrestler, 13 = Magician, 14 = Other</td>
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="hot-ones-sauces-data" class="level2"><h2 class="anchored" data-anchor-id="hot-ones-sauces-data">Hot Ones Sauces Data</h2>
+<hr></section></section><section id="sec-hotones-sauces" class="level2"><h2 class="anchored" data-anchor-id="sec-hotones-sauces">Hot Ones Sauces Data</h2>
 <p><strong>Dataset:</strong> <code>hotones_sauces</code> | <strong>Export:</strong> <code>export_hotones_sauces_sav()</code></p>
-<p>Hot sauce data by season and position in the lineup.</p>
+<p>Data on the hot sauces used in each season and position of Hot Ones, including Scoville Heat Unit (SHU) ratings. All variables are numeric — no categorical conversion needed.</p>
+<p><strong>Source:</strong> <a href="https://www.youtube.com/firstwefeast">Hot Ones / First We Feast</a> (YouTube).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hotones_sauces</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 250</span></span>
@@ -1200,9 +1279,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ sauce_name &lt;chr&gt; "Texas Pete Original Hot Sauce", "Cholula Original Hot Sauc…</span></span>
 <span><span class="co">#&gt; $ SHU        &lt;dbl&gt; 747, 3600, 5790, 15000, 13000, 40600, 30000, 57000, 180000,…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<hr></section><section id="hot-ones-episodes-data" class="level2"><h2 class="anchored" data-anchor-id="hot-ones-episodes-data">Hot Ones Episodes Data</h2>
+<hr></section><section id="sec-hotones-episodes" class="level2"><h2 class="anchored" data-anchor-id="sec-hotones-episodes">Hot Ones Episodes Data</h2>
 <p><strong>Dataset:</strong> <code>hotones_episodes</code> | <strong>Export:</strong> <code>export_hotones_episodes_sav()</code></p>
-<p>Episode-level data with YouTube engagement metrics.</p>
+<p>Episode-level data from Hot Ones including guest names, episode titles, and YouTube engagement metrics (views, likes, comments). All variables are numeric or character — no categorical conversion needed.</p>
+<p><strong>Source:</strong> <a href="https://www.youtube.com/firstwefeast">Hot Ones / First We Feast</a> (YouTube).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hotones_episodes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 345</span></span>
@@ -1219,9 +1299,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ img               &lt;chr&gt; "https://i.ytimg.com/vi/aGhqumcE6_w/hqdefault.jpg", …</span></span>
 <span><span class="co">#&gt; $ video_id          &lt;chr&gt; "aGhqumcE6_w", "4iSCOtYs_6Q", "H7pSH4YL-T4", "e5Ipfn…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<hr></section><section id="tip-jokes-experiment-data" class="level2"><h2 class="anchored" data-anchor-id="tip-jokes-experiment-data">Tip-Jokes Experiment Data</h2>
-<p><strong>Dataset:</strong> <code>tip_jokes</code> | <strong>Export:</strong> <code>export_tip_jokes_sav()</code></p>
-<p>Experimental data from Gueguen (2002) examining whether a waiter leaving a joke or advertisement on a card affects tipping behavior.</p>
+<hr></section><section id="sec-tip-jokes" class="level2"><h2 class="anchored" data-anchor-id="sec-tip-jokes">Tip-Jokes Experiment Data</h2>
+<p><strong>Dataset:</strong> <code>tip_jokes</code> | <strong>211 rows, 5 columns</strong></p>
+<p>Experimental data examining whether a waiter leaving a joke or an advertisement on a card affects tipping behavior. All variables are already stored as numeric codes.</p>
+<p><strong>Source:</strong> Gueguen, N. (2002). The effects of a joke on tipping when it is delivered at the same time as the bill. <em>Journal of Applied Social Psychology</em>, 32(9), 1955–1963.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">tip_jokes</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 211</span></span>
@@ -1232,7 +1313,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ joke &lt;dbl&gt; 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0,…</span></span>
 <span><span class="co">#&gt; $ none &lt;dbl&gt; 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0,…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="categorical-variables-spss-codes-3" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-3">Categorical Variables (SPSS codes)</h3>
+<section id="variables-spss-codes" class="level3"><h3 class="anchored" data-anchor-id="variables-spss-codes">Variables (SPSS codes)</h3>
 <table class="caption-top table">
 <thead><tr class="header">
 <th>Variable</th>
@@ -1247,11 +1328,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td><code>tip</code></td>
 <td>0 = No, 1 = Yes</td>
 </tr>
+<tr class="odd">
+<td><code>ad</code></td>
+<td>0 = No, 1 = Yes (received advertisement)</td>
+</tr>
+<tr class="even">
+<td><code>joke</code></td>
+<td>0 = No, 1 = Yes (received joke)</td>
+</tr>
+<tr class="odd">
+<td><code>none</code></td>
+<td>0 = No, 1 = Yes (no card)</td>
+</tr>
 </tbody>
 </table>
-<hr></section></section><section id="mcu-films-data" class="level2"><h2 class="anchored" data-anchor-id="mcu-films-data">MCU Films Data</h2>
-<p><strong>Dataset:</strong> <code>mcu</code> | <strong>Export:</strong> <code>export_mcu_sav()</code></p>
-<p>Marvel Cinematic Universe films through the Infinity Saga. Credit to <a href="https://github.com/OpenIntroStat/openintro-statistics">openintro</a>.</p>
+<hr></section></section><section id="sec-mcu" class="level2"><h2 class="anchored" data-anchor-id="sec-mcu">MCU Films Data</h2>
+<p><strong>Dataset:</strong> <code>mcu</code> | <strong>23 rows, 11 columns</strong></p>
+<p>Box office performance and Rotten Tomatoes scores for Marvel Cinematic Universe films through the Infinity Saga (Phases 1–3).</p>
+<p><strong>Source:</strong> Internet Movie Database (IMDb), via the <a href="https://github.com/OpenIntroStat/openintro-statistics">openintro</a> package.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">mcu</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 23</span></span>
@@ -1285,9 +1379,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="mock-jury-data" class="level2"><h2 class="anchored" data-anchor-id="mock-jury-data">Mock Jury Data</h2>
-<p><strong>Dataset:</strong> <code>mock_jury</code> | <strong>Export:</strong> <code>export_mock_jury_sav()</code></p>
-<p>Data from Plaster (1989) on effects of defendant attractiveness on mock jury sentencing.</p>
+<hr></section></section><section id="sec-mock-jury" class="level2"><h2 class="anchored" data-anchor-id="sec-mock-jury">Mock Jury Data</h2>
+<p><strong>Dataset:</strong> <code>mock_jury</code> | <strong>114 rows, 17 columns</strong></p>
+<p>Data from a study examining the effects of defendant physical attractiveness on mock jury sentencing decisions. Participants rated defendants of varying attractiveness levels who were charged with either burglary or swindle. All categorical variables are already stored as numeric codes.</p>
+<p><strong>Source:</strong> Plaster, M. E. (1989). <em>The effects of physical attractiveness on mock jury decisions</em>. Unpublished manuscript, East Carolina University.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">mock_jury</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 114</span></span>
@@ -1327,9 +1422,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="candy-rankings-data" class="level2"><h2 class="anchored" data-anchor-id="candy-rankings-data">Candy Rankings Data</h2>
-<p><strong>Full dataset:</strong> <code>candy</code> | <strong>Export:</strong> <code>export_candy_sav()</code> <strong>Simplified:</strong> <code>candy_simple</code> | <strong>Export:</strong> <code>export_candy_simple_sav()</code></p>
-<p>Candy power rankings based on 269,000 head-to-head matchups from <a href="https://web.archive.org/web/20201101001713/https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking (2017)</a>.</p>
+<hr></section></section><section id="sec-candy" class="level2"><h2 class="anchored" data-anchor-id="sec-candy">Candy Rankings Data</h2>
+<p><strong>Full dataset:</strong> <code>candy</code> | <strong>85 rows, 13 columns</strong> <strong>Simplified:</strong> <code>candy_simple</code> | <strong>85 rows, 5 columns</strong></p>
+<p>Candy power rankings based on 269,000 head-to-head matchups. The full dataset includes nine binary ingredient indicators, plus sugar percentile, price percentile, and win percentage. The simplified version includes only <code>chocolate</code>, <code>sugarpercent</code>, <code>pricepercent</code>, and <code>winpercent</code>.</p>
+<p><strong>Source:</strong> <a href="https://web.archive.org/web/20201101001713/https://fivethirtyeight.com/videos/the-ultimate-halloween-candy-power-ranking/">The Ultimate Halloween Candy Power Ranking</a>, FiveThirtyEight (2017).</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">candy_simple</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 85</span></span>
@@ -1341,11 +1437,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ winpercent     &lt;dbl&gt; 66.97173, 67.60294, 32.26109, 46.11650, 52.34146, 50.34…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="binary-variables-spss-codes" class="level3"><h3 class="anchored" data-anchor-id="binary-variables-spss-codes">Binary Variables (SPSS codes)</h3>
-<p>All binary variables: 0 = No, 1 = Yes</p>
-<p>Variables: <code>chocolate</code>, <code>fruity</code>, <code>caramel</code>, <code>peanutyalmondy</code>, <code>nougat</code>, <code>crispedricewafer</code>, <code>hard</code>, <code>bar</code>, <code>pluribus</code></p>
-<hr></section></section><section id="football-concussion-data" class="level2"><h2 class="anchored" data-anchor-id="football-concussion-data">Football Concussion Data</h2>
-<p><strong>Dataset:</strong> <code>football</code> | <strong>Export:</strong> <code>export_football_sav()</code></p>
-<p>Brain measurements comparing football players to controls (Singh et al., 2014).</p>
+<p>All binary ingredient variables: 0 = No, 1 = Yes.</p>
+<p>Variables in the full dataset: <code>chocolate</code>, <code>fruity</code>, <code>caramel</code>, <code>peanutyalmondy</code>, <code>nougat</code>, <code>crispedricewafer</code>, <code>hard</code>, <code>bar</code>, <code>pluribus</code>.</p>
+<p>The simplified dataset contains only <code>chocolate</code>.</p>
+<hr></section></section><section id="sec-football" class="level2"><h2 class="anchored" data-anchor-id="sec-football">Football Concussion Data</h2>
+<p><strong>Dataset:</strong> <code>football</code> | <strong>75 rows, 3 columns</strong></p>
+<p>Brain volume measurements comparing football players (with and without concussion history) to non-football-playing controls.</p>
+<p><strong>Source:</strong> Singh, R., Meier, T. B., Kuplicki, R., Savitz, J., Mukai, I., Cavanagh, L., Allen, T., Teague, T. K., Nerio, C., Polanski, D., &amp; Bellgowan, P. S. F. (2014). Relationship of collegiate football experience and concussion with hippocampal volume and cognitive outcomes. <em>JAMA</em>, 311(18), 1883–1888.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">football</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 75</span></span>
@@ -1357,8 +1455,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categorical-variables-spss-codes-6" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-6">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 12%">
-<col style="width: 87%">
+<col style="width: 15%">
+<col style="width: 84%">
 </colgroup>
 <thead><tr class="header">
 <th>Variable</th>
@@ -1369,9 +1467,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1 = Control, 2 = Football no concussion, 3 = Football with concussion</td>
 </tr></tbody>
 </table>
-<hr></section></section><section id="nebraska-football-box-scores" class="level2"><h2 class="anchored" data-anchor-id="nebraska-football-box-scores">Nebraska Football Box Scores</h2>
+<hr></section></section><section id="sec-huskers" class="level2"><h2 class="anchored" data-anchor-id="sec-huskers">Nebraska Football Box Scores</h2>
 <p><strong>Dataset:</strong> <code>huskers</code> | <strong>Export:</strong> <code>export_huskers_sav()</code></p>
-<p>Game-level statistics for Nebraska Cornhuskers football (1962–2024).</p>
+<p>Game-level team statistics for all Nebraska Cornhuskers football games from September 1962 through the 2024 season. Includes scoring, rushing, passing, turnovers, penalties, point spreads, and weather data. This is a large dataset with 68 columns.</p>
+<p><strong>Source:</strong> Compiled from historical Nebraska football records. Weather data sourced from DarkSky API and Weather Underground.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">huskers</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 770</span></span>
@@ -1437,8 +1536,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categorical-variables-spss-codes-7" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-7">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 18%">
-<col style="width: 81%">
+<col style="width: 19%">
+<col style="width: 80%">
 </colgroup>
 <thead><tr class="header">
 <th>Variable</th>
@@ -1459,9 +1558,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="cheese-characteristics-data" class="level2"><h2 class="anchored" data-anchor-id="cheese-characteristics-data">Cheese Characteristics Data</h2>
+<hr></section></section><section id="sec-cheese" class="level2"><h2 class="anchored" data-anchor-id="sec-cheese">Cheese Characteristics Data</h2>
 <p><strong>Dataset:</strong> <code>cheese_data</code> | <strong>Export:</strong> <code>export_cheese_sav()</code></p>
-<p>Cheese characteristics and nutritional content from cheese.com, originally featured in TidyTuesday (June 2024). Contains cheeses with known calcium content, cleaned and recoded for teaching data entry and transformation.</p>
+<p>Cleaned subset of the cheese.com dataset originally featured in TidyTuesday (June 2024). Contains cheeses with known calcium content, with fat content and milk source cleaned and recoded for teaching data entry and transformation.</p>
+<p><strong>Source:</strong> <a href="https://www.cheese.com/">cheese.com</a> via <a href="https://github.com/rfordatascience/tidytuesday/blob/main/data/2024/2024-06-04/readme.md">TidyTuesday 2024-06-04</a>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">cheese_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 25</span></span>
@@ -1482,8 +1582,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categorical-variables-spss-codes-8" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-8">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 82%">
+<col style="width: 18%">
+<col style="width: 81%">
 </colgroup>
 <thead><tr class="header">
 <th>Variable</th>
@@ -1500,9 +1600,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="lincoln-police-department-traffic-stops" class="level2"><h2 class="anchored" data-anchor-id="lincoln-police-department-traffic-stops">Lincoln Police Department Traffic Stops</h2>
+<hr></section></section><section id="sec-lpd" class="level2"><h2 class="anchored" data-anchor-id="sec-lpd">Lincoln Police Department Traffic Stops</h2>
 <p><strong>Dataset:</strong> <code>lpd_data</code> | <strong>Export:</strong> <code>export_lpd_sav()</code></p>
-<p>Traffic stop records from the Lincoln Police Department Open Data Portal, stacked across years. Includes date, time, driver demographics, and stop outcome.</p>
+<p>Traffic stop records from the Lincoln Police Department, compiled from a multi-sheet Excel file with one sheet per year and stacked into a single data frame. Date and time variables have been parsed and a time-of-day category added. All categorical variables are stored as integers with SPSS-style value labels.</p>
+<p><strong>Source:</strong> <a href="https://opendata.lincoln.ne.gov/datasets/lpd-traffic-stops-2023/about">Lincoln Police Department Open Data Portal</a>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">lpd_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 408,288</span></span>
@@ -1522,8 +1623,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categorical-variables-spss-codes-9" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-9">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 82%">
+<col style="width: 7%">
+<col style="width: 92%">
 </colgroup>
 <thead><tr class="header">
 <th>Variable</th>
@@ -1536,11 +1637,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="even">
 <td><code>race</code></td>
-<td>1 = White, 2 = Black, 3 = Hispanic, 4 = Asian, 5 = American Indian, 6 = Other</td>
+<td>1 = White, 2 = Black or African American, 3 = Hispanic or Latino, 4 = Asian, 5 = American Indian or Alaska Native, 6 = Native Hawaiian or Pacific Islander, 7 = Two or More Races, 8 = Unknown</td>
 </tr>
 <tr class="odd">
 <td><code>sex</code></td>
-<td>1 = Male, 2 = Female</td>
+<td>1 = Male, 2 = Female, 3 = Unknown</td>
 </tr>
 <tr class="even">
 <td><code>reason</code></td>
@@ -1556,9 +1657,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="parent-child-observation-data" class="level2"><h2 class="anchored" data-anchor-id="parent-child-observation-data">Parent-Child Observation Data</h2>
-<p><strong>Dataset:</strong> <code>parent_child_data</code> | <strong>Export:</strong> <code>export_parent_child_sav()</code></p>
-<p>Simulated parent-child observational data (n = 100) examining the effects of a remediation treatment on parenting behaviors. Includes maternal and child demographics alongside coded behavioral counts.</p>
+<hr></section></section><section id="sec-parent-child" class="level2"><h2 class="anchored" data-anchor-id="sec-parent-child">Parent-Child Observation Data</h2>
+<p><strong>Dataset:</strong> <code>parent_child_data</code> | <strong>100 rows, 11 columns</strong></p>
+<p>Simulated observational data from a study examining the effects of a remediation treatment on parenting behaviours. Includes maternal and child demographics alongside coded behavioural counts (praise, directives, and negative behaviours) from structured observations. All categorical variables are already stored as numeric codes.</p>
+<p><strong>Source:</strong> Simulated data generated to resemble a plausible parent-child observational study.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">parent_child_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 147</span></span>
@@ -1592,7 +1694,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 <tr class="odd">
 <td><code>famtype</code></td>
-<td>1 = 2-parent family, 2 = mother-only</td>
+<td>1 = 2-parent family, 2 = Mother-only</td>
 </tr>
 <tr class="even">
 <td><code>CLINREM</code></td>
@@ -1604,9 +1706,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="hindsight-bias-data-between-groups" class="level2"><h2 class="anchored" data-anchor-id="hindsight-bias-data-between-groups">Hindsight Bias Data — Between-Groups</h2>
-<p><strong>Dataset:</strong> <code>hindsight_mg_data</code> | <strong>Export:</strong> <code>export_hindsight_mg_sav()</code></p>
-<p>Simulated data from a hindsight bias study in which participants viewed celebrity faces and estimated recognition time at baseline and again after receiving an outcome cue. The between-groups factor is whether participants saw old or new faces in the hindsight phase. Each row is one participant-face trial (60 participants × 10 faces).</p>
+<hr></section></section><section id="sec-hindsight-mg" class="level2"><h2 class="anchored" data-anchor-id="sec-hindsight-mg">Hindsight Bias Data — Between-Groups</h2>
+<p><strong>Dataset:</strong> <code>hindsight_mg_data</code> | <strong>600 rows, 7 columns</strong></p>
+<p>Simulated data from a hindsight bias study in which participants viewed celebrity faces and estimated recognition time at baseline and again after receiving an outcome cue. The between-groups factor is whether participants saw old or new faces in the hindsight phase. Each row represents one participant-face trial (60 participants × 10 faces). All categorical variables are already stored as numeric codes.</p>
+<p><strong>Source:</strong> Simulated data generated to illustrate hindsight bias in a between-groups design.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hindsight_mg_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 600</span></span>
@@ -1640,9 +1743,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<hr></section></section><section id="hindsight-bias-data-within-groups" class="level2"><h2 class="anchored" data-anchor-id="hindsight-bias-data-within-groups">Hindsight Bias Data — Within-Groups</h2>
-<p><strong>Dataset:</strong> <code>hindsight_wg_data</code> | <strong>Export:</strong> <code>export_hindsight_wg_sav()</code></p>
-<p>Participant-level summary of the same hindsight bias study, averaged across faces within each fame level. Each row is one participant with separate columns for extremely and moderately famous faces at baseline and hindsight phases. Suitable for a 2×2 repeated-measures or mixed ANOVA.</p>
+<hr></section></section><section id="sec-hindsight-wg" class="level2"><h2 class="anchored" data-anchor-id="sec-hindsight-wg">Hindsight Bias Data — Within-Groups</h2>
+<p><strong>Dataset:</strong> <code>hindsight_wg_data</code> | <strong>60 rows, 6 columns</strong></p>
+<p>Participant-level summary of the hindsight bias study, averaged across faces within each fame level. Each row is one participant with separate columns for extremely and moderately famous faces at baseline and hindsight phases. Suitable for a 2×2 repeated-measures or mixed ANOVA. All categorical variables are already stored as numeric codes.</p>
+<p><strong>Source:</strong> Simulated data generated to illustrate hindsight bias in a within-groups design.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">hindsight_wg_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 60</span></span>
@@ -1665,9 +1769,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>1 = Old, 2 = New</td>
 </tr></tbody>
 </table>
-<hr></section></section><section id="interpersonal-relationships-survey-data" class="level2"><h2 class="anchored" data-anchor-id="interpersonal-relationships-survey-data">Interpersonal Relationships Survey Data</h2>
-<p><strong>Dataset:</strong> <code>interpersonal_data</code> | <strong>Export:</strong> <code>export_interpersonal_sav()</code></p>
-<p>Simulated survey data (n = 574) with demographics and interpersonal scales.</p>
+<hr></section></section><section id="sec-interpersonal" class="level2"><h2 class="anchored" data-anchor-id="sec-interpersonal">Interpersonal Relationships Survey Data</h2>
+<p><strong>Dataset:</strong> <code>interpersonal_data</code> | <strong>574 rows, 33 columns</strong></p>
+<p>Simulated survey data from college students at a predominantly white rural state university. Contains demographics, relationship variables, and scores on several interpersonal and psychological scales. All categorical variables are already stored as numeric codes.</p>
+<p><strong>Source:</strong> Simulated data generated to resemble plausible survey responses from undergraduate psychology students.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">interpersonal_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 574</span></span>
@@ -1709,8 +1814,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="categorical-variables-spss-codes-13" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-13">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 83%">
+<col style="width: 12%">
+<col style="width: 87%">
 </colgroup>
 <thead><tr class="header">
 <th>Variable</th>
@@ -1743,10 +1848,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table></section><section id="scale-variables" class="level3"><h3 class="anchored" data-anchor-id="scale-variables">Scale Variables</h3>
-<p>DAQ subscales, IDI subscales, IRI subscales, Sociability subscales, RISC, GCB, LSAS-SR</p>
-<hr></section></section><section id="self-descriptive-survey-data" class="level2"><h2 class="anchored" data-anchor-id="self-descriptive-survey-data">Self-Descriptive Survey Data</h2>
-<p><strong>Dataset:</strong> <code>self_descriptive_data</code> | <strong>Export:</strong> <code>export_selfdescriptive_sav()</code></p>
-<p>Simulated survey data (n = 547) with demographics and personality scales.</p>
+<p>The following composite scale scores are included: DAQ (Dating and Assertion Questionnaire) subscales, IDI (Interpersonal Dependency Inventory) subscales, IRI (Interpersonal Reactivity Index) subscales, Sociability subscales, RISC (Relational-Interdependent Self-Construal), GCB (Generic Conspiracist Beliefs), and LSAS-SR (Liebowitz Social Anxiety Scale — Self Report).</p>
+<hr></section></section><section id="sec-self-descriptive" class="level2"><h2 class="anchored" data-anchor-id="sec-self-descriptive">Self-Descriptive Survey Data</h2>
+<p><strong>Dataset:</strong> <code>self_descriptive_data</code> | <strong>547 rows, 37 columns</strong></p>
+<p>Simulated survey data from college students at a predominantly white rural state university. Contains demographics, relationship variables, and scores on personality and self-concept measures. All categorical variables are already stored as numeric codes.</p>
+<p><strong>Source:</strong> Simulated data generated to resemble plausible survey responses from undergraduate psychology students.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">self_descriptive_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Rows: 547</span></span>
@@ -1790,12 +1896,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co">#&gt; $ ngse              &lt;dbl&gt; 32.66, 29.14, 25.78, 37.73, 29.66, 29.22, 36.58, 35.…</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <section id="categorical-variables" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables">Categorical Variables</h3>
-<p>Same demographic coding as <code>interpersonal_data</code>.</p>
+<p>Same demographic coding as <code>interpersonal_data</code> (see above).</p>
 </section><section id="scale-variables-1" class="level3"><h3 class="anchored" data-anchor-id="scale-variables-1">Scale Variables</h3>
-<p>TIPI Big Five, MAAS subscales, RFQ subscales, ATQ-30 subscales, Rosenberg Self-Esteem, NGSE</p>
+<p>The following composite scale scores are included: TIPI (Ten-Item Personality Inventory) Big Five subscales, MAAS (Mindful Attention Awareness Scale) subscales, RFQ (Regulatory Focus Questionnaire) subscales, ATQ-30 (Automatic Thoughts Questionnaire) subscales, RSE (Rosenberg Self-Esteem), and NGSE (New General Self-Efficacy).</p>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section><div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+<ol>
+<li id="fn1"><p>The prep function uses <code>bg</code> (between-groups) while the dataset and export use <code>mg</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol></section></div></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right
     if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {

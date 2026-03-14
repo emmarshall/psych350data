@@ -6,7 +6,8 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-```{r, include = FALSE}
+```{r}
+#| include: false
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -15,12 +16,13 @@ knitr::opts_chunk$set(
 
 ## Overview
 
-All psych350data datasets can be exported as SPSS `.sav` files with full metadata. You do not need to prep or transform the data first — export functions handle everything internally. Each export automatically:
+All psych350data datasets can be exported as SPSS `.sav` files with full metadata. You do **not** need to prep or transform the data first — the export functions handle everything internally. Each export automatically:
 
 - Converts categorical variables from character strings to numeric codes
-- Adds value labels so SPSS displays category names in Data View
-- Adds variable labels describing each column in Variable View
-- Replaces `NA` with `-99` and registers it as user-defined missing
+- Adds **value labels** so SPSS displays category names in Data View
+- Adds **variable labels** describing each column in Variable View
+- Replaces `NA` with **`-99`** and registers it as user-defined missing
+
 
 ## Setup
 ```{r setup}
@@ -28,21 +30,26 @@ library(psych350data)
 library(dplyr)
 ```
 
+
 ## Quick Export
 
-Each dataset has a dedicated export function:
-```{r eval = FALSE}
-# Export to current working directory
+Each dataset has a dedicated export function that writes a `.sav` file:
+```{r}
+#| eval: false
+# Export to current working directory (uses default filename)
 export_superman_sav()
 
 # Export to a specific location
-export_superman_sav("~/Desktop/superman_data.sav")
+export_football_sav("~/Desktop/football_data.sav")
 ```
 
-Or use the generic function with any dataset name:
-```{r eval = FALSE}
+Or use the generic `export_sav()` function with a dataset name:
+```{r}
+#| eval: false
 export_sav("superman", path = "superman_data.sav")
+export_sav("hotones")
 ```
+
 
 ## All Export Functions
 
@@ -70,31 +77,57 @@ export_sav("superman", path = "superman_data.sav")
 | `export_interpersonal_sav()` | `interpersonal_data.sav` |
 | `export_selfdescriptive_sav()` | `selfdescriptive_data.sav` |
 
-## Exporting a Subset of Variables
 
-Use `dplyr::select()` to choose specific columns before exporting. Labels are preserved for all selected variables:
-```{r eval = FALSE}
-# Export selected variables
+## Exporting for Answer Keys vs. Student Data {#sec-answer-key-vs-student}
+
+A common instructor workflow is to export the **full dataset** as an answer key and a **subset of variables** as the version students receive.
+
+### Full Dataset (Answer Key)
+
+The default export includes every variable with all labels:
+```{r}
+#| eval: false
+# Full dataset — all variables, all labels, -99 for missing
+export_superman_sav("superman_answer_key.sav")
+export_interpersonal_sav("interpersonal_answer_key.sav")
+```
+
+### Subset of Variables (Student Version)
+
+Use `dplyr::select()` to choose only the variables students need, then pipe the result to `export_sav()`. All available labels are automatically preserved for the selected variables:
+```{r}
+#| eval: false
+# Superman — only the variables needed for a specific lab
 superman |>
-  select(num, media, year, type, clark_height, rt_critics_score) |>
-  export_sav(path = "superman_subset.sav")
+  select(num, media, type, clark_height, rt_critics_score) |>
+  export_sav(path = "superman_student.sav")
 
-# Use tidyselect helpers
+# Interpersonal survey — just demographics and a few scales
 interpersonal_data |>
   select(age, gender, race, gcb, risc, lsas) |>
-  export_sav(path = "interpersonal_subset.sav")
+  export_sav(path = "interpersonal_student.sav")
 
+# Huskers — select with tidyselect helpers
 huskers |>
   select(date, season, opp, result, starts_with("ne_")) |>
   export_sav(path = "huskers_nebraska_stats.sav")
 ```
 
+::: {.callout-tip}
+When you pipe a data frame directly to `export_sav()`, it still replaces `NA` with `-99` and declares `-99` as user-missing for all numeric columns. Variable labels and value labels are applied for any columns that have them defined in the package's internal label functions.
+:::
+
+
 ## Export All Datasets at Once
-```{r eval = FALSE}
+
+To create `.sav` files for every dataset in the package:
+```{r}
+#| eval: false
 export_all_sav(dir = "~/Desktop/PSYC350_SPSS/")
 ```
 
-This creates one `.sav` file per dataset in the specified folder.
+This creates one `.sav` file per dataset in the specified folder, using the default filenames. The folder is created if it doesn't exist.
+
 
 ## What Gets Converted During Export
 
@@ -103,20 +136,21 @@ This creates one `.sav` file per dataset in the specified folder.
 In R, categorical variables are human-readable character strings:
 ```{r}
 superman |>
-  select(num, media, type, height_gap) |>
+  select(num, media, type, age_grp) |>
   head(3)
 ```
 
 In the exported SPSS file, these become numeric codes with value labels:
 
-| Variable | R value | SPSS code | SPSS label |
+| Variable | R value | SPSS code | SPSS value label |
 |----------|---------|-----------|------------|
 | `type` | `"Film"` | 1 | Film |
 | `type` | `"TV Series"` | 2 | TV Series |
 | `type` | `"Serial"` | 3 | Serial |
-| `height_gap` | `"Minimal"` | 1 | Minimal (<6 inches) |
-| `height_gap` | `"Average"` | 2 | Average (6–8 inches) |
-| `height_gap` | `"Big"` | 3 | Big (>8 inches) |
+| `age_grp` | `"Minimal"` | 1 | Minimal (<2 years) |
+| `age_grp` | `"Average"` | 2 | Average (2–5 years) |
+| `age_grp` | `"Big"` | 3 | Big (>5 years) |
+
 
 ### Missing Values
 
@@ -127,44 +161,98 @@ superman |>
   filter(is.na(ldb_scores))
 ```
 
-In SPSS, these become `-99` with the missing value attribute set, so SPSS automatically excludes them from analyses.
+In the exported SPSS file, these become `-99` with the missing value attribute set, so SPSS automatically excludes them from analyses — no manual setup needed.
+
 
 ### Variable Labels
 
-Every variable gets a descriptive label visible in SPSS Variable View:
+Every variable gets a descriptive label visible in SPSS Variable View. For example:
 
 | Variable | SPSS variable label |
 |----------|---------------------|
 | `clark_height` | Height of Clark Kent/Superman actor in meters |
 | `rt_critics_score` | Rotten Tomatoes critics score (0–100 scale) |
-| `height_gap` | Relative size of height gap between actors |
+| `age_grp` | Age difference category between Superman and Lois Lane actors |
+
 
 ## Controlling Missing Value Behavior
 
-By default, `NA` values are converted to `-99` with SPSS missing value codes. To use SPSS system-missing instead:
-```{r eval = FALSE}
-export_sav("superman", path = "superman_sysmis.sav", use_sentinel = FALSE)
+By default, `NA` values are converted to `-99` with SPSS user-defined missing value codes. This is the standard behavior expected for PSYC 350 labs.
+
+If you instead want SPSS system-missing (`.` in SPSS, which is the equivalent of `NA`), set `use_sentinel = FALSE`:
+```{r}
+#| eval: false
 export_superman_sav("superman_sysmis.sav", use_sentinel = FALSE)
+export_sav("superman", path = "superman_sysmis.sav", use_sentinel = FALSE)
 ```
+
+::: {.callout-note}
+System-missing is how SPSS represents truly blank/unknown values. User-defined missing (`-99`) is a specific number that SPSS is told to treat as missing. Both are excluded from analyses, but `-99` is more common in psychology lab settings because it makes it visually obvious that a value is missing when scrolling through Data View.
+:::
+
 
 ## Auditing an Export
 
 After exporting, use `check_sav_export()` to verify that labels and missing values are correctly applied:
-```{r eval = FALSE}
+```{r}
+#| eval: false
 export_huskers_sav("huskers_data.sav")
 check_sav_export("huskers_data.sav")
+```
 
-# Show all variables, not just those with issues
+This prints a summary report flagging any issues — for example, variables with missing variable labels or `-99` values that aren't declared as user-missing.
+
+To see details for every variable (not just those with issues):
+```{r}
+#| eval: false
 check_sav_export("huskers_data.sav", show_all = TRUE)
+```
 
-# Read back into R for verification
+
+## Reading an Exported File Back into R
+
+If you need to read an exported `.sav` file back into R — for example, to verify what students will see — use `get_spss_data()`:
+```{r}
+#| eval: false
 huskers_clean <- get_spss_data("huskers_data.sav")
 ```
 
-## Using Exported SPSS files
+This reads the `.sav` file, converts `-99` back to `NA`, and removes all SPSS labels, giving you a clean tibble ready for R analysis.
 
-1. **Check Variable View** after opening to see all variable and value labels
-2. **Toggle Value Labels** in the toolbar to see category names in Data View
-3. **Missing values are pre-configured** — no manual setup needed
-4. **Re-export anytime** by running the export function again
-5. **Subset before exporting** if you only need certain variables for an assignment
+
+## Tips for Instructors
+
+Here's a practical workflow for preparing lab materials:
+
+1. **Generate the answer key** by exporting the full dataset:
+```{r}
+#| eval: false
+export_football_sav("football_answer_key.sav")
+```
+
+2. **Generate the student file** by selecting only the variables students need:
+```{r}
+#| eval: false
+football |>
+  select(group, volume) |>
+  export_sav(path = "football_student.sav")
+```
+
+3. **Verify both files** to make sure labels and missing values look correct:
+```{r}
+#| eval: false
+check_sav_export("football_answer_key.sav", show_all = TRUE)
+check_sav_export("football_student.sav", show_all = TRUE)
+```
+
+4. **Distribute** the student `.sav` file through Canvas or your LMS. Students can open it in SPSS (or JASP) and the value labels, variable labels, and missing value definitions are all pre-configured — no manual data setup required.
+
+
+## Using Exported Files in SPSS
+
+After opening the `.sav` file in SPSS:
+
+1. **Check Variable View** to see all variable labels and value labels
+2. **Toggle "Value Labels"** in the toolbar (or View → Value Labels) to see category names instead of numeric codes in Data View
+3. **Missing values are pre-configured** — SPSS will automatically exclude `-99` values from all analyses without any manual setup
+4. **Re-export anytime** from R if you need to update the data or change which variables are included

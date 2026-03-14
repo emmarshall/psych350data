@@ -5,7 +5,7 @@ format: gfm
 # psych350data <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/emmarshall/psych350data/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/emmarshall/psych350data/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 Datasets for UNL PSYC 350 Labs. All datasets are ready to use in R with human-readable categorical values, and can be exported as fully labeled SPSS (.sav) files with a single function call.
@@ -51,7 +51,7 @@ superman |> count(type)         # "Film", "TV Series", "Serial"
 football |> count(group)        # "Control", "Football no concussion", ...
 ```
 
-**2. Prep for numeric R analysis** — `prep_*()` converts character categories to the same numeric codes used in SPSS, so your R output matches SPSS output exactly:
+**2. Prep for numeric R analysis** — `prep_*()` converts character categories to the same numeric codes used in SPSS, so your R output matches SPSS output exactly. This is also useful when working with [psych350lab](https://github.com/emmarshall/psych350lab) functions that expect numeric grouping variables:
 ```{r}
 #| eval: false
 superman_num <- prep_superman(superman)
@@ -68,28 +68,44 @@ See `vignette("getting-started")` for a full walkthrough of all three workflows.
 
 ## Available Datasets
 
-| Dataset | Description | Rows | Export Function |
-|---------|-------------|------|-----------------|
-| `superman` | Superman actor data with ratings | 11 | `export_superman_sav()` |
-| `superman_smes` | SMES ratings by height gap | 47 | `export_superman_smes_sav()` |
-| `superman_movies` | Superman film box office data | 10 | `export_superman_movies_sav()` |
-| `hotones` | Hot Ones guest data | 300+ | `export_hotones_sav()` |
-| `hotones_sauces` | Hot sauce data by season and position | 250+ | `export_hotones_sauces_sav()` |
-| `hotones_episodes` | Episode-level YouTube engagement metrics | 300+ | `export_hotones_episodes_sav()` |
-| `tip_jokes` | Tipping experiment (Gueguen, 2002) | 211 | `export_tip_jokes_sav()` |
-| `mcu` | MCU films box office and ratings | 23 | `export_mcu_sav()` |
-| `mock_jury` | Mock jury sentencing (Plaster, 1989) | 114 | `export_mock_jury_sav()` |
-| `candy` | Candy power rankings — full | 85 | `export_candy_sav()` |
-| `candy_simple` | Candy power rankings — simplified | 85 | `export_candy_simple_sav()` |
-| `football` | Football concussion brain measurements | 75 | `export_football_sav()` |
-| `huskers` | Nebraska football box scores (1962–2024) | 700+ | `export_huskers_sav()` |
-| `cheese_data` | Cheese characteristics and nutrition (TidyTuesday 2024) | — | `export_cheese_sav()` |
-| `lpd_data` | Lincoln Police Department traffic stops | — | `export_lpd_sav()` |
-| `parent_child_data` | Parent-child observational study | 100 | `export_parent_child_sav()` |
-| `hindsight_mg_data` | Hindsight bias — between-groups long format | 600 | `export_hindsight_mg_sav()` |
-| `hindsight_wg_data` | Hindsight bias — within-groups wide format | 60 | `export_hindsight_wg_sav()` |
-| `interpersonal_data` | Interpersonal relationships survey scales | 574 | `export_interpersonal_sav()` |
-| `self_descriptive_data` | Personality survey scales | 547 | `export_selfdescriptive_sav()` |
+| Dataset | Description | Source |
+|---------|-------------|--------|
+| `superman` | Superman actor data with ratings | Rotten Tomatoes, Letterboxd, IMDb |
+| `superman_smes` | SMES ratings by height gap and age difference | Simulated |
+| `superman_movies` | Superman film box office data | IMDb Box Office Mojo |
+| `hotones` | Hot Ones guest data | First We Feast (YouTube) |
+| `hotones_sauces` | Hot sauce data by season and position | First We Feast (YouTube) |
+| `hotones_episodes` | Episode-level YouTube engagement metrics | First We Feast (YouTube) |
+| `tip_jokes` | Tipping experiment | Gueguen (2002) |
+| `mcu` | MCU films box office and ratings | IMDb via openintro |
+| `mock_jury` | Mock jury sentencing | Plaster (1989) |
+| `candy` | Candy power rankings — full | FiveThirtyEight (2017) |
+| `candy_simple` | Candy power rankings — simplified | FiveThirtyEight (2017) |
+| `football` | Football concussion brain measurements | Singh et al. (2014), JAMA |
+| `huskers` | Nebraska football box scores (1962–2024) | Historical records |
+| `cheese_data` | Cheese characteristics and nutrition | cheese.com via TidyTuesday |
+| `lpd_data` | Lincoln Police Dept. traffic stops | LPD Open Data Portal |
+| `parent_child_data` | Parent-child observational study | Simulated |
+| `hindsight_mg_data` | Hindsight bias — between-groups (long) | Simulated |
+| `hindsight_wg_data` | Hindsight bias — within-groups (wide) | Simulated |
+| `interpersonal_data` | Interpersonal relationships survey scales | Simulated |
+| `self_descriptive_data` | Personality survey scales | Simulated |
+
+## Exporting for Answer Keys vs. Student Data
+
+Export the full dataset as an instructor answer key, and a subset as the student version:
+```{r}
+#| eval: false
+library(dplyr)
+
+# Full dataset — answer key with all variables
+export_football_sav("football_answer_key.sav")
+
+# Student version — only the variables they need
+football |>
+  select(group, volume) |>
+  export_sav(path = "football_student.sav")
+```
 
 ## R vs SPSS: What's Different?
 
@@ -149,9 +165,9 @@ huskers_clean <- get_spss_data("huskers_data.sav")
 
 ## Documentation
 
-- `vignette("getting-started")` — Introduction and all three workflows
-- `vignette("exporting-spss")` — Detailed SPSS export guide
-- `vignette("dataset-guide")` — Complete reference for all datasets
+- `vignette("getting-started")` — Introduction and all three workflows, including psych350lab compatibility
+- `vignette("exporting-spss")` — Detailed SPSS export guide with answer key vs. student workflows
+- `vignette("dataset-reference")` — Complete reference for all datasets with source attribution
 - `?dataset_name` — Help for any specific dataset
 
 ## License
