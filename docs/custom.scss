@@ -1,5 +1,13 @@
 /*-- scss:defaults --*/
-
+// ===========================
+// UTILITY FUNCTIONS
+// ===========================
+@function body-mix($weight) {
+  @return mix($body-bg, $body-color, $weight);
+}
+@function accent-mix($weight) {
+  @return mix($body-bg, $accent-color, $weight);
+}
 // ===========================
 // Based on brite bootswatch theme
 // ===========================

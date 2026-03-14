@@ -3,8 +3,8 @@ project:
   output-dir: ../docs/
 
 # Note: freeze functionality can be set at a project level or for individual .qmd files
-# execute:
-#   freeze: false
+execute:
+  freeze: false
 
 website:
   title: "$ALTDOC_PACKAGE_NAME"
@@ -20,7 +20,7 @@ website:
     collapse-level: 1
     contents:
       - text: Home
-        file: index.md
+        file: index.qmd
       - section: $ALTDOC_VIGNETTE_BLOCK
       - section: $ALTDOC_MAN_BLOCK
       - text: News
