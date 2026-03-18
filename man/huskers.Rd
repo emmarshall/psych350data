@@ -8,7 +8,7 @@
 A data frame with columns:
 \describe{
 \item{date}{Date the game was played.}
-\item{time}{Kickoff time (Central Time).}
+\item{time_ct}{Kickoff time (Central Time).}
 \item{season}{Season (year) the game was played.}
 \item{opp}{Nebraska's opponent.}
 \item{site}{Game location: "home", "away", "neutral-home", or "neutral-away".}

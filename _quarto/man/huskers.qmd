@@ -23,7 +23,7 @@ A data frame with columns:
 <dl>
 <dt>date</dt><dd>Date the game was played.
 </dd>
-<dt>time</dt><dd>Kickoff time (Central Time).
+<dt>time_ct</dt><dd>Kickoff time (Central Time).
 </dd>
 <dt>season</dt><dd>Season (year) the game was played.
 </dd>
