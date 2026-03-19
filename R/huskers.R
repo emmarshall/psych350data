@@ -10,11 +10,11 @@
 #'   \item{time_ct}{Kickoff time (Central Time).}
 #'   \item{season}{Season (year) the game was played.}
 #'   \item{opp}{Nebraska's opponent.}
-#'   \item{site}{Game location: "home", "away", "neutral-home", or "neutral-away".}
-#'   \item{conference}{Whether the opponent was a conference opponent (TRUE/FALSE).}
+#'   \item{site}{Game location: "Home", "Away", "Neutral (home)", or "Neutral (away)".}
+#'   \item{conference}{Conference game: "Conference" or "Non-conference".}
+#'   \item{result}{Game result: "Win", "Loss", or "Tie".}
 #'   \item{opp_rank}{Opponent's ranking entering the game (CFP when available, otherwise AP).}
 #'   \item{ne_rank}{Nebraska's ranking entering the game (CFP when available, otherwise AP).}
-#'   \item{result}{Game result: W (Win), L (Loss), or T (Tie).}
 #'   \item{opp_score}{Opponent's total score.}
 #'   \item{ne_score}{Nebraska's total score.}
 #'   \item{opp_score_q1}{Opponent's first quarter points.}
@@ -87,40 +87,32 @@
 
 #' @noRd
 label_huskers <- function(df, use_sentinel = TRUE) {
-
   # Step 1: Convert character categorical variables to numeric codes
   if ("site" %in% names(df) && is.character(df$site)) {
-    df$site <- dplyr::case_match(
+    df$site <- dplyr::recode_values(
       df$site,
-      "Home" ~ 1,
-      "Away" ~ 2,
-      "Neutral (home)" ~ 3,
-      "Neutral (away)" ~ 4,
-      .default = NA_real_
-    )
+      from = c("Home", "Away", "Neutral (home)", "Neutral (away)"),
+      to   = c(1, 2, 3, 4)
+    ) |> as.numeric()
   }
 
   if ("result" %in% names(df) && is.character(df$result)) {
-    df$result <- dplyr::case_match(
+    df$result <- dplyr::recode_values(
       df$result,
-      "Win" ~ 1,
-      "Loss" ~ 2,
-      "Tie" ~ 3,
-      .default = NA_real_
-    )
+      from = c("Win", "Loss", "Tie"),
+      to   = c(1, 2, 3)
+    ) |> as.numeric()
   }
 
-  # needed to change this to match the case_when(is.logical(...)) logic already in prep_huskers()
   if ("conference" %in% names(df)) {
     if (is.logical(df$conference)) {
       df$conference <- as.numeric(df$conference)
     } else if (is.character(df$conference)) {
-      df$conference <- dplyr::case_match(
+      df$conference <- dplyr::recode_values(
         df$conference,
-        "Non-conference" ~ 0,
-        "Conference"     ~ 1,
-        .default = NA_real_
-      )
+        from = c("Non-conference", "Conference"),
+        to   = c(0, 1)
+      ) |> as.numeric()
     }
   }
 
@@ -142,7 +134,7 @@ label_huskers <- function(df, use_sentinel = TRUE) {
   # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
     date = "Date the game was played",
-    time = "Kickoff time (Central Time)",
+    time_ct = "Kickoff time (Central Time)",
     season = "Season (year)",
     opp = "Opponent",
     site = "Game location",

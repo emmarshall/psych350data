@@ -29,15 +29,15 @@ A data frame with columns:
 </dd>
 <dt>opp</dt><dd>Nebraska's opponent.
 </dd>
-<dt>site</dt><dd>Game location: &quot;home&quot;, &quot;away&quot;, &quot;neutral-home&quot;, or &quot;neutral-away&quot;.
+<dt>site</dt><dd>Game location: &quot;Home&quot;, &quot;Away&quot;, &quot;Neutral (home)&quot;, or &quot;Neutral (away)&quot;.
 </dd>
-<dt>conference</dt><dd>Whether the opponent was a conference opponent (TRUE/FALSE).
+<dt>conference</dt><dd>Conference game: &quot;Conference&quot; or &quot;Non-conference&quot;.
+</dd>
+<dt>result</dt><dd>Game result: &quot;Win&quot;, &quot;Loss&quot;, or &quot;Tie&quot;.
 </dd>
 <dt>opp_rank</dt><dd>Opponent's ranking entering the game (CFP when available, otherwise AP).
 </dd>
 <dt>ne_rank</dt><dd>Nebraska's ranking entering the game (CFP when available, otherwise AP).
-</dd>
-<dt>result</dt><dd>Game result: W (Win), L (Loss), or T (Tie).
 </dd>
 <dt>opp_score</dt><dd>Opponent's total score.
 </dd>

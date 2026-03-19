@@ -11,11 +11,11 @@ A data frame with columns:
 \item{time_ct}{Kickoff time (Central Time).}
 \item{season}{Season (year) the game was played.}
 \item{opp}{Nebraska's opponent.}
-\item{site}{Game location: "home", "away", "neutral-home", or "neutral-away".}
-\item{conference}{Whether the opponent was a conference opponent (TRUE/FALSE).}
+\item{site}{Game location: "Home", "Away", "Neutral (home)", or "Neutral (away)".}
+\item{conference}{Conference game: "Conference" or "Non-conference".}
+\item{result}{Game result: "Win", "Loss", or "Tie".}
 \item{opp_rank}{Opponent's ranking entering the game (CFP when available, otherwise AP).}
 \item{ne_rank}{Nebraska's ranking entering the game (CFP when available, otherwise AP).}
-\item{result}{Game result: W (Win), L (Loss), or T (Tie).}
 \item{opp_score}{Opponent's total score.}
 \item{ne_score}{Nebraska's total score.}
 \item{opp_score_q1}{Opponent's first quarter points.}

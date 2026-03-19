@@ -329,23 +329,22 @@ prep_huskers <- function(data, keep_labels = FALSE) {
   data <- .save_labels(data, cat_vars, keep_labels)
   data |>
     dplyr::mutate(
-      site = dplyr::case_match(.data[["site"]],
-                               "Home"           ~ 1,
-                               "Away"           ~ 2,
-                               "Neutral (home)" ~ 3,
-                               "Neutral (away)" ~ 4,
-                               .default = NA_real_),
-      result = dplyr::case_match(.data[["result"]],
-                                 "Win"  ~ 1,
-                                 "Loss" ~ 2,
-                                 "Tie"  ~ 3,
-                                 .default = NA_real_),
-      # conference may be logical or character depending on source
+      site = dplyr::recode_values(
+        .data[["site"]],
+        from = c("Home", "Away", "Neutral (home)", "Neutral (away)"),
+        to   = c(1, 2, 3, 4)
+      ) |> as.numeric(),
+      result = dplyr::recode_values(
+        .data[["result"]],
+        from = c("Win", "Loss", "Tie"),
+        to   = c(1, 2, 3)
+      ) |> as.numeric(),
       conference = dplyr::case_when(
         is.logical(.data[["conference"]]) ~ as.numeric(.data[["conference"]]),
         .data[["conference"]] == "Conference"     ~ 1,
         .data[["conference"]] == "Non-conference" ~ 0,
-        .default = NA_real_)
+        .default = NA_real_
+      )
     )
 }
 
