@@ -60,9 +60,9 @@ A tibble with variables:
 </dd>
 <dt>roi</dt><dd>Return on investment ((worldwide - budget) / budget)
 </dd>
-<dt>budget_cat</dt><dd>Budget category: Low (&lt;\$50M), Medium (\$50-150M), High (&gt;\$150M)
+<dt>budget_cat</dt><dd>Budget category (tercile-based): Low, Medium, High
 </dd>
-<dt>box_office_cat</dt><dd>Box office category: Low (&lt;\$100M), Medium (\$100-500M), High (&gt;\$500M)
+<dt>box_office_cat</dt><dd>Box office category (tercile-based): Low, Medium, High
 </dd>
 </dl>
 

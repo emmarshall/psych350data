@@ -55,20 +55,16 @@ if (file.exists(file.path(source_dir, "superman_movies.csv"))) {
       # ROI (return on investment)
       roi = (worldwide_gross - budget) / budget,
 
-      # Budget category
-      budget_cat = case_when(
-        is.na(budget) ~ NA_character_,
-        budget < 50 ~ "Low",
-        budget < 150 ~ "Medium",
-        budget >= 150 ~ "High"
+      # Budget category (tercile-based for even groups)
+      budget_cat = factor(
+        c("Low", "Medium", "High")[ntile(budget, 3)],
+        levels = c("Low", "Medium", "High")
       ),
 
-      # Box office success category
-      box_office_cat = case_when(
-        is.na(worldwide_gross) ~ NA_character_,
-        worldwide_gross < 100 ~ "Low",
-        worldwide_gross < 500 ~ "Medium",
-        worldwide_gross >= 500 ~ "High"
+      # Box office success category (tercile-based for even groups)
+      box_office_cat = factor(
+        c("Low", "Medium", "High")[ntile(worldwide_gross, 3)],
+        levels = c("Low", "Medium", "High")
       )
     )
 

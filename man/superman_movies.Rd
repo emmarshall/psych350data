@@ -27,8 +27,8 @@ A tibble with variables:
 \item{poster_url_hires}{Movie poster URL (high resolution)}
 \item{clark_actor}{Actor playing Clark Kent/Superman (for joining with superman dataset)}
 \item{roi}{Return on investment ((worldwide - budget) / budget)}
-\item{budget_cat}{Budget category: Low (<$50M), Medium ($50-150M), High (>$150M)}
-\item{box_office_cat}{Box office category: Low (<$100M), Medium ($100-500M), High (>$500M)}
+\item{budget_cat}{Budget category (tercile-based): Low, Medium, High}
+\item{box_office_cat}{Box office category (tercile-based): Low, Medium, High}
 }
 }
 \source{

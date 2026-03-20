@@ -4,7 +4,7 @@
     "href": "CITATION.html",
     "title": "Citation",
     "section": "",
-    "text": "Citation\nTo cite package ‘psych350data’ in publications use:\n\nMarshall E (????). psych350data: Datasets for UNL PSYC 350 Labs. R package version 0.1.0, https://emmarshall.github.io/psych350data/.",
+    "text": "Citation\nTo cite package ‘psych350data’ in publications use:\n\nMarshall E (2026). psych350data: Datasets for UNL PSYC 350 Labs. R package version 0.1.0, https://emmarshall.github.io/psych350data/.",
     "crumbs": [
       "Citation"
     ]
@@ -136,7 +136,8 @@
     "section": "",
     "text": "Export Mock Jury data as SPSS .sav file\n\n\n\nexport_mock_jury_sav(path = \"mock_jury_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_mock_jury_sav"
     ]
   },
@@ -147,7 +148,8 @@
     "section": "",
     "text": "Export Mock Jury data as SPSS .sav file\n\n\n\nexport_mock_jury_sav(path = \"mock_jury_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_mock_jury_sav"
     ]
   },
@@ -158,7 +160,8 @@
     "section": "",
     "text": "Combines the superman_movies dataset with physical characteristics and ratings data from the superman dataset, matched by actor name.\n\njoin_superman_data(\n  movies = NULL,\n  actors = NULL,\n  suffix = c(\"_movie\", \"_actor\")\n)\n\n\n\n\n\nmovies\n\n\nA data frame of Superman movies (default: superman_movies)\n\n\n\n\nactors\n\n\nA data frame of Superman actor data (default: superman)\n\n\n\n\nsuffix\n\n\nSuffixes for disambiguating duplicate column names. Default c(\"_movie\", \"_actor\").\n\n\n\nA tibble with movie data joined to actor data.\n\n\nlibrary(\"psych350data\")\n\ncombined &lt;- join_superman_data()\ncombined |&gt; export_sav(path = \"superman_combined.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "join_superman_data"
     ]
   },
@@ -169,7 +172,8 @@
     "section": "",
     "text": "Combines the superman_movies dataset with physical characteristics and ratings data from the superman dataset, matched by actor name.\n\njoin_superman_data(\n  movies = NULL,\n  actors = NULL,\n  suffix = c(\"_movie\", \"_actor\")\n)\n\n\n\n\n\nmovies\n\n\nA data frame of Superman movies (default: superman_movies)\n\n\n\n\nactors\n\n\nA data frame of Superman actor data (default: superman)\n\n\n\n\nsuffix\n\n\nSuffixes for disambiguating duplicate column names. Default c(\"_movie\", \"_actor\").\n\n\n\nA tibble with movie data joined to actor data.\n\n\nlibrary(\"psych350data\")\n\ncombined &lt;- join_superman_data()\ncombined |&gt; export_sav(path = \"superman_combined.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "join_superman_data"
     ]
   },
@@ -180,7 +184,8 @@
     "section": "",
     "text": "Brain measurements comparing football players (with and without concussion history) to non-football-playing controls.\n\n\n\nfootball\n\n\n\n\nA data frame with 3 variables:\n\n\ngroup\n\n\nControl (1), Football no concussion (2), Football with concussion (3)\n\n\nyears\n\n\nYears of football played\n\n\nvolume\n\n\nTotal hippocampus volume in cubic centimeters\n\n\n\n\n\nSingh R, Meier T, et al., JAMA, 311(18), 2014.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "football"
     ]
   },
@@ -191,7 +196,8 @@
     "section": "",
     "text": "Brain measurements comparing football players (with and without concussion history) to non-football-playing controls.\n\n\n\nfootball\n\n\n\n\nA data frame with 3 variables:\n\n\ngroup\n\n\nControl (1), Football no concussion (2), Football with concussion (3)\n\n\nyears\n\n\nYears of football played\n\n\nvolume\n\n\nTotal hippocampus volume in cubic centimeters\n\n\n\n\n\nSingh R, Meier T, et al., JAMA, 311(18), 2014.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "football"
     ]
   },
@@ -202,7 +208,8 @@
     "section": "",
     "text": "Traffic stop records from the Lincoln Police Department Open Data Portal, compiled from a multi-sheet Excel file with one sheet per year and stacked into a single data frame. Date and time variables have been parsed and a time-of-day category added. All categorical variables are stored as integers with SPSS-style value labels.\n\n\n\nlpd_data\n\n\n\n\nA tibble with the following variables:\n\n\nyear\n\n\nYear of the traffic stop (from Excel sheet name)\n\n\nfid\n\n\nFeature ID — unique stop identifier\n\n\ndate\n\n\nDate of the traffic stop\n\n\nmonth\n\n\nMonth of the traffic stop (1–12)\n\n\ntime\n\n\nTime of the traffic stop (HH:MM, 24-hour format)\n\n\ntime_of_day\n\n\nTime of day: Morning 5am–noon (1), Afternoon noon–5pm (2), Evening 5pm–9pm (3), Night 9pm–5am (4)\n\n\nrace\n\n\nDriver race/ethnicity: White (1), Black (2), Hispanic (3), Asian (4), American Indian (5), Other (6)\n\n\nsex\n\n\nDriver sex: Male (1), Female (2)\n\n\nreason\n\n\nReason for stop: Traffic probable cause (1), Criminal probable cause (2), Other (3)\n\n\noutcome\n\n\nStop outcome: Traffic warning (1), Traffic official (2), Criminal cite and release (3), Lodged in jail (4), None (5)\n\n\nsearch\n\n\nSearch conducted: None (1), Incident to arrest (2), Inventory (3), Consent (4), Probable cause (5)\n\n\n\n\n\nColumn names and categorical values reflect the LPD data dictionary. Check data-raw/lpd_stops_data.R if the portal changes its export format.\n\n\n\nLincoln Police Department Open Data Portal. https://opendata.lincoln.ne.gov/datasets/lpd-traffic-stops-2023/about",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "lpd_data"
     ]
   },
@@ -213,7 +220,8 @@
     "section": "",
     "text": "Traffic stop records from the Lincoln Police Department Open Data Portal, compiled from a multi-sheet Excel file with one sheet per year and stacked into a single data frame. Date and time variables have been parsed and a time-of-day category added. All categorical variables are stored as integers with SPSS-style value labels.\n\n\n\nlpd_data\n\n\n\n\nA tibble with the following variables:\n\n\nyear\n\n\nYear of the traffic stop (from Excel sheet name)\n\n\nfid\n\n\nFeature ID — unique stop identifier\n\n\ndate\n\n\nDate of the traffic stop\n\n\nmonth\n\n\nMonth of the traffic stop (1–12)\n\n\ntime\n\n\nTime of the traffic stop (HH:MM, 24-hour format)\n\n\ntime_of_day\n\n\nTime of day: Morning 5am–noon (1), Afternoon noon–5pm (2), Evening 5pm–9pm (3), Night 9pm–5am (4)\n\n\nrace\n\n\nDriver race/ethnicity: White (1), Black (2), Hispanic (3), Asian (4), American Indian (5), Other (6)\n\n\nsex\n\n\nDriver sex: Male (1), Female (2)\n\n\nreason\n\n\nReason for stop: Traffic probable cause (1), Criminal probable cause (2), Other (3)\n\n\noutcome\n\n\nStop outcome: Traffic warning (1), Traffic official (2), Criminal cite and release (3), Lodged in jail (4), None (5)\n\n\nsearch\n\n\nSearch conducted: None (1), Incident to arrest (2), Inventory (3), Consent (4), Probable cause (5)\n\n\n\n\n\nColumn names and categorical values reflect the LPD data dictionary. Check data-raw/lpd_stops_data.R if the portal changes its export format.\n\n\n\nLincoln Police Department Open Data Portal. https://opendata.lincoln.ne.gov/datasets/lpd-traffic-stops-2023/about",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "lpd_data"
     ]
   },
@@ -224,7 +232,8 @@
     "section": "",
     "text": "Reads an exported .sav file and audits its structure to confirm that variable labels, value labels, and missing value codes are correctly applied. Prints a formatted summary report and invisibly returns a list of audit results.\n\n\n\ncheck_sav_export(file_path, sentinel = -99, show_all = FALSE)\n\n\n\n\n\n\n\nfile_path\n\n\nCharacter string. Path to the .sav file to check.\n\n\n\n\nsentinel\n\n\nNumeric. The missing value sentinel to look for. Default -99.\n\n\n\n\nshow_all\n\n\nLogical. If TRUE, prints details for every variable including those that pass all checks. If FALSE (default), only prints variables with issues.\n\n\n\n\n\n\nInvisibly returns a list with components:\n\n\nvariables\n\n\nData frame with one row per variable and audit columns.\n\n\nn_vars\n\n\nTotal number of variables.\n\n\nmissing_var_labels\n\n\nVariables with no variable label.\n\n\nmissing_val_labels\n\n\nNumeric variables with no value labels (informational only – not all numeric vars need them).\n\n\nmissing_na_values\n\n\nNumeric variables where sentinel appears in data but is not declared as SPSS missing.\n\n\nsentinel_not_found\n\n\nNumeric variables with NAs in raw data but no sentinel value found in export.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "check_sav_export"
     ]
   },
@@ -235,7 +244,8 @@
     "section": "",
     "text": "Reads an exported .sav file and audits its structure to confirm that variable labels, value labels, and missing value codes are correctly applied. Prints a formatted summary report and invisibly returns a list of audit results.\n\n\n\ncheck_sav_export(file_path, sentinel = -99, show_all = FALSE)\n\n\n\n\n\n\n\nfile_path\n\n\nCharacter string. Path to the .sav file to check.\n\n\n\n\nsentinel\n\n\nNumeric. The missing value sentinel to look for. Default -99.\n\n\n\n\nshow_all\n\n\nLogical. If TRUE, prints details for every variable including those that pass all checks. If FALSE (default), only prints variables with issues.\n\n\n\n\n\n\nInvisibly returns a list with components:\n\n\nvariables\n\n\nData frame with one row per variable and audit columns.\n\n\nn_vars\n\n\nTotal number of variables.\n\n\nmissing_var_labels\n\n\nVariables with no variable label.\n\n\nmissing_val_labels\n\n\nNumeric variables with no value labels (informational only – not all numeric vars need them).\n\n\nmissing_na_values\n\n\nNumeric variables where sentinel appears in data but is not declared as SPSS missing.\n\n\nsentinel_not_found\n\n\nNumeric variables with NAs in raw data but no sentinel value found in export.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "check_sav_export"
     ]
   },
@@ -246,7 +256,8 @@
     "section": "",
     "text": "Data on guests from the YouTube show Hot Ones, including demographic information, Scoville ratings for each sauce, and YouTube engagement metrics.\n\n\n\nhotones\n\n\n\n\nA tibble with variables including:\n\n\nsubn\n\n\nUnique guest/participant number\n\n\nname\n\n\nGuest full name\n\n\ngender\n\n\nGuest gender: Male (1), Female (2)\n\n\nage\n\n\nGuest age at time of appearance\n\n\noccupation\n\n\nGuest primary occupation (1-14, see value labels)\n\n\nwing_total\n\n\nNumber of wings eaten\n\n\nalt_food\n\n\nAlternative food used instead of wings\n\n\nhelpers\n\n\nDrinks or other items used to help with the heat\n\n\nSHU_1\n\n\nSauce 1 Scoville Heat Units\n\n\nSHU_2\n\n\nSauce 2 Scoville Heat Units\n\n\nSHU_3\n\n\nSauce 3 Scoville Heat Units\n\n\nSHU_4\n\n\nSauce 4 Scoville Heat Units\n\n\nSHU_5\n\n\nSauce 5 Scoville Heat Units\n\n\nSHU_6\n\n\nSauce 6 Scoville Heat Units\n\n\nSHU_7\n\n\nSauce 7 Scoville Heat Units\n\n\nSHU_8\n\n\nSauce 8 Scoville Heat Units\n\n\nSHU_9\n\n\nSauce 9 Scoville Heat Units\n\n\nSHU_10\n\n\nSauce 10 Scoville Heat Units\n\n\nresult\n\n\nSucceeded (1), Failed (2), or Incomplete (3)\n\n\nappearances\n\n\nNumber of appearances on the show\n\n\nseason\n\n\nSeason number\n\n\norder\n\n\nEpisode number within season\n\n\nviews\n\n\nYouTube views (in millions)\n\n\nlikes\n\n\nYouTube likes\n\n\ncomments\n\n\nYouTube comments\n\n\n\n\n\nHot Ones / First We Feast (YouTube)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hotones"
     ]
   },
@@ -257,7 +268,8 @@
     "section": "",
     "text": "Data on guests from the YouTube show Hot Ones, including demographic information, Scoville ratings for each sauce, and YouTube engagement metrics.\n\n\n\nhotones\n\n\n\n\nA tibble with variables including:\n\n\nsubn\n\n\nUnique guest/participant number\n\n\nname\n\n\nGuest full name\n\n\ngender\n\n\nGuest gender: Male (1), Female (2)\n\n\nage\n\n\nGuest age at time of appearance\n\n\noccupation\n\n\nGuest primary occupation (1-14, see value labels)\n\n\nwing_total\n\n\nNumber of wings eaten\n\n\nalt_food\n\n\nAlternative food used instead of wings\n\n\nhelpers\n\n\nDrinks or other items used to help with the heat\n\n\nSHU_1\n\n\nSauce 1 Scoville Heat Units\n\n\nSHU_2\n\n\nSauce 2 Scoville Heat Units\n\n\nSHU_3\n\n\nSauce 3 Scoville Heat Units\n\n\nSHU_4\n\n\nSauce 4 Scoville Heat Units\n\n\nSHU_5\n\n\nSauce 5 Scoville Heat Units\n\n\nSHU_6\n\n\nSauce 6 Scoville Heat Units\n\n\nSHU_7\n\n\nSauce 7 Scoville Heat Units\n\n\nSHU_8\n\n\nSauce 8 Scoville Heat Units\n\n\nSHU_9\n\n\nSauce 9 Scoville Heat Units\n\n\nSHU_10\n\n\nSauce 10 Scoville Heat Units\n\n\nresult\n\n\nSucceeded (1), Failed (2), or Incomplete (3)\n\n\nappearances\n\n\nNumber of appearances on the show\n\n\nseason\n\n\nSeason number\n\n\norder\n\n\nEpisode number within season\n\n\nviews\n\n\nYouTube views (in millions)\n\n\nlikes\n\n\nYouTube likes\n\n\ncomments\n\n\nYouTube comments\n\n\n\n\n\nHot Ones / First We Feast (YouTube)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hotones"
     ]
   },
@@ -268,7 +280,8 @@
     "section": "",
     "text": "Participant-level summary of the hindsight bias study, averaged across faces within each fame level. Each row is one participant with separate columns for extremely and moderately famous faces at baseline and hindsight phases. Suitable for a 2x2 repeated- measures or mixed ANOVA.\n\n\n\nhindsight_wg_data\n\n\n\n\nA tibble with 60 rows and 6 variables:\n\n\nparticipant_id\n\n\nUnique participant identifier\n\n\ncondition\n\n\nExperimental condition: Old (1), New (2)\n\n\nEXTREMEavg_1\n\n\nAverage baseline score - extremely famous faces (seconds)\n\n\nMODERATEavg_1\n\n\nAverage baseline score - moderately famous faces (seconds)\n\n\nEXTREMEavg_2\n\n\nAverage hindsight score - extremely famous faces (seconds)\n\n\nMODERATEavg_2\n\n\nAverage hindsight score - moderately famous faces (seconds)\n\n\n\n\n\nSimulated data generated to illustrate hindsight bias in a within-groups design.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hindsight_wg_data"
     ]
   },
@@ -279,7 +292,8 @@
     "section": "",
     "text": "Participant-level summary of the hindsight bias study, averaged across faces within each fame level. Each row is one participant with separate columns for extremely and moderately famous faces at baseline and hindsight phases. Suitable for a 2x2 repeated- measures or mixed ANOVA.\n\n\n\nhindsight_wg_data\n\n\n\n\nA tibble with 60 rows and 6 variables:\n\n\nparticipant_id\n\n\nUnique participant identifier\n\n\ncondition\n\n\nExperimental condition: Old (1), New (2)\n\n\nEXTREMEavg_1\n\n\nAverage baseline score - extremely famous faces (seconds)\n\n\nMODERATEavg_1\n\n\nAverage baseline score - moderately famous faces (seconds)\n\n\nEXTREMEavg_2\n\n\nAverage hindsight score - extremely famous faces (seconds)\n\n\nMODERATEavg_2\n\n\nAverage hindsight score - moderately famous faces (seconds)\n\n\n\n\n\nSimulated data generated to illustrate hindsight bias in a within-groups design.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hindsight_wg_data"
     ]
   },
@@ -290,7 +304,8 @@
     "section": "",
     "text": "Converts a psych350data dataset to a labelled SPSS file with variable labels, value labels, and defined missing values (-99).\n\nexport_sav(dataset, path = NULL, use_sentinel = TRUE)\n\n\n\n\n\ndataset\n\n\nCharacter string naming the dataset, or the dataset object itself. Valid names: \"superman\", \"superman_smes\", \"superman_movies\", \"superman_combined\", \"hotones\", \"hotones_sauces\", \"hotones_episodes\", \"tip_jokes\", \"mcu\", \"mock_jury\", \"candy\", \"candy_simple\", \"football\", \"huskers\", \"cheese_data\", \"lpd_data\", \"parent_child_data\", \"hindsight_mg_data\", \"hindsight_wg_data\", \"interpersonal_data\", \"selfdescriptive_data\"\n\n\n\n\npath\n\n\nFile path for the output .sav file. If NULL, saves to the working directory with a default name.\n\n\n\n\nuse_sentinel\n\n\nLogical. If TRUE (default), NA values are replaced with -99 and marked as SPSS user-defined missing. If FALSE, NAs are written as system-missing.\n\n\n\nInvisibly returns the labelled data frame that was written.\n\n\nlibrary(\"psych350data\")\n\nexport_sav(\"superman\", path = \"superman_data.sav\")\nexport_sav(\"hotones\", path = \"~/Desktop/hotones_data.sav\")\n\n# Export a subset of variables\nlibrary(dplyr)\nsuperman |&gt;\n  select(1:8) |&gt;\n  export_sav(path = \"superman_subset.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_sav"
     ]
   },
@@ -301,7 +316,8 @@
     "section": "",
     "text": "Converts a psych350data dataset to a labelled SPSS file with variable labels, value labels, and defined missing values (-99).\n\nexport_sav(dataset, path = NULL, use_sentinel = TRUE)\n\n\n\n\n\ndataset\n\n\nCharacter string naming the dataset, or the dataset object itself. Valid names: \"superman\", \"superman_smes\", \"superman_movies\", \"superman_combined\", \"hotones\", \"hotones_sauces\", \"hotones_episodes\", \"tip_jokes\", \"mcu\", \"mock_jury\", \"candy\", \"candy_simple\", \"football\", \"huskers\", \"cheese_data\", \"lpd_data\", \"parent_child_data\", \"hindsight_mg_data\", \"hindsight_wg_data\", \"interpersonal_data\", \"selfdescriptive_data\"\n\n\n\n\npath\n\n\nFile path for the output .sav file. If NULL, saves to the working directory with a default name.\n\n\n\n\nuse_sentinel\n\n\nLogical. If TRUE (default), NA values are replaced with -99 and marked as SPSS user-defined missing. If FALSE, NAs are written as system-missing.\n\n\n\nInvisibly returns the labelled data frame that was written.\n\n\nlibrary(\"psych350data\")\n\nexport_sav(\"superman\", path = \"superman_data.sav\")\nexport_sav(\"hotones\", path = \"~/Desktop/hotones_data.sav\")\n\n# Export a subset of variables\nlibrary(dplyr)\nsuperman |&gt;\n  select(1:8) |&gt;\n  export_sav(path = \"superman_subset.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_sav"
     ]
   },
@@ -312,7 +328,8 @@
     "section": "",
     "text": "Simulated survey data (n = 574) from college students at a predominantly white rural state university, containing demographics, relationship variables, and scores on several interpersonal and psychological scales including the DAQ, Interpersonal Dependency Inventory, Interpersonal Reactivity Index, Sociability Scale, RISC, GCB, and LSAS-SR.\n\n\n\ninterpersonal_data\n\n\n\n\nA tibble with 574 rows and 33 variables:\n\n\nage\n\n\nAge in years (18-25)\n\n\ngender\n\n\nSelf-described gender: Male (1), Female (2), Another (3)\n\n\nsexorient\n\n\nSexual orientation (1-11, see value labels)\n\n\nrace\n\n\nSelf-described race: Asian (1), Black (2), Indigenous/Aboriginal/First Nations (3), Latino/Hispanic (4), Middle Eastern (5), White (6), Other (7)\n\n\nhand\n\n\nWriting hand: Right (1), Left (2), Both (3)\n\n\ncommunity\n\n\nChildhood community type: Rural (1), Small town (2), Suburban (3), Urban (4)\n\n\nparentedu\n\n\nParent graduated from four-year college: No (0), Yes (1)\n\n\nfamclass\n\n\nChildhood social class: Working class (1), Lower class (2), Lower middle class (3), Upper middle class (4), Upper class (5)\n\n\nfaminc\n\n\nFamily income during senior year of high school\n\n\nnumsib\n\n\nNumber of siblings\n\n\nmove\n\n\nNumber of times moved as a child\n\n\nclsfrn\n\n\nNumber of close friends\n\n\nclsfrlst\n\n\nNumber of people who would list you as a close friend\n\n\ngreek_in\n\n\nFraternity/sorority membership: Independent (1), Greek (2)\n\n\ncampus\n\n\nLiving on campus: No (0), Yes (1)\n\n\nrelsp\n\n\nRomantic relationship status (1-5, see value labels)\n\n\nrlength\n\n\nLength of current or last relationship in months\n\n\nserious\n\n\nSeriousness rating of current/most recent relationship (1-7)\n\n\nnumrels\n\n\nNumber of dating relationships\n\n\ngcb\n\n\nGeneric Conspiracist Beliefs scale score\n\n\ndatdaq\n\n\nDating subscale of the DAQ\n\n\nassrtdaq\n\n\nAssertiveness subscale of the DAQ\n\n\nemorel\n\n\nEmotional Reliance on Others subscale of the IDI\n\n\nlacksc\n\n\nLack of Self-Confidence subscale of the IDI\n\n\nauto\n\n\nAssertion of Autonomy subscale of the IDI\n\n\nperspec\n\n\nPerspective-Taking subscale of the IRI\n\n\nfantasy\n\n\nFantasy subscale of the IRI\n\n\nempath\n\n\nEmpathic Concern subscale of the IRI\n\n\ndistress\n\n\nPersonal Distress subscale of the IRI\n\n\npolsoc\n\n\nPolitical Sociability subscale of Sociability Scale\n\n\nnpolsoc\n\n\nNon-Political Sociability subscale of Sociability Scale\n\n\nrisc\n\n\nRelational-Interdependent Self-Construal Scale score\n\n\nlsas\n\n\nLiebowitz Social Anxiety Scale self-report total (LSAS-SR)\n\n\n\n\n\nSimulated data generated to resemble plausible survey responses from undergraduate psychology students.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "interpersonal_data"
     ]
   },
@@ -323,7 +340,8 @@
     "section": "",
     "text": "Simulated survey data (n = 574) from college students at a predominantly white rural state university, containing demographics, relationship variables, and scores on several interpersonal and psychological scales including the DAQ, Interpersonal Dependency Inventory, Interpersonal Reactivity Index, Sociability Scale, RISC, GCB, and LSAS-SR.\n\n\n\ninterpersonal_data\n\n\n\n\nA tibble with 574 rows and 33 variables:\n\n\nage\n\n\nAge in years (18-25)\n\n\ngender\n\n\nSelf-described gender: Male (1), Female (2), Another (3)\n\n\nsexorient\n\n\nSexual orientation (1-11, see value labels)\n\n\nrace\n\n\nSelf-described race: Asian (1), Black (2), Indigenous/Aboriginal/First Nations (3), Latino/Hispanic (4), Middle Eastern (5), White (6), Other (7)\n\n\nhand\n\n\nWriting hand: Right (1), Left (2), Both (3)\n\n\ncommunity\n\n\nChildhood community type: Rural (1), Small town (2), Suburban (3), Urban (4)\n\n\nparentedu\n\n\nParent graduated from four-year college: No (0), Yes (1)\n\n\nfamclass\n\n\nChildhood social class: Working class (1), Lower class (2), Lower middle class (3), Upper middle class (4), Upper class (5)\n\n\nfaminc\n\n\nFamily income during senior year of high school\n\n\nnumsib\n\n\nNumber of siblings\n\n\nmove\n\n\nNumber of times moved as a child\n\n\nclsfrn\n\n\nNumber of close friends\n\n\nclsfrlst\n\n\nNumber of people who would list you as a close friend\n\n\ngreek_in\n\n\nFraternity/sorority membership: Independent (1), Greek (2)\n\n\ncampus\n\n\nLiving on campus: No (0), Yes (1)\n\n\nrelsp\n\n\nRomantic relationship status (1-5, see value labels)\n\n\nrlength\n\n\nLength of current or last relationship in months\n\n\nserious\n\n\nSeriousness rating of current/most recent relationship (1-7)\n\n\nnumrels\n\n\nNumber of dating relationships\n\n\ngcb\n\n\nGeneric Conspiracist Beliefs scale score\n\n\ndatdaq\n\n\nDating subscale of the DAQ\n\n\nassrtdaq\n\n\nAssertiveness subscale of the DAQ\n\n\nemorel\n\n\nEmotional Reliance on Others subscale of the IDI\n\n\nlacksc\n\n\nLack of Self-Confidence subscale of the IDI\n\n\nauto\n\n\nAssertion of Autonomy subscale of the IDI\n\n\nperspec\n\n\nPerspective-Taking subscale of the IRI\n\n\nfantasy\n\n\nFantasy subscale of the IRI\n\n\nempath\n\n\nEmpathic Concern subscale of the IRI\n\n\ndistress\n\n\nPersonal Distress subscale of the IRI\n\n\npolsoc\n\n\nPolitical Sociability subscale of Sociability Scale\n\n\nnpolsoc\n\n\nNon-Political Sociability subscale of Sociability Scale\n\n\nrisc\n\n\nRelational-Interdependent Self-Construal Scale score\n\n\nlsas\n\n\nLiebowitz Social Anxiety Scale self-report total (LSAS-SR)\n\n\n\n\n\nSimulated data generated to resemble plausible survey responses from undergraduate psychology students.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "interpersonal_data"
     ]
   },
@@ -334,7 +352,8 @@
     "section": "",
     "text": "Export MCU Films data as SPSS .sav file\n\n\n\nexport_mcu_sav(path = \"mcu_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_mcu_sav"
     ]
   },
@@ -345,7 +364,8 @@
     "section": "",
     "text": "Export MCU Films data as SPSS .sav file\n\n\n\nexport_mcu_sav(path = \"mcu_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_mcu_sav"
     ]
   },
@@ -356,7 +376,8 @@
     "section": "",
     "text": "Game-level team statistics for all Nebraska Cornhuskers football games from September 1962 through the 2024 season. Includes scoring, rushing, passing, turnovers, penalties, point spreads, and weather data.\n\n\n\nhuskers\n\n\n\n\nA data frame with columns:\n\n\ndate\n\n\nDate the game was played.\n\n\ntime_ct\n\n\nKickoff time (Central Time).\n\n\nseason\n\n\nSeason (year) the game was played.\n\n\nopp\n\n\nNebraska’s opponent.\n\n\nsite\n\n\nGame location: \"Home\", \"Away\", \"Neutral (home)\", or \"Neutral (away)\".\n\n\nconference\n\n\nConference game: \"Conference\" or \"Non-conference\".\n\n\nresult\n\n\nGame result: \"Win\", \"Loss\", or \"Tie\".\n\n\nopp_rank\n\n\nOpponent’s ranking entering the game (CFP when available, otherwise AP).\n\n\nne_rank\n\n\nNebraska’s ranking entering the game (CFP when available, otherwise AP).\n\n\nopp_score\n\n\nOpponent’s total score.\n\n\nne_score\n\n\nNebraska’s total score.\n\n\nopp_score_q1\n\n\nOpponent’s first quarter points.\n\n\nopp_score_q2\n\n\nOpponent’s second quarter points.\n\n\nopp_score_q3\n\n\nOpponent’s third quarter points.\n\n\nopp_score_q4\n\n\nOpponent’s fourth quarter points.\n\n\nopp_score_ot\n\n\nOpponent’s overtime points.\n\n\nne_score_q1\n\n\nNebraska’s first quarter points.\n\n\nne_score_q2\n\n\nNebraska’s second quarter points.\n\n\nne_score_q3\n\n\nNebraska’s third quarter points.\n\n\nne_score_q4\n\n\nNebraska’s fourth quarter points.\n\n\nne_score_ot\n\n\nNebraska’s overtime points.\n\n\nopp_rush_att\n\n\nOpponent’s rushing attempts.\n\n\nopp_rush_yards\n\n\nOpponent’s rushing yards.\n\n\nne_rush_att\n\n\nNebraska’s rushing attempts.\n\n\nne_rush_yards\n\n\nNebraska’s rushing yards.\n\n\nopp_pass_comp\n\n\nOpponent’s passing completions.\n\n\nopp_pass_att\n\n\nOpponent’s passing attempts.\n\n\nopp_pass_yards\n\n\nOpponent’s passing yards.\n\n\nne_pass_comp\n\n\nNebraska’s passing completions.\n\n\nne_pass_att\n\n\nNebraska’s passing attempts.\n\n\nne_pass_yards\n\n\nNebraska’s passing yards.\n\n\nopp_first_downs\n\n\nOpponent’s first downs.\n\n\nne_first_downs\n\n\nNebraska’s first downs.\n\n\nopp_third_down_comp\n\n\nOpponent’s successful third down conversions.\n\n\nopp_third_down_att\n\n\nOpponent’s third down attempts.\n\n\nne_third_down_comp\n\n\nNebraska’s successful third down conversions.\n\n\nne_third_down_att\n\n\nNebraska’s third down attempts.\n\n\nopp_fourth_down_comp\n\n\nOpponent’s successful fourth down conversions.\n\n\nopp_fourth_down_att\n\n\nOpponent’s fourth down attempts.\n\n\nne_fourth_down_comp\n\n\nNebraska’s successful fourth down conversions.\n\n\nne_fourth_down_att\n\n\nNebraska’s fourth down attempts.\n\n\nopp_int\n\n\nInterceptions thrown by the opponent.\n\n\nopp_fum\n\n\nFumbles lost by the opponent.\n\n\nne_int\n\n\nInterceptions thrown by Nebraska.\n\n\nne_fum\n\n\nFumbles lost by Nebraska.\n\n\nopp_pen_num\n\n\nOpponent’s number of penalties.\n\n\nopp_pen_yards\n\n\nOpponent’s penalty yards.\n\n\nne_pen_num\n\n\nNebraska’s number of penalties.\n\n\nne_pen_yards\n\n\nNebraska’s penalty yards.\n\n\nopp_possession\n\n\nOpponent’s time of possession (MM:SS).\n\n\nne_possession\n\n\nNebraska’s time of possession (MM:SS).\n\n\nspread\n\n\nPoint spread. Negative means Nebraska was favored.\n\n\ntotal\n\n\nBetting total (Over/Under).\n\n\ntemp\n\n\nTemperature at kickoff (Fahrenheit).\n\n\nhumidity\n\n\nRelative humidity at kickoff (0.0 to 1.0).\n\n\nwind_speed\n\n\nWind speed at kickoff (mph).\n\n\nwind_bearing\n\n\nWind direction at kickoff in degrees (0 = North, clockwise).\n\n\n\n\n\nData completeness notes:\n\n\nScoring by quarter, first down, third/fourth down, and opponent penalty data begins in the 2004 season.\n\n\nNebraska penalty data is incomplete before 1972-09-16 (Texas A&M).\n\n\nTime of possession data begins in 2012, complete from 2013 onward.\n\n\nPoint spread data is mostly absent before 1978; available for most games from 1978 onward.\n\n\nBetting total data is available for most games from 2006 onward.\n\n\nWeather data sourced from the DarkSky API and Weather Underground. Temperature and humidity are fairly reliable; wind data less so.\n\n\n\n\n\nCompiled from historical Nebraska football records.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "huskers"
     ]
   },
@@ -367,7 +388,8 @@
     "section": "",
     "text": "Game-level team statistics for all Nebraska Cornhuskers football games from September 1962 through the 2024 season. Includes scoring, rushing, passing, turnovers, penalties, point spreads, and weather data.\n\n\n\nhuskers\n\n\n\n\nA data frame with columns:\n\n\ndate\n\n\nDate the game was played.\n\n\ntime_ct\n\n\nKickoff time (Central Time).\n\n\nseason\n\n\nSeason (year) the game was played.\n\n\nopp\n\n\nNebraska’s opponent.\n\n\nsite\n\n\nGame location: \"Home\", \"Away\", \"Neutral (home)\", or \"Neutral (away)\".\n\n\nconference\n\n\nConference game: \"Conference\" or \"Non-conference\".\n\n\nresult\n\n\nGame result: \"Win\", \"Loss\", or \"Tie\".\n\n\nopp_rank\n\n\nOpponent’s ranking entering the game (CFP when available, otherwise AP).\n\n\nne_rank\n\n\nNebraska’s ranking entering the game (CFP when available, otherwise AP).\n\n\nopp_score\n\n\nOpponent’s total score.\n\n\nne_score\n\n\nNebraska’s total score.\n\n\nopp_score_q1\n\n\nOpponent’s first quarter points.\n\n\nopp_score_q2\n\n\nOpponent’s second quarter points.\n\n\nopp_score_q3\n\n\nOpponent’s third quarter points.\n\n\nopp_score_q4\n\n\nOpponent’s fourth quarter points.\n\n\nopp_score_ot\n\n\nOpponent’s overtime points.\n\n\nne_score_q1\n\n\nNebraska’s first quarter points.\n\n\nne_score_q2\n\n\nNebraska’s second quarter points.\n\n\nne_score_q3\n\n\nNebraska’s third quarter points.\n\n\nne_score_q4\n\n\nNebraska’s fourth quarter points.\n\n\nne_score_ot\n\n\nNebraska’s overtime points.\n\n\nopp_rush_att\n\n\nOpponent’s rushing attempts.\n\n\nopp_rush_yards\n\n\nOpponent’s rushing yards.\n\n\nne_rush_att\n\n\nNebraska’s rushing attempts.\n\n\nne_rush_yards\n\n\nNebraska’s rushing yards.\n\n\nopp_pass_comp\n\n\nOpponent’s passing completions.\n\n\nopp_pass_att\n\n\nOpponent’s passing attempts.\n\n\nopp_pass_yards\n\n\nOpponent’s passing yards.\n\n\nne_pass_comp\n\n\nNebraska’s passing completions.\n\n\nne_pass_att\n\n\nNebraska’s passing attempts.\n\n\nne_pass_yards\n\n\nNebraska’s passing yards.\n\n\nopp_first_downs\n\n\nOpponent’s first downs.\n\n\nne_first_downs\n\n\nNebraska’s first downs.\n\n\nopp_third_down_comp\n\n\nOpponent’s successful third down conversions.\n\n\nopp_third_down_att\n\n\nOpponent’s third down attempts.\n\n\nne_third_down_comp\n\n\nNebraska’s successful third down conversions.\n\n\nne_third_down_att\n\n\nNebraska’s third down attempts.\n\n\nopp_fourth_down_comp\n\n\nOpponent’s successful fourth down conversions.\n\n\nopp_fourth_down_att\n\n\nOpponent’s fourth down attempts.\n\n\nne_fourth_down_comp\n\n\nNebraska’s successful fourth down conversions.\n\n\nne_fourth_down_att\n\n\nNebraska’s fourth down attempts.\n\n\nopp_int\n\n\nInterceptions thrown by the opponent.\n\n\nopp_fum\n\n\nFumbles lost by the opponent.\n\n\nne_int\n\n\nInterceptions thrown by Nebraska.\n\n\nne_fum\n\n\nFumbles lost by Nebraska.\n\n\nopp_pen_num\n\n\nOpponent’s number of penalties.\n\n\nopp_pen_yards\n\n\nOpponent’s penalty yards.\n\n\nne_pen_num\n\n\nNebraska’s number of penalties.\n\n\nne_pen_yards\n\n\nNebraska’s penalty yards.\n\n\nopp_possession\n\n\nOpponent’s time of possession (MM:SS).\n\n\nne_possession\n\n\nNebraska’s time of possession (MM:SS).\n\n\nspread\n\n\nPoint spread. Negative means Nebraska was favored.\n\n\ntotal\n\n\nBetting total (Over/Under).\n\n\ntemp\n\n\nTemperature at kickoff (Fahrenheit).\n\n\nhumidity\n\n\nRelative humidity at kickoff (0.0 to 1.0).\n\n\nwind_speed\n\n\nWind speed at kickoff (mph).\n\n\nwind_bearing\n\n\nWind direction at kickoff in degrees (0 = North, clockwise).\n\n\n\n\n\nData completeness notes:\n\n\nScoring by quarter, first down, third/fourth down, and opponent penalty data begins in the 2004 season.\n\n\nNebraska penalty data is incomplete before 1972-09-16 (Texas A&M).\n\n\nTime of possession data begins in 2012, complete from 2013 onward.\n\n\nPoint spread data is mostly absent before 1978; available for most games from 1978 onward.\n\n\nBetting total data is available for most games from 2006 onward.\n\n\nWeather data sourced from the DarkSky API and Weather Underground. Temperature and humidity are fairly reliable; wind data less so.\n\n\n\n\n\nCompiled from historical Nebraska football records.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "huskers"
     ]
   },
@@ -378,7 +400,8 @@
     "section": "",
     "text": "Cleaned subset of the cheese.com dataset originally featured in TidyTuesday (June 2024). Contains cheeses with known calcium content, with fat content and milk source cleaned and recoded for teaching data entry and transformation in SPSS and JAMOVI.\n\n\n\ncheese_data\n\n\n\n\nA tibble with variables:\n\n\nid\n\n\nUnique cheese identifier\n\n\ncheese\n\n\nCheese name\n\n\nurl\n\n\nURL to the cheese page on cheese.com\n\n\nmilk\n\n\nRaw milk source text as listed on cheese.com\n\n\nmilk_source\n\n\nMilk source category: Cow (1), Goat (2), Sheep (3), Buffalo (4), Multiple (5), Other (6)\n\n\ncountry\n\n\nCountry of origin\n\n\nfamily\n\n\nCheese family\n\n\ntype\n\n\nCheese type (texture and style)\n\n\nvegetarian\n\n\nVegetarian-suitable: No (0), Yes (1)\n\n\ncolor\n\n\nCheese color\n\n\nfat_content\n\n\nFat content as a percentage per serving\n\n\ncalcium_content\n\n\nCalcium content in mg per 100g\n\n\n\n\n\ncheese.com via TidyTuesday 2024-06-04. Raw data extracted and saved locally via data-raw/extract_cheese_raw.R.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "cheese_data"
     ]
   },
@@ -389,7 +412,8 @@
     "section": "",
     "text": "Cleaned subset of the cheese.com dataset originally featured in TidyTuesday (June 2024). Contains cheeses with known calcium content, with fat content and milk source cleaned and recoded for teaching data entry and transformation in SPSS and JAMOVI.\n\n\n\ncheese_data\n\n\n\n\nA tibble with variables:\n\n\nid\n\n\nUnique cheese identifier\n\n\ncheese\n\n\nCheese name\n\n\nurl\n\n\nURL to the cheese page on cheese.com\n\n\nmilk\n\n\nRaw milk source text as listed on cheese.com\n\n\nmilk_source\n\n\nMilk source category: Cow (1), Goat (2), Sheep (3), Buffalo (4), Multiple (5), Other (6)\n\n\ncountry\n\n\nCountry of origin\n\n\nfamily\n\n\nCheese family\n\n\ntype\n\n\nCheese type (texture and style)\n\n\nvegetarian\n\n\nVegetarian-suitable: No (0), Yes (1)\n\n\ncolor\n\n\nCheese color\n\n\nfat_content\n\n\nFat content as a percentage per serving\n\n\ncalcium_content\n\n\nCalcium content in mg per 100g\n\n\n\n\n\ncheese.com via TidyTuesday 2024-06-04. Raw data extracted and saved locally via data-raw/extract_cheese_raw.R.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "cheese_data"
     ]
   },
@@ -400,7 +424,8 @@
     "section": "",
     "text": "List all available datasets in psych350data\n\nlist_datasets()\n\n\nCharacter vector of dataset names.\n\n\nlibrary(\"psych350data\")\n\nlist_datasets()\n\n [1] \"superman\"              \"superman_smes\"         \"superman_movies\"      \n [4] \"superman_combined\"     \"hotones\"               \"hotones_sauces\"       \n [7] \"hotones_episodes\"      \"tip_jokes\"             \"mcu\"                  \n[10] \"mock_jury\"             \"candy\"                 \"candy_simple\"         \n[13] \"football\"              \"huskers\"               \"interpersonal_data\"   \n[16] \"self_descriptive_data\" \"parent_child_data\"     \"hindsight_mg_data\"    \n[19] \"hindsight_wg_data\"     \"cheese_data\"           \"lpd_data\"",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "list_datasets"
     ]
   },
@@ -411,7 +436,8 @@
     "section": "",
     "text": "List all available datasets in psych350data\n\nlist_datasets()\n\n\nCharacter vector of dataset names.\n\n\nlibrary(\"psych350data\")\n\nlist_datasets()\n\n [1] \"superman\"              \"superman_smes\"         \"superman_movies\"      \n [4] \"superman_combined\"     \"hotones\"               \"hotones_sauces\"       \n [7] \"hotones_episodes\"      \"tip_jokes\"             \"mcu\"                  \n[10] \"mock_jury\"             \"candy\"                 \"candy_simple\"         \n[13] \"football\"              \"huskers\"               \"interpersonal_data\"   \n[16] \"self_descriptive_data\" \"parent_child_data\"     \"hindsight_mg_data\"    \n[19] \"hindsight_wg_data\"     \"cheese_data\"           \"lpd_data\"",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "list_datasets"
     ]
   },
@@ -422,7 +448,8 @@
     "section": "",
     "text": "Simulated data for 47 participants rating Superman media on the Subjective Media Experience Scale (SMES), grouped by the height gap and age difference between the Superman and Lois Lane actors.\n\n\n\nsuperman_smes\n\n\n\n\nA data frame with 47 rows and 6 variables:\n\n\nnum\n\n\nUnique participant number\n\n\nheight_gap\n\n\nHeight gap category: Minimal (1), Average (2), Big (3)\n\n\nage_grp\n\n\nAge difference category: Minimal (1), Average (2), Big (3)\n\n\nemotional_impact\n\n\nEmotional Impact subscale (sum of 4 items, range 4-20)\n\n\naesthetic_appeal\n\n\nAesthetic Appeal subscale (sum of 3 items, range 3-15)\n\n\ncognitive_engagement\n\n\nCognitive Engagement subscale (mean of 4 items, range 0-7)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "superman_smes"
     ]
   },
@@ -433,7 +460,8 @@
     "section": "",
     "text": "Simulated data for 47 participants rating Superman media on the Subjective Media Experience Scale (SMES), grouped by the height gap and age difference between the Superman and Lois Lane actors.\n\n\n\nsuperman_smes\n\n\n\n\nA data frame with 47 rows and 6 variables:\n\n\nnum\n\n\nUnique participant number\n\n\nheight_gap\n\n\nHeight gap category: Minimal (1), Average (2), Big (3)\n\n\nage_grp\n\n\nAge difference category: Minimal (1), Average (2), Big (3)\n\n\nemotional_impact\n\n\nEmotional Impact subscale (sum of 4 items, range 4-20)\n\n\naesthetic_appeal\n\n\nAesthetic Appeal subscale (sum of 3 items, range 3-15)\n\n\ncognitive_engagement\n\n\nCognitive Engagement subscale (mean of 4 items, range 0-7)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "superman_smes"
     ]
   },
@@ -444,7 +472,8 @@
     "section": "",
     "text": "Data on 85 candy types with ingredient indicators, sugar/price percentiles, and win percentages from 269,000 matchups.\n\n\n\ncandy\n\n\n\n\nA data frame with 85 rows and 13 variables:\n\n\ncompetitorname\n\n\nThe name of the candy\n\n\nchocolate\n\n\nContains chocolate? (0=No, 1=Yes)\n\n\nfruity\n\n\nFruit flavored? (0=No, 1=Yes)\n\n\ncaramel\n\n\nContains caramel? (0=No, 1=Yes)\n\n\npeanutyalmondy\n\n\nContains peanuts/almonds? (0=No, 1=Yes)\n\n\nnougat\n\n\nContains nougat? (0=No, 1=Yes)\n\n\ncrispedricewafer\n\n\nContains crisped rice/wafers? (0=No, 1=Yes)\n\n\nhard\n\n\nHard candy? (0=No, 1=Yes)\n\n\nbar\n\n\nCandy bar? (0=No, 1=Yes)\n\n\npluribus\n\n\nOne of many in bag/box? (0=No, 1=Yes)\n\n\nsugarpercent\n\n\nSugar percentile within dataset\n\n\npricepercent\n\n\nUnit price percentile\n\n\nwinpercent\n\n\nWin percentage from 269,000 matchups\n\n\n\n\n\nFiveThirtyEight candy power rankings",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "candy"
     ]
   },
@@ -455,7 +484,8 @@
     "section": "",
     "text": "Data on 85 candy types with ingredient indicators, sugar/price percentiles, and win percentages from 269,000 matchups.\n\n\n\ncandy\n\n\n\n\nA data frame with 85 rows and 13 variables:\n\n\ncompetitorname\n\n\nThe name of the candy\n\n\nchocolate\n\n\nContains chocolate? (0=No, 1=Yes)\n\n\nfruity\n\n\nFruit flavored? (0=No, 1=Yes)\n\n\ncaramel\n\n\nContains caramel? (0=No, 1=Yes)\n\n\npeanutyalmondy\n\n\nContains peanuts/almonds? (0=No, 1=Yes)\n\n\nnougat\n\n\nContains nougat? (0=No, 1=Yes)\n\n\ncrispedricewafer\n\n\nContains crisped rice/wafers? (0=No, 1=Yes)\n\n\nhard\n\n\nHard candy? (0=No, 1=Yes)\n\n\nbar\n\n\nCandy bar? (0=No, 1=Yes)\n\n\npluribus\n\n\nOne of many in bag/box? (0=No, 1=Yes)\n\n\nsugarpercent\n\n\nSugar percentile within dataset\n\n\npricepercent\n\n\nUnit price percentile\n\n\nwinpercent\n\n\nWin percentage from 269,000 matchups\n\n\n\n\n\nFiveThirtyEight candy power rankings",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "candy"
     ]
   },
@@ -466,7 +496,8 @@
     "section": "",
     "text": "Export Hot Ones Sauces data as SPSS .sav file\n\n\n\nexport_hotones_sauces_sav(\n  path = \"hotones_sauces_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hotones_sauces_sav"
     ]
   },
@@ -477,7 +508,8 @@
     "section": "",
     "text": "Export Hot Ones Sauces data as SPSS .sav file\n\n\n\nexport_hotones_sauces_sav(\n  path = \"hotones_sauces_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hotones_sauces_sav"
     ]
   },
@@ -488,7 +520,8 @@
     "section": "",
     "text": "Export Self-Descriptive data as SPSS .sav file\n\n\n\nexport_selfdescriptive_sav(\n  path = \"selfdescriptive_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_selfdescriptive_sav"
     ]
   },
@@ -499,7 +532,8 @@
     "section": "",
     "text": "Export Self-Descriptive data as SPSS .sav file\n\n\n\nexport_selfdescriptive_sav(\n  path = \"selfdescriptive_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_selfdescriptive_sav"
     ]
   },
@@ -510,7 +544,8 @@
     "section": "",
     "text": "Export Hindsight Bias within-groups data as SPSS .sav file\n\n\n\nexport_hindsight_wg_sav(path = \"hindsight_wg_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hindsight_wg_sav"
     ]
   },
@@ -521,7 +556,8 @@
     "section": "",
     "text": "Export Hindsight Bias within-groups data as SPSS .sav file\n\n\n\nexport_hindsight_wg_sav(path = \"hindsight_wg_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hindsight_wg_sav"
     ]
   },
@@ -532,7 +568,8 @@
     "section": "",
     "text": "Reads an SPSS .sav file, converts user-missing values to NA, and removes all labels. Optionally applies any active SPSS filter variable.\n\n\n\nget_spss_data(file_path, check_filter = TRUE, verbose = FALSE)\n\n\n\n\n\n\n\nfile_path\n\n\nCharacter string. Path to the .sav file.\n\n\n\n\ncheck_filter\n\n\nLogical. If TRUE, checks for and applies any active SPSS filter variable. Default is TRUE.\n\n\n\n\nverbose\n\n\nLogical. If TRUE, prints diagnostic information. Default is FALSE.\n\n\n\n\n\n\nA tibble with numeric values and no SPSS labels.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "get_spss_data"
     ]
   },
@@ -543,7 +580,8 @@
     "section": "",
     "text": "Reads an SPSS .sav file, converts user-missing values to NA, and removes all labels. Optionally applies any active SPSS filter variable.\n\n\n\nget_spss_data(file_path, check_filter = TRUE, verbose = FALSE)\n\n\n\n\n\n\n\nfile_path\n\n\nCharacter string. Path to the .sav file.\n\n\n\n\ncheck_filter\n\n\nLogical. If TRUE, checks for and applies any active SPSS filter variable. Default is TRUE.\n\n\n\n\nverbose\n\n\nLogical. If TRUE, prints diagnostic information. Default is FALSE.\n\n\n\n\n\n\nA tibble with numeric values and no SPSS labels.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "get_spss_data"
     ]
   },
@@ -554,7 +592,8 @@
     "section": "",
     "text": "Export Tip-Jokes data as SPSS .sav file\n\n\n\nexport_tip_jokes_sav(path = \"tip_jokes_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_tip_jokes_sav"
     ]
   },
@@ -565,7 +604,8 @@
     "section": "",
     "text": "Export Tip-Jokes data as SPSS .sav file\n\n\n\nexport_tip_jokes_sav(path = \"tip_jokes_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_tip_jokes_sav"
     ]
   },
@@ -576,7 +616,8 @@
     "section": "",
     "text": "Export Parent Child data as SPSS .sav file\nExport Parent Child data as SPSS .sav file\n\n\n\nexport_parent_child_sav(path = \"parent_child_data.sav\", use_sentinel = TRUE)\n\nexport_parent_child_sav(path = \"parent_child_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_parent_child_sav"
     ]
   },
@@ -587,7 +628,8 @@
     "section": "",
     "text": "Export Parent Child data as SPSS .sav file\nExport Parent Child data as SPSS .sav file\n\n\n\nexport_parent_child_sav(path = \"parent_child_data.sav\", use_sentinel = TRUE)\n\nexport_parent_child_sav(path = \"parent_child_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_parent_child_sav"
     ]
   },
@@ -598,7 +640,8 @@
     "section": "",
     "text": "Export Superman Movies data as SPSS .sav file\n\n\n\nexport_superman_movies_sav(\n  path = \"superman_movies_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_movies_sav"
     ]
   },
@@ -609,7 +652,8 @@
     "section": "",
     "text": "Export Superman Movies data as SPSS .sav file\n\n\n\nexport_superman_movies_sav(\n  path = \"superman_movies_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_movies_sav"
     ]
   },
@@ -620,7 +664,8 @@
     "section": "",
     "text": "Export Candy data (full) as SPSS .sav file\n\n\n\nexport_candy_sav(path = \"candy_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_candy_sav"
     ]
   },
@@ -631,7 +676,8 @@
     "section": "",
     "text": "Export Candy data (full) as SPSS .sav file\n\n\n\nexport_candy_sav(path = \"candy_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_candy_sav"
     ]
   },
@@ -642,7 +688,8 @@
     "section": "",
     "text": "Data from Gueguen (2002) examining whether a waiter leaving a joke or an advertisement on a card affects tipping behavior.\n\n\n\ntip_jokes\n\n\n\n\nA data frame with variables:\n\n\ncard\n\n\nType of card: Advertisement (1), Joke (2), None (3)\n\n\ntip\n\n\nWhether customer left a tip: No (0), Yes (1)\n\n\nad\n\n\nIndicator for ad card: 0/1\n\n\njoke\n\n\nIndicator for joke card: 0/1\n\n\nnone\n\n\nIndicator for no card: 0/1\n\n\n\n\n\nGueguen, N. (2002). Journal of Applied Social Psychology.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "tip_jokes"
     ]
   },
@@ -653,7 +700,8 @@
     "section": "",
     "text": "Data from Gueguen (2002) examining whether a waiter leaving a joke or an advertisement on a card affects tipping behavior.\n\n\n\ntip_jokes\n\n\n\n\nA data frame with variables:\n\n\ncard\n\n\nType of card: Advertisement (1), Joke (2), None (3)\n\n\ntip\n\n\nWhether customer left a tip: No (0), Yes (1)\n\n\nad\n\n\nIndicator for ad card: 0/1\n\n\njoke\n\n\nIndicator for joke card: 0/1\n\n\nnone\n\n\nIndicator for no card: 0/1\n\n\n\n\n\nGueguen, N. (2002). Journal of Applied Social Psychology.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "tip_jokes"
     ]
   },
@@ -664,7 +712,8 @@
     "section": "",
     "text": "Simplified version with only candy name, chocolate indicator, sugar percentile, price percentile, and win percentage.\n\n\n\ncandy_simple\n\n\n\n\nA data frame with 85 rows and 5 variables:\n\n\ncompetitorname\n\n\nThe name of the candy\n\n\nchocolate\n\n\nContains chocolate? (0=No, 1=Yes)\n\n\nsugarpercent\n\n\nSugar percentile within dataset\n\n\npricepercent\n\n\nUnit price percentile\n\n\nwinpercent\n\n\nWin percentage from 269,000 matchups\n\n\n\n\n\nFiveThirtyEight candy power rankings",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "candy_simple"
     ]
   },
@@ -675,7 +724,8 @@
     "section": "",
     "text": "Simplified version with only candy name, chocolate indicator, sugar percentile, price percentile, and win percentage.\n\n\n\ncandy_simple\n\n\n\n\nA data frame with 85 rows and 5 variables:\n\n\ncompetitorname\n\n\nThe name of the candy\n\n\nchocolate\n\n\nContains chocolate? (0=No, 1=Yes)\n\n\nsugarpercent\n\n\nSugar percentile within dataset\n\n\npricepercent\n\n\nUnit price percentile\n\n\nwinpercent\n\n\nWin percentage from 269,000 matchups\n\n\n\n\n\nFiveThirtyEight candy power rankings",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "candy_simple"
     ]
   },
@@ -686,7 +736,8 @@
     "section": "",
     "text": "Exports the joined Superman movies + actor dataset with full SPSS labels. This combines data from superman_movies and superman datasets.\n\nexport_superman_combined_sav(\n  path = \"superman_combined_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\nInvisibly returns the labelled data frame.\n\n\nlibrary(\"psych350data\")\n\nexport_superman_combined_sav(\"superman_combined.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_combined_sav"
     ]
   },
@@ -697,7 +748,8 @@
     "section": "",
     "text": "Exports the joined Superman movies + actor dataset with full SPSS labels. This combines data from superman_movies and superman datasets.\n\nexport_superman_combined_sav(\n  path = \"superman_combined_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\nInvisibly returns the labelled data frame.\n\n\nlibrary(\"psych350data\")\n\nexport_superman_combined_sav(\"superman_combined.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_combined_sav"
     ]
   },
@@ -708,7 +760,8 @@
     "section": "",
     "text": "Data on hot sauces used in each season and position of Hot Ones, including Scoville Heat Unit ratings.\n\n\n\nhotones_sauces\n\n\n\n\nA tibble with variables:\n\n\nseason\n\n\nSeason of Hot Ones\n\n\norder\n\n\nSauce position in the lineup (1-10, from mildest to hottest)\n\n\nsauce_name\n\n\nName of the hot sauce\n\n\nSHU\n\n\nScoville Heat Units (SHU) rating\n\n\n\n\n\nHot Ones / First We Feast (YouTube)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hotones_sauces"
     ]
   },
@@ -719,7 +772,8 @@
     "section": "",
     "text": "Data on hot sauces used in each season and position of Hot Ones, including Scoville Heat Unit ratings.\n\n\n\nhotones_sauces\n\n\n\n\nA tibble with variables:\n\n\nseason\n\n\nSeason of Hot Ones\n\n\norder\n\n\nSauce position in the lineup (1-10, from mildest to hottest)\n\n\nsauce_name\n\n\nName of the hot sauce\n\n\nSHU\n\n\nScoville Heat Units (SHU) rating\n\n\n\n\n\nHot Ones / First We Feast (YouTube)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hotones_sauces"
     ]
   },
@@ -730,7 +784,8 @@
     "section": "",
     "text": "Export Candy data (simplified) as SPSS .sav file\n\n\n\nexport_candy_simple_sav(path = \"candy_simple_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_candy_simple_sav"
     ]
   },
@@ -741,7 +796,8 @@
     "section": "",
     "text": "Export Candy data (simplified) as SPSS .sav file\n\n\n\nexport_candy_simple_sav(path = \"candy_simple_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_candy_simple_sav"
     ]
   },
@@ -750,9 +806,10 @@
     "href": "man/superman_movies.html",
     "title": "psych350data",
     "section": "",
-    "text": "Box office and production data for Superman theatrical films, including budget, domestic and international grosses, and MPAA ratings.\n\nsuperman_movies\n\n\nA tibble with variables:\n\n\nimdb_id\n\n\nIMDb title ID (e.g., \"tt0078346\")\n\n\ntitle\n\n\nMovie title\n\n\nyear\n\n\nRelease year\n\n\ndescription\n\n\nMovie description/tagline\n\n\ndomestic_gross\n\n\nDomestic box office gross (millions USD)\n\n\ndomestic_pct\n\n\nDomestic percentage of worldwide gross\n\n\ninternational_gross\n\n\nInternational box office gross (millions USD)\n\n\ninternational_pct\n\n\nInternational percentage of worldwide gross\n\n\nworldwide_gross\n\n\nWorldwide box office gross (millions USD)\n\n\ndistributor\n\n\nDomestic distributor\n\n\nopening_weekend\n\n\nDomestic opening weekend gross (millions USD)\n\n\nbudget\n\n\nProduction budget (millions USD)\n\n\nrelease_date\n\n\nEarliest release date\n\n\nmpaa\n\n\nMPAA rating (G, PG, PG-13, R)\n\n\nruntime_min\n\n\nRuntime in minutes\n\n\ngenres\n\n\nGenres (space-separated)\n\n\nposter_url\n\n\nMovie poster URL (low resolution)\n\n\nposter_url_hires\n\n\nMovie poster URL (high resolution)\n\n\nclark_actor\n\n\nActor playing Clark Kent/Superman (for joining with superman dataset)\n\n\nroi\n\n\nReturn on investment ((worldwide - budget) / budget)\n\n\nbudget_cat\n\n\nBudget category: Low (&lt;$50M), Medium ($50-150M), High (&gt;$150M)\n\n\nbox_office_cat\n\n\nBox office category: Low (&lt;$100M), Medium ($100-500M), High (&gt;$500M)\n\n\nIMDb Box Office Mojo\n\n\nlibrary(\"psych350data\")\n\nsuperman_movies\ncombined &lt;- join_superman_data()\ncombined |&gt; export_sav(path = \"superman_combined.sav\")",
+    "text": "Box office and production data for Superman theatrical films, including budget, domestic and international grosses, and MPAA ratings.\n\nsuperman_movies\n\n\nA tibble with variables:\n\n\nimdb_id\n\n\nIMDb title ID (e.g., \"tt0078346\")\n\n\ntitle\n\n\nMovie title\n\n\nyear\n\n\nRelease year\n\n\ndescription\n\n\nMovie description/tagline\n\n\ndomestic_gross\n\n\nDomestic box office gross (millions USD)\n\n\ndomestic_pct\n\n\nDomestic percentage of worldwide gross\n\n\ninternational_gross\n\n\nInternational box office gross (millions USD)\n\n\ninternational_pct\n\n\nInternational percentage of worldwide gross\n\n\nworldwide_gross\n\n\nWorldwide box office gross (millions USD)\n\n\ndistributor\n\n\nDomestic distributor\n\n\nopening_weekend\n\n\nDomestic opening weekend gross (millions USD)\n\n\nbudget\n\n\nProduction budget (millions USD)\n\n\nrelease_date\n\n\nEarliest release date\n\n\nmpaa\n\n\nMPAA rating (G, PG, PG-13, R)\n\n\nruntime_min\n\n\nRuntime in minutes\n\n\ngenres\n\n\nGenres (space-separated)\n\n\nposter_url\n\n\nMovie poster URL (low resolution)\n\n\nposter_url_hires\n\n\nMovie poster URL (high resolution)\n\n\nclark_actor\n\n\nActor playing Clark Kent/Superman (for joining with superman dataset)\n\n\nroi\n\n\nReturn on investment ((worldwide - budget) / budget)\n\n\nbudget_cat\n\n\nBudget category (tercile-based): Low, Medium, High\n\n\nbox_office_cat\n\n\nBox office category (tercile-based): Low, Medium, High\n\n\nIMDb Box Office Mojo\n\n\nlibrary(\"psych350data\")\n\nsuperman_movies\ncombined &lt;- join_superman_data()\ncombined |&gt; export_sav(path = \"superman_combined.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "superman_movies"
     ]
   },
@@ -761,9 +818,10 @@
     "href": "man/superman_movies.html#superman-movies-box-office-data",
     "title": "psych350data",
     "section": "",
-    "text": "Box office and production data for Superman theatrical films, including budget, domestic and international grosses, and MPAA ratings.\n\nsuperman_movies\n\n\nA tibble with variables:\n\n\nimdb_id\n\n\nIMDb title ID (e.g., \"tt0078346\")\n\n\ntitle\n\n\nMovie title\n\n\nyear\n\n\nRelease year\n\n\ndescription\n\n\nMovie description/tagline\n\n\ndomestic_gross\n\n\nDomestic box office gross (millions USD)\n\n\ndomestic_pct\n\n\nDomestic percentage of worldwide gross\n\n\ninternational_gross\n\n\nInternational box office gross (millions USD)\n\n\ninternational_pct\n\n\nInternational percentage of worldwide gross\n\n\nworldwide_gross\n\n\nWorldwide box office gross (millions USD)\n\n\ndistributor\n\n\nDomestic distributor\n\n\nopening_weekend\n\n\nDomestic opening weekend gross (millions USD)\n\n\nbudget\n\n\nProduction budget (millions USD)\n\n\nrelease_date\n\n\nEarliest release date\n\n\nmpaa\n\n\nMPAA rating (G, PG, PG-13, R)\n\n\nruntime_min\n\n\nRuntime in minutes\n\n\ngenres\n\n\nGenres (space-separated)\n\n\nposter_url\n\n\nMovie poster URL (low resolution)\n\n\nposter_url_hires\n\n\nMovie poster URL (high resolution)\n\n\nclark_actor\n\n\nActor playing Clark Kent/Superman (for joining with superman dataset)\n\n\nroi\n\n\nReturn on investment ((worldwide - budget) / budget)\n\n\nbudget_cat\n\n\nBudget category: Low (&lt;$50M), Medium ($50-150M), High (&gt;$150M)\n\n\nbox_office_cat\n\n\nBox office category: Low (&lt;$100M), Medium ($100-500M), High (&gt;$500M)\n\n\nIMDb Box Office Mojo\n\n\nlibrary(\"psych350data\")\n\nsuperman_movies\ncombined &lt;- join_superman_data()\ncombined |&gt; export_sav(path = \"superman_combined.sav\")",
+    "text": "Box office and production data for Superman theatrical films, including budget, domestic and international grosses, and MPAA ratings.\n\nsuperman_movies\n\n\nA tibble with variables:\n\n\nimdb_id\n\n\nIMDb title ID (e.g., \"tt0078346\")\n\n\ntitle\n\n\nMovie title\n\n\nyear\n\n\nRelease year\n\n\ndescription\n\n\nMovie description/tagline\n\n\ndomestic_gross\n\n\nDomestic box office gross (millions USD)\n\n\ndomestic_pct\n\n\nDomestic percentage of worldwide gross\n\n\ninternational_gross\n\n\nInternational box office gross (millions USD)\n\n\ninternational_pct\n\n\nInternational percentage of worldwide gross\n\n\nworldwide_gross\n\n\nWorldwide box office gross (millions USD)\n\n\ndistributor\n\n\nDomestic distributor\n\n\nopening_weekend\n\n\nDomestic opening weekend gross (millions USD)\n\n\nbudget\n\n\nProduction budget (millions USD)\n\n\nrelease_date\n\n\nEarliest release date\n\n\nmpaa\n\n\nMPAA rating (G, PG, PG-13, R)\n\n\nruntime_min\n\n\nRuntime in minutes\n\n\ngenres\n\n\nGenres (space-separated)\n\n\nposter_url\n\n\nMovie poster URL (low resolution)\n\n\nposter_url_hires\n\n\nMovie poster URL (high resolution)\n\n\nclark_actor\n\n\nActor playing Clark Kent/Superman (for joining with superman dataset)\n\n\nroi\n\n\nReturn on investment ((worldwide - budget) / budget)\n\n\nbudget_cat\n\n\nBudget category (tercile-based): Low, Medium, High\n\n\nbox_office_cat\n\n\nBox office category (tercile-based): Low, Medium, High\n\n\nIMDb Box Office Mojo\n\n\nlibrary(\"psych350data\")\n\nsuperman_movies\ncombined &lt;- join_superman_data()\ncombined |&gt; export_sav(path = \"superman_combined.sav\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "superman_movies"
     ]
   },
@@ -774,7 +832,8 @@
     "section": "",
     "text": "Export Hot Ones data as SPSS .sav file\n\n\n\nexport_hotones_sav(path = \"hotones_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hotones_sav"
     ]
   },
@@ -785,7 +844,8 @@
     "section": "",
     "text": "Export Hot Ones data as SPSS .sav file\n\n\n\nexport_hotones_sav(path = \"hotones_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hotones_sav"
     ]
   },
@@ -796,7 +856,8 @@
     "section": "",
     "text": "Simulated data from a hindsight bias study in which participants viewed celebrity faces and estimated recognition time at baseline and again after receiving an outcome cue. The between-groups factor is whether participants saw old or new faces in the hindsight phase. Each row represents one participant-face trial.\n\n\n\nhindsight_mg_data\n\n\n\n\nA tibble with 600 rows (60 participants x 10 faces) and 7 variables:\n\n\nparticipant_id\n\n\nUnique participant identifier\n\n\nface_id\n\n\nFace stimulus identifier (1-10)\n\n\ncondition\n\n\nBetween-groups experimental condition: Old (1), New (2)\n\n\nfame_level\n\n\nCelebrity fame level: Extremely Famous (1), Moderately Famous (2)\n\n\nscore_1\n\n\nTime to identify celebrity at baseline (seconds)\n\n\nscore_2\n\n\nTime to identify celebrity in hindsight phase (seconds)\n\n\ncorrect\n\n\nCorrect identification at baseline: Incorrect (0), Correct (1)\n\n\n\n\n\nSimulated data generated to illustrate hindsight bias in a between-groups design.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hindsight_mg_data"
     ]
   },
@@ -807,7 +868,8 @@
     "section": "",
     "text": "Simulated data from a hindsight bias study in which participants viewed celebrity faces and estimated recognition time at baseline and again after receiving an outcome cue. The between-groups factor is whether participants saw old or new faces in the hindsight phase. Each row represents one participant-face trial.\n\n\n\nhindsight_mg_data\n\n\n\n\nA tibble with 600 rows (60 participants x 10 faces) and 7 variables:\n\n\nparticipant_id\n\n\nUnique participant identifier\n\n\nface_id\n\n\nFace stimulus identifier (1-10)\n\n\ncondition\n\n\nBetween-groups experimental condition: Old (1), New (2)\n\n\nfame_level\n\n\nCelebrity fame level: Extremely Famous (1), Moderately Famous (2)\n\n\nscore_1\n\n\nTime to identify celebrity at baseline (seconds)\n\n\nscore_2\n\n\nTime to identify celebrity in hindsight phase (seconds)\n\n\ncorrect\n\n\nCorrect identification at baseline: Incorrect (0), Correct (1)\n\n\n\n\n\nSimulated data generated to illustrate hindsight bias in a between-groups design.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hindsight_mg_data"
     ]
   },
@@ -818,7 +880,8 @@
     "section": "",
     "text": "Export Lincoln Police Department traffic stops data as SPSS .sav file\n\n\n\nexport_lpd_sav(path = \"lpd_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_lpd_sav"
     ]
   },
@@ -829,7 +892,8 @@
     "section": "",
     "text": "Export Lincoln Police Department traffic stops data as SPSS .sav file\n\n\n\nexport_lpd_sav(path = \"lpd_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_lpd_sav"
     ]
   },
@@ -840,7 +904,8 @@
     "section": "",
     "text": "Converts character categorical variables to numeric codes matching the SPSS value labels in psych350data. Optionally retains the original character columns as _label suffixed columns for use in plotting.\n\n\n\nprep_data(data, dataset_name, keep_labels = FALSE)\n\nprep_superman(data, keep_labels = FALSE)\n\nprep_superman_smes(data, keep_labels = FALSE)\n\nprep_superman_movies(data, keep_labels = FALSE)\n\nprep_hotones(data, keep_labels = FALSE)\n\nprep_hotones_sauces(data, keep_labels = FALSE)\n\nprep_hotones_episodes(data, keep_labels = FALSE)\n\nprep_mcu(data, keep_labels = FALSE)\n\nprep_mock_jury(data, keep_labels = FALSE)\n\nprep_tip_jokes(data, keep_labels = FALSE)\n\nprep_candy(data, keep_labels = FALSE)\n\nprep_candy_simple(data, keep_labels = FALSE)\n\nprep_football(data, keep_labels = FALSE)\n\nprep_huskers(data, keep_labels = FALSE)\n\nprep_interpersonal(data, keep_labels = FALSE)\n\nprep_self_descriptive(data, keep_labels = FALSE)\n\nprep_parent_child(data, keep_labels = FALSE)\n\nprep_hindsight_bg(data, keep_labels = FALSE)\n\nprep_hindsight_wg(data, keep_labels = FALSE)\n\nprep_cheese(data, keep_labels = FALSE)\n\nprep_lpd(data, keep_labels = FALSE)\n\n\n\n\n\n\n\ndata\n\n\nA dataset from psych350data.\n\n\n\n\ndataset_name\n\n\nCharacter. Name of the dataset, e.g. “superman”, “hotones”, “mock_jury”.\n\n\n\n\nkeep_labels\n\n\nLogical. If TRUE, retains original character columns as _label suffixed columns for plotting. Default FALSE.\n\n\n\n\n\n\nA tibble with categorical variables as numeric codes, and optionally _label columns for plotting.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "prep_data"
     ]
   },
@@ -851,7 +916,8 @@
     "section": "",
     "text": "Converts character categorical variables to numeric codes matching the SPSS value labels in psych350data. Optionally retains the original character columns as _label suffixed columns for use in plotting.\n\n\n\nprep_data(data, dataset_name, keep_labels = FALSE)\n\nprep_superman(data, keep_labels = FALSE)\n\nprep_superman_smes(data, keep_labels = FALSE)\n\nprep_superman_movies(data, keep_labels = FALSE)\n\nprep_hotones(data, keep_labels = FALSE)\n\nprep_hotones_sauces(data, keep_labels = FALSE)\n\nprep_hotones_episodes(data, keep_labels = FALSE)\n\nprep_mcu(data, keep_labels = FALSE)\n\nprep_mock_jury(data, keep_labels = FALSE)\n\nprep_tip_jokes(data, keep_labels = FALSE)\n\nprep_candy(data, keep_labels = FALSE)\n\nprep_candy_simple(data, keep_labels = FALSE)\n\nprep_football(data, keep_labels = FALSE)\n\nprep_huskers(data, keep_labels = FALSE)\n\nprep_interpersonal(data, keep_labels = FALSE)\n\nprep_self_descriptive(data, keep_labels = FALSE)\n\nprep_parent_child(data, keep_labels = FALSE)\n\nprep_hindsight_bg(data, keep_labels = FALSE)\n\nprep_hindsight_wg(data, keep_labels = FALSE)\n\nprep_cheese(data, keep_labels = FALSE)\n\nprep_lpd(data, keep_labels = FALSE)\n\n\n\n\n\n\n\ndata\n\n\nA dataset from psych350data.\n\n\n\n\ndataset_name\n\n\nCharacter. Name of the dataset, e.g. “superman”, “hotones”, “mock_jury”.\n\n\n\n\nkeep_labels\n\n\nLogical. If TRUE, retains original character columns as _label suffixed columns for plotting. Default FALSE.\n\n\n\n\n\n\nA tibble with categorical variables as numeric codes, and optionally _label columns for plotting.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "prep_data"
     ]
   },
@@ -862,7 +928,8 @@
     "section": "",
     "text": "Export Hot Ones Episodes data as SPSS .sav file\n\n\n\nexport_hotones_episodes_sav(\n  path = \"hotones_episodes_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hotones_episodes_sav"
     ]
   },
@@ -873,7 +940,8 @@
     "section": "",
     "text": "Export Hot Ones Episodes data as SPSS .sav file\n\n\n\nexport_hotones_episodes_sav(\n  path = \"hotones_episodes_data.sav\",\n  use_sentinel = TRUE\n)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hotones_episodes_sav"
     ]
   },
@@ -884,7 +952,8 @@
     "section": "",
     "text": "Export Nebraska Football data as SPSS .sav file\n\n\n\nexport_huskers_sav(path = \"huskers_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_huskers_sav"
     ]
   },
@@ -895,7 +964,8 @@
     "section": "",
     "text": "Export Nebraska Football data as SPSS .sav file\n\n\n\nexport_huskers_sav(path = \"huskers_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_huskers_sav"
     ]
   },
@@ -906,7 +976,8 @@
     "section": "",
     "text": "Export Cheese data as SPSS .sav file\n\n\n\nexport_cheese_sav(path = \"cheese_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_cheese_sav"
     ]
   },
@@ -917,7 +988,8 @@
     "section": "",
     "text": "Export Cheese data as SPSS .sav file\n\n\n\nexport_cheese_sav(path = \"cheese_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_cheese_sav"
     ]
   },
@@ -928,7 +1000,8 @@
     "section": "",
     "text": "Export Hindsight Bias between-groups data as SPSS .sav file\n\n\n\nexport_hindsight_mg_sav(path = \"hindsight_mg_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hindsight_mg_sav"
     ]
   },
@@ -939,7 +1012,8 @@
     "section": "",
     "text": "Export Hindsight Bias between-groups data as SPSS .sav file\n\n\n\nexport_hindsight_mg_sav(path = \"hindsight_mg_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_hindsight_mg_sav"
     ]
   },
@@ -950,7 +1024,8 @@
     "section": "",
     "text": "Calls the dataset’s labelling function (via apply_spss_metadata) to get variable labels and value labels, without modifying the actual data.\n\n\n\nget_variable_metadata(data, dataset_name, vars)\n\n\n\n\n\n\n\ndata\n\n\nA data frame from psych350data (pre-prep_data).\n\n\n\n\ndataset_name\n\n\nThe dataset name string passed to apply_spss_metadata, e.g. \"superman\", \"hotones\".\n\n\n\n\nvars\n\n\nCharacter vector of variable names to extract metadata for.\n\n\n\n\n\n\nA named list, one element per variable, each containing:\n\n\nname\n\n\nVariable name\n\n\nlabel\n\n\nVariable label string\n\n\nvalue_labels\n\n\nNamed numeric vector of value labels, or NULL\n\n\nmissing\n\n\nLogical, whether any values were NA in the original data",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "get_variable_metadata"
     ]
   },
@@ -961,7 +1036,8 @@
     "section": "",
     "text": "Calls the dataset’s labelling function (via apply_spss_metadata) to get variable labels and value labels, without modifying the actual data.\n\n\n\nget_variable_metadata(data, dataset_name, vars)\n\n\n\n\n\n\n\ndata\n\n\nA data frame from psych350data (pre-prep_data).\n\n\n\n\ndataset_name\n\n\nThe dataset name string passed to apply_spss_metadata, e.g. \"superman\", \"hotones\".\n\n\n\n\nvars\n\n\nCharacter vector of variable names to extract metadata for.\n\n\n\n\n\n\nA named list, one element per variable, each containing:\n\n\nname\n\n\nVariable name\n\n\nlabel\n\n\nVariable label string\n\n\nvalue_labels\n\n\nNamed numeric vector of value labels, or NULL\n\n\nmissing\n\n\nLogical, whether any values were NA in the original data",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Helpers",
       "get_variable_metadata"
     ]
   },
@@ -972,7 +1048,8 @@
     "section": "",
     "text": "Export Football Concussion data as SPSS .sav file\n\n\n\nexport_football_sav(path = \"football_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_football_sav"
     ]
   },
@@ -983,7 +1060,8 @@
     "section": "",
     "text": "Export Football Concussion data as SPSS .sav file\n\n\n\nexport_football_sav(path = \"football_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_football_sav"
     ]
   },
@@ -994,7 +1072,8 @@
     "section": "",
     "text": "Export Superman data as SPSS .sav file\n\n\n\nexport_superman_sav(path = \"superman_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_sav"
     ]
   },
@@ -1005,7 +1084,8 @@
     "section": "",
     "text": "Export Superman data as SPSS .sav file\n\n\n\nexport_superman_sav(path = \"superman_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_sav"
     ]
   },
@@ -1016,7 +1096,8 @@
     "section": "",
     "text": "Simulated survey data (n = 547) from college students at a predominantly white rural state university, containing demographics, relationship variables, and scores on personality and self-concept measures including the TIPI Big Five, MAAS, RFQ, ATQ-30, Rosenberg Self-Esteem, and New General Self-Efficacy scales.\n\n\n\nself_descriptive_data\n\n\n\n\nA tibble with 547 rows and 37 variables:\n\n\nage\n\n\nAge in years (18-25)\n\n\ngender\n\n\nSelf-described gender: Male (1), Female (2), Another (3)\n\n\nsexorient\n\n\nSexual orientation (1-11, see value labels)\n\n\nrace\n\n\nSelf-described race: Asian (1), Black (2), Indigenous/Aboriginal/First Nations (3), Latino/Hispanic (4), Middle Eastern (5), White (6), Other (7)\n\n\nhand\n\n\nWriting hand: Right (1), Left (2), Both (3)\n\n\ncommunity\n\n\nChildhood community type: Rural (1), Small town (2), Suburban (3), Urban (4)\n\n\nparentedu\n\n\nParent graduated from four-year college: No (0), Yes (1)\n\n\nfamclass\n\n\nChildhood social class: Working class (1), Lower class (2), Lower middle class (3), Upper middle class (4), Upper class (5)\n\n\nfaminc\n\n\nFamily income during senior year of high school\n\n\nnumsib\n\n\nNumber of siblings\n\n\nmove\n\n\nNumber of times moved as a child\n\n\nclsfrn\n\n\nNumber of close friends\n\n\nclsfrlst\n\n\nNumber of people who would list you as a close friend\n\n\ngreek_in\n\n\nFraternity/sorority membership: Independent (1), Greek (2)\n\n\ncampus\n\n\nLiving on campus: No (0), Yes (1)\n\n\nrelsp\n\n\nRomantic relationship status (1-5, see value labels)\n\n\nrlength\n\n\nLength of current or last relationship in months\n\n\nserious\n\n\nSeriousness rating of current/most recent relationship (1-7)\n\n\nnumrels\n\n\nNumber of dating relationships\n\n\nextraversion\n\n\nExtraversion subscale of the TIPI (1-7)\n\n\nagreeableness\n\n\nAgreeableness subscale of the TIPI (1-7)\n\n\nconscientiousness\n\n\nConscientiousness subscale of the TIPI (1-7)\n\n\nemot_stability\n\n\nEmotional Stability subscale of the TIPI (1-7)\n\n\nopenness\n\n\nOpenness to Experience subscale of the TIPI (1-7)\n\n\ndisc\n\n\nDiscomfort with Ambiguity subscale of the MAAS\n\n\nmoral\n\n\nMoral Absolutism/Splitting subscale of the MAAS\n\n\ncomp\n\n\nNeed for Complexity and Novelty subscale of the MAAS\n\n\nmaas\n\n\nMAAS total score\n\n\nrse\n\n\nRosenberg Self-Esteem scale score\n\n\npromote\n\n\nPromotion Focus subscale of the RFQ\n\n\nprevent\n\n\nPrevention Focus subscale of the RFQ\n\n\natq\n\n\nAutomatic Thoughts Questionnaire (ATQ-30) total score\n\n\npmdc\n\n\nPersonal Maladjustment and Desire for Change subscale of the ATQ\n\n\nnsne\n\n\nNegative Self-Concepts and Negative Expectations subscale of the ATQ\n\n\nlse\n\n\nLow Self-Esteem subscale of the ATQ\n\n\nhelp\n\n\nHelplessness subscale of the ATQ\n\n\nngse\n\n\nNew General Self-Efficacy scale score\n\n\n\n\n\nSimulated data generated to resemble plausible survey responses from undergraduate psychology students.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "self_descriptive_data"
     ]
   },
@@ -1027,7 +1108,8 @@
     "section": "",
     "text": "Simulated survey data (n = 547) from college students at a predominantly white rural state university, containing demographics, relationship variables, and scores on personality and self-concept measures including the TIPI Big Five, MAAS, RFQ, ATQ-30, Rosenberg Self-Esteem, and New General Self-Efficacy scales.\n\n\n\nself_descriptive_data\n\n\n\n\nA tibble with 547 rows and 37 variables:\n\n\nage\n\n\nAge in years (18-25)\n\n\ngender\n\n\nSelf-described gender: Male (1), Female (2), Another (3)\n\n\nsexorient\n\n\nSexual orientation (1-11, see value labels)\n\n\nrace\n\n\nSelf-described race: Asian (1), Black (2), Indigenous/Aboriginal/First Nations (3), Latino/Hispanic (4), Middle Eastern (5), White (6), Other (7)\n\n\nhand\n\n\nWriting hand: Right (1), Left (2), Both (3)\n\n\ncommunity\n\n\nChildhood community type: Rural (1), Small town (2), Suburban (3), Urban (4)\n\n\nparentedu\n\n\nParent graduated from four-year college: No (0), Yes (1)\n\n\nfamclass\n\n\nChildhood social class: Working class (1), Lower class (2), Lower middle class (3), Upper middle class (4), Upper class (5)\n\n\nfaminc\n\n\nFamily income during senior year of high school\n\n\nnumsib\n\n\nNumber of siblings\n\n\nmove\n\n\nNumber of times moved as a child\n\n\nclsfrn\n\n\nNumber of close friends\n\n\nclsfrlst\n\n\nNumber of people who would list you as a close friend\n\n\ngreek_in\n\n\nFraternity/sorority membership: Independent (1), Greek (2)\n\n\ncampus\n\n\nLiving on campus: No (0), Yes (1)\n\n\nrelsp\n\n\nRomantic relationship status (1-5, see value labels)\n\n\nrlength\n\n\nLength of current or last relationship in months\n\n\nserious\n\n\nSeriousness rating of current/most recent relationship (1-7)\n\n\nnumrels\n\n\nNumber of dating relationships\n\n\nextraversion\n\n\nExtraversion subscale of the TIPI (1-7)\n\n\nagreeableness\n\n\nAgreeableness subscale of the TIPI (1-7)\n\n\nconscientiousness\n\n\nConscientiousness subscale of the TIPI (1-7)\n\n\nemot_stability\n\n\nEmotional Stability subscale of the TIPI (1-7)\n\n\nopenness\n\n\nOpenness to Experience subscale of the TIPI (1-7)\n\n\ndisc\n\n\nDiscomfort with Ambiguity subscale of the MAAS\n\n\nmoral\n\n\nMoral Absolutism/Splitting subscale of the MAAS\n\n\ncomp\n\n\nNeed for Complexity and Novelty subscale of the MAAS\n\n\nmaas\n\n\nMAAS total score\n\n\nrse\n\n\nRosenberg Self-Esteem scale score\n\n\npromote\n\n\nPromotion Focus subscale of the RFQ\n\n\nprevent\n\n\nPrevention Focus subscale of the RFQ\n\n\natq\n\n\nAutomatic Thoughts Questionnaire (ATQ-30) total score\n\n\npmdc\n\n\nPersonal Maladjustment and Desire for Change subscale of the ATQ\n\n\nnsne\n\n\nNegative Self-Concepts and Negative Expectations subscale of the ATQ\n\n\nlse\n\n\nLow Self-Esteem subscale of the ATQ\n\n\nhelp\n\n\nHelplessness subscale of the ATQ\n\n\nngse\n\n\nNew General Self-Efficacy scale score\n\n\n\n\n\nSimulated data generated to resemble plausible survey responses from undergraduate psychology students.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "self_descriptive_data"
     ]
   },
@@ -1038,7 +1120,8 @@
     "section": "",
     "text": "Simulated parent-child observational data from a study examining the effects of a remediation treatment on parenting behaviours. Maternal and child demographics are included alongside coded behavioural counts from structured observations.\n\n\n\nparent_child_data\n\n\n\n\nA tibble with 100 rows and 11 variables:\n\n\ncasenum\n\n\nUnique case number\n\n\nmage\n\n\nMother’s age in years\n\n\nmagegroup\n\n\nMother’s age group: 18-27 (1), 28-35 (2)\n\n\ncage\n\n\nChild’s age in years\n\n\ncagegroup\n\n\nChild’s age group: 2-3 years (1), 4-5 years (2)\n\n\nfamtype\n\n\nFamily type: 2-parent (1), mother-only (2)\n\n\nCLINREM\n\n\nClinical remediation status: suggested (0), not suggested (1)\n\n\ntx\n\n\nTreatment condition: control (0), remediation (1)\n\n\npraise\n\n\nCount of praise behaviours observed\n\n\ndirect\n\n\nCount of directive behaviours observed\n\n\nnegat\n\n\nCount of negative behaviours observed\n\n\n\n\n\nSimulated data generated to resemble a plausible parent-child observational study sample.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "parent_child_data"
     ]
   },
@@ -1049,7 +1132,8 @@
     "section": "",
     "text": "Simulated parent-child observational data from a study examining the effects of a remediation treatment on parenting behaviours. Maternal and child demographics are included alongside coded behavioural counts from structured observations.\n\n\n\nparent_child_data\n\n\n\n\nA tibble with 100 rows and 11 variables:\n\n\ncasenum\n\n\nUnique case number\n\n\nmage\n\n\nMother’s age in years\n\n\nmagegroup\n\n\nMother’s age group: 18-27 (1), 28-35 (2)\n\n\ncage\n\n\nChild’s age in years\n\n\ncagegroup\n\n\nChild’s age group: 2-3 years (1), 4-5 years (2)\n\n\nfamtype\n\n\nFamily type: 2-parent (1), mother-only (2)\n\n\nCLINREM\n\n\nClinical remediation status: suggested (0), not suggested (1)\n\n\ntx\n\n\nTreatment condition: control (0), remediation (1)\n\n\npraise\n\n\nCount of praise behaviours observed\n\n\ndirect\n\n\nCount of directive behaviours observed\n\n\nnegat\n\n\nCount of negative behaviours observed\n\n\n\n\n\nSimulated data generated to resemble a plausible parent-child observational study sample.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "parent_child_data"
     ]
   },
@@ -1060,7 +1144,8 @@
     "section": "",
     "text": "Data from Plaster (1989) examining effects of physical attractiveness on mock jury sentencing decisions.\n\n\n\nmock_jury\n\n\n\n\nA data frame with variables:\n\n\nattr\n\n\nAttractiveness: Beautiful (1), Average (2), Unattractive (3)\n\n\ncrime\n\n\nCrime type: Burglary (1), Swindle (2)\n\n\nyears\n\n\nSentence length in years\n\n\nserious\n\n\nSeriousness rating\n\n\nexciting\n\n\nRating of the photo for ‘exciting’\n\n\ncalm\n\n\nRating of the photo for ‘calm’\n\n\nindependent\n\n\nRating of the photo for ‘independent’\n\n\nsincere\n\n\nRating of the photo for ‘sincere’\n\n\nwarm\n\n\nRating of the photo for ‘warm’\n\n\nphyattr\n\n\nRating of the photo for ‘physical attractiveness’\n\n\nsociable\n\n\nRating of the photo for ‘sociable’\n\n\nkind\n\n\nRating of the photo for ‘kind’\n\n\nintelligent\n\n\nRating of the photo for ‘intelligent’\n\n\nstrong\n\n\nRating of the photo for ‘strong’\n\n\nsophisticated\n\n\nRating of the photo for ‘sophisticated’\n\n\nhappy\n\n\nRating of the photo for ‘happy’\n\n\nownPA\n\n\nSelf-rating of physical attractiveness\n\n\n\n\n\nPlaster, M. E. (1989). East Carolina University.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "mock_jury"
     ]
   },
@@ -1071,7 +1156,8 @@
     "section": "",
     "text": "Data from Plaster (1989) examining effects of physical attractiveness on mock jury sentencing decisions.\n\n\n\nmock_jury\n\n\n\n\nA data frame with variables:\n\n\nattr\n\n\nAttractiveness: Beautiful (1), Average (2), Unattractive (3)\n\n\ncrime\n\n\nCrime type: Burglary (1), Swindle (2)\n\n\nyears\n\n\nSentence length in years\n\n\nserious\n\n\nSeriousness rating\n\n\nexciting\n\n\nRating of the photo for ‘exciting’\n\n\ncalm\n\n\nRating of the photo for ‘calm’\n\n\nindependent\n\n\nRating of the photo for ‘independent’\n\n\nsincere\n\n\nRating of the photo for ‘sincere’\n\n\nwarm\n\n\nRating of the photo for ‘warm’\n\n\nphyattr\n\n\nRating of the photo for ‘physical attractiveness’\n\n\nsociable\n\n\nRating of the photo for ‘sociable’\n\n\nkind\n\n\nRating of the photo for ‘kind’\n\n\nintelligent\n\n\nRating of the photo for ‘intelligent’\n\n\nstrong\n\n\nRating of the photo for ‘strong’\n\n\nsophisticated\n\n\nRating of the photo for ‘sophisticated’\n\n\nhappy\n\n\nRating of the photo for ‘happy’\n\n\nownPA\n\n\nSelf-rating of physical attractiveness\n\n\n\n\n\nPlaster, M. E. (1989). East Carolina University.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "mock_jury"
     ]
   },
@@ -1082,7 +1168,8 @@
     "section": "",
     "text": "Episode-level data from the YouTube show Hot Ones, including guest names, titles, and YouTube engagement metrics.\n\n\n\nhotones_episodes\n\n\n\n\nA tibble with variables:\n\n\nseason\n\n\nSeason of Hot Ones\n\n\norder\n\n\nEpisode number within season\n\n\nguest\n\n\nName of the guest\n\n\nepisode_title\n\n\nFull title of the episode\n\n\npublish_date\n\n\nDate the episode was published on YouTube\n\n\nviews\n\n\nNumber of YouTube views (in millions)\n\n\nlikes\n\n\nNumber of YouTube likes\n\n\ncomments\n\n\nNumber of YouTube comments\n\n\nshort_description\n\n\nShort description of the episode\n\n\nimg\n\n\nURL to episode thumbnail image\n\n\nvideo_id\n\n\nYouTube video ID\n\n\n\n\n\nHot Ones / First We Feast (YouTube)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hotones_episodes"
     ]
   },
@@ -1093,7 +1180,8 @@
     "section": "",
     "text": "Episode-level data from the YouTube show Hot Ones, including guest names, titles, and YouTube engagement metrics.\n\n\n\nhotones_episodes\n\n\n\n\nA tibble with variables:\n\n\nseason\n\n\nSeason of Hot Ones\n\n\norder\n\n\nEpisode number within season\n\n\nguest\n\n\nName of the guest\n\n\nepisode_title\n\n\nFull title of the episode\n\n\npublish_date\n\n\nDate the episode was published on YouTube\n\n\nviews\n\n\nNumber of YouTube views (in millions)\n\n\nlikes\n\n\nNumber of YouTube likes\n\n\ncomments\n\n\nNumber of YouTube comments\n\n\nshort_description\n\n\nShort description of the episode\n\n\nimg\n\n\nURL to episode thumbnail image\n\n\nvideo_id\n\n\nYouTube video ID\n\n\n\n\n\nHot Ones / First We Feast (YouTube)",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "hotones_episodes"
     ]
   },
@@ -1104,7 +1192,8 @@
     "section": "",
     "text": "Export Superman SMES data as SPSS .sav file\n\n\n\nexport_superman_smes_sav(path = \"superman_smes_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_smes_sav"
     ]
   },
@@ -1115,7 +1204,8 @@
     "section": "",
     "text": "Export Superman SMES data as SPSS .sav file\n\n\n\nexport_superman_smes_sav(path = \"superman_smes_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_superman_smes_sav"
     ]
   },
@@ -1126,7 +1216,8 @@
     "section": "",
     "text": "Export Interpersonal Relationships data as SPSS .sav file\n\n\n\nexport_interpersonal_sav(path = \"interpersonal_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_interpersonal_sav"
     ]
   },
@@ -1137,7 +1228,8 @@
     "section": "",
     "text": "Export Interpersonal Relationships data as SPSS .sav file\n\n\n\nexport_interpersonal_sav(path = \"interpersonal_data.sav\", use_sentinel = TRUE)\n\n\n\n\n\n\n\npath\n\n\nFile path. Defaults to \"superman_data.sav\".\n\n\n\n\nuse_sentinel\n\n\nIf TRUE (default), NA becomes -99 with SPSS missing codes.\n\n\n\n\n\n\nInvisibly returns the labelled data frame.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_interpersonal_sav"
     ]
   },
@@ -1148,7 +1240,8 @@
     "section": "",
     "text": "Export all psych350data datasets as SPSS .sav files\n\nexport_all_sav(dir = \".\", use_sentinel = TRUE)\n\n\n\n\n\ndir\n\n\nDirectory to save all files. Created if it doesn’t exist.\n\n\n\n\nuse_sentinel\n\n\nLogical. If TRUE, NA -&gt; -99 with SPSS missing value codes.\n\n\n\nInvisibly returns a named list of file paths created.\n\n\nlibrary(\"psych350data\")\n\nexport_all_sav(dir = \"~/Desktop/spss_files/\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_all_sav"
     ]
   },
@@ -1159,7 +1252,8 @@
     "section": "",
     "text": "Export all psych350data datasets as SPSS .sav files\n\nexport_all_sav(dir = \".\", use_sentinel = TRUE)\n\n\n\n\n\ndir\n\n\nDirectory to save all files. Created if it doesn’t exist.\n\n\n\n\nuse_sentinel\n\n\nLogical. If TRUE, NA -&gt; -99 with SPSS missing value codes.\n\n\n\nInvisibly returns a named list of file paths created.\n\n\nlibrary(\"psych350data\")\n\nexport_all_sav(dir = \"~/Desktop/spss_files/\")",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "SPSS Export",
       "export_all_sav"
     ]
   },
@@ -1170,7 +1264,8 @@
     "section": "",
     "text": "Physical characteristics and ratings data for actors who have played Superman across various films and TV shows.\n\n\n\nsuperman\n\n\n\n\nA tibble with 11 rows and variables:\n\n\nnum\n\n\nParticipant id number\n\n\ntype\n\n\nMedia type (Film, TV Show, Serial)\n\n\ntitle\n\n\nTitle of the production\n\n\nyear\n\n\nRelease year\n\n\nclark_actor\n\n\nActor playing Clark Kent/Superman\n\n\nclark_height\n\n\nClark Kent/Superman actor’s height in meters\n\n\nclark_age\n\n\nClark Kent/Superman actor’s age at debut #’(years)\n\n\nlois_actor\n\n\nActor playing Lois Lane\n\n\nlois_height\n\n\nLois Lane actor’s height in meters\n\n\nlois_age\n\n\nLois Lane actor’s age at debut (years)\n\n\nclark_height_in\n\n\nClark Kent/Superman actor’s height in inches\n\n\nlois_height_in\n\n\nLois Lane actor’s height in inches\n\n\nclark_grp\n\n\nClark Height group: 1 = under 72 inches, 2 = 72+ inches\n\n\nheight_diff\n\n\nHeight difference between Lois and Clark in inches (Clark - Lois)\n\n\nage_diff\n\n\nAge difference between Lois and Clark in years\n\n\nage_gap\n\n\nHeight gap category: 1 = &lt;6in, 2 = 6-8in, 3 = &gt;8in\n\n\nrt_critics_score\n\n\nRotten Tomatoes critics score\n\n\nrt_critics_count\n\n\nNumber of critics reviews on Rotten Tomatoes\n\n\nrt_audience_score\n\n\nRotten Tomatoes audience score\n\n\nrt_critics_count\n\n\nNumber of audience reviews on Rotten Tomatoes\n\n\ntomatometer\n\n\nCritics rating: 1 = Rotten (&lt;60), 2 = Fresh (60+)\n\n\nrt_avg\n\n\nAverage of critics and audience Rotten Tomatoes scores\n\n\nrt_diff\n\n\nWeighted difference between critics and audience scores on Rotten Tomatoes\n\n\nldb_likes\n\n\nLetterboxd likes\n\n\nldb_scores\n\n\nLetterboxd score\n\n\npopular\n\n\nPopularity category based on Letterboxd likes\n\n\n\n\n\nCompiled from the internet including Rotten Tomatoes, Letterboxd, and IMDb.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "superman"
     ]
   },
@@ -1181,7 +1276,8 @@
     "section": "",
     "text": "Physical characteristics and ratings data for actors who have played Superman across various films and TV shows.\n\n\n\nsuperman\n\n\n\n\nA tibble with 11 rows and variables:\n\n\nnum\n\n\nParticipant id number\n\n\ntype\n\n\nMedia type (Film, TV Show, Serial)\n\n\ntitle\n\n\nTitle of the production\n\n\nyear\n\n\nRelease year\n\n\nclark_actor\n\n\nActor playing Clark Kent/Superman\n\n\nclark_height\n\n\nClark Kent/Superman actor’s height in meters\n\n\nclark_age\n\n\nClark Kent/Superman actor’s age at debut #’(years)\n\n\nlois_actor\n\n\nActor playing Lois Lane\n\n\nlois_height\n\n\nLois Lane actor’s height in meters\n\n\nlois_age\n\n\nLois Lane actor’s age at debut (years)\n\n\nclark_height_in\n\n\nClark Kent/Superman actor’s height in inches\n\n\nlois_height_in\n\n\nLois Lane actor’s height in inches\n\n\nclark_grp\n\n\nClark Height group: 1 = under 72 inches, 2 = 72+ inches\n\n\nheight_diff\n\n\nHeight difference between Lois and Clark in inches (Clark - Lois)\n\n\nage_diff\n\n\nAge difference between Lois and Clark in years\n\n\nage_gap\n\n\nHeight gap category: 1 = &lt;6in, 2 = 6-8in, 3 = &gt;8in\n\n\nrt_critics_score\n\n\nRotten Tomatoes critics score\n\n\nrt_critics_count\n\n\nNumber of critics reviews on Rotten Tomatoes\n\n\nrt_audience_score\n\n\nRotten Tomatoes audience score\n\n\nrt_critics_count\n\n\nNumber of audience reviews on Rotten Tomatoes\n\n\ntomatometer\n\n\nCritics rating: 1 = Rotten (&lt;60), 2 = Fresh (60+)\n\n\nrt_avg\n\n\nAverage of critics and audience Rotten Tomatoes scores\n\n\nrt_diff\n\n\nWeighted difference between critics and audience scores on Rotten Tomatoes\n\n\nldb_likes\n\n\nLetterboxd likes\n\n\nldb_scores\n\n\nLetterboxd score\n\n\npopular\n\n\nPopularity category based on Letterboxd likes\n\n\n\n\n\nCompiled from the internet including Rotten Tomatoes, Letterboxd, and IMDb.",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "superman"
     ]
   },
@@ -1192,7 +1288,8 @@
     "section": "",
     "text": "Data on Marvel Cinematic Universe films through the Infinity Saga, including box office performance and Rotten Tomatoes scores. Source is openintro package\n\n\n\nmcu\n\n\n\n\nA data frame with variables:\n\n\nmovie\n\n\nTitle of the movie\n\n\nlength_hrs\n\n\nMovie length: hours portion\n\n\nlength_min\n\n\nMovie length: minutes portion\n\n\nrelease_date\n\n\nUS release date\n\n\nopening_weekend_us\n\n\nOpening weekend US box office (unadjusted)\n\n\ngross_us\n\n\nTotal US box office (unadjusted)\n\n\ngross_world\n\n\nTotal worldwide box office (unadjusted)\n\n\nphase\n\n\nMCU Phase: 1, 2, or 3\n\n\ncritics\n\n\nRT critics score (0-100)\n\n\naudience\n\n\nRT audience score (0-100)\n\n\nfavor\n\n\nWhether critics (1) or audience (2) score is higher\n\n\n\n\n\nInternet Movie Database",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "mcu"
     ]
   },
@@ -1203,7 +1300,8 @@
     "section": "",
     "text": "Data on Marvel Cinematic Universe films through the Infinity Saga, including box office performance and Rotten Tomatoes scores. Source is openintro package\n\n\n\nmcu\n\n\n\n\nA data frame with variables:\n\n\nmovie\n\n\nTitle of the movie\n\n\nlength_hrs\n\n\nMovie length: hours portion\n\n\nlength_min\n\n\nMovie length: minutes portion\n\n\nrelease_date\n\n\nUS release date\n\n\nopening_weekend_us\n\n\nOpening weekend US box office (unadjusted)\n\n\ngross_us\n\n\nTotal US box office (unadjusted)\n\n\ngross_world\n\n\nTotal worldwide box office (unadjusted)\n\n\nphase\n\n\nMCU Phase: 1, 2, or 3\n\n\ncritics\n\n\nRT critics score (0-100)\n\n\naudience\n\n\nRT audience score (0-100)\n\n\nfavor\n\n\nWhether critics (1) or audience (2) score is higher\n\n\n\n\n\nInternet Movie Database",
     "crumbs": [
-      "Reference",
+      "Functions",
+      "Datasets",
       "mcu"
     ]
   },
@@ -1267,7 +1365,7 @@
     "href": "vignettes/dataset-reference.html#sec-superman-movies",
     "title": "Dataset Reference",
     "section": "Superman Movies Data",
-    "text": "Superman Movies Data\nDataset: superman_movies | 10 rows, 22 columns\nBox office and production data for Superman theatrical films, including budget, domestic and international grosses, and MPAA ratings.\nSource: IMDb Box Office Mojo.\n\nglimpse(superman_movies)\n#&gt; Rows: 8\n#&gt; Columns: 21\n#&gt; $ imdb_id             &lt;chr&gt; \"tt5950044\", \"tt0078346\", \"tt0770828\", \"tt0348150\"…\n#&gt; $ title               &lt;chr&gt; \"Superman\", \"Superman: The Movie\", \"Man of Steel\",…\n#&gt; $ year                &lt;int&gt; 2025, 1978, 2013, 2006, 1980, 1983, 1987, 2016\n#&gt; $ description         &lt;chr&gt; \"Superman must reconcile his alien Kryptonian heri…\n#&gt; $ domestic_gross      &lt;dbl&gt; 354.22380, 134.47845, 291.04552, 200.08119, 108.18…\n#&gt; $ domestic_pct        &lt;dbl&gt; 57.3, 44.8, 43.4, 51.2, 50.0, 74.7, 51.8, 37.8\n#&gt; $ international_gross &lt;dbl&gt; 264.5000, 166.0000, 379.1000, 191.0000, 108.2000, …\n#&gt; $ international_pct   &lt;dbl&gt; 42.7, 55.2, 56.6, 48.8, 50.0, 25.3, 48.2, 62.2\n#&gt; $ worldwide_gross     &lt;dbl&gt; 618.72380, 300.47845, 670.14552, 391.08119, 216.38…\n#&gt; $ distributor         &lt;chr&gt; \"Warner Bros.\", \"Warner Bros.\", \"Warner Bros.\", \"W…\n#&gt; $ opening_weekend     &lt;dbl&gt; 125.021735, 7.465343, 116.619362, 52.535096, 14.10…\n#&gt; $ budget              &lt;dbl&gt; 225, 55, 225, 270, 54, 39, 17, 250\n#&gt; $ release_date        &lt;chr&gt; \"7/11/25\", \"12/15/78\", \"6/12/13\", \"6/28/06\", \"6/19…\n#&gt; $ mpaa                &lt;chr&gt; \"PG-13\", \"PG\", \"PG-13\", \"PG-13\", \"PG\", \"Unrated\", …\n#&gt; $ runtime_min         &lt;int&gt; 129, 143, 143, 154, 127, 125, 90, 151\n#&gt; $ genres              &lt;chr&gt; \"Action Adventure Fantasy Sci-Fi\", \"Action Adventu…\n#&gt; $ poster_url          &lt;chr&gt; \"https://m.media-amazon.com/images/M/MV5BZjFhZmU5N…\n#&gt; $ clark_actor         &lt;chr&gt; \"David Corenswet\", \"Christopher Reeve\", \"Henry Cav…\n#&gt; $ roi                 &lt;dbl&gt; 1.7498836, 4.4632445, 1.9784245, 0.4484489, 3.0071…\n#&gt; $ budget_cat          &lt;chr&gt; \"High\", \"Medium\", \"High\", \"High\", \"Medium\", \"Low\",…\n#&gt; $ box_office_cat      &lt;chr&gt; \"High\", \"Medium\", \"High\", \"Medium\", \"Medium\", \"Low…\n\nCategorical Variables (SPSS codes)\n\n\nVariable\nValues\n\n\n\nmpaa\n1 = G, 2 = PG, 3 = PG-13, 4 = R\n\n\nbudget_cat\n1 = Low, 2 = Medium, 3 = High\n\n\nbox_office_cat\n1 = Low, 2 = Medium, 3 = High",
+    "text": "Superman Movies Data\nDataset: superman_movies | 10 rows, 22 columns\nBox office and production data for Superman theatrical films, including budget, domestic and international grosses, and MPAA ratings.\nSource: IMDb Box Office Mojo.\n\nglimpse(superman_movies)\n#&gt; Rows: 8\n#&gt; Columns: 21\n#&gt; $ imdb_id             &lt;chr&gt; \"tt5950044\", \"tt0078346\", \"tt0770828\", \"tt0348150\"…\n#&gt; $ title               &lt;chr&gt; \"Superman\", \"Superman: The Movie\", \"Man of Steel\",…\n#&gt; $ year                &lt;int&gt; 2025, 1978, 2013, 2006, 1980, 1983, 1987, 2016\n#&gt; $ description         &lt;chr&gt; \"Superman must reconcile his alien Kryptonian heri…\n#&gt; $ domestic_gross      &lt;dbl&gt; 354.22380, 134.47845, 291.04552, 200.08119, 108.18…\n#&gt; $ domestic_pct        &lt;dbl&gt; 57.3, 44.8, 43.4, 51.2, 50.0, 74.7, 51.8, 37.8\n#&gt; $ international_gross &lt;dbl&gt; 264.5000, 166.0000, 379.1000, 191.0000, 108.2000, …\n#&gt; $ international_pct   &lt;dbl&gt; 42.7, 55.2, 56.6, 48.8, 50.0, 25.3, 48.2, 62.2\n#&gt; $ worldwide_gross     &lt;dbl&gt; 618.72380, 300.47845, 670.14552, 391.08119, 216.38…\n#&gt; $ distributor         &lt;chr&gt; \"Warner Bros.\", \"Warner Bros.\", \"Warner Bros.\", \"W…\n#&gt; $ opening_weekend     &lt;dbl&gt; 125.021735, 7.465343, 116.619362, 52.535096, 14.10…\n#&gt; $ budget              &lt;dbl&gt; 225, 55, 225, 270, 54, 39, 17, 250\n#&gt; $ release_date        &lt;chr&gt; \"7/11/25\", \"12/15/78\", \"6/12/13\", \"6/28/06\", \"6/19…\n#&gt; $ mpaa                &lt;chr&gt; \"PG-13\", \"PG\", \"PG-13\", \"PG-13\", \"PG\", \"Unrated\", …\n#&gt; $ runtime_min         &lt;int&gt; 129, 143, 143, 154, 127, 125, 90, 151\n#&gt; $ genres              &lt;chr&gt; \"Action Adventure Fantasy Sci-Fi\", \"Action Adventu…\n#&gt; $ poster_url          &lt;chr&gt; \"https://m.media-amazon.com/images/M/MV5BZjFhZmU5N…\n#&gt; $ clark_actor         &lt;chr&gt; \"David Corenswet\", \"Christopher Reeve\", \"Henry Cav…\n#&gt; $ roi                 &lt;dbl&gt; 1.7498836, 4.4632445, 1.9784245, 0.4484489, 3.0071…\n#&gt; $ budget_cat          &lt;chr&gt; \"High\", \"Medium\", \"High\", \"High\", \"Medium\", \"Low\",…\n#&gt; $ box_office_cat      &lt;chr&gt; \"High\", \"Medium\", \"High\", \"Medium\", \"Medium\", \"Low…\n\nCategorical Variables (SPSS codes)\n\n\nVariable\nValues\n\n\n\nmpaa\n1 = G, 2 = PG, 3 = PG-13, 4 = R\n\n\nbudget_cat\n1 = Low, 2 = Medium, 3 = High (tercile-based)\n\n\nbox_office_cat\n1 = Low, 2 = Medium, 3 = High (tercile-based)",
     "crumbs": [
       "Articles",
       "Dataset Reference"

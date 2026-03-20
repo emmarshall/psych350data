@@ -83,8 +83,8 @@
 #'   \item{poster_url_hires}{Movie poster URL (high resolution)}
 #'   \item{clark_actor}{Actor playing Clark Kent/Superman (for joining with superman dataset)}
 #'   \item{roi}{Return on investment ((worldwide - budget) / budget)}
-#'   \item{budget_cat}{Budget category: Low (<$50M), Medium ($50-150M), High (>$150M)}
-#'   \item{box_office_cat}{Box office category: Low (<$100M), Medium ($100-500M), High (>$500M)}
+#'   \item{budget_cat}{Budget category (tercile-based): Low, Medium, High}
+#'   \item{box_office_cat}{Box office category (tercile-based): Low, Medium, High}
 #' }
 #'
 #' @source IMDb Box Office Mojo
@@ -381,9 +381,9 @@ label_superman_movies <- function(df, use_sentinel = TRUE) {
     )
   }
 
-  if ("budget_cat" %in% names(df) && is.character(df$budget_cat)) {
+  if ("budget_cat" %in% names(df) && (is.character(df$budget_cat) || is.factor(df$budget_cat))) {
     df$budget_cat <- dplyr::case_match(
-      df$budget_cat,
+      as.character(df$budget_cat),
       "Low" ~ 1,
       "Medium" ~ 2,
       "High" ~ 3,
@@ -391,9 +391,9 @@ label_superman_movies <- function(df, use_sentinel = TRUE) {
     )
   }
 
-  if ("box_office_cat" %in% names(df) && is.character(df$box_office_cat)) {
+  if ("box_office_cat" %in% names(df) && (is.character(df$box_office_cat) || is.factor(df$box_office_cat))) {
     df$box_office_cat <- dplyr::case_match(
-      df$box_office_cat,
+      as.character(df$box_office_cat),
       "Low" ~ 1,
       "Medium" ~ 2,
       "High" ~ 3,
@@ -414,8 +414,8 @@ label_superman_movies <- function(df, use_sentinel = TRUE) {
 
   # Step 3: Apply value labels
   df <- safe_labelled(df, "mpaa", c("G" = 1, "PG" = 2, "PG-13" = 3, "R" = 4))
-  df <- safe_labelled(df, "budget_cat", c("Low (<$50M)" = 1, "Medium ($50-150M)" = 2, "High (>$150M)" = 3))
-  df <- safe_labelled(df, "box_office_cat", c("Low (<$100M)" = 1, "Medium ($100-500M)" = 2, "High (>$500M)" = 3))
+  df <- safe_labelled(df, "budget_cat", c("Low (bottom tercile)" = 1, "Medium (middle tercile)" = 2, "High (top tercile)" = 3))
+  df <- safe_labelled(df, "box_office_cat", c("Low (bottom tercile)" = 1, "Medium (middle tercile)" = 2, "High (top tercile)" = 3))
 
   # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
@@ -523,13 +523,13 @@ label_superman_combined <- function(df, use_sentinel = TRUE) {
     df <- df |>
       dplyr::mutate(
         budget2 = dplyr::case_when(
-          budget_cat == "High" ~ 1,
-          budget_cat %in% c("Low", "Medium") ~ 2,
+          as.character(budget_cat) == "High" ~ 1,
+          as.character(budget_cat) %in% c("Low", "Medium") ~ 2,
           TRUE ~ NA_real_
         ),
         boxoffice2 = dplyr::case_when(
-          box_office_cat == "High" ~ 1,
-          box_office_cat %in% c("Low", "Medium") ~ 2,
+          as.character(box_office_cat) == "High" ~ 1,
+          as.character(box_office_cat) %in% c("Low", "Medium") ~ 2,
           TRUE ~ NA_real_
         )
       )

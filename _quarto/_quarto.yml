@@ -23,106 +23,112 @@ website:
           - vignettes/dataset-reference.qmd
           - vignettes/exporting-spss.qmd
           - vignettes/getting-started.qmd
-      - section: Reference
+      - section: Functions
         contents:
-          - text: candy_simple
-            file: man/candy_simple.qmd
-          - text: candy
-            file: man/candy.qmd
-          - text: check_sav_export
-            file: man/check_sav_export.qmd
-          - text: cheese_data
-            file: man/cheese_data.qmd
-          - text: export_all_sav
-            file: man/export_all_sav.qmd
-          - text: export_candy_sav
-            file: man/export_candy_sav.qmd
-          - text: export_candy_simple_sav
-            file: man/export_candy_simple_sav.qmd
-          - text: export_cheese_sav
-            file: man/export_cheese_sav.qmd
-          - text: export_football_sav
-            file: man/export_football_sav.qmd
-          - text: export_hindsight_mg_sav
-            file: man/export_hindsight_mg_sav.qmd
-          - text: export_hindsight_wg_sav
-            file: man/export_hindsight_wg_sav.qmd
-          - text: export_hotones_episodes_sav
-            file: man/export_hotones_episodes_sav.qmd
-          - text: export_hotones_sauces_sav
-            file: man/export_hotones_sauces_sav.qmd
-          - text: export_hotones_sav
-            file: man/export_hotones_sav.qmd
-          - text: export_huskers_sav
-            file: man/export_huskers_sav.qmd
-          - text: export_interpersonal_sav
-            file: man/export_interpersonal_sav.qmd
-          - text: export_lpd_sav
-            file: man/export_lpd_sav.qmd
-          - text: export_mcu_sav
-            file: man/export_mcu_sav.qmd
-          - text: export_mock_jury_sav
-            file: man/export_mock_jury_sav.qmd
-          - text: export_parent_child_sav
-            file: man/export_parent_child_sav.qmd
-          - text: export_sav
-            file: man/export_sav.qmd
-          - text: export_selfdescriptive_sav
-            file: man/export_selfdescriptive_sav.qmd
-          - text: export_superman_combined_sav
-            file: man/export_superman_combined_sav.qmd
-          - text: export_superman_movies_sav
-            file: man/export_superman_movies_sav.qmd
-          - text: export_superman_sav
-            file: man/export_superman_sav.qmd
-          - text: export_superman_smes_sav
-            file: man/export_superman_smes_sav.qmd
-          - text: export_tip_jokes_sav
-            file: man/export_tip_jokes_sav.qmd
-          - text: football
-            file: man/football.qmd
-          - text: get_spss_data
-            file: man/get_spss_data.qmd
-          - text: get_variable_metadata
-            file: man/get_variable_metadata.qmd
-          - text: hindsight_mg_data
-            file: man/hindsight_mg_data.qmd
-          - text: hindsight_wg_data
-            file: man/hindsight_wg_data.qmd
-          - text: hotones_episodes
-            file: man/hotones_episodes.qmd
-          - text: hotones_sauces
-            file: man/hotones_sauces.qmd
-          - text: hotones
-            file: man/hotones.qmd
-          - text: huskers
-            file: man/huskers.qmd
-          - text: interpersonal_data
-            file: man/interpersonal_data.qmd
-          - text: join_superman_data
-            file: man/join_superman_data.qmd
-          - text: list_datasets
-            file: man/list_datasets.qmd
-          - text: lpd_data
-            file: man/lpd_data.qmd
-          - text: mcu
-            file: man/mcu.qmd
-          - text: mock_jury
-            file: man/mock_jury.qmd
-          - text: parent_child_data
-            file: man/parent_child_data.qmd
-          - text: prep_data
-            file: man/prep_data.qmd
-          - text: self_descriptive_data
-            file: man/self_descriptive_data.qmd
-          - text: superman_movies
-            file: man/superman_movies.qmd
-          - text: superman_smes
-            file: man/superman_smes.qmd
-          - text: superman
-            file: man/superman.qmd
-          - text: tip_jokes
-            file: man/tip_jokes.qmd
+          - section: Datasets
+            contents:
+              - text: candy
+                file: man/candy.qmd
+              - text: candy_simple
+                file: man/candy_simple.qmd
+              - text: cheese_data
+                file: man/cheese_data.qmd
+              - text: football
+                file: man/football.qmd
+              - text: hindsight_mg_data
+                file: man/hindsight_mg_data.qmd
+              - text: hindsight_wg_data
+                file: man/hindsight_wg_data.qmd
+              - text: hotones
+                file: man/hotones.qmd
+              - text: hotones_episodes
+                file: man/hotones_episodes.qmd
+              - text: hotones_sauces
+                file: man/hotones_sauces.qmd
+              - text: huskers
+                file: man/huskers.qmd
+              - text: interpersonal_data
+                file: man/interpersonal_data.qmd
+              - text: lpd_data
+                file: man/lpd_data.qmd
+              - text: mcu
+                file: man/mcu.qmd
+              - text: mock_jury
+                file: man/mock_jury.qmd
+              - text: parent_child_data
+                file: man/parent_child_data.qmd
+              - text: self_descriptive_data
+                file: man/self_descriptive_data.qmd
+              - text: superman
+                file: man/superman.qmd
+              - text: superman_movies
+                file: man/superman_movies.qmd
+              - text: superman_smes
+                file: man/superman_smes.qmd
+              - text: tip_jokes
+                file: man/tip_jokes.qmd
+          - section: SPSS Export
+            contents:
+              - text: export_sav
+                file: man/export_sav.qmd
+              - text: export_all_sav
+                file: man/export_all_sav.qmd
+              - text: export_candy_sav
+                file: man/export_candy_sav.qmd
+              - text: export_candy_simple_sav
+                file: man/export_candy_simple_sav.qmd
+              - text: export_cheese_sav
+                file: man/export_cheese_sav.qmd
+              - text: export_football_sav
+                file: man/export_football_sav.qmd
+              - text: export_hindsight_mg_sav
+                file: man/export_hindsight_mg_sav.qmd
+              - text: export_hindsight_wg_sav
+                file: man/export_hindsight_wg_sav.qmd
+              - text: export_hotones_sav
+                file: man/export_hotones_sav.qmd
+              - text: export_hotones_episodes_sav
+                file: man/export_hotones_episodes_sav.qmd
+              - text: export_hotones_sauces_sav
+                file: man/export_hotones_sauces_sav.qmd
+              - text: export_huskers_sav
+                file: man/export_huskers_sav.qmd
+              - text: export_interpersonal_sav
+                file: man/export_interpersonal_sav.qmd
+              - text: export_lpd_sav
+                file: man/export_lpd_sav.qmd
+              - text: export_mcu_sav
+                file: man/export_mcu_sav.qmd
+              - text: export_mock_jury_sav
+                file: man/export_mock_jury_sav.qmd
+              - text: export_parent_child_sav
+                file: man/export_parent_child_sav.qmd
+              - text: export_selfdescriptive_sav
+                file: man/export_selfdescriptive_sav.qmd
+              - text: export_superman_sav
+                file: man/export_superman_sav.qmd
+              - text: export_superman_movies_sav
+                file: man/export_superman_movies_sav.qmd
+              - text: export_superman_smes_sav
+                file: man/export_superman_smes_sav.qmd
+              - text: export_superman_combined_sav
+                file: man/export_superman_combined_sav.qmd
+              - text: export_tip_jokes_sav
+                file: man/export_tip_jokes_sav.qmd
+          - section: Helpers
+            contents:
+              - text: check_sav_export
+                file: man/check_sav_export.qmd
+              - text: get_spss_data
+                file: man/get_spss_data.qmd
+              - text: get_variable_metadata
+                file: man/get_variable_metadata.qmd
+              - text: join_superman_data
+                file: man/join_superman_data.qmd
+              - text: list_datasets
+                file: man/list_datasets.qmd
+              - text: prep_data
+                file: man/prep_data.qmd
       - text: License
         file: LICENSE.md
       - text: Citation
