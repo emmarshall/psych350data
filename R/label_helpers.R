@@ -13,11 +13,30 @@
 # ---- Helper function --------------------------------------------------------
 
 #' Apply value labels safely (only if column exists)
+#'
+#' When the column is character but the labels are numeric, the character
+#' values are recoded to their numeric codes first.  This lets the same
+#' labeling function work regardless of whether the raw data stores
+#' categoricals as strings or numeric codes.
 #' @noRd
 safe_labelled <- function(df, var, labels) {
-  if (var %in% names(df)) {
-    df[[var]] <- labelled::labelled(df[[var]], labels = labels)
+
+  if (!var %in% names(df)) return(df)
+
+  col <- df[[var]]
+
+  # If the column is character but labels are numeric, recode first
+  if (is.character(col) && is.numeric(labels)) {
+    # labels is e.g. c(Male = 1, Female = 2, Another = 3)
+    # Build a lookup: "Male" -> 1, "Female" -> 2, etc.
+    lookup <- stats::setNames(as.double(labels), names(labels))
+    col_recoded <- lookup[col]
+    # Preserve NAs from original
+    col_recoded[is.na(col)] <- NA_real_
+    df[[var]] <- col_recoded
   }
+
+  df[[var]] <- labelled::labelled(df[[var]], labels = labels)
   df
 }
 

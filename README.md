@@ -1,9 +1,8 @@
-
-
 # psych350data <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
-<!-- badges: start -->
 
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
 Datasets for UNL PSYC 350 Labs. All datasets are ready to use in R with

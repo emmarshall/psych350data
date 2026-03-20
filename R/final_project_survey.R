@@ -108,14 +108,9 @@
 #' @noRd
 label_interpersonal <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Replace NA with -99
-  if (use_sentinel) {
-    df <- df |>
-      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
-                                  ~ifelse(is.na(.x), -99, .x)))
-  }
-
-  # Step 2: Apply value labels
+  # Step 1: Apply value labels (safe_labelled converts character -> numeric)
+  # NOTE: sentinel NA replacement is deferred until after character columns
+  #       are converted to numeric, so -99 is applied to all columns.
   df <- safe_labelled(df, "gender", c(Male = 1, Female = 2, Another = 3))
   df <- safe_labelled(df, "sexorient", c(
     Asexual = 1, Bisexual = 2, Demisexual = 3, Gay = 4,
@@ -123,8 +118,8 @@ label_interpersonal <- function(df, use_sentinel = TRUE) {
     `Sexually fluid` = 9, `Straight or heterosexual` = 10, Other = 11
   ))
   df <- safe_labelled(df, "race", c(
-    Asian = 1, Black = 2, `Indigenous, Aboriginal, or First Nations` = 3,
-    `Latino or Hispanic` = 4, `Middle Eastern` = 5, White = 6, Other = 7
+    Asian = 1, Black = 2, `Indigenous/Aboriginal/First Nations` = 3,
+    `Latino/Hispanic` = 4, `Middle Eastern` = 5, White = 6, Other = 7
   ))
   df <- safe_labelled(df, "hand", c(Right = 1, Left = 2, Both = 3))
   df <- safe_labelled(df, "community", c(Rural = 1, `Small town` = 2, Suburban = 3, Urban = 4))
@@ -140,6 +135,13 @@ label_interpersonal <- function(df, use_sentinel = TRUE) {
     "In multiple relationships" = 3, "Not in a relationship" = 4,
     "I prefer not to answer" = 5
   ))
+
+  # Step 2: Replace NA with -99 (after character -> numeric conversion)
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
+                                  ~ifelse(is.na(.x), -99, .x)))
+  }
 
   # Step 3: Apply variable labels
   df <- safe_var_labels(df, list(
@@ -220,14 +222,9 @@ label_interpersonal <- function(df, use_sentinel = TRUE) {
 #' @noRd
 label_self_descriptive <- function(df, use_sentinel = TRUE) {
 
-  # Step 1: Replace NA with -99
-  if (use_sentinel) {
-    df <- df |>
-      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
-                                  ~ifelse(is.na(.x), -99, .x)))
-  }
-
-  # Step 2: Apply value labels
+  # Step 1: Apply value labels (safe_labelled converts character -> numeric)
+  # NOTE: sentinel NA replacement is deferred until after character columns
+  #       are converted to numeric, so -99 is applied to all columns.
   df <- safe_labelled(df, "gender", c(Male = 1, Female = 2, Another = 3))
   df <- safe_labelled(df, "sexorient", c(
     Asexual = 1, Bisexual = 2, Demisexual = 3, Gay = 4,
@@ -235,8 +232,8 @@ label_self_descriptive <- function(df, use_sentinel = TRUE) {
     `Sexually fluid` = 9, `Straight or heterosexual` = 10, Other = 11
   ))
   df <- safe_labelled(df, "race", c(
-    Asian = 1, Black = 2, `Indigenous, Aboriginal, or First Nations` = 3,
-    `Latino or Hispanic` = 4, `Middle Eastern` = 5, White = 6, Other = 7
+    Asian = 1, Black = 2, `Indigenous/Aboriginal/First Nations` = 3,
+    `Latino/Hispanic` = 4, `Middle Eastern` = 5, White = 6, Other = 7
   ))
   df <- safe_labelled(df, "hand", c(Right = 1, Left = 2, Both = 3))
   df <- safe_labelled(df, "community", c(Rural = 1, `Small town` = 2, Suburban = 3, Urban = 4))
@@ -252,6 +249,13 @@ label_self_descriptive <- function(df, use_sentinel = TRUE) {
     "In multiple relationships" = 3, "Not in a relationship" = 4,
     "I prefer not to answer" = 5
   ))
+
+  # Step 2: Replace NA with -99 (after character -> numeric conversion)
+  if (use_sentinel) {
+    df <- df |>
+      dplyr::mutate(dplyr::across(dplyr::where(is.numeric),
+                                  ~ifelse(is.na(.x), -99, .x)))
+  }
 
   # Step 3: Apply variable labels
   df <- safe_var_labels(df, list(
