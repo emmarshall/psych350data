@@ -110,3 +110,70 @@ get_variable_metadata <- function(data, dataset_name, vars) {
     }) |>
     purrr::set_names(vars)
 }
+
+#' Build a markdown variable list string from structured variable specs
+#'
+#' Takes a list of variable specification lists and produces a markdown
+#' bullet-point string describing each variable (with value labels if present).
+#'
+#' @param var_list A list of lists, each containing:
+#'   \describe{
+#'     \item{name}{Variable name (character)}
+#'     \item{label}{Variable label (character)}
+#'     \item{value_labels}{Named character/numeric vector of value labels, or NULL}
+#'   }
+#'
+#' @return A single character string with markdown bullet points separated by
+#'   newlines.
+#'
+#' @export
+build_variable_list <- function(var_list) {
+  lines <- vapply(var_list, function(var) {
+    bullet <- paste0("- **", var$label, "** (`", var$name, "`)")
+    if (!is.null(var$value_labels)) {
+      val_str <- paste0(
+        names(var$value_labels), " = ", var$value_labels,
+        collapse = ", "
+      )
+      bullet <- paste0(bullet, " \u2014 Values: ", val_str)
+    }
+    bullet
+  }, character(1))
+  paste(lines, collapse = "\n")
+}
+
+#' Render a variable list as markdown output in a Quarto document
+#'
+#' Takes metadata from [get_variable_metadata()] and outputs formatted
+#' markdown bullet points via [cat()]. Intended for use in Quarto chunks
+#' with `results: asis`.
+#'
+#' @param metadata A named list as returned by [get_variable_metadata()],
+#'   where each element contains `name`, `label`, and optionally
+#'   `value_labels`.
+#'
+#' @return Called for its side effect of printing markdown to stdout.
+#'   Returns `NULL` invisibly.
+#'
+#' @importFrom stringr str_remove
+#'
+#' @export
+render_variable_list <- function(metadata) {
+  lines <- purrr::map_chr(metadata, \(var) {
+    label <- var$label
+    if (!is.null(var$value_labels)) {
+      label <- stringr::str_remove(label, "\\s*\\([^)]*=[^)]*\\)\\s*$")
+    }
+    bullet <- paste0("- **", label, "** (`", var$name, "`)")
+    if (!is.null(var$value_labels)) {
+      val_str <- paste0(
+        var$value_labels, " = ", names(var$value_labels),
+        collapse = ", "
+      )
+      bullet <- paste0(bullet, " \u2014 Values: ", val_str)
+    }
+    bullet
+  })
+  cat("\n", paste(lines, collapse = "\n"), "\n", sep = "")
+  invisible(NULL)
+}
