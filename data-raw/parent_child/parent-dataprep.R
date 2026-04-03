@@ -54,16 +54,20 @@ cage <- ifelse(
   clamp(round(rnorm(n, 54, 4)), 42, 65)
 ) / 12  # store as years with decimal
 
-# Observation counts: tx group should show more praise/direct, less negat
+# Observation counts with interaction effects:
+#   praise:  famtype x tx interaction (treatment boosts praise more in 2-parent)
+#   direct:  magegroup x cagegroup interaction (younger moms more directive with younger kids)
+#   negat:   tx and famtype main effects only
+
 praise <- mapply(function(t, fm) {
-  mu <- 5 + 2 * t + 0.5 * (fm == 1)
+  mu <- 5 + 1 * t + 0.5 * (fm == 1) + 2.5 * t * (fm == 1)
   clamp(round(rnorm(1, mu, 2)), 0, 20)
 }, tx, famtype)
 
-direct <- mapply(function(t, fm) {
-  mu <- 4 + 1.5 * t + 0.3 * (fm == 1)
+direct <- mapply(function(ma, ca) {
+  mu <- 4 + 0.5 * (ma == 2) - 0.3 * (ca == 2) + 2.0 * (ma == 1) * (ca == 1)
   clamp(round(rnorm(1, mu, 2)), 0, 20)
-}, tx, famtype)
+}, magegroup, cagegroup)
 
 negat <- mapply(function(t, fm) {
   mu <- 6 - 1.5 * t + 0.5 * (fm == 2)

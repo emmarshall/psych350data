@@ -14,7 +14,7 @@ utils::globalVariables(c(
   "disc", "moral", "comp", "maas", "rse", "promote", "prevent",
   "pmdc", "nsne", "lse", "help", "atq", "ngse",
   # superman_smes labels
-  "num", "height_gap", "emotional_impact", "aesthetic_appeal", "cognitive_engagement",
+  "num", "height_gap", "emotional_impact", "aesthetic_appeal", "cognitive_engagement", "emotion",
   # hotones labels
   "subn", "name", "occupation", "result", "appearances", "season",
   "SHU_1", "SHU_2", "SHU_3", "SHU_4", "SHU_5",

@@ -17,7 +17,7 @@ and age difference between the Superman and Lois Lane actors.
 
 ### Format
 
-A data frame with 47 rows and 6 variables:
+A data frame with 47 rows and 7 variables:
 
 
 <dl>
@@ -32,6 +32,8 @@ A data frame with 47 rows and 6 variables:
 <dt>aesthetic_appeal</dt><dd>Aesthetic Appeal subscale (sum of 3 items, range 3-15)
 </dd>
 <dt>cognitive_engagement</dt><dd>Cognitive Engagement subscale (mean of 4 items, range 0-7)
+</dd>
+<dt>emotion</dt><dd>Primary emotion response while watching (1=fear, 2=joy, 3=sadness, 4=anger, 5=disgust, 6=anxiety)
 </dd>
 </dl>
 

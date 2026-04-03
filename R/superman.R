@@ -44,7 +44,7 @@
 #' Subjective Media Experience Scale (SMES), grouped by the height gap
 #' and age difference between the Superman and Lois Lane actors.
 #'
-#' @format A data frame with 47 rows and 6 variables:
+#' @format A data frame with 47 rows and 7 variables:
 #' \describe{
 #'   \item{num}{Unique participant number}
 #'   \item{height_gap}{Height gap category: Minimal (1), Average (2), Big (3)}
@@ -52,6 +52,7 @@
 #'   \item{emotional_impact}{Emotional Impact subscale (sum of 4 items, range 4-20)}
 #'   \item{aesthetic_appeal}{Aesthetic Appeal subscale (sum of 3 items, range 3-15)}
 #'   \item{cognitive_engagement}{Cognitive Engagement subscale (mean of 4 items, range 0-7)}
+#'   \item{emotion}{Primary emotion response while watching (1=fear, 2=joy, 3=sadness, 4=anger, 5=disgust, 6=anxiety)}
 #' }
 "superman_smes"
 
@@ -326,6 +327,15 @@ label_superman_smes <- function(df, use_sentinel = TRUE) {
     "Big (>5 years)"      = 3
   ))
 
+  df <- safe_labelled(df, "emotion", c(
+    "Fear"    = 1,
+    "Joy"     = 2,
+    "Sadness" = 3,
+    "Anger"   = 4,
+    "Disgust" = 5,
+    "Anxiety" = 6
+  ))
+
   # Step 3: Apply variable labels
   df <- safe_var_labels(df, list(
     num                  = "Unique participant number",
@@ -333,7 +343,8 @@ label_superman_smes <- function(df, use_sentinel = TRUE) {
     age_grp              = "Age difference category between Superman and Lois Lane actors (1=Minimal (<2 years), 2=Average (2-5 years), 3=Big (>5 years))",
     emotional_impact     = "Emotional Impact subscale (sum of 4 items, range 4-20)",
     aesthetic_appeal     = "Aesthetic Appeal subscale (sum of 3 items, range 3-15)",
-    cognitive_engagement = "Cognitive Engagement subscale (mean of 4 items, range 0-7)"
+    cognitive_engagement = "Cognitive Engagement subscale (mean of 4 items, range 0-7)",
+    emotion              = "Primary emotion response while watching (1=fear, 2=joy, 3=sadness, 4=anger, 5=disgust, 6=anxiety)"
   ))
 
   # Step 4: Set SPSS formats
@@ -342,6 +353,9 @@ label_superman_smes <- function(df, use_sentinel = TRUE) {
   }
   if ("age_grp" %in% names(df)) {
     attr(df$age_grp, "format.spss") <- "F1.0"
+  }
+  if ("emotion" %in% names(df)) {
+    attr(df$emotion, "format.spss") <- "F1.0"
   }
 
   # Step 5: Replace NA with -99 AFTER labeling so haven_labelled columns are caught

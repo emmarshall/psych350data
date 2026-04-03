@@ -1,0 +1,42 @@
+## Build a markdown variable list string from structured variable specs {.unnumbered}
+
+
+### Description
+
+Takes a list of variable specification lists and produces a markdown
+bullet-point string describing each variable (with value labels if present).
+
+
+
+### Usage
+
+<pre><code class='language-R'>build_variable_list(var_list)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="var_list">var_list</code></td>
+<td>
+A list of lists, each containing:
+
+
+<dl>
+<dt>name</dt><dd>Variable name (character)
+</dd>
+<dt>label</dt><dd>Variable label (character)
+</dd>
+<dt>value_labels</dt><dd>Named character/numeric vector of value labels, or NULL
+</dd>
+</dl>
+</td></tr>
+</table>
+
+
+### Value
+
+A single character string with markdown bullet points separated by
+newlines.
+
+

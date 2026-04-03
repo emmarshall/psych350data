@@ -1138,8 +1138,8 @@ Note
 </tbody>
 </table>
 <hr></section></section><section id="sec-superman-smes" class="level2"><h2 class="anchored" data-anchor-id="sec-superman-smes">Superman SMES Data</h2>
-<p><strong>Dataset:</strong> <code>superman_smes</code> | <strong>47 rows, 6 columns</strong></p>
-<p>Simulated participant ratings on the Subjective Media Experience Scale (SMES), grouped by both the height gap and age difference between the Superman and Lois Lane actors. All variables are already numeric — no data prep conversion is needed.</p>
+<p><strong>Dataset:</strong> <code>superman_smes</code> | <strong>47 rows, 7 columns</strong></p>
+<p>Simulated participant ratings on the Subjective Media Experience Scale (SMES), grouped by both the height gap and age difference between the Superman and Lois Lane actors. The <code>emotion</code> variable requires data prep conversion to factor; all other variables are already numeric.</p>
 <p><strong>Source:</strong> Simulated data for teaching purposes.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">glimpse</span><span class="op">(</span><span class="va">superman_smes</span><span class="op">)</span></span>
@@ -1154,6 +1154,10 @@ Note
 </div>
 <section id="categorical-variables-spss-codes-1" class="level3"><h3 class="anchored" data-anchor-id="categorical-variables-spss-codes-1">Categorical Variables (SPSS codes)</h3>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 71%">
+</colgroup>
 <thead><tr class="header">
 <th>Variable</th>
 <th>Values</th>
@@ -1166,6 +1170,10 @@ Note
 <tr class="even">
 <td><code>age_grp</code></td>
 <td>1 = Minimal, 2 = Average, 3 = Big</td>
+</tr>
+<tr class="odd">
+<td><code>emotion</code></td>
+<td>1 = Fear, 2 = Joy, 3 = Sadness, 4 = Anger, 5 = Disgust, 6 = Anxiety</td>
 </tr>
 </tbody>
 </table></section><section id="scale-information" class="level3"><h3 class="anchored" data-anchor-id="scale-information">Scale Information</h3>

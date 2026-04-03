@@ -206,9 +206,9 @@ glimpse(superman)
 
 ## Superman SMES Data {#sec-superman-smes}
 
-**Dataset:** `superman_smes` \| **47 rows, 6 columns**
+**Dataset:** `superman_smes` \| **47 rows, 7 columns**
 
-Simulated participant ratings on the Subjective Media Experience Scale (SMES), grouped by both the height gap and age difference between the Superman and Lois Lane actors. All variables are already numeric — no data prep conversion is needed.
+Simulated participant ratings on the Subjective Media Experience Scale (SMES), grouped by both the height gap and age difference between the Superman and Lois Lane actors. The `emotion` variable requires data prep conversion to factor; all other variables are already numeric.
 
 **Source:** Simulated data for teaching purposes.
 
@@ -222,6 +222,7 @@ glimpse(superman_smes)
 |--------------|-----------------------------------|
 | `height_gap` | 1 = Minimal, 2 = Average, 3 = Big |
 | `age_grp`    | 1 = Minimal, 2 = Average, 3 = Big |
+| `emotion`    | 1 = Fear, 2 = Joy, 3 = Sadness, 4 = Anger, 5 = Disgust, 6 = Anxiety |
 
 ### Scale Information
 

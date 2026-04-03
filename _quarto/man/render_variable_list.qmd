@@ -1,0 +1,35 @@
+## Render a variable list as markdown output in a Quarto document {.unnumbered}
+
+
+### Description
+
+Takes metadata from <code>get_variable_metadata()</code> and outputs formatted
+markdown bullet points via <code>cat()</code>. Intended for use in Quarto chunks
+with <code>results: asis</code>.
+
+
+
+### Usage
+
+<pre><code class='language-R'>render_variable_list(metadata)
+</code></pre>
+
+
+### Arguments
+
+<table role = "presentation">
+<tr><td style = "white-space: collapse; font-family: monospace; vertical-align: top"><code id="metadata">metadata</code></td>
+<td>
+A named list as returned by <code>get_variable_metadata()</code>,
+where each element contains <code>name</code>, <code>label</code>, and optionally
+<code>value_labels</code>.
+</td></tr>
+</table>
+
+
+### Value
+
+Called for its side effect of printing markdown to stdout.
+Returns <code>NULL</code> invisibly.
+
+

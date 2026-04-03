@@ -5,7 +5,7 @@
 \alias{superman_smes}
 \title{Superman SMES Data}
 \format{
-A data frame with 47 rows and 6 variables:
+A data frame with 47 rows and 7 variables:
 \describe{
 \item{num}{Unique participant number}
 \item{height_gap}{Height gap category: Minimal (1), Average (2), Big (3)}
@@ -13,6 +13,7 @@ A data frame with 47 rows and 6 variables:
 \item{emotional_impact}{Emotional Impact subscale (sum of 4 items, range 4-20)}
 \item{aesthetic_appeal}{Aesthetic Appeal subscale (sum of 3 items, range 3-15)}
 \item{cognitive_engagement}{Cognitive Engagement subscale (mean of 4 items, range 0-7)}
+\item{emotion}{Primary emotion response while watching (1=fear, 2=joy, 3=sadness, 4=anger, 5=disgust, 6=anxiety)}
 }
 }
 \usage{

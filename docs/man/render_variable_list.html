@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>superman_smes – psych350data</title>
+<title>render_variable_list – psych350data</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -278,7 +278,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Functions</li><li class="breadcrumb-item"><a href="../man/candy.html">Datasets</a></li><li class="breadcrumb-item"><a href="../man/superman_smes.html">superman_smes</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -327,22 +327,22 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Functions</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Datasets</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth2 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../man/candy.html" class="sidebar-item-text sidebar-link">
@@ -453,7 +453,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../man/superman_smes.html" class="sidebar-item-text sidebar-link active">
+  <a href="../man/superman_smes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">superman_smes</span></a>
   </div>
 </li>
@@ -685,80 +685,50 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#superman-smes-data" id="toc-superman-smes-data" class="nav-link active" data-scroll-target="#superman-smes-data">Superman SMES Data</a>
+  <li><a href="#render-a-variable-list-as-markdown-output-in-a-quarto-document" id="toc-render-a-variable-list-as-markdown-output-in-a-quarto-document" class="nav-link active" data-scroll-target="#render-a-variable-list-as-markdown-output-in-a-quarto-document">Render a variable list as markdown output in a Quarto document</a>
   <ul class="collapse">
   <li><a href="#description" id="toc-description" class="nav-link" data-scroll-target="#description">Description</a></li>
   <li><a href="#usage" id="toc-usage" class="nav-link" data-scroll-target="#usage">Usage</a></li>
-  <li><a href="#format" id="toc-format" class="nav-link" data-scroll-target="#format">Format</a></li>
+  <li><a href="#arguments" id="toc-arguments" class="nav-link" data-scroll-target="#arguments">Arguments</a></li>
+  <li><a href="#value" id="toc-value" class="nav-link" data-scroll-target="#value">Value</a></li>
   </ul></li>
   </ul>
 <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Functions</li><li class="breadcrumb-item"><a href="../man/candy.html">Datasets</a></li><li class="breadcrumb-item"><a href="../man/superman_smes.html">superman_smes</a></li></ol></nav></header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
 
-<section id="superman-smes-data" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="superman-smes-data">Superman SMES Data</h2>
+<section id="render-a-variable-list-as-markdown-output-in-a-quarto-document" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="render-a-variable-list-as-markdown-output-in-a-quarto-document">Render a variable list as markdown output in a Quarto document</h2>
 <section id="description" class="level3">
 <h3 class="anchored" data-anchor-id="description">Description</h3>
-<p>Simulated data for 47 participants rating Superman media on the Subjective Media Experience Scale (SMES), grouped by the height gap and age difference between the Superman and Lois Lane actors.</p>
+<p>Takes metadata from <code>get_variable_metadata()</code> and outputs formatted markdown bullet points via <code>cat()</code>. Intended for use in Quarto chunks with <code>results: asis</code>.</p>
 </section>
 <section id="usage" class="level3">
 <h3 class="anchored" data-anchor-id="usage">Usage</h3>
-<pre><code class="language-R">superman_smes
+<pre><code class="language-R">render_variable_list(metadata)
 </code></pre>
 </section>
-<section id="format" class="level3">
-<h3 class="anchored" data-anchor-id="format">Format</h3>
-<p>A data frame with 47 rows and 7 variables:</p>
-<dl>
-<dt>
-num
-</dt>
-<dd>
-Unique participant number
-</dd>
-<dt>
-height_gap
-</dt>
-<dd>
-Height gap category: Minimal (1), Average (2), Big (3)
-</dd>
-<dt>
-age_grp
-</dt>
-<dd>
-Age difference category: Minimal (1), Average (2), Big (3)
-</dd>
-<dt>
-emotional_impact
-</dt>
-<dd>
-Emotional Impact subscale (sum of 4 items, range 4-20)
-</dd>
-<dt>
-aesthetic_appeal
-</dt>
-<dd>
-Aesthetic Appeal subscale (sum of 3 items, range 3-15)
-</dd>
-<dt>
-cognitive_engagement
-</dt>
-<dd>
-Cognitive Engagement subscale (mean of 4 items, range 0-7)
-</dd>
-<dt>
-emotion
-</dt>
-<dd>
-Primary emotion response while watching (1=fear, 2=joy, 3=sadness, 4=anger, 5=disgust, 6=anxiety)
-</dd>
-</dl>
+<section id="arguments" class="level3">
+<h3 class="anchored" data-anchor-id="arguments">Arguments</h3>
+<table role="presentation">
+<tbody><tr>
+<td style="white-space: collapse; font-family: monospace; vertical-align: top">
+<code id="metadata">metadata</code>
+</td>
+<td>
+A named list as returned by <code>get_variable_metadata()</code>, where each element contains <code>name</code>, <code>label</code>, and optionally <code>value_labels</code>.
+</td>
+</tr>
+</tbody></table>
+</section>
+<section id="value" class="level3">
+<h3 class="anchored" data-anchor-id="value">Value</h3>
+<p>Called for its side effect of printing markdown to stdout. Returns <code>NULL</code> invisibly.</p>
 
 
 </section>

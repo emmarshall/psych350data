@@ -125,8 +125,15 @@ prep_superman <- function(data, keep_labels = FALSE) {
 #' @rdname prep_data
 #' @export
 prep_superman_smes <- function(data, keep_labels = FALSE) {
-  # All variables already numeric — no conversion needed
-  data
+  # emotion is categorical — convert to factor
+  cat_vars <- c("emotion")
+  data <- .save_labels(data, cat_vars, keep_labels)
+  data |>
+    dplyr::mutate(
+      emotion = factor(emotion,
+                       levels = 1:6,
+                       labels = c("fear", "joy", "sadness", "anger", "disgust", "anxiety"))
+    )
 }
 
 
