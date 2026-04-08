@@ -23,7 +23,23 @@ if (file.exists(file.path(source_dir, "huskers-football.xlsx"))) {
         from = c("home", "away", "neutral-home", "neutral-away"),
         to   = c("Home", "Away", "Neutral (home)", "Neutral (away)")
       ),
-      conference = if_else(conference, "Conference", "Non-conference")
+      conference = if_else(conference, "Conference", "Non-conference"),
+      # Derived dichotomous variables for regression analyses
+      # SPSS: RECODE result (1=1)(2=0)(3=0) INTO win.
+      win = dplyr::case_when(
+        result == "Win"  ~ "Yes",
+        result == "Loss" ~ "No",
+        result == "Tie"  ~ "No",
+        .default = NA_character_
+      ),
+      # SPSS: RECODE site (1=1)(2=0)(3=1)(4=0) INTO home.
+      home = dplyr::case_when(
+        site == "Home"            ~ "Yes",
+        site == "Away"            ~ "No",
+        site == "Neutral (home)"  ~ "Yes",
+        site == "Neutral (away)"  ~ "No",
+        .default = NA_character_
+      )
     ) |>
     tibble::as_tibble()
 

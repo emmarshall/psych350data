@@ -63,6 +63,10 @@
 #'   \item{humidity}{Relative humidity at kickoff (0.0 to 1.0).}
 #'   \item{wind_speed}{Wind speed at kickoff (mph).}
 #'   \item{wind_bearing}{Wind direction at kickoff in degrees (0 = North, clockwise).}
+#'   \item{win}{Whether Nebraska won: "Yes" or "No". Derived from \code{result}
+#'     (Win = Yes; Loss and Tie = No).}
+#'   \item{home}{Whether it was a Nebraska home game: "Yes" or "No". Derived
+#'     from \code{site} (Home and Neutral-home = Yes; Away and Neutral-away = No).}
 #' }
 #'
 #' @details
@@ -116,6 +120,22 @@ label_huskers <- function(df, use_sentinel = TRUE) {
     }
   }
 
+  if ("win" %in% names(df) && is.character(df$win)) {
+    df$win <- dplyr::recode_values(
+      df$win,
+      from = c("Yes", "No"),
+      to   = c(1, 0)
+    ) |> as.numeric()
+  }
+
+  if ("home" %in% names(df) && is.character(df$home)) {
+    df$home <- dplyr::recode_values(
+      df$home,
+      from = c("Yes", "No"),
+      to   = c(1, 0)
+    ) |> as.numeric()
+  }
+
   # Step 2: Replace NA with -99
   if (use_sentinel) {
     df <- df |>
@@ -130,6 +150,8 @@ label_huskers <- function(df, use_sentinel = TRUE) {
   df <- safe_labelled(df, "result", c("Win" = 1, "Loss" = 2, "Tie" = 3))
   df <- safe_labelled(df, "site", c("Home" = 1, "Away" = 2, "Neutral (home)" = 3, "Neutral (away)" = 4))
   df <- safe_labelled(df, "conference", c("Non-conference" = 0, "Conference game" = 1))
+  df <- safe_labelled(df, "win", c("No" = 0, "Yes" = 1))
+  df <- safe_labelled(df, "home", c("No" = 0, "Yes" = 1))
 
   # Step 4: Apply variable labels
   df <- safe_var_labels(df, list(
@@ -189,7 +211,9 @@ label_huskers <- function(df, use_sentinel = TRUE) {
     temp = "Temperature at kickoff (Fahrenheit)",
     humidity = "Relative humidity at kickoff (0-1)",
     wind_speed = "Wind speed at kickoff (mph)",
-    wind_bearing = "Wind direction at kickoff (degrees, 0=North)"
+    wind_bearing = "Wind direction at kickoff (degrees, 0=North)",
+    win = "Whether Nebraska won",
+    home = "Whether it was a home game"
   ))
 
   # Step 5: Set -99 as missing values

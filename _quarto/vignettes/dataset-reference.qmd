@@ -218,11 +218,11 @@ glimpse(superman_smes)
 
 ### Categorical Variables (SPSS codes)
 
-| Variable     | Values                            |
-|--------------|-----------------------------------|
+| Variable | Values |
+|----|----|
 | `height_gap` | 1 = Minimal, 2 = Average, 3 = Big |
-| `age_grp`    | 1 = Minimal, 2 = Average, 3 = Big |
-| `emotion`    | 1 = Fear, 2 = Joy, 3 = Sadness, 4 = Anger, 5 = Disgust, 6 = Anxiety |
+| `age_grp` | 1 = Minimal, 2 = Average, 3 = Big |
+| `emotion` | 1 = Fear, 2 = Joy, 3 = Sadness, 4 = Anger, 5 = Disgust, 6 = Anxiety |
 
 ### Scale Information
 
@@ -433,6 +433,8 @@ glimpse(huskers)
 | `result`     | 1 = Win, 2 = Loss, 3 = Tie                                 |
 | `site`       | 1 = Home, 2 = Away, 3 = Neutral (home), 4 = Neutral (away) |
 | `conference` | 0 = Non-conference, 1 = Conference                         |
+| `win`        | 0 = No, 1 = Yes (derived from `result`: Win → 1, else → 0) |
+| `home`       | 0 = No, 1 = Yes (derived from `site`: Home/Neutral-home → 1, else → 0) |
 
 ------------------------------------------------------------------------
 

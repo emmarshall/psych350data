@@ -332,7 +332,7 @@ prep_football <- function(data, keep_labels = FALSE) {
 #' @rdname prep_data
 #' @export
 prep_huskers <- function(data, keep_labels = FALSE) {
-  cat_vars <- c("site", "result", "conference")
+  cat_vars <- c("site", "result", "conference", "win", "home")
   data <- .save_labels(data, cat_vars, keep_labels)
   data |>
     dplyr::mutate(
@@ -350,6 +350,16 @@ prep_huskers <- function(data, keep_labels = FALSE) {
         is.logical(.data[["conference"]]) ~ as.numeric(.data[["conference"]]),
         .data[["conference"]] == "Conference"     ~ 1,
         .data[["conference"]] == "Non-conference" ~ 0,
+        .default = NA_real_
+      ),
+      win = dplyr::case_when(
+        .data[["win"]] == "Yes" ~ 1,
+        .data[["win"]] == "No"  ~ 0,
+        .default = NA_real_
+      ),
+      home = dplyr::case_when(
+        .data[["home"]] == "Yes" ~ 1,
+        .data[["home"]] == "No"  ~ 0,
         .default = NA_real_
       )
     )

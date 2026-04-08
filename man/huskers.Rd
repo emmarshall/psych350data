@@ -64,6 +64,10 @@ A data frame with columns:
 \item{humidity}{Relative humidity at kickoff (0.0 to 1.0).}
 \item{wind_speed}{Wind speed at kickoff (mph).}
 \item{wind_bearing}{Wind direction at kickoff in degrees (0 = North, clockwise).}
+\item{win}{Whether Nebraska won: "Yes" or "No". Derived from \code{result}
+(Win = Yes; Loss and Tie = No).}
+\item{home}{Whether it was a Nebraska home game: "Yes" or "No". Derived
+from \code{site} (Home and Neutral-home = Yes; Away and Neutral-away = No).}
 }
 }
 \source{
