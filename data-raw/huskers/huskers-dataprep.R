@@ -9,10 +9,17 @@ library(here)
 source_dir <- here::here("data-raw", "huskers")
 
 if (file.exists(file.path(source_dir, "huskers-football.xlsx"))) {
-  huskers_raw <- read_excel(file.path(source_dir, "huskers-football.xlsx"), sheet = "huskers")
+  huskers_raw <- read_excel(
+    file.path(source_dir, "huskers-football.xlsx"),
+    sheet = "huskers",
+    na = c("", "-")
+  )
 
   huskers <- huskers_raw |>
     mutate(
+      # Force numeric: source xlsx contains a few "-" entries (now read as NA)
+      # which coerced ne_pen_yards to character on import.
+      ne_pen_yards = as.numeric(ne_pen_yards),
       result = recode_values(
         result,
         from = c("W", "L", "T"),
